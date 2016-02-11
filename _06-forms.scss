@@ -23,7 +23,6 @@ optgroup {
     color: $base-color;
 }
 label {
-    vertical-align: middle;
     cursor: pointer;
 }
 legend {
@@ -31,7 +30,7 @@ legend {
     white-space: normal;
 }
 textarea {
-    min-height: 4.8em;
+    min-height: 3 * $base-font-size * $line-height;
     vertical-align: top;
     resize: vertical;
 }
