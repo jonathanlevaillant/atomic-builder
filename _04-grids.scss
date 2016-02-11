@@ -1,0 +1,74 @@
+/* grids
+   ========================================================================== */
+
+// grid container
+.grid {
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: -$gutter;
+    margin-left: -$gutter;
+}
+
+// grid childs
+.grid__item {
+    flex: 0 0 auto;
+    min-width: 0;
+    margin-bottom: $gutter;
+    margin-left: $gutter;
+}
+@mixin grid($number) {
+    & > .grid__item {
+        width: calc(#{decimal-round(100% / $number)} - #{$gutter});
+    }
+}
+@for $i from 2 through $columns {
+    @if $columns % $i == 0 {
+        .grid--#{$i} {
+            @include grid($i);
+        }
+    }
+}
+
+// grid uneven childs
+@mixin uneven-grid($left, $right) {
+    & > *:nth-child(odd) {
+        width: calc(#{decimal-round($left / $right * 100%)} - #{$gutter});
+    }
+    & > *:nth-child(even) {
+        width: calc(#{decimal-round(($right - $left) / $right * 100%)} - #{$gutter});
+    }
+}
+@for $i from 1 through ($columns / 2) - 1 {
+    $gcd: gcd($i, $columns);
+    .grid--#{$i / $gcd}-#{$columns / $gcd} {
+        @include uneven-grid($i, $columns);
+    }
+    .grid--#{($columns / $gcd) - ($i / $gcd)}-#{$columns / $gcd} {
+        @include uneven-grid($columns - $i, $columns);
+    }
+}
+
+/* grids responsive
+   ========================================================================== */
+
+// grid small
+@media (max-width: $small-screen) {
+    @for $i from 1 through 4 {
+        @if $columns % $i == 0 {
+            .grid--small-#{$i} {
+                @include grid($i);
+            }
+        }
+    }
+}
+
+// grid tiny
+@media (max-width: $tiny-screen) {
+    @for $i from 1 through 2 {
+        @if $columns % $i == 0 {
+            .grid--small-#{$i} {
+                @include grid($i);
+            }
+        }
+    }
+}

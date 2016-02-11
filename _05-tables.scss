@@ -1,0 +1,23 @@
+/* tables
+   ========================================================================== */
+
+// default table
+table,
+.table {
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    vertical-align: top;
+}
+.table {
+    display: table;
+}
+.table--auto {
+    table-layout:auto;
+}
+td,
+th {
+    vertical-align: top;
+    cursor: default;
+}

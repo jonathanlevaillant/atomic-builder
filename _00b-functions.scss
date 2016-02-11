@@ -1,0 +1,43 @@
+/* functions
+   ========================================================================== */
+
+// decimal round
+@function decimal-round($number, $digits: 4) {
+    $n: 1;
+    @for $i from 1 through $digits {
+        $n: $n * 10;
+    }
+    @if round($number * 10) == $number * 10 {
+        @return $number;
+    }
+    @return ceil($number * $n) / $n;
+}
+
+// line height
+@function line-height($font-size) {
+    $coeff: 1;
+    $vertical-rythm: $base-font-size * $line-height;
+    $line-height-coeff: $vertical-rythm / $font-size;
+    @while $line-height-coeff < 1 {
+        $coeff: $coeff + 1;
+        $line-height-coeff: $vertical-rythm * $coeff / $font-size;
+    }
+    @return $line-height-coeff;
+}
+
+// gcd
+@function gcd($numerator, $denominator) {
+    @while $numerator != 0 {
+        $i: $numerator;
+        $numerator: $denominator % $numerator;
+        $denominator: $i;
+    }
+    @return $denominator;
+}
+
+// column width
+@function column-width($number) {
+    $column: ($wrapper - $gutter * ($columns - 1)) / $columns;
+    $column-width: $column * $number + $gutter * ($number - 1);
+    @return $column-width;
+}

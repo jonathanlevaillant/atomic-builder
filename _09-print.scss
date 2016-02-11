@@ -1,0 +1,79 @@
+/* quick print reset
+   ========================================================================== */
+
+@media print {
+
+    // reset
+    * {
+        background: transparent !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    body {
+        width: auto;
+        margin: auto;
+        font-family: serif;
+        font-size: 12pt;
+    }
+    p,
+    .p,
+    h1,
+    .h1,
+    h2,
+    .h2,
+    h3,
+    .h3,
+    h4,
+    .h4,
+    h5,
+    .h5,
+    h6,
+    .h6,
+    blockquote,
+    ul,
+    ol {
+        margin: auto;
+        color: #000;
+    }
+    .print {
+        display: block;
+    }
+    .no-print {
+        display: none;
+    }
+
+    // no orphans, no widows
+    p,
+    .p,
+    blockquote {
+        orphans: 3;
+        widows: 3;
+    }
+
+    // no breaks inside these elements
+    blockquote,
+    ul,
+    ol {
+        page-break-inside: avoid;
+    }
+
+    // no breaks after these elements
+    h1,
+    .h1,
+    h2,
+    .h2,
+    h3,
+    .h3,
+    caption {
+        page-break-after: avoid;
+    }
+    a {
+        color: #000;
+    }
+    a[href^="javascript:"],
+    a[href^="#"] {
+        &::after {
+            content: "";
+        }
+    }
+}

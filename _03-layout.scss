@@ -1,0 +1,82 @@
+/* layout
+   ========================================================================== */
+
+// modules
+.mod {
+    overflow: hidden;
+}
+.clear {
+    clear: both;
+}
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+    border-collapse: collapse;
+}
+.right {
+    margin-left: auto;
+}
+.left {
+    margin-right: auto;
+}
+.center {
+    margin-right: auto;
+    margin-left: auto;
+}
+.txt-right {
+    text-align: right;
+}
+.txt-left {
+    text-align: left;
+}
+.txt-center {
+    text-align: center;
+}
+.fr {
+    float: right;
+}
+.fl {
+    float: left;
+}
+img.fl {
+    margin-right: $small-value;
+}
+img.fr {
+    margin-left: $small-value;
+}
+img.fr,
+img.fl {
+    margin-bottom: 1px;
+}
+.inbl {
+    display: inline-block;
+    vertical-align: top;
+}
+
+// flexbox layout
+.flex {
+    display : flex;
+    flex-wrap: wrap;
+}
+.flex--h {
+    flex-direction: row;
+}
+.flex--v {
+    flex-direction: column;
+}
+.flex__item-fluid {
+    flex: 1;
+}
+.flex__item-first {
+    order: -1;
+}
+.flex__item-medium {
+    order : 0;
+}
+.flex__item-last {
+    order : 1;
+}
+.flex__item-center {
+    margin: auto;
+}

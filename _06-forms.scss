@@ -1,0 +1,68 @@
+/* forms
+   ========================================================================== */
+
+// forms items
+form,
+fieldset {
+    border: 0;
+}
+label,
+input,
+select,
+textarea,
+button,
+.btn {
+    font-family: inherit;
+    font-size: inherit;
+}
+input,
+select,
+textarea,
+button,
+optgroup {
+    color: $base-color;
+}
+label {
+    vertical-align: middle;
+    cursor: pointer;
+}
+legend {
+    border: 0;
+    white-space: normal;
+}
+textarea {
+    min-height: 4.8em;
+    vertical-align: top;
+    resize: vertical;
+}
+select {
+    -webkit-appearance: menulist-button;
+}
+
+// search
+[type="search"]::-webkit-search-decoration,
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-results-button,
+[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+// placeholder
+::-webkit-input-placeholder {
+    color: #999;
+}
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+    color: #999;
+}
+
+// buttons
+.btn {
+    display: inline-block;
+}
+.btn:focus,
+button:focus,
+[type="button"]:focus {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
