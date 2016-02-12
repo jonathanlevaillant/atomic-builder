@@ -18,6 +18,7 @@ table,
 }
 td,
 th {
+    min-width: column-width(1);
     vertical-align: top;
     cursor: default;
 }

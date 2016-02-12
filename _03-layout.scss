@@ -39,11 +39,11 @@
 .fl {
     float: left;
 }
-img.fl {
-    margin-right: $small-value;
-}
 img.fr {
     margin-left: $small-value;
+}
+img.fl {
+    margin-right: $small-value;
 }
 img.fr,
 img.fl {

@@ -2,35 +2,29 @@
    ========================================================================== */
 
 // forms items
-form,
-fieldset {
-    border: 0;
-}
-label,
 input,
 select,
 textarea,
-button,
-.btn {
-    font-family: inherit;
-    font-size: inherit;
-}
-input,
-select,
-textarea,
+.btn,
 button,
 optgroup {
     color: $base-color;
 }
+input,
+select,
+textarea {
+    height: $field-height;
+    padding: ($field-height - $base-font-size * $line-height) / 2 $small-value;
+    border: 1px solid #ccc;
+    line-height: inherit;
+}
 label {
+    margin-right: $small-value;
+    line-height: $field-height / $base-font-size;
     cursor: pointer;
 }
-legend {
-    border: 0;
-    white-space: normal;
-}
 textarea {
-    min-height: 3 * $base-font-size * $line-height;
+    min-height: 2 * $field-height;
     vertical-align: top;
     resize: vertical;
 }
@@ -39,10 +33,10 @@ select {
 }
 
 // search
-[type="search"]::-webkit-search-decoration,
-[type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-results-button,
-[type="search"]::-webkit-search-results-decoration {
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
     display: none;
 }
 
@@ -58,10 +52,22 @@ textarea:-moz-placeholder {
 // buttons
 .btn {
     display: inline-block;
+    text-decoration: none;
+}
+.btn,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    padding: ($field-height - $base-font-size * $line-height) / 2 $small-value;
+    border: 0;
+    background: #ccc;
+    vertical-align: top;
+    line-height: inherit;
 }
 .btn:focus,
 button:focus,
-[type="button"]:focus {
+input[type="button"]:focus {
     -webkit-tap-highlight-color: transparent;
     user-select: none;
 }
