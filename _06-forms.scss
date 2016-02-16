@@ -8,24 +8,25 @@ textarea,
 .btn,
 button,
 optgroup {
+    vertical-align: top;
     color: $base-color;
 }
 input,
 select,
 textarea {
+    @include padding-rythm($field-size);
+    @include font-rythm($field-size);
     height: $field-height;
-    padding: ($field-height - $base-font-size * $line-height) / 2 $small-value;
     border: 1px solid #ccc;
-    line-height: inherit;
 }
 label {
     margin-right: $small-value;
-    line-height: $field-height / $base-font-size;
+    font-size: $label-size;
+    line-height: line-height($label-size, $field-height);
     cursor: pointer;
 }
 textarea {
     min-height: 2 * $field-height;
-    vertical-align: top;
     resize: vertical;
 }
 select {
@@ -59,11 +60,11 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-    padding: ($field-height - $base-font-size * $line-height) / 2 $small-value;
+    @include padding-rythm($button-size);
+    @include font-rythm($button-size);
+    height: auto;
     border: 0;
     background: #ccc;
-    vertical-align: top;
-    line-height: inherit;
 }
 .btn:focus,
 button:focus,

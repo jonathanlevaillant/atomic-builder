@@ -31,9 +31,7 @@ html {
 }
 body {
     background-color: $base-background;
-    font-size: $base-font-size;
-    font-family: $font-stack-common;
-    line-height: $line-height;
+    @include font-rythm($base-font-size, $font-stack-common);
     color: $base-color;
 }
 a {
@@ -64,49 +62,37 @@ h1,
 .h1 {
     margin-top: $medium-value;
     margin-bottom: 0;
-    font-size: $h1-size;
-    font-family: $font-stack-headings;
-    line-height: decimal-round(line-height($h1-size));
+    @include font-rythm($h1-size, $font-stack-headings);
 }
 h2,
 .h2 {
     margin-top: $medium-value;
     margin-bottom: 0;
-    font-size: $h2-size;
-    font-family: $font-stack-headings;
-    line-height: decimal-round(line-height($h2-size));
+    @include font-rythm($h2-size, $font-stack-headings);
 }
 h3,
 .h3 {
     margin-top: $medium-value;
     margin-bottom: 0;
-    font-size: $h3-size;
-    font-family: $font-stack-headings;
-    line-height: decimal-round(line-height($h3-size));
+    @include font-rythm($h3-size, $font-stack-headings);
 }
 h4,
 .h4 {
     margin-top: $medium-value;
     margin-bottom: 0;
-    font-size: $h4-size;
-    font-family: $font-stack-headings;
-    line-height: decimal-round(line-height($h4-size));
+    @include font-rythm($h4-size, $font-stack-headings);
 }
 h5,
 .h5 {
     margin-top: $medium-value;
     margin-bottom: 0;
-    font-size: $h5-size;
-    font-family: $font-stack-headings;
-    line-height: decimal-round(line-height($h5-size));
+    @include font-rythm($h5-size, $font-stack-headings);
 }
 h6,
 .h6 {
     margin-top: $medium-value;
     margin-bottom: 0;
-    font-size: $h6-size;
-    font-family: $font-stack-headings;
-    line-height: decimal-round(line-height($h6-size));
+    @include font-rythm($h6-size, $font-stack-headings);
 }
 
 // alternate font-sizing

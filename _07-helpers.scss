@@ -30,30 +30,10 @@ ul.unstyled {
 }
 
 // visual helpers percentage
-@for $i from 10 through 100 {
-    @if $i % 10 == 0 or $i == 25 or $i == 75 {
-        .w#{$i} {
-            width: $i + %;
-        }
-    }
-    @else if $i == 33 {
-        .w#{$i} {
-            width: 33.3334 + %;
-        }
-    }
-    @else if $i == 66 {
-        .w#{$i} {
-            width: 66.6667 + %;
-        }
-    }
-}
+@include percentage-width();
 
 // visual helpers fixed
-@for $i from 1 through $columns {
-    .w#{$i}col {
-        width: column-width($i);
-    }
-}
+@include fixed-width-col();
 .wrapper {
     max-width: $wrapper;
     margin-right: auto;
@@ -64,49 +44,4 @@ ul.unstyled {
 }
 
 // spacing helpers
-$spacing-properties: ("margin": "m", "padding": "p");
-$spacing-values: ($tiny-value: "t", $small-value: "s", $medium-value: "m", $large-value: "l");
-@mixin spacing-properties($property, $prefix) {
-    .#{$prefix}an {
-        #{$property}: 0;
-    }
-    .#{$prefix}tn {
-        #{$property}-top: 0;
-    }
-    .#{$prefix}rn {
-        #{$property}-right: 0;
-    }
-    .#{$prefix}bn {
-        #{$property}-bottom: 0;
-    }
-    .#{$prefix}ln {
-        #{$property}-left: 0;
-    }
-    @mixin spacing-values($value, $suffix) {
-        .#{$prefix}a#{$suffix} {
-            #{$property}: $value;
-        }
-        .#{$prefix}t#{$suffix} {
-            #{$property}-top: $value;
-        }
-        .#{$prefix}r#{$suffix} {
-            #{$property}-right: $value;
-        }
-        .#{$prefix}b#{$suffix} {
-            #{$property}-bottom: $value;
-        }
-        .#{$prefix}l#{$suffix} {
-            #{$property}-left: $value;
-        }
-    }
-    @each $i in $spacing-values {
-        $value: nth($i, 1);
-        $suffix: nth($i, 2);
-        @include spacing-values($value, $suffix);
-    }
-}
-@each $i in $spacing-properties {
-    $property: nth($i, 1);
-    $prefix: nth($i, 2);
-    @include spacing-properties($property, $prefix);
-}
+@include spacing-helpers("margin", "padding");
