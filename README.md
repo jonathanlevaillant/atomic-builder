@@ -134,8 +134,10 @@ Vous pouvez également générer des grilles de colonnes inégales selon le mêm
 ```
 
 Vous constaterez que les grilles `grid--2-12` `grid--3-12` et `grid--4-12` sont nommées respectivement en `grid--1-6` `grid--1-4` et `grid--1-3` grâce à une fonction calculant le plus grand dénominateur commun : `@function gcd()`.
-* Le fichier `_07-helpers.scss` possède quelques mixins fort utiles :  
+
+Le fichier `_07-helpers.scss` possède quelques mixins fort utiles :  
 `@include percentage-width()` va générer des tailles en pourcentages de 10% à 100% (la valeur de l'incrémentation par défaut étant de 10). Il est possible de modifier cette valeur d'incrémentation `@include percentage-width(5)` (de 5 en 5 par exemple).  
+
 `@include spacing-helpers("margin", "padding")` va générer des marges externes et internes selon les différentes valeurs renseignées dans le fichier `_00a-config.scss`.  `tiny-value: .6rem` `small-value: 1.2rem` `medium-value: 2.4rem` et `large-value: 4.8rem` générera :  
 
 ```css
