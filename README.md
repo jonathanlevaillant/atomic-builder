@@ -1,65 +1,175 @@
-# Framework CSS
-## Un Framework SASS léger et flexible basé sur [KNACSS](https://github.com/alsacreations/KNACSS)
+# Framework SASS
+### Un framework SASS léger, flexible et responsive basé sur [KNACSS](https://github.com/alsacreations/KNACSS)
 
-Ce Framework CSS a pour but de démarrer un projet de zéro. Il inclut entre autre une feuille de reset, de print, de génération de grilles et de helpers. Tous les modules présents sont générés et pensés en suivant un rythme vertical définit par l'utilisateur. 
+Ce framework SASS ultra léger (~20ko) permet de débuter un projet rapidement et facilement en partant sur des bases saines.  
+Il regroupe l'ensemble des bonnes pratiques en matière de **reset CSS**, de génération de **grilles fluides** et de **[rythme vertical](https://larlet.fr/david/biologeek/archives/20070819-l-importance-du-rythme-vertical-en-design-css/)**.
 
-Pour rappel le rythme vertical correspond à la hauteur de ligne multipliée par la taille de la police. Par exemple, si la police du site est de 14px et que la hauteur de ligne est de 1.5 alors le rythme vertical sera de 21px. Par conséquent toutes les hauteurs ou marges des modules présents dans le site seront des multiples de 21px.
+***
 
+###Bien débuter
+L'ensemble des variables du projet se trouvent dans le fichier `_00a-config.scss`.  
+Il est conseillé de modifier dans un premier temps ces variables, par défaut les unités de taille sont exprimées en "rem". Si vous travaillez avec des unités en pixels il suffira simplement de diviser vos valeurs par dix pour obtenir leur équivalent en "rem".  
 
-###1) Débuter un projet
+**Exemples :** `15px => 1.5rem` `8px => .8rem`
 
-Pour débuter un projet, il est recommandé d'éditer le fichier **_00a-config.scss**.
+Vous pourrez personnaliser entre autres les valeurs de tailles de polices, de titres, de couleurs, de marges, de points de rupture et de grilles.
 
-Ce fichier inclut toutes les variables du site, les polices utilisées, les tailles des titres, les principales couleurs du site, les points de rupture, le nombre de colonnes utilisées dans la grille, etc.
-
-Par défaut les variable sont définies en unité fluide "rem". Si vous utilisez des pixels, la conversion pour passer en unités fluides est très simple, il suffit de diviser la valeur par 10. Par exemple 14px équivaut à 1.4rem.
-
-**Ce Framework CSS est composé de 12 fichiers SCSS ainsi que du fichier généré en CSS natif :**
-
-* _00a-config.scss
-* _00b-functions.scss
-* _01-normalize.scss
-* _02-base.scss
-* _03-layout.scss
-* _04-grids.scss
-* _05-tables.scss
-* _06-forms.scss
-* _07-helpers.scss
-* _08-responsive.scss
-* _09-print.scss
-* styles.css
-* styles.scss
-
-**Vous trouverez ci dessous une description détaillée de chaque fichier :**
-
-###2) Fonctions et mixins
-
-Toutes les fonctions et mixins se trouvent dans le fichier **_00b-functions.scss**.
-
-Ci dessous un descriptif de chaque fonction et mixin et leur cas d'utilisation :
-
-####Fonctions
-
-```js
-@function decimal-round($number, $digit: 4) {...}
+###Quelques astuces
+* Toutes les fonctions et mixins se trouvent dans le fichier `_00b-functions.scss`.  
+Il est déconseillé de les modifier, vous pourrez néanmoins si vous le souhaitez en rajouter à la suite de cette feuille.
+* La feuille de reset CSS `_01-normalize.scss` inclue les principales règles de **Bootstrap** et **Knacss**, testé et approuvé :-)
+* La version CSS native après compilation est également disponible sur Github `styles.css`.  
+Elle a été générée via le task manager **Gulp**, vous trouverez quelques optimisations CSS. (Auto préfixe, ordonnancement des propriétés CSS, etc.)  
+Pour les plus curieux, j'ai mis à disposition mes fichiers [gulpfile.js](https://github.com/jonathanlevaillant/gulp/blob/master/gulpfile.js) et [package.json](https://github.com/jonathanlevaillant/gulp/blob/master/package.json).
+* Vous pouvez générer n'importe quelle grille dans le fichier `_04-grids.scss` grâce au mixin `@include grid-childs()`.  
+Par défaut si aucun argument n'est renseigné, la grille sera automatiquement générée en fonction de la largeur du wrapper, du nombre de colonnes et des gouttières (toutes ces variables étant présentes dans le fichier `_00a-config.scss`).  
+En gardant les valeurs par défaut, voila à quoi ressemblera le fichier CSS compilé avec ce mixin :  
+```css
+.grid--2 > .grid__item {
+    width: calc(50% - 1.2rem);
+}
+.grid--3 > .grid__item {
+    width: calc(33.3334% - 1.2rem);
+}
+.grid--4 > .grid__item {
+    width: calc(25% - 1.2rem);
+}
+.grid--6 > .grid__item {
+    width: calc(16.6667% - 1.2rem);
+}```
+Vous remarquerez que seules les valeurs divisibles par la taille de la grille sont générées, pour rappel il s'agissait d'une grille de 12 colonnes, les valeurs 2, 3, 4 et 6 sont donc générées.  
+Il est également possible de renseigner des arguments, notamment une gouttière différente de celle initiale, un modificateur de classe, une colonne à générer ou même une plage de colonnes à générer.   
+`@include grid-childs($modifier: "small", $start: 1, $end: 4)` sera compilé en :
+```css
+.grid--small-1 > .grid__item {
+    width: calc(100% - 1.2rem);
+}
+.grid--small-2 > .grid__item {
+    width: calc(50% - 1.2rem);
+}
+.grid--small-3 > .grid__item {
+    width: calc(33.3334% - 1.2rem);
+}
+.grid--small-4 > .grid__item {
+    width: calc(25% - 1.2rem);
+}```
+`@include grid-childs(2, $gutter: 2.4rem)` sera compilé en :
+```css
+.grid--2 > .grid__item {
+    width: calc(50% - 2.4rem);
+}```
+* Vous pouvez également générer des grilles de colonnes inégales selon le même principe que précédemment en utilisant cette fois ci le mixin `@include grid-uneven-childs()`.
+```css
+.grid--1-12 > *:nth-child(odd) {
+    width: calc(8.3334% - 1.2rem);
+}
+.grid--1-12 > *:nth-child(even) {
+    width: calc(91.6667% - 1.2rem);
+}
+.grid--11-12 > *:nth-child(odd) {
+    width: calc(91.6667% - 1.2rem);
+}
+.grid--11-12 > *:nth-child(even) {
+    width: calc(8.3334% - 1.2rem);
+}
+.grid--1-6 > *:nth-child(odd) {
+    width: calc(16.6667% - 1.2rem);
+}
+.grid--1-6 > *:nth-child(even) {
+    width: calc(83.3334% - 1.2rem);
+}
+.grid--5-6 > *:nth-child(odd) {
+    width: calc(83.3334% - 1.2rem);
+}
+.grid--5-6 > *:nth-child(even) {
+    width: calc(16.6667% - 1.2rem);
+}
+.grid--1-4 > *:nth-child(odd) {
+    width: calc(25% - 1.2rem);
+}
+.grid--1-4 > *:nth-child(even) {
+    width: calc(75% - 1.2rem);
+}
+.grid--3-4 > *:nth-child(odd) {
+    width: calc(75% - 1.2rem);
+}
+.grid--3-4 > *:nth-child(even) {
+    width: calc(25% - 1.2rem);
+}
+.grid--1-3 > *:nth-child(odd) {
+    width: calc(33.3334% - 1.2rem);
+}
+.grid--1-3 > *:nth-child(even) {
+    width: calc(66.6667% - 1.2rem);
+}
+.grid--2-3 > *:nth-child(odd) {
+    width: calc(66.6667% - 1.2rem);
+}
+.grid--2-3 > *:nth-child(even) {
+    width: calc(33.3334% - 1.2rem);
+}
+.grid--5-12 > *:nth-child(odd) {
+    width: calc(41.6667% - 1.2rem);
+}
+.grid--5-12 > *:nth-child(even) {
+    width: calc(58.3334% - 1.2rem);
+}
+.grid--7-12 > *:nth-child(odd) {
+    width: calc(58.3334% - 1.2rem);
+}
+.grid--7-12 > *:nth-child(even) {
+    width: calc(41.6667% - 1.2rem);
+}```
+Vous constaterez que les grilles `grid--2-12` `grid--3-12` et `grid--4-12` sont nommées respectivement en `grid--1-6` `grid--1-4` et `grid--1-3` grâce à une fonction calculant le plus grand dénominateur commun : `@function gcd()`.
+* Le fichier `_07-helpers.scss` possède quelques mixins fort utiles :  
+`@include percentage-width()` va générer des tailles en pourcentages de 10% à 100% (la valeur de l'incrémentation par défaut étant de 10). Il est possible de modifier cette valeur d'incrémentation `@include percentage-width(5)` (de 5 en 5 par exemple).  
+`@include spacing-helpers("margin", "padding")` va générer des marges externes et internes selon les différentes valeurs renseignées dans le fichier `_00a-config.scss`.  `tiny-value: .6rem` `small-value: 1.2rem` `medium-value: 2.4rem` et `large-value: 4.8rem` générera :  
+```css
+...
+.mts {
+    margin-top: 1.2rem;
+}
+.mrs {
+    margin-right: 1.2rem;
+}
+.mbs {
+    margin-bottom: 1.2rem;
+}
+.mls {
+    margin-left: 1.2rem;
+}
+.ptm {
+    padding-top: 2.4rem;
+}
+.prm {
+    padding-right: 2.4rem;
+}
+.pbm {
+    padding-bottom: 2.4rem;
+}
+.plm {
+    padding-left: 2.4rem;
+}
+...
 ```
-Fonction permettant d'arrondir un nombre décimal. Par défaut il sera arrondi à 4 décimales si nécessaire, il est possible de définir le nombre de décimale souhaitées avec l'argument `$digit`.
-
-**Argument obligatoire :** `$number`  
-**Argument facultatif :** `$digit`  
-**Exemples :**  
-`decimal-round(33.333334%) => 33.3334%`  
-`decimal-round(10.5269rem, 2) => 10.53rem`  
-`decimal-round(12) => 12`
-
-```js
-@function decimal-round($number, $digit: 4) {...}
+Il est possible de renseigner uniquement la marge externe ou interne `@include spacing-helpers("padding")` :
+```css
+...
+.pts {
+    padding-top: 1.2rem;
+}
+.prs {
+    padding-right: 1.2rem;
+}
+.pbs {
+    padding-bottom: 1.2rem;
+}
+.pls {
+    padding-left: 1.2rem;
+}
+...
 ```
-Fonction permettant d'arrondir un nombre décimal. Par défaut il sera arrondi à 4 décimales si nécessaire, il est possible de définir le nombre de décimale souhaitées avec l'argument `$digit`.
 
-**Argument obligatoire :** `$number`  
-**Argument facultatif :** `$digit`  
-**Exemples :**  
-`decimal-round(33.333334%) => 33.3334%`  
-`decimal-round(10.5269rem, 2) => 10.53rem`  
-`decimal-round(12) => 12`
+***
+
+###Amusez-vous bien !
