@@ -16,6 +16,9 @@ Il est conseillé de modifier dans un premier temps ces variables, par défaut l
 Vous pourrez personnaliser entre autres les valeurs de tailles de polices, de titres, de couleurs, de marges, de points de rupture et de grilles.
 
 ###Quelques astuces
+
+####Fonctions et mixins
+
 Toutes les fonctions et mixins se trouvent dans le fichier `_00b-functions.scss`.  
 
 Il est déconseillé de les modifier, vous pourrez néanmoins si vous le souhaitez en rajouter à la suite de cette feuille.
