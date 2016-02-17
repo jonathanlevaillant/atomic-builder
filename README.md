@@ -40,7 +40,7 @@ Ci dessous un descriptif de chaque fonction et mixin et leur cas d'utilisation :
 
 ####Fonctions
 
-* ```scss
+* ```js
 @function decimal-round($number, $digit: 4) {...}
 ```
 Fonction permettant d'arrondir un nombre décimal. Par défaut il sera arrondi à 4 décimales si nécessaire, il est possible de définir le nombre de décimale souhaitées avec l'argument `$digit`.  
