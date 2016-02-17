@@ -46,7 +46,8 @@ En gardant les valeurs par défaut, voila à quoi ressemblera le fichier CSS com
 Vous remarquerez que seules les valeurs entières divisibles par la taille de la grille sont générées, pour rappel il s'agissait d'une grille de 12 colonnes, les valeurs 2, 3, 4 et 6 sont donc générées.  
 
 Il est également possible de renseigner des arguments, notamment une gouttière différente, un modificateur de classe, une colonne à générer ou même une plage de colonnes à générer.   
-**Exemples :** `@include grid-childs($modifier: "small", $start: 1, $end: 4)` sera compilé en :
+
+**Exemple :** `@include grid-childs($modifier: "small", $start: 1, $end: 4)` sera compilé en :
 
 ```css
 .grid--small-1 > .grid__item {
@@ -63,7 +64,7 @@ Il est également possible de renseigner des arguments, notamment une gouttière
 }
 
 ```
-**Exemples :** `@include grid-childs(2, $gutter: 2.4rem)` sera compilé en :
+**Exemple :** `@include grid-childs(2, $gutter: 2.4rem)` sera compilé en :
 ```css
 .grid--2 > .grid__item {
     width: calc(50% - 2.4rem);
