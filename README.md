@@ -20,7 +20,7 @@ Toutes les fonctions et mixins se trouvent dans le fichier `_00b-functions.scss`
 
 Il est déconseillé de les modifier, vous pourrez néanmoins si vous le souhaitez en rajouter à la suite de cette feuille.
 
-La feuille de reset CSS `_01-normalize.scss` inclue les principales règles de **Bootstrap** et **Knacss**, testé et approuvé :-)
+La feuille de reset CSS `_01-normalize.scss` inclue les principales règles de **Bootstrap** et **Knacss**, testées et approuvées :-)
 
 La version CSS native après compilation est également disponible sur Github `styles.css`.  
 Elle a été générée via le task manager **Gulp**, vous trouverez quelques optimisations CSS. (Auto préfixe, ordonnancement des propriétés CSS, etc.)  
@@ -43,10 +43,10 @@ En gardant les valeurs par défaut, voila à quoi ressemblera le fichier CSS com
     width: calc(16.6667% - 1.2rem);
 }
 ```
-Vous remarquerez que seules les valeurs divisibles par la taille de la grille sont générées, pour rappel il s'agissait d'une grille de 12 colonnes, les valeurs 2, 3, 4 et 6 sont donc générées.  
+Vous remarquerez que seules les valeurs entières divisibles par la taille de la grille sont générées, pour rappel il s'agissait d'une grille de 12 colonnes, les valeurs 2, 3, 4 et 6 sont donc générées.  
 
-Il est également possible de renseigner des arguments, notamment une gouttière différente de celle initiale, un modificateur de classe, une colonne à générer ou même une plage de colonnes à générer.   
-`@include grid-childs($modifier: "small", $start: 1, $end: 4)` sera compilé en :
+Il est également possible de renseigner des arguments, notamment une gouttière différente, un modificateur de classe, une colonne à générer ou même une plage de colonnes à générer.   
+**Exemples :** `@include grid-childs($modifier: "small", $start: 1, $end: 4)` sera compilé en :
 
 ```css
 .grid--small-1 > .grid__item {
@@ -63,7 +63,7 @@ Il est également possible de renseigner des arguments, notamment une gouttière
 }
 
 ```
-`@include grid-childs(2, $gutter: 2.4rem)` sera compilé en :
+**Exemples :** `@include grid-childs(2, $gutter: 2.4rem)` sera compilé en :
 ```css
 .grid--2 > .grid__item {
     width: calc(50% - 2.4rem);
