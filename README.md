@@ -40,8 +40,6 @@ Ci dessous un descriptif de chaque fonction et mixin et leur cas d'utilisation :
 
 ####Fonctions
 
----
-
 ```js
 @function decimal-round($number, $digit: 4) {...}
 ```
@@ -53,8 +51,6 @@ Fonction permettant d'arrondir un nombre décimal. Par défaut il sera arrondi �
 `decimal-round(33.333334%) => 33.3334%`  
 `decimal-round(10.5269rem, 2) => 10.53rem`  
 `decimal-round(12) => 12`
-
----
 
 ```js
 @function decimal-round($number, $digit: 4) {...}
