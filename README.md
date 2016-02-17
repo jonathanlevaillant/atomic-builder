@@ -32,32 +32,18 @@ Par défaut les variable sont définies en unité fluide "rem". Si vous utilisez
 
 **Vous trouverez ci dessous une description détaillée de chaque fichier :**
 
-###2) _00a-config.scss
+###2) Fonctions et mixins
 
-Fichier de configuration incluant toutes les variables utilisées dans le projet. Vous pouvez laisser par défaut les valeurs prédéfinies mais il est conseillé d'éditer vos propres valeurs en fonction de votre charte graphique. 
+Toutes les fonctions et mixins se trouvent dans le fichier **_00b-functions.scss**.
 
-Ce fichier se compose de plusieurs rubriques concernant les tailles des polices, les types de polices, les couleurs de texte, les couleurs de fond, les différentes marges, les tailles des éléments de formulaire, les points de rupture et les modèles de grille.
+Ci dessous un descriptif de chaque fonction et mixin et leur cas d'utilisation :
 
-Voici quelques précisions concernant certaines variables :
+####Fonctions
 
-* **$base-font-size** : correspond à taille de base de la police du site :
-```css
-$base-font-size: 1.5rem !default;
+* ```scss
+@function decimal-round($number, $digit: 4) {...}
 ```
-
-* **$line-height** : correspond à hauteur de ligne par défaut, en général elle se situe entre 1.5 et 1.6 :
-```css
-$line-height: 1.6 !default;
-```
-
-* **$field-height** : correspond à hauteur d'un champs de formulaire :
-```css
-$field-height: 3.6rem !default;
-```
-
-* **$grid-spacer** : correspond à la marge basse des colonnes d'une grille lorsque la grille passe sur plusieurs lignes :
-```css
-$grid-spacer: 1.2rem !default;
-```
-
-###3) _00b-functions.scss
+Fonction permettant d'arrondir un nombre décimal. Par défaut il sera arrondi à 4 décimales si nécessaire, il est possible de définir le nombre de décimale souhaitées avec l'argument `$digit`.  
+**Argument obligatoire :** `$number`  
+**Argument facultatif :** `$digit`  
+**Exemples :** `decimal-round(33.333334%) => 33.3334%` `decimal-round(10.5269rem, 2) => 10.53rem` `decimal-round(12) => 12`
