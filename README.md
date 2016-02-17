@@ -23,7 +23,7 @@ Elle a été générée via le task manager **Gulp**, vous trouverez quelques op
 Pour les plus curieux, j'ai mis à disposition mes fichiers [gulpfile.js](https://github.com/jonathanlevaillant/gulp/blob/master/gulpfile.js) et [package.json](https://github.com/jonathanlevaillant/gulp/blob/master/package.json).
 * Vous pouvez générer n'importe quelle grille dans le fichier `_04-grids.scss` grâce au mixin `@include grid-childs()`.  
 Par défaut si aucun argument n'est renseigné, la grille sera automatiquement générée en fonction de la largeur du wrapper, du nombre de colonnes et des gouttières (toutes ces variables étant présentes dans le fichier `_00a-config.scss`).  
-En gardant les valeurs par défaut, voila à quoi ressemblera le fichier CSS compilé avec ce mixin :  
+En gardant les valeurs par défaut, voila à quoi ressemblera le fichier CSS compilé avec ce mixin :
 ```css
 .grid--2 > .grid__item {
     width: calc(50% - 1.2rem);
@@ -37,8 +37,7 @@ En gardant les valeurs par défaut, voila à quoi ressemblera le fichier CSS com
 .grid--6 > .grid__item {
     width: calc(16.6667% - 1.2rem);
 }
-```  
-
+```
 Vous remarquerez que seules les valeurs divisibles par la taille de la grille sont générées, pour rappel il s'agissait d'une grille de 12 colonnes, les valeurs 2, 3, 4 et 6 sont donc générées.  
 Il est également possible de renseigner des arguments, notamment une gouttière différente de celle initiale, un modificateur de classe, une colonne à générer ou même une plage de colonnes à générer.   
 `@include grid-childs($modifier: "small", $start: 1, $end: 4)` sera compilé en :
