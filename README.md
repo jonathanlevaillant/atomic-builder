@@ -53,12 +53,14 @@ Il est également possible de renseigner des arguments, notamment une gouttière
 }
 .grid--small-4 > .grid__item {
     width: calc(25% - 1.2rem);
-}```
+}
+```
 `@include grid-childs(2, $gutter: 2.4rem)` sera compilé en :
 ```css
 .grid--2 > .grid__item {
     width: calc(50% - 2.4rem);
-}```
+}
+```
 * Vous pouvez également générer des grilles de colonnes inégales selon le même principe que précédemment en utilisant cette fois ci le mixin `@include grid-uneven-childs()`.
 ```css
 .grid--1-12 > *:nth-child(odd) {
@@ -120,7 +122,8 @@ Il est également possible de renseigner des arguments, notamment une gouttière
 }
 .grid--7-12 > *:nth-child(even) {
     width: calc(41.6667% - 1.2rem);
-}```
+}
+```
 Vous constaterez que les grilles `grid--2-12` `grid--3-12` et `grid--4-12` sont nommées respectivement en `grid--1-6` `grid--1-4` et `grid--1-3` grâce à une fonction calculant le plus grand dénominateur commun : `@function gcd()`.
 * Le fichier `_07-helpers.scss` possède quelques mixins fort utiles :  
 `@include percentage-width()` va générer des tailles en pourcentages de 10% à 100% (la valeur de l'incrémentation par défaut étant de 10). Il est possible de modifier cette valeur d'incrémentation `@include percentage-width(5)` (de 5 en 5 par exemple).  
