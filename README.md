@@ -15,13 +15,17 @@ Il est conseillé de modifier dans un premier temps ces variables, par défaut l
 Vous pourrez personnaliser entre autres les valeurs de tailles de polices, de titres, de couleurs, de marges, de points de rupture et de grilles.
 
 ###Quelques astuces
-* Toutes les fonctions et mixins se trouvent dans le fichier `_00b-functions.scss`.  
+Toutes les fonctions et mixins se trouvent dans le fichier `_00b-functions.scss`.  
+
 Il est déconseillé de les modifier, vous pourrez néanmoins si vous le souhaitez en rajouter à la suite de cette feuille.
-* La feuille de reset CSS `_01-normalize.scss` inclue les principales règles de **Bootstrap** et **Knacss**, testé et approuvé :-)
-* La version CSS native après compilation est également disponible sur Github `styles.css`.  
+
+La feuille de reset CSS `_01-normalize.scss` inclue les principales règles de **Bootstrap** et **Knacss**, testé et approuvé :-)
+
+La version CSS native après compilation est également disponible sur Github `styles.css`.  
 Elle a été générée via le task manager **Gulp**, vous trouverez quelques optimisations CSS. (Auto préfixe, ordonnancement des propriétés CSS, etc.)  
 Pour les plus curieux, j'ai mis à disposition mes fichiers [gulpfile.js](https://github.com/jonathanlevaillant/gulp/blob/master/gulpfile.js) et [package.json](https://github.com/jonathanlevaillant/gulp/blob/master/package.json).
-* Vous pouvez générer n'importe quelle grille dans le fichier `_04-grids.scss` grâce au mixin `@include grid-childs()`.  
+
+Vous pouvez générer n'importe quelle grille dans le fichier `_04-grids.scss` grâce au mixin `@include grid-childs()`.  
 Par défaut si aucun argument n'est renseigné, la grille sera automatiquement générée en fonction de la largeur du wrapper, du nombre de colonnes et des gouttières (toutes ces variables étant présentes dans le fichier `_00a-config.scss`).  
 En gardant les valeurs par défaut, voila à quoi ressemblera le fichier CSS compilé avec ce mixin :
 ```css
@@ -39,8 +43,10 @@ En gardant les valeurs par défaut, voila à quoi ressemblera le fichier CSS com
 }
 ```
 Vous remarquerez que seules les valeurs divisibles par la taille de la grille sont générées, pour rappel il s'agissait d'une grille de 12 colonnes, les valeurs 2, 3, 4 et 6 sont donc générées.  
+
 Il est également possible de renseigner des arguments, notamment une gouttière différente de celle initiale, un modificateur de classe, une colonne à générer ou même une plage de colonnes à générer.   
 `@include grid-childs($modifier: "small", $start: 1, $end: 4)` sera compilé en :
+
 ```css
 .grid--small-1 > .grid__item {
     width: calc(100% - 1.2rem);
@@ -54,6 +60,7 @@ Il est également possible de renseigner des arguments, notamment une gouttière
 .grid--small-4 > .grid__item {
     width: calc(25% - 1.2rem);
 }
+
 ```
 `@include grid-childs(2, $gutter: 2.4rem)` sera compilé en :
 ```css
@@ -61,7 +68,8 @@ Il est également possible de renseigner des arguments, notamment une gouttière
     width: calc(50% - 2.4rem);
 }
 ```
-* Vous pouvez également générer des grilles de colonnes inégales selon le même principe que précédemment en utilisant cette fois ci le mixin `@include grid-uneven-childs()`.
+
+Vous pouvez également générer des grilles de colonnes inégales selon le même principe que précédemment en utilisant cette fois ci le mixin `@include grid-uneven-childs()`.
 ```css
 .grid--1-12 > *:nth-child(odd) {
     width: calc(8.3334% - 1.2rem);
@@ -124,10 +132,12 @@ Il est également possible de renseigner des arguments, notamment une gouttière
     width: calc(41.6667% - 1.2rem);
 }
 ```
+
 Vous constaterez que les grilles `grid--2-12` `grid--3-12` et `grid--4-12` sont nommées respectivement en `grid--1-6` `grid--1-4` et `grid--1-3` grâce à une fonction calculant le plus grand dénominateur commun : `@function gcd()`.
 * Le fichier `_07-helpers.scss` possède quelques mixins fort utiles :  
 `@include percentage-width()` va générer des tailles en pourcentages de 10% à 100% (la valeur de l'incrémentation par défaut étant de 10). Il est possible de modifier cette valeur d'incrémentation `@include percentage-width(5)` (de 5 en 5 par exemple).  
 `@include spacing-helpers("margin", "padding")` va générer des marges externes et internes selon les différentes valeurs renseignées dans le fichier `_00a-config.scss`.  `tiny-value: .6rem` `small-value: 1.2rem` `medium-value: 2.4rem` et `large-value: 4.8rem` générera :  
+
 ```css
 ...
 .mts {
@@ -156,7 +166,9 @@ Vous constaterez que les grilles `grid--2-12` `grid--3-12` et `grid--4-12` sont 
 }
 ...
 ```
+
 Il est possible de renseigner uniquement la marge externe ou interne `@include spacing-helpers("padding")` :
+
 ```css
 ...
 .pts {
