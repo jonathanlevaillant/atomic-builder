@@ -1,8 +1,7 @@
 # Framework SASS
 ### Un framework SASS léger, flexible et responsive basé sur [KNACSS](https://github.com/alsacreations/KNACSS)
 
-Ce framework SASS ultra léger (20ko) permet de débuter un projet rapidement et facilement en partant sur des bases saines.  
-Il regroupe l'ensemble des bonnes pratiques en matière de **reset CSS**, de génération de **grilles fluides** et de **[rythme vertical](https://larlet.fr/david/biologeek/archives/20070819-l-importance-du-rythme-vertical-en-design-css/)**.
+Ce framework SASS ultra léger (20ko) permet de débuter un projet rapidement et facilement en partant sur des bases saines. Il regroupe l'ensemble des bonnes pratiques en matière de **reset CSS**, de génération de **grilles fluides** et de **[rythme vertical](https://larlet.fr/david/biologeek/archives/20070819-l-importance-du-rythme-vertical-en-design-css/)**.
 
 La syntaxe CSS de ce framework suit une **[méthodologie BEM](https://en.bem.info/method/)**.
 
