@@ -68,12 +68,21 @@ Il est également possible de renseigner des arguments, notamment une gouttière
 }
 
 ```
-**Exemple :** `@include grid-childs(2, $gutter: 2.4rem)` sera compilé en :
+**Exemple :** `@include grid-childs(2, "gl", $gutter: 2.4rem)` sera compilé en :
 ```css
-.grid--2 > .grid__item {
+[class*="grid--gl"] {
+    margin-bottom: -2.4rem;
+    margin-left: -2.4rem;
+}
+[class*="grid--gl"] > .grid__item {
+    margin-left: 2.4rem;
+}
+.grid--gl-2 > .grid__item {
     width: calc(50% - 2.4rem);
 }
 ```
+
+Si vous mettez à jour la gouttière de base et que vous oubliez de rajouter un modificateur de grille, celui ci sera créé automatiquement avec le label `secondary`.
 
 Vous pouvez également générer des grilles de colonnes inégales selon le même principe que précédemment en utilisant cette fois ci le mixin `@include grid-uneven-childs()`.
 ```css
