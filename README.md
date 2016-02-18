@@ -1,26 +1,26 @@
 # Framework SASS
-### Un framework SASS léger, flexible et responsive basé sur [KNACSS](https://github.com/alsacreations/KNACSS)
+### Un Framework SASS léger, flexible et responsive basé sur [KNACSS](https://github.com/alsacreations/KNACSS)
 
-Ce framework SASS ultra léger *(20Ko)* permet de démarrer facilement et rapidement un projet en partant sur des bases saines. Il regroupe l'ensemble des bonnes pratiques en matière de **reset CSS**, de génération de **grilles fluides** et de **[rythme vertical](https://larlet.fr/david/biologeek/archives/20070819-l-importance-du-rythme-vertical-en-design-css/)**.
+Ce Framework SASS ultra léger *(20Ko)* permet de démarrer rapidement un projet en partant sur des bases saines. Il regroupe l'ensemble des bonnes pratiques en matière de **reset CSS**, de génération de **grilles fluides** et de **[rythme vertical](https://larlet.fr/david/biologeek/archives/20070819-l-importance-du-rythme-vertical-en-design-css/)**.
 
-La syntaxe CSS de ce framework suit une **[méthodologie BEM](https://en.bem.info/method/)**.
+La syntaxe CSS de ce Framework suit une **[méthodologie BEM](https://en.bem.info/method/)**.
 
 ***
 
 ##Bien débuter
 L'ensemble des variables du projet se trouvent dans le fichier `_00a-config.scss`.  
-Il est vivement conseillé de modifier ces variables en fonction de vos projets. Par défaut les unités sont exprimées en *"rem"*. Si vous travaillez avec des unités en pixels, il vous suffira simplement de diviser vos valeurs par dix pour obtenir leur équivalent en *"rem"* :
+Il est vivement conseillé de modifier ces variables en fonction de votre projet. Par défaut, les unités sont exprimées en *"rem"*. Si vous travaillez avec des unités en pixel, il suffira simplement de diviser vos valeurs par dix pour obtenir leur équivalent en *"rem"* :
 
 * `15px => 1.5rem`
 * `8px => .8rem` 
 
-Vous pourrez personnaliser entre autres les valeurs de tailles de polices, de titres, de couleurs, de marges, de points de rupture et de grilles.
+Vous pourrez personnaliser entre autres, les valeurs de taille des polices de caractères, des titres, des couleurs, des marges, des points de rupture et des grilles.
 
-Ce framework se base sur un rythme vertical calculé automatiquement, le principe étant celui-ci : 
+**Ce Framework se base sur un rythme vertical calculé automatiquement**
 
-Le rythme vertical est le produit de la taille de la police de base par sa hauteur de ligne. Dans notre cas, la taille de la police est de 1.5rem et sa hauteur de ligne est de 1.6, le rythme vertical sera donc de 2.4rem soit 24px. 
+Pour rappel, le rythme vertical est le produit de la taille de la police de caractères de la page par sa hauteur de ligne.   Dans notre cas, la taille de la police de caractères est de 1.5rem et sa hauteur de ligne est de 1.6, le rythme vertical sera donc de 2.4rem soit 24px. 
 
-Le texte et l'ensemble des modules du framework suivront ce rythme comme les marges, les hauteurs, les titres, les champs de formulaire, etc. Ces éléments seront des multiples de 24px.
+Le texte ainsi que l'ensemble des modules du Framework suivront ce rythme vertical comme les marges, la hauteur de ligne des titres, la hauteur des champs de formulaire, etc. Ces éléments seront tous multiples de 24px.
 
 ##Les fonctions et mixins
 
