@@ -1,7 +1,7 @@
 # Framework SASS
 ### Un framework SASS léger, flexible et responsive basé sur [KNACSS](https://github.com/alsacreations/KNACSS)
 
-Ce framework SASS ultra léger *(20 Ko)* permet de démarrer facilement et rapidement un projet en partant sur des bases saines. Il regroupe l'ensemble des bonnes pratiques en matière de **reset CSS**, de génération de **grilles fluides** et de **[rythme vertical](https://larlet.fr/david/biologeek/archives/20070819-l-importance-du-rythme-vertical-en-design-css/)**.
+Ce framework SASS ultra léger *(20Ko)* permet de démarrer facilement et rapidement un projet en partant sur des bases saines. Il regroupe l'ensemble des bonnes pratiques en matière de **reset CSS**, de génération de **grilles fluides** et de **[rythme vertical](https://larlet.fr/david/biologeek/archives/20070819-l-importance-du-rythme-vertical-en-design-css/)**.
 
 La syntaxe CSS de ce framework suit une **[méthodologie BEM](https://en.bem.info/method/)**.
 
@@ -15,6 +15,9 @@ Il est vivement conseillé de modifier ces variables en fonction de vos projets.
 * `8px => .8rem` 
 
 Vous pourrez personnaliser entre autres les valeurs de tailles de polices, de titres, de couleurs, de marges, de points de rupture et de grilles.
+
+Ce framework est basé sur un rythme vertical calculé automatiquement, le principe étant celui-ci :  
+le rythme vertical est le produit de la taille de la police de base par sa hauteur de ligne. Dans notre cas, la taille de la police est de 1.5rem et sa hauteur de ligne est de 1.6, le rythme vertical sera donc de 2.4rem soit 24px. Le texte et l'ensemble des modules du framework suivront ce rythme comme les marges, les hauteurs, les titres, les champs de formulaire, etc. Ces éléments seront des multiples de 24px.
 
 ##Quelques astuces
 
