@@ -8,7 +8,7 @@ La syntaxe CSS de ce Framework suit une **[méthodologie BEM](https://en.bem.inf
 ***
 
 ##Bien débuter
-L'ensemble des variables du projet se trouvent dans le fichier `_00a-config.scss`.  
+L'ensemble des variables du projet se trouvent dans le fichier CSS `_00a-config.scss`.  
 Il est vivement conseillé de modifier ces variables en fonction de votre projet. Par défaut, les unités sont exprimées en *"rem"*. Si vous travaillez avec des unités en pixel, il suffira simplement de diviser vos valeurs par dix pour obtenir leur équivalent en *"rem"* :
 
 * `15px => 1.5rem`
@@ -24,7 +24,7 @@ Le texte ainsi que l'ensemble des modules du Framework suivront ce rythme vertic
 
 ##Fonctions et mixins
 
-Toutes les fonctions et mixins se trouvent dans le fichier `_00b-functions.scss`.  
+Toutes les fonctions et mixins se trouvent dans le fichier CSS `_00b-functions.scss`.  
 
 Il est déconseillé de les modifier, vous pourrez néanmoins si vous le souhaitez, en rajouter à la suite de cette feuille CSS.
 
@@ -36,10 +36,10 @@ La feuille de reset CSS `_01-normalize.scss` inclue les principales règles de *
 
 ####Les grilles à colonnes égales
 
-Vous pouvez générer n'importe quelle grille dans le fichier `_04-grids.scss` grâce à l'appel du mixin `@include grid-childs()`.  
-Par défaut, si aucun argument n'est renseigné, la grille sera automatiquement générée en fonction de la largeur du conteneur, du nombre de colonnes et des gouttières (toutes ces variables étant présentes dans le fichier `_00a-config.scss`). 
+Vous pouvez générer n'importe quelle grille dans le fichier CSS `_04-grids.scss` grâce à l'appel du mixin `@include grid-childs()`.  
+Par défaut, si aucun argument n'est renseigné, la grille sera automatiquement générée en fonction de la largeur du conteneur, du nombre de colonnes et des gouttières (toutes ces variables étant présentes dans le fichier CSS `_00a-config.scss`). 
 
-En conservant les valeurs par défaut, `@include grid-childs()` sera complilé en :
+En conservant les valeurs par défaut, `@include grid-childs()` sera compilé en :
 
 ```css
 .grid--2 > .grid__item {
@@ -58,9 +58,9 @@ En conservant les valeurs par défaut, `@include grid-childs()` sera complilé e
 
 *Note: Vous remarquerez que seules les valeurs entières divisibles par le nombre de colonnes de la grille sont générées, pour rappel il s'agissait d'une grille à 12 colonnes, les valeurs 2, 3, 4 et 6 ont donc été créées.*
 
-Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gouttière, un modificateur de classe ou des colonnes spécifiques. Voici quelques exemples pour illustrer :
+Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gouttière, un modificateur de classe ou des colonnes spécifiques. En voici quelques exemples :
 
-* **Générer une grille à 4 colonnes** :
+* **Grille à 4 colonnes** :
 
 `@include grid-childs(4)` sera compilé en :
 
@@ -70,7 +70,7 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 }
 ```
 
-* **Générer une grille "small" pour les colonnes 3 à 4** :
+* **Grille de label "small" pour les colonnes 3 à 4** :
 
 `@include grid-childs($modifier: "small", $start: 3, $end: 4)` sera compilé en :
 
@@ -83,7 +83,7 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 }
 ```
 
-* **Générer une grille "gl" à 2 colonnes de gouttière 2.4rem** :
+* **Grille de label "gl" à 2 colonnes et de gouttière 2.4rem** :
 
 `@include grid-childs(2, "gl", 2.4rem)` sera compilé en :
 
@@ -100,7 +100,7 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 }
 ```
 
-* **Générer une grille de gouttière 2.4rem** :
+* **Grille de gouttière 2.4rem** :
 
 `@include grid-childs($new-gutter: 2.4rem)` sera compilé en :
 
@@ -126,11 +126,11 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 }
 ```
 
-*Note: Une nouvelle gouttière a été définie en oubliant le modificateur de classe, le label `secondary` a été rajouté automatiquement pour surcharger la grille de base*
+*Note: Dans cet exemple une nouvelle gouttière a été définie sans modificateur de classe, le label `secondary` a été rajouté automatiquement pour éviter un conflit de styles avec la grille par défaut.*
 
 ####Les grilles à colonnes inégales
 
-Vous pouvez si vous le souhaitez générer des grilles à 2 colonnes inégales. Le principe est le même que précédemment, seul l'appel au mixin change :
+Vous pouvez également générer des grilles à 2 colonnes inégales. Le principe est le même que précédemment, seul l'appel au mixin change :
 
 `@include grid-uneven-childs()` sera compilé en :
 
@@ -197,7 +197,7 @@ Vous pouvez si vous le souhaitez générer des grilles à 2 colonnes inégales. 
 }
 ```
 
-*Note: Vous constaterez que les grilles `grid--2-12`, `grid--3-12` et `grid--4-12` ont été renommées respectivement en `grid--1-6`, `grid--1-4` et `grid--1-3` grâce à une fonction calculant le plus grand dénominateur commun `@function gcd()`.*
+*Note: Vous remarquerez que les classes `grid--2-12`, `grid--3-12` et `grid--4-12` ont été renommées respectivement en `grid--1-6`, `grid--1-4` et `grid--1-3` grâce à une fonction calculant le plus grand diviseur commun `@function gcd($numerator, $denominator)`.*
 
 ##Les classes visuelles
 
