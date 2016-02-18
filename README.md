@@ -60,17 +60,11 @@ En conservant les valeurs par défaut, le fichier CSS sera complilé en :
 
 Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gouttière, un modificateur de classe ou des colonnes spécifiques. Voici quelques exemples pour illustrer :
 
-**Générer une grille "small" de colonnes 1 à 4** :
+**Générer une grille "small" de colonnes 3 à 4** :
 
-`@include grid-childs($modifier: "small", $start: 1, $end: 4)` sera compilé en :
+`@include grid-childs($modifier: "small", $start: 3, $end: 4)` sera compilé en :
 
 ```css
-.grid--small-1 > .grid__item {
-    width: calc(100% - 1.2rem);
-}
-.grid--small-2 > .grid__item {
-    width: calc(50% - 1.2rem);
-}
 .grid--small-3 > .grid__item {
     width: calc(33.3334% - 1.2rem);
 }
@@ -78,6 +72,7 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
     width: calc(25% - 1.2rem);
 }
 ```
+
 **Générer une grille "gl" à 2 colonnes de gouttière 2.4rem** :
 
 `@include grid-childs(2, "gl", 2.4rem)` sera compilé en :
@@ -95,7 +90,33 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 }
 ```
 
-Si vous mettez à jour la gouttière de base et que vous oubliez de rajouter un modificateur de grille, celui ci sera créé automatiquement avec le label `secondary`.
+**Générer une grille de gouttière 2.4rem** :
+
+`@include grid-childs($new-gutter: 2.4rem)` sera compilé en :
+
+```css
+[class*="grid--secondary"] {
+    margin-bottom: -2.4rem;
+    margin-left: -2.4rem;
+}
+[class*="grid--secondary"] > .grid__item {
+    margin-left: 2.4rem;
+}
+.grid--secondary-2 > .grid__item {
+    width: calc(50% - 2.4rem);
+}
+.grid--secondary-3 > .grid__item {
+    width: calc(33.3334% - 2.4rem);
+}
+.grid--secondary-4 > .grid__item {
+    width: calc(25% - 2.4rem);
+}
+.grid--secondary-6 > .grid__item {
+    width: calc(16.6667% - 2.4rem);
+}
+```
+
+*Note: Une nouvelle gouttière a été définie en oubliant le modificateur de classe, le label `secondary` a été rajouté automatiquement pour surcharger la grille de base*
 
 Vous pouvez également générer des grilles de colonnes inégales selon le même principe que précédemment en utilisant cette fois ci le mixin `@include grid-uneven-childs()`.
 ```css
