@@ -236,9 +236,12 @@ L'appel au mixin `@include percentage-width()` va générer des largeurs en pour
 L'appel au mixin `@include spacing-helpers("margin", "padding")` va générer des marges fixes externes et internes en fonction des valeurs de "spacings" renseignées dans le fichier CSS de configuration `_00a-config.scss`. Les initiales de `margin-top`, `margin-right`, `margin-bottom` et `margin-left` sont respectivement `mt`, `mr`, `mb` et `ml`.  
 Un suffixe concernant la largeur de la marge est ensuite ajouté.
 
+**Générer toutes les marges externes et internes pour toutes les largeurs**
+
 `@include spacing-helpers("margin", "padding")` sera compilé en :
 
 ```css
+...
 .mts {
     margin-top: 1.2rem;
 }
@@ -266,9 +269,11 @@ Un suffixe concernant la largeur de la marge est ensuite ajouté.
 ...
 ```
 
+Il est également possible de renseigner uniquement la marge externe ou interne 
 
+**Générer uniquement les marges internes pour toutes les largeurs**
 
-Il est possible de renseigner uniquement la marge externe ou interne `@include spacing-helpers("padding")` :
+`@include spacing-helpers("padding")` :
 
 ```css
 ...
