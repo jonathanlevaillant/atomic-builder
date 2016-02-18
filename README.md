@@ -24,7 +24,7 @@ Le texte et l'ensemble des modules du framework suivront ce rythme comme les mar
 
 ##Quelques astuces
 
-####Fonctions et mixins
+####Les fonctions et mixins
 
 Toutes les fonctions et mixins se trouvent dans le fichier `_00b-functions.scss`.  
 
