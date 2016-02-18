@@ -58,9 +58,9 @@ En conservant les valeurs par défaut, le fichier CSS sera complilé en :
 
 *Note: Vous remarquerez que seules les valeurs entières divisibles par le nombre de colonnes de la grille sont générées, pour rappel il s'agissait d'une grille de 12 colonnes, les valeurs 2, 3, 4 et 6 sont donc générées.*
 
-Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gouttière, un modificateur de classe, une colonne spécifique à générer ou encore une plage de colonnes à générer. Voici quelques exemples pour illustrer :
+Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gouttière, un modificateur de classe ou des colonnes spécifiques. Voici quelques exemples pour illustrer :
 
-**Générer une grille "small" de la colonne 1 à 4** :
+**Générer une grille "small" de colonnes 1 à 4** :
 
 `@include grid-childs($modifier: "small", $start: 1, $end: 4)` sera compilé en :
 
@@ -77,9 +77,11 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 .grid--small-4 > .grid__item {
     width: calc(25% - 1.2rem);
 }
-
 ```
-**Exemple :** `@include grid-childs(2, "gl", $gutter: 2.4rem)` sera compilé en :
+**Générer une grille "gl" à 2 colonnes de gouttière 2.4rem** :
+
+`@include grid-childs(2, "gl", 2.4rem)` sera compilé en :
+
 ```css
 [class*="grid--gl"] {
     margin-bottom: -2.4rem;
