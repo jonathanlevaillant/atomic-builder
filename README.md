@@ -367,12 +367,13 @@ Il est également possible de renseigner uniquement la marge externe ou interne
 ...
 ```
 
-####Feuille CSS native
+####CSS natif généré
 
-La version CSS native après compilation est également disponible sur Github `styles.css`.  
-Elle a été générée via le task manager **Gulp**, vous trouverez quelques optimisations CSS. (Auto préfixe, ordonnancement des propriétés CSS, etc.)  
+La version du CSS natif après compilation est également disponible sur Github `styles.css`.  
+Elle a été générée via le task manager **Gulp**, vous trouverez quelques optimisations CSS. (Auto-préfixe, ordonnancement des propriétés CSS, etc.)  
+
 Pour les plus curieux, j'ai mis à disposition mes fichiers [gulpfile.js](https://github.com/jonathanlevaillant/gulp/blob/master/gulpfile.js) et [package.json](https://github.com/jonathanlevaillant/gulp/blob/master/package.json).
 
 ***
 
-###Amusez-vous bien !
+##Amusez-vous bien :-)
