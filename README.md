@@ -22,11 +22,11 @@ Pour rappel, le rythme vertical est le produit de la taille de la police de cara
 
 Le texte ainsi que l'ensemble des modules du Framework suivront ce rythme vertical comme les marges, la hauteur de ligne des titres, la hauteur des champs de formulaire, etc. Ces éléments seront tous multiples de 24px.
 
-##Les fonctions et mixins
+##Fonctions et mixins
 
 Toutes les fonctions et mixins se trouvent dans le fichier `_00b-functions.scss`.  
 
-Il est déconseillé de les modifier, vous pourrez néanmoins si vous le souhaitez en rajouter à la suite de cette feuille.
+Il est déconseillé de les modifier, vous pourrez néanmoins si vous le souhaitez, en rajouter à la suite de cette feuille CSS.
 
 ##Reset CSS
 
