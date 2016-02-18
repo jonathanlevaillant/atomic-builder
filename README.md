@@ -233,6 +233,81 @@ L'appel au mixin `@include percentage-width()` va générer des largeurs en pour
 
 *Note: les valeurs 25%, 33.3334%, 66.6667% et 75% sont générées automatiquement du fait qu'elles soient très souvent utilisées au sein d'un projet.*
 
+L'appel au mixin `@include fixed-width-col()` va générer des largeurs fixes en *"rem" * pour chaque colonne de la grille utilisée. La largeur est calculée selon le nombre de colonnes, la largeur du conteneur et les gouttières renseignées dans le fichier CSS `_00a-config.scss`.
+
+`@include fixed-width-col()` sera compilé en :
+
+```css
+.w1col {
+    width: 6.9rem;
+}
+.w2col {
+    width: 15rem;
+}
+.w3col {
+    width: 23.1rem;
+}
+.w4col {
+    width: 31.2rem;
+}
+.w5col {
+    width: 39.3rem;
+}
+.w6col {
+    width: 47.4rem;
+}
+.w7col {
+    width: 55.5rem;
+}
+.w8col {
+    width: 63.6rem;
+}
+.w9col {
+    width: 71.7rem;
+}
+.w10col {
+    width: 79.8rem;
+}
+.w11col {
+    width: 87.9rem;
+}
+.w12col {
+    width: 96rem;
+}
+```
+
+Il est possible de ne générer qu'une seule colonne.
+
+`@include fixed-width-col(6)` sera compilé en :
+
+```css
+.w6col {
+    width: 47.4rem;
+}
+```
+
+Ou encore une plage de colonnes.
+
+`@include fixed-width-col($start: 4, $end: 8)` sera compilé en :
+
+```css
+.w4col {
+    width: 31.2rem;
+}
+.w5col {
+    width: 39.3rem;
+}
+.w6col {
+    width: 47.4rem;
+}
+.w7col {
+    width: 55.5rem;
+}
+.w8col {
+    width: 63.6rem;
+}
+```
+
 L'appel au mixin `@include spacing-helpers("margin", "padding")` va générer des marges fixes externes et internes en fonction des valeurs de "spacings" renseignées dans le fichier CSS de configuration `_00a-config.scss`. Les initiales de `margin-top`, `margin-right`, `margin-bottom` et `margin-left` sont respectivement `mt`, `mr`, `mb` et `ml`.  
 Un suffixe concernant la largeur de la marge est ensuite ajouté.
 
@@ -273,7 +348,7 @@ Il est également possible de renseigner uniquement la marge externe ou interne
 
 **Générer uniquement les marges internes pour toutes les largeurs**
 
-`@include spacing-helpers("padding")` :
+`@include spacing-helpers("padding")` sera compilé en :
 
 ```css
 ...
