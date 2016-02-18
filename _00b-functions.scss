@@ -66,7 +66,19 @@
 }
 
 // grid childs
-@mixin grid-childs($number: null, $modifier: null, $gutter: $gutter, $start: 2, $end: $columns) {
+@mixin grid-childs($number: null, $modifier: null, $new-gutter: $gutter, $start: 2, $end: $columns) {
+    @if $new-gutter != $gutter {
+        @if $modifier == null {
+            $modifier: "secondary";
+        }
+        [class*="grid--#{$modifier}"] {
+            margin-left: -$new-gutter;
+        }
+        [class*="grid--#{$modifier}"] > .grid__item {
+            margin-bottom: $new-gutter;
+            margin-left: $new-gutter;
+        }
+    }
     @if $modifier {
         $modifier: $modifier + "-";
     }
@@ -78,7 +90,7 @@
         @if $columns % $i == 0 or $start == $end {
             .grid--#{$modifier}#{$i} {
                 & > .grid__item {
-                    width: calc(#{decimal-round(100% / $i)} - #{$gutter});
+                    width: calc(#{decimal-round(100% / $i)} - #{$new-gutter});
                 }
             }
         }
@@ -86,7 +98,19 @@
 }
 
 // grid uneven childs
-@mixin grid-uneven-childs($modifier: null, $gutter: $gutter, $start: 1, $end: ($columns / 2) - 1) {
+@mixin grid-uneven-childs($modifier: null, $new-gutter: $gutter, $start: 1, $end: ($columns / 2) - 1) {
+    @if $new-gutter != $gutter {
+        @if $modifier == null {
+            $modifier: "secondary";
+        }
+        [class*="grid--#{$modifier}"] {
+            margin-left: -$new-gutter;
+        }
+        [class*="grid--#{$modifier}"] > .grid__item {
+            margin-bottom: $new-gutter;
+            margin-left: $new-gutter;
+        }
+    }
     @if $modifier {
         $modifier: $modifier + "-";
     }
@@ -94,18 +118,18 @@
         $gcd: gcd($i, $columns);
         .grid--#{$modifier}#{$i / $gcd}-#{$columns / $gcd} {
             & > *:nth-child(odd) {
-                width: calc(#{decimal-round(percentage($i / $columns))} - #{$gutter});
+                width: calc(#{decimal-round(percentage($i / $columns))} - #{$new-gutter});
             }
             & > *:nth-child(even) {
-                width: calc(#{decimal-round(percentage(($columns - $i) / $columns))} - #{$gutter});
+                width: calc(#{decimal-round(percentage(($columns - $i) / $columns))} - #{$new-gutter});
             }
         }
         .grid--#{$modifier}#{$columns / $gcd - $i / $gcd}-#{$columns / $gcd} {
             & > *:nth-child(odd) {
-                width: calc(#{decimal-round(percentage(($columns - $i) / $columns))} - #{$gutter});
+                width: calc(#{decimal-round(percentage(($columns - $i) / $columns))} - #{$new-gutter});
             }
             & > *:nth-child(even) {
-                width: calc(#{decimal-round(percentage($i / $columns))} - #{$gutter});
+                width: calc(#{decimal-round(percentage($i / $columns))} - #{$new-gutter});
             }
         }
     }
