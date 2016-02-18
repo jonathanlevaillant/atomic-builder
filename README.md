@@ -30,16 +30,17 @@ Toutes les fonctions et mixins se trouvent dans le fichier `_00b-functions.scss`
 
 Il est déconseillé de les modifier, vous pourrez néanmoins si vous le souhaitez en rajouter à la suite de cette feuille.
 
-####Feuille de reset CSS
+####Reset CSS
 
-La feuille de reset CSS `_01-normalize.scss` inclue les principales règles de **Bootstrap** et **Knacss**, testées et approuvées :-)
+La feuille de reset CSS `_01-normalize.scss` inclue les principales règles de **Bootstrap** et **Knacss**, testées et approuvées !
 
 ####Les grilles
 
-Vous pouvez générer n'importe quelle grille dans le fichier `_04-grids.scss` grâce au mixin `@include grid-childs()`.  
-Par défaut si aucun argument n'est renseigné, la grille sera automatiquement générée en fonction de la largeur du wrapper, du nombre de colonnes et des gouttières (toutes ces variables étant présentes dans le fichier `_00a-config.scss`). 
+Vous pouvez générer n'importe quelle grille dans le fichier `_04-grids.scss` grâce à l'appel du mixin `@include grid-childs()`.  
+Par défaut, si aucun argument n'est renseigné, la grille sera automatiquement générée en fonction de la largeur du conteneur, du nombre de colonnes et des gouttières (toutes ces variables étant présentes dans le fichier `_00a-config.scss`). 
 
-En gardant les valeurs par défaut, voila à quoi ressemblera le fichier CSS compilé avec ce mixin :
+En conservant les valeurs par défaut, le fichier CSS sera complilé en :
+
 ```css
 .grid--2 > .grid__item {
     width: calc(50% - 1.2rem);
@@ -54,7 +55,8 @@ En gardant les valeurs par défaut, voila à quoi ressemblera le fichier CSS com
     width: calc(16.6667% - 1.2rem);
 }
 ```
-Vous remarquerez que seules les valeurs entières divisibles par la taille de la grille sont générées, pour rappel il s'agissait d'une grille de 12 colonnes, les valeurs 2, 3, 4 et 6 sont donc générées.  
+
+*Note: Vous remarquerez que seules les valeurs entières divisibles par la taille de la grille sont générées, pour rappel il s'agissait d'une grille de 12 colonnes, les valeurs 2, 3, 4 et 6 sont donc générées.*
 
 Il est également possible de renseigner des arguments, notamment une gouttière différente, un modificateur de classe, une colonne à générer ou même une plage de colonnes à générer.   
 
