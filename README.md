@@ -24,17 +24,17 @@ Le texte et l'ensemble des modules du framework suivront ce rythme comme les mar
 
 ##Usage
 
-####Les fonctions et mixins
+###Les fonctions et mixins
 
 Toutes les fonctions et mixins se trouvent dans le fichier `_00b-functions.scss`.  
 
 Il est déconseillé de les modifier, vous pourrez néanmoins si vous le souhaitez en rajouter à la suite de cette feuille.
 
-####Reset CSS
+###Reset CSS
 
 La feuille de reset CSS `_01-normalize.scss` inclue les principales règles de **Bootstrap** et **Knacss**, testées et approuvées !
 
-####Les grilles
+###Les grilles
 
 Vous pouvez générer n'importe quelle grille dans le fichier `_04-grids.scss` grâce à l'appel du mixin `@include grid-childs()`.  
 Par défaut, si aucun argument n'est renseigné, la grille sera automatiquement générée en fonction de la largeur du conteneur, du nombre de colonnes et des gouttières (toutes ces variables étant présentes dans le fichier `_00a-config.scss`). 
