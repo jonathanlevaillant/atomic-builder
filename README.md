@@ -40,27 +40,33 @@ Les amoureux du rythme vertical ne pourront plus se passer du mixin `@include gr
 
 * **Hauteur de ligne d'une police de taille 1.9rem :**
 
-`@include font-rythm(1.9rem)` sera compilé en :
+`.title {@include font-rythm(1.9rem)}` sera compilé en :
 
 ```css
-line-height: 1.2632;
+.title {
+    line-height: 1.2632;
+}
 ```
 
 * **Hauteur de ligne d'une police de taille 2.4rem et de famille "Arial, sans-serif" :**
 
-`@include font-rythm(2.4rem, "Arial, sans-serif")` sera compilé en :
+`.title {@include font-rythm(2.4rem, "Arial, sans-serif")}` sera compilé en :
 
 ```css
-font-family: "Arial, sans-serif";
-line-height: 1;
+.title {
+    font-family: "Arial, sans-serif";
+    line-height: 1;
+}
 ```
 
 * **Hauteur de ligne d'une police de taille 6.4rem :**
 
-`@include font-rythm(6.4rem)` sera compilé en :
+`.title {@include font-rythm(6.4rem)}` sera compilé en :
 
 ```css
-line-height: 1.125;
+.title {
+    line-height: 1.125;
+}
 ```
 
 *Note: Vous remarquerez dans le dernier exemple que la taille du titre (6.4rem) dépasse la hauteur de base du rythme vertical (2.4rem). Pour être plus précis la taille du titre est comprise dans un ryhtme vertical trois fois supérieur à la hauteur de base soit 7.2rem (2.4rem x 3). Par conséquent le nouveau référentiel sera de 7.2rem et la valeur de la hauteur de ligne du titre sera de 1.125 (7.2rem / 2.4rem).*
