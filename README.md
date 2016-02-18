@@ -128,7 +128,7 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 
 *Note: Une nouvelle gouttière a été définie en oubliant le modificateur de classe, le label `secondary` a été rajouté automatiquement pour surcharger la grille de base*
 
-**Les grilles à 2 colonnes inégales**
+**Générer une grille à 2 colonnes inégales**
 
 Vous pouvez si vous le souhaitez générer des grilles à 2 colonnes inégales. Le principe est le même que précédemment, seul l'appel au mixin change :
 
@@ -203,6 +203,8 @@ Vous pouvez si vous le souhaitez générer des grilles à 2 colonnes inégales. 
 
 Le fichier CSS `_07-helpers.scss` contient toutes les classes visuelles gérant les dimensions et les marges.
 
+**Générer des largeurs en pourcentage**
+
 L'appel au mixin `@include percentage-width()` va générer des largeurs en pourcentage de 10% à 100%, la valeur d'incrémentation étant de 10. Il est possible de modifier cette valeur d'incrémentation et même de renseigner une plage de pourcentages :
 
 **Générer des largeurs en pourcentage auto-incrémentées de 5% entre 50% et 100%**
@@ -232,6 +234,8 @@ L'appel au mixin `@include percentage-width()` va générer des largeurs en pour
 ```
 
 *Note: les valeurs 25%, 33.3334%, 66.6667% et 75% sont générées automatiquement du fait qu'elles soient très souvent utilisées au sein d'un projet.*
+
+**Générer des largeurs fixes**
 
 L'appel au mixin `@include fixed-width-col()` va générer des largeurs fixes en *"rem" * pour chaque colonne de la grille utilisée. La largeur est calculée selon le nombre de colonnes, la largeur du conteneur et les gouttières renseignées dans le fichier CSS `_00a-config.scss`.
 
@@ -307,6 +311,8 @@ Ou encore une plage de colonnes.
     width: 63.6rem;
 }
 ```
+
+**Générer des marges fixes**
 
 L'appel au mixin `@include spacing-helpers("margin", "padding")` va générer des marges fixes externes et internes en fonction des valeurs de "spacings" renseignées dans le fichier CSS de configuration `_00a-config.scss`. Les initiales de `margin-top`, `margin-right`, `margin-bottom` et `margin-left` sont respectivement `mt`, `mr`, `mb` et `ml`.  
 Un suffixe concernant la largeur de la marge est ensuite ajouté.
