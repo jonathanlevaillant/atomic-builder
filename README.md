@@ -56,7 +56,7 @@ En conservant les valeurs par défaut, `@include grid-childs()` sera complilé e
 }
 ```
 
-*Note: Vous remarquerez que seules les valeurs entières divisibles par le nombre de colonnes de la grille sont générées, pour rappel il s'agissait d'une grille de 12 colonnes, les valeurs 2, 3, 4 et 6 sont donc générées.*
+*Note: Vous remarquerez que seules les valeurs entières divisibles par le nombre de colonnes de la grille sont générées, pour rappel il s'agissait d'une grille à 12 colonnes, les valeurs 2, 3, 4 et 6 sont donc générées.*
 
 Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gouttière, un modificateur de classe ou des colonnes spécifiques. Voici quelques exemples pour illustrer :
 
@@ -70,7 +70,7 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 }
 ```
 
-**Générer une grille "small" de colonnes 3 à 4** :
+**Générer une grille "small" pour les colonnes 3 à 4** :
 
 `@include grid-childs($modifier: "small", $start: 3, $end: 4)` sera compilé en :
 
@@ -128,7 +128,12 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 
 *Note: Une nouvelle gouttière a été définie en oubliant le modificateur de classe, le label `secondary` a été rajouté automatiquement pour surcharger la grille de base*
 
-Vous pouvez également générer des grilles de colonnes inégales selon le même principe que précédemment en utilisant cette fois ci le mixin `@include grid-uneven-childs()`.
+**Les grilles à 2 colonnes inégales**
+
+Vous pouvez si vous le souhaitez générer des grilles à 2 colonnes inégales. Le principe est le même que précédemment, seul l'appel au mixin change :
+
+`@include grid-uneven-childs()` sera compilé en :
+
 ```css
 .grid--1-12 > *:nth-child(odd) {
     width: calc(8.3334% - 1.2rem);
@@ -192,7 +197,7 @@ Vous pouvez également générer des grilles de colonnes inégales selon le mêm
 }
 ```
 
-Vous constaterez que les grilles `grid--2-12` `grid--3-12` et `grid--4-12` sont nommées respectivement en `grid--1-6` `grid--1-4` et `grid--1-3` grâce à une fonction calculant le plus grand dénominateur commun : `@function gcd()`.
+*Note: Vous constaterez que les grilles `grid--2-12`, `grid--3-12` et `grid--4-12` ont été renommées respectivement en `grid--1-6`, `grid--1-4` et `grid--1-3` grâce à une fonction calculant le plus grand dénominateur commun `@function gcd()`.*
 
 ####Les classes automatiques
 
