@@ -1,7 +1,7 @@
 # Framework SASS
 ### Un framework SASS léger, flexible et responsive basé sur [KNACSS](https://github.com/alsacreations/KNACSS)
 
-Ce framework SASS ultra léger *(20ko)* permet de débuter un projet rapidement et facilement en partant sur des bases saines. Il regroupe l'ensemble des bonnes pratiques en matière de **reset CSS**, de génération de **grilles fluides** et de **[rythme vertical](https://larlet.fr/david/biologeek/archives/20070819-l-importance-du-rythme-vertical-en-design-css/)**.
+Ce framework SASS ultra léger *(20 Ko)* permet de démarrer facilement et rapidement un projet en partant sur des bases saines. Il regroupe l'ensemble des bonnes pratiques en matière de **reset CSS**, de génération de **grilles fluides** et de **[rythme vertical](https://larlet.fr/david/biologeek/archives/20070819-l-importance-du-rythme-vertical-en-design-css/)**.
 
 La syntaxe CSS de ce framework suit une **[méthodologie BEM](https://en.bem.info/method/)**.
 
@@ -23,12 +23,10 @@ Toutes les fonctions et mixins se trouvent dans le fichier `_00b-functions.scss`
 
 Il est déconseillé de les modifier, vous pourrez néanmoins si vous le souhaitez en rajouter à la suite de cette feuille.
 
-***
-
 ####Feuille de reset CSS
 
 La feuille de reset CSS `_01-normalize.scss` inclue les principales règles de **Bootstrap** et **Knacss**, testées et approuvées :-)
-***
+
 ####Les grilles
 
 Vous pouvez générer n'importe quelle grille dans le fichier `_04-grids.scss` grâce au mixin `@include grid-childs()`.  
