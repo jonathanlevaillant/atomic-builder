@@ -9,9 +9,10 @@ La syntaxe CSS de ce framework suit une **[méthodologie BEM](https://en.bem.inf
 
 ##Bien débuter
 L'ensemble des variables du projet se trouvent dans le fichier `_00a-config.scss`.  
-Il est conseillé de modifier ces variables en fonction de vos contraintes. Par défaut les unités sont exprimées en *"rem"*. Si vous travaillez avec des unités en pixels, il vous suffira simplement de diviser vos valeurs par dix pour obtenir leur équivalent en *"rem"*.  
+Il est vivement conseillé de modifier ces variables en fonction de vos projets. Par défaut les unités sont exprimées en *"rem"*. Si vous travaillez avec des unités en pixels, il vous suffira simplement de diviser vos valeurs par dix pour obtenir leur équivalent en *"rem"* :
 
-**Exemples :** `15px => 1.5rem` `8px => .8rem`
+* `15px => 1.5rem`
+* `8px => .8rem` 
 
 Vous pourrez personnaliser entre autres les valeurs de tailles de polices, de titres, de couleurs, de marges, de points de rupture et de grilles.
 
