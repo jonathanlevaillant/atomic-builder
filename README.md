@@ -60,7 +60,7 @@ En conservant les valeurs par défaut, `@include grid-childs()` sera compilé en
 
 Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gouttière, un modificateur de classe ou des colonnes spécifiques. En voici quelques exemples :
 
-* **Grille à 4 colonnes** :
+* **Grille à 4 colonnes :**
 
 `@include grid-childs(4)` sera compilé en :
 
@@ -70,7 +70,7 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 }
 ```
 
-* **Grille de label "small" pour les colonnes 3 à 4** :
+* **Grille de label "small" pour les colonnes 3 à 4 :**
 
 `@include grid-childs($modifier: "small", $start: 3, $end: 4)` sera compilé en :
 
@@ -83,7 +83,7 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 }
 ```
 
-* **Grille de label "gl" à 2 colonnes et de gouttière 2.4rem** :
+* **Grille de label "gl" à 2 colonnes et de gouttière 2.4rem :**
 
 `@include grid-childs(2, "gl", 2.4rem)` sera compilé en :
 
@@ -100,7 +100,7 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 }
 ```
 
-* **Grille de gouttière 2.4rem** :
+* **Grille de gouttière 2.4rem :**
 
 `@include grid-childs($new-gutter: 2.4rem)` sera compilé en :
 
@@ -201,13 +201,13 @@ Vous pouvez également générer des grilles à 2 colonnes inégales. Le princip
 
 ##Les classes visuelles
 
-Le fichier CSS `_07-helpers.scss` contient toutes les classes visuelles gérant les dimensions et les marges.
+Le fichier CSS `_07-helpers.scss` contient toutes les classes purement visuelles et utilitaires, elles sont très pratiques pour alléger le poids de vos feuilles de styles.
 
-####Générer des largeurs en pourcentage
+####Les largeurs fluides (en pourcentage)
 
-L'appel au mixin `@include percentage-width()` va générer des largeurs en pourcentage de 10% à 100%, la valeur d'incrémentation étant de 10. Il est possible de modifier cette valeur d'incrémentation et même de renseigner une plage de pourcentages :
+L'appel au mixin `@include percentage-width()` va générer des largeurs fluides en pourcentage de 10% à 100%, la valeur d'incrémentation étant par défaut de 10. Il est possible de modifier cette valeur et même de se limiter à une plage de pourcentages :
 
-**Générer des largeurs en pourcentage auto-incrémentées de 5% entre 50% et 100%**
+* **Largeurs fluides auto-incrémentées de 5%, comprises entre 50% et 100% :**
 
 `@include percentage-width(5, 50, 100)` sera compilé en :
 
@@ -233,13 +233,39 @@ L'appel au mixin `@include percentage-width()` va générer des largeurs en pour
 }
 ```
 
-*Note: les valeurs 25%, 33.3334%, 66.6667% et 75% sont générées automatiquement du fait qu'elles soient très souvent utilisées au sein d'un projet.*
+*Note: les valeurs 25%, 33.3334%, 66.6667% et 75% sont générées automatiquement étant très souvent utilisées au sein d'un projet.*
 
-####Générer des largeurs fixes
+* **Largeurs fluides auto-incrémentées de 1% :**
 
-L'appel au mixin `@include fixed-width-col()` va générer des largeurs fixes en *"rem" * pour chaque colonne de la grille utilisée. La largeur est calculée selon le nombre de colonnes, la largeur du conteneur et les gouttières renseignées dans le fichier CSS `_00a-config.scss`.
+`@include percentage-width(1)` sera compilé en :
 
-`@include fixed-width-col()` sera compilé en :
+```css
+.w1 {
+    width: 1%;
+}
+.w2 {
+    width: 2%;
+}
+.w3 {
+    width: 3%;
+}
+.w4 {
+    width: 4%;
+}
+.w5 {
+    width: 5%;
+}
+...
+.w100 {
+    width: 100%;
+}
+```
+
+####Les largeurs fixes en *"rem"*
+
+L'appel au mixin `@include fixed-width-col()` va générer des largeurs fixes en *"rem"* pour chaque colonne de la grille utilisée. La largeur est calculée en fonction du nombre de colonnes, de la largeur du conteneur et des gouttières renseignées dans le fichier CSS de configuration `_00a-config.scss`.
+
+`@include fixed-width-col()` sera par défaut compilé en :
 
 ```css
 .w1col {
@@ -280,7 +306,7 @@ L'appel au mixin `@include fixed-width-col()` va générer des largeurs fixes en
 }
 ```
 
-Il est possible de ne générer qu'une seule colonne.
+* **Il est possible de ne générer qu'une seule colonne :**
 
 `@include fixed-width-col(6)` sera compilé en :
 
@@ -290,7 +316,7 @@ Il est possible de ne générer qu'une seule colonne.
 }
 ```
 
-Ou encore une plage de colonnes.
+* **Ou bien une plage de colonnes :**
 
 `@include fixed-width-col($start: 4, $end: 8)` sera compilé en :
 
@@ -312,12 +338,12 @@ Ou encore une plage de colonnes.
 }
 ```
 
-####Générer des marges fixes
+####Les marges fixes
 
-L'appel au mixin `@include spacing-helpers("margin", "padding")` va générer des marges fixes externes et internes en fonction des valeurs de "spacings" renseignées dans le fichier CSS de configuration `_00a-config.scss`. Les initiales de `margin-top`, `margin-right`, `margin-bottom` et `margin-left` sont respectivement `mt`, `mr`, `mb` et `ml`.  
-Un suffixe concernant la largeur de la marge est ensuite ajouté.
+L'appel au mixin `@include spacing-helpers("margin", "padding")` va générer des marges fixes externes, internes ou les deux en fonction des valeurs d'espacement renseignées dans le fichier CSS de configuration `_00a-config.scss`. Les initiales de `margin-top`, `margin-right`, `margin-bottom` et `margin-left` sont respectivement `mt`, `mr`, `mb` et `ml`.  
+Un suffixe concernant la largeur de la marge est ensuite ajouté. En voici quelques exemples :
 
-* **Générer toutes les marges externes et internes pour toutes les largeurs**
+* **Générer toutes les marges externes et internes en fonction des largeurs d'espacement renseignées**
 
 `@include spacing-helpers("margin", "padding")` sera compilé en :
 
@@ -350,9 +376,7 @@ Un suffixe concernant la largeur de la marge est ensuite ajouté.
 ...
 ```
 
-Il est également possible de renseigner uniquement la marge externe ou interne 
-
-* **Générer uniquement les marges internes pour toutes les largeurs**
+* **Générer uniquement les marges internes (padding) en fonction des largeurs d'espacement renseignées**
 
 `@include spacing-helpers("padding")` sera compilé en :
 
@@ -373,12 +397,12 @@ Il est également possible de renseigner uniquement la marge externe ou interne
 ...
 ```
 
-##CSS natif généré
+##CSS natif
 
-La version du CSS natif après compilation est également disponible sur Github `styles.css`.  
-Elle a été générée via le task manager **Gulp**, vous trouverez quelques optimisations CSS. (Auto-préfixe, ordonnancement des propriétés CSS, etc.)  
+Le CSS natif après compilation est également disponible sur Github `styles.css`.  
+Il a été généré via le task manager **Gulp**, vous y trouverez quelques optimisations CSS. (Auto-préfixe, ordonnancement des propriétés CSS, etc.)  
 
-Pour les plus curieux, j'ai mis à disposition mes fichiers [gulpfile.js](https://github.com/jonathanlevaillant/gulp/blob/master/gulpfile.js) et [package.json](https://github.com/jonathanlevaillant/gulp/blob/master/package.json).
+Pour les plus curieux, j'ai mis à disposition mes fichiers [gulpfile.js](https://github.com/jonathanlevaillant/gulp/blob/master/gulpfile.js) et [package.json](https://github.com/jonathanlevaillant/gulp/blob/master/package.json) qui s'inspirent de ceux de [Raphaël Goetter](http://www.alsacreations.com/tuto/lire/1686-introduction-a-gulp.html).
 
 ***
 
