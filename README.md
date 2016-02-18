@@ -205,9 +205,9 @@ Le fichier CSS `_07-helpers.scss` contient toutes les classes visuelles gérant 
 
 L'appel au mixin `@include percentage-width()` va générer des largeurs en pourcentage de 10% à 100%, la valeur d'incrémentation étant de 10. Il est possible de modifier cette valeur d'incrémentation et même de renseigner une plage de pourcentages :
 
-**Générer des largeurs en pourcentage autocrémentées de 5% entre 50% et 100%**
+**Générer des largeurs en pourcentage auto-incrémentées de 5% entre 50% et 100%**
 
-`@include percentage-width(5, 50, 100)`
+`@include percentage-width(5, 50, 100)` sera compilé en :
 
 ```css
 .w50 {
@@ -225,9 +225,7 @@ L'appel au mixin `@include percentage-width()` va générer des largeurs en pour
 .w66 {
     width: 66.6667%;
 }
-
 ...
-
 .w100 {
     width: 100%;
 }
@@ -235,16 +233,12 @@ L'appel au mixin `@include percentage-width()` va générer des largeurs en pour
 
 *Note: les valeurs 25%, 33.3334%, 66.6667% et 75% sont générées automatiquement du fait qu'elles soient très souvent utilisées au sein d'un projet.*
 
+L'appel au mixin `@include spacing-helpers("margin", "padding")` va générer des marges fixes externes et internes en fonction des valeurs de "spacings" renseignées dans le fichier CSS de configuration `_00a-config.scss`. Les initiales de `margin-top`, `margin-right`, `margin-bottom` et `margin-left` sont respectivement `mt`, `mr`, `mb` et `ml`.  
+Un suffixe concernant la largeur de la marge est ensuite ajouté.
 
-
-
-
-
-
-`@include spacing-helpers("margin", "padding")` va générer des marges externes et internes selon les différentes valeurs renseignées dans le fichier `_00a-config.scss`.  `tiny-value: .6rem` `small-value: 1.2rem` `medium-value: 2.4rem` et `large-value: 4.8rem` générera :  
+`@include spacing-helpers("margin", "padding")` sera compilé en :
 
 ```css
-...
 .mts {
     margin-top: 1.2rem;
 }
@@ -271,6 +265,8 @@ L'appel au mixin `@include percentage-width()` va générer des largeurs en pour
 }
 ...
 ```
+
+
 
 Il est possible de renseigner uniquement la marge externe ou interne `@include spacing-helpers("padding")` :
 
