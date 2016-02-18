@@ -22,7 +22,7 @@ Le rythme vertical est le produit de la taille de la police de base par sa haute
 
 Le texte et l'ensemble des modules du framework suivront ce rythme comme les marges, les hauteurs, les titres, les champs de formulaire, etc. Ces éléments seront des multiples de 24px.
 
-##Quelques astuces
+##Usage
 
 ####Les fonctions et mixins
 
@@ -56,7 +56,7 @@ En conservant les valeurs par défaut, `@include grid-childs()` sera complilé e
 }
 ```
 
-*Note: Vous remarquerez que seules les valeurs entières divisibles par le nombre de colonnes de la grille sont générées, pour rappel il s'agissait d'une grille à 12 colonnes, les valeurs 2, 3, 4 et 6 sont donc générées.*
+*Note: Vous remarquerez que seules les valeurs entières divisibles par le nombre de colonnes de la grille sont générées, pour rappel il s'agissait d'une grille à 12 colonnes, les valeurs 2, 3, 4 et 6 ont donc été créées.*
 
 Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gouttière, un modificateur de classe ou des colonnes spécifiques. Voici quelques exemples pour illustrer :
 
@@ -199,10 +199,47 @@ Vous pouvez si vous le souhaitez générer des grilles à 2 colonnes inégales. 
 
 *Note: Vous constaterez que les grilles `grid--2-12`, `grid--3-12` et `grid--4-12` ont été renommées respectivement en `grid--1-6`, `grid--1-4` et `grid--1-3` grâce à une fonction calculant le plus grand dénominateur commun `@function gcd()`.*
 
-####Les classes automatiques
+####Les classes visuelles
 
-Le fichier `_07-helpers.scss` possède quelques mixins fort utiles :  
-`@include percentage-width()` va générer des tailles en pourcentages de 10% à 100% (la valeur de l'incrémentation par défaut étant de 10). Il est possible de modifier cette valeur d'incrémentation `@include percentage-width(5)` (de 5 en 5 par exemple).  
+Le fichier CSS `_07-helpers.scss` contient toutes les classes visuelles gérant les dimensions et les marges.
+
+L'appel au mixin `@include percentage-width()` va générer des largeurs en pourcentage de 10% à 100%, la valeur d'incrémentation étant de 10. Il est possible de modifier cette valeur d'incrémentation et même de renseigner une plage de pourcentages :
+
+**Générer des largeurs en pourcentage autocrémentées de 5% entre 50% et 100%**
+
+`@include percentage-width(5, 50, 100)`
+
+```css
+.w50 {
+    width: 50%;
+}
+.w55 {
+    width: 55%;
+}
+.w60 {
+    width: 60%;
+}
+.w65 {
+    width: 65%;
+}
+.w66 {
+    width: 66.6667%;
+}
+
+...
+
+.w100 {
+    width: 100%;
+}
+```
+
+*Note: les valeurs 25%, 33.3334%, 66.6667% et 75% sont générées automatiquement du fait qu'elles soient très souvent utilisées au sein d'un projet.*
+
+
+
+
+
+
 
 `@include spacing-helpers("margin", "padding")` va générer des marges externes et internes selon les différentes valeurs renseignées dans le fichier `_00a-config.scss`.  `tiny-value: .6rem` `small-value: 1.2rem` `medium-value: 2.4rem` et `large-value: 4.8rem` générera :  
 
