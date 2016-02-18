@@ -23,10 +23,12 @@ Toutes les fonctions et mixins se trouvent dans le fichier `_00b-functions.scss`
 
 Il est déconseillé de les modifier, vous pourrez néanmoins si vous le souhaitez en rajouter à la suite de cette feuille.
 
+***
+
 ####Feuille de reset CSS
 
 La feuille de reset CSS `_01-normalize.scss` inclue les principales règles de **Bootstrap** et **Knacss**, testées et approuvées :-)
-
+***
 ####Les grilles
 
 Vous pouvez générer n'importe quelle grille dans le fichier `_04-grids.scss` grâce au mixin `@include grid-childs()`.  
