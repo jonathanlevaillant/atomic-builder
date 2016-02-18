@@ -62,7 +62,7 @@ En conservant les valeurs par défaut, `@include grid-childs()` sera complilé e
 
 Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gouttière, un modificateur de classe ou des colonnes spécifiques. Voici quelques exemples pour illustrer :
 
-######Générer une grille à 4 colonnes :
+* **Générer une grille à 4 colonnes** :
 
 `@include grid-childs(4)` sera compilé en :
 
@@ -72,7 +72,7 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 }
 ```
 
-######Générer une grille "small" pour les colonnes 3 à 4** :
+* **Générer une grille "small" pour les colonnes 3 à 4** :
 
 `@include grid-childs($modifier: "small", $start: 3, $end: 4)` sera compilé en :
 
@@ -85,7 +85,7 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 }
 ```
 
-**Générer une grille "gl" à 2 colonnes de gouttière 2.4rem** :
+* Générer une grille "gl" à 2 colonnes de gouttière 2.4rem** :
 
 `@include grid-childs(2, "gl", 2.4rem)` sera compilé en :
 
