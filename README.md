@@ -38,35 +38,29 @@ Les principales règles typographiques se trouvent  dans le fichier CSS `_02-bas
 
 Les amoureux du rythme vertical ne pourront plus se passer du mixin `@include grid-childs()`. En effet il permet de calculer automatiquement la hauteur de ligne d'une taille de police de caractères passée en argument en fonction du rythme vertical du projet. Il est également possible de renseigner d'autres arguments comme sa graisse ou encore sa famille. En voici quelques exemples avec un rythme vertical de 2.4rem par défaut :
 
-* **Hauteur de ligne d'un titre de taille 1.9rem :**
+* **Hauteur de ligne d'une police de taille 1.9rem :**
 
 `@include font-rythm(1.9rem)` sera compilé en :
 
 ```css
-.title {
-    line-height: 1.2632;
-}
+line-height: 1.2632;
 ```
 
-* **Hauteur de ligne d'un titre de taille 2.4rem et de famille "Arial, sans-serif" :**
+* **Hauteur de ligne d'une police de taille 2.4rem et de famille "Arial, sans-serif" :**
 
 `@include font-rythm(2.4rem, "Arial, sans-serif")` sera compilé en :
 
 ```css
-.title {
-    font-family: "Arial, sans-serif";
-    line-height: 1;
-}
+font-family: "Arial, sans-serif";
+line-height: 1;
 ```
 
-* **Hauteur de ligne d'un titre de taille 6.4 :**
+* **Hauteur de ligne d'une police de taille 6.4rem :**
 
 `@include font-rythm(6.4rem)` sera compilé en :
 
 ```css
-.title {
-    line-height: 1.125;
-}
+line-height: 1.125;
 ```
 
 *Note: Vous remarquerez dans le dernier exemple que la taille du titre (6.4rem) dépasse la hauteur de base du rythme vertical (2.4rem). Pour être plus précis la taille du titre est comprise dans un ryhtme vertical trois fois supérieur à la hauteur de base soit 7.2rem (2.4rem x 3). Par conséquent le nouveau référentiel sera de 7.2rem et la valeur de la hauteur de ligne du titre sera de 1.125 (7.2rem / 2.4rem).*
