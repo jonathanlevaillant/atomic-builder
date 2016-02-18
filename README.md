@@ -39,7 +39,7 @@ La feuille de reset CSS `_01-normalize.scss` inclue les principales règles de *
 Vous pouvez générer n'importe quelle grille dans le fichier `_04-grids.scss` grâce à l'appel du mixin `@include grid-childs()`.  
 Par défaut, si aucun argument n'est renseigné, la grille sera automatiquement générée en fonction de la largeur du conteneur, du nombre de colonnes et des gouttières (toutes ces variables étant présentes dans le fichier `_00a-config.scss`). 
 
-En conservant les valeurs par défaut, le fichier CSS sera complilé en :
+En conservant les valeurs par défaut, `@include grid-childs()` sera complilé en :
 
 ```css
 .grid--2 > .grid__item {
@@ -59,6 +59,16 @@ En conservant les valeurs par défaut, le fichier CSS sera complilé en :
 *Note: Vous remarquerez que seules les valeurs entières divisibles par le nombre de colonnes de la grille sont générées, pour rappel il s'agissait d'une grille de 12 colonnes, les valeurs 2, 3, 4 et 6 sont donc générées.*
 
 Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gouttière, un modificateur de classe ou des colonnes spécifiques. Voici quelques exemples pour illustrer :
+
+**Générer une grille à 4 colonnes** :
+
+`@include grid-childs(4)` sera compilé en :
+
+```css
+.grid--4 > .grid__item {
+    width: calc(25% - 1.2rem);
+}
+```
 
 **Générer une grille "small" de colonnes 3 à 4** :
 
