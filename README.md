@@ -16,8 +16,11 @@ Il est vivement conseillé de modifier ces variables en fonction de vos projets.
 
 Vous pourrez personnaliser entre autres les valeurs de tailles de polices, de titres, de couleurs, de marges, de points de rupture et de grilles.
 
-Ce framework est basé sur un rythme vertical calculé automatiquement, le principe étant celui-ci :  
-le rythme vertical est le produit de la taille de la police de base par sa hauteur de ligne. Dans notre cas, la taille de la police est de 1.5rem et sa hauteur de ligne est de 1.6, le rythme vertical sera donc de 2.4rem soit 24px. Le texte et l'ensemble des modules du framework suivront ce rythme comme les marges, les hauteurs, les titres, les champs de formulaire, etc. Ces éléments seront des multiples de 24px.
+Ce framework se base sur un rythme vertical calculé automatiquement, le principe étant celui-ci : 
+
+Le rythme vertical est le produit de la taille de la police de base par sa hauteur de ligne. Dans notre cas, la taille de la police est de 1.5rem et sa hauteur de ligne est de 1.6, le rythme vertical sera donc de 2.4rem soit 24px. 
+
+Le texte et l'ensemble des modules du framework suivront ce rythme comme les marges, les hauteurs, les titres, les champs de formulaire, etc. Ces éléments seront des multiples de 24px.
 
 ##Quelques astuces
 
