@@ -15,7 +15,7 @@ Il est conseillé de modifier dans un premier temps ces variables, par défaut l
 
 Vous pourrez personnaliser entre autres les valeurs de tailles de polices, de titres, de couleurs, de marges, de points de rupture et de grilles.
 
-###Quelques astuces
+##Quelques astuces
 
 ####Fonctions et mixins
 
