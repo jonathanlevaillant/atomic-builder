@@ -83,7 +83,7 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 }
 ```
 
-* Générer une grille "gl" à 2 colonnes de gouttière 2.4rem** :
+* **Générer une grille "gl" à 2 colonnes de gouttière 2.4rem** :
 
 `@include grid-childs(2, "gl", 2.4rem)` sera compilé en :
 
@@ -100,7 +100,7 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 }
 ```
 
-**Générer une grille de gouttière 2.4rem** :
+* **Générer une grille de gouttière 2.4rem** :
 
 `@include grid-childs($new-gutter: 2.4rem)` sera compilé en :
 
@@ -128,7 +128,7 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 
 *Note: Une nouvelle gouttière a été définie en oubliant le modificateur de classe, le label `secondary` a été rajouté automatiquement pour surcharger la grille de base*
 
-**Générer une grille à 2 colonnes inégales**
+####Les grilles à colonnes inégales
 
 Vous pouvez si vous le souhaitez générer des grilles à 2 colonnes inégales. Le principe est le même que précédemment, seul l'appel au mixin change :
 
@@ -199,7 +199,7 @@ Vous pouvez si vous le souhaitez générer des grilles à 2 colonnes inégales. 
 
 *Note: Vous constaterez que les grilles `grid--2-12`, `grid--3-12` et `grid--4-12` ont été renommées respectivement en `grid--1-6`, `grid--1-4` et `grid--1-3` grâce à une fonction calculant le plus grand dénominateur commun `@function gcd()`.*
 
-####Les classes visuelles
+##Les classes visuelles
 
 Le fichier CSS `_07-helpers.scss` contient toutes les classes visuelles gérant les dimensions et les marges.
 
