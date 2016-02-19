@@ -135,6 +135,7 @@ Il est également possible de renseigner un ou plusieurs paramètres, comme une 
     margin-left: -2.4rem;
 }
 [class*="grid--gl"] > .grid__item {
+    margin-bottom: 2.4rem;
     margin-left: 2.4rem;
 }
 .grid--gl-2 > .grid__item {
@@ -152,6 +153,7 @@ Il est également possible de renseigner un ou plusieurs paramètres, comme une 
     margin-left: -2.4rem;
 }
 [class*="grid--secondary"] > .grid__item {
+    margin-bottom: 2.4rem;
     margin-left: 2.4rem;
 }
 .grid--secondary-2 > .grid__item {

@@ -72,6 +72,7 @@
             $modifier: "secondary";
         }
         [class*="grid--#{$modifier}"] {
+            margin-bottom: -$new-gutter;
             margin-left: -$new-gutter;
         }
         [class*="grid--#{$modifier}"] > .grid__item {
@@ -104,6 +105,7 @@
             $modifier: "secondary";
         }
         [class*="grid--#{$modifier}"] {
+            margin-bottom: -$new-gutter;
             margin-left: -$new-gutter;
         }
         [class*="grid--#{$modifier}"] > .grid__item {
