@@ -69,7 +69,7 @@ Les amoureux du rythme vertical ne pourront plus se passer du mixin `@include gr
 }
 ```
 
-*Note: Vous remarquerez dans le dernier exemple que la taille du titre (6.4rem) dépasse la hauteur par défaut du rythme vertical (2.4rem). Pour être précis, la taille du titre est comprise dans trois hauteurs de ligne soit 7.2rem (2.4rem x 3). Par conséquent le nouveau référentiel sera de 7.2rem et la valeur de la hauteur de ligne relative au titre sera de 1.125 (7.2rem / 2.4rem).*
+*Note: Vous remarquerez dans le dernier exemple que la taille du titre (6.4rem) dépasse la hauteur par défaut du rythme vertical (2.4rem). Pour être précis, la taille du titre est comprise dans trois hauteurs de ligne soit 7.2rem (2.4rem x 3). Par conséquent le nouveau référentiel sera de 7.2rem et la valeur de la hauteur de ligne relative au titre sera de 1.125 (7.2rem / 6.4rem).*
 
 ##Les grilles
 
