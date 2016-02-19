@@ -14,13 +14,13 @@ Il est vivement conseillé de modifier ces variables en fonction de votre projet
 * `15px => 1.5rem`
 * `8px => .8rem` 
 
-Vous pourrez personnaliser entre autres, les valeurs de taille des polices de caractères, des titres, des couleurs, des marges, des points de rupture et des grilles.
+Vous pourrez personnaliser entre autres, les valeurs de taille des polices de caractères, de titres, de couleurs, de marges, de points de rupture et de grilles.
 
-**Ce Framework se base sur un rythme vertical calculé automatiquement**
+**Ce Framework se base sur un rythme vertical calculé automatiquement.**
 
-Pour rappel, le rythme vertical est le produit de la taille de la police de caractères de la page par sa hauteur de ligne.   Dans notre cas, la taille de la police de caractères est de 1.5rem et sa hauteur de ligne est de 1.6, le rythme vertical sera donc de 2.4rem soit 24px. 
+Pour rappel, le rythme vertical est le produit de la taille de la police de caractères (par défaut) par sa hauteur de ligne relative. Dans notre cas, la taille de la police de caractères est de 1.5rem et sa hauteur de ligne est de 1.6, le rythme vertical sera donc de 2.4rem soit 24px. 
 
-Le texte ainsi que l'ensemble des modules du Framework suivront ce rythme vertical comme les marges, la hauteur de ligne des titres, la hauteur des champs de formulaire, etc. Ces éléments seront tous multiples de 24px.
+Le texte ainsi que l'ensemble des modules du Framework suivront ce rythme vertical comme les marges, les hauteurs de ligne des titres, les hauteurs des champs de formulaire, etc.
 
 ##Fonctions et mixins
 
@@ -36,9 +36,9 @@ La feuille de reset CSS `_01-normalize.scss` inclue les principales règles de *
 
 Les principales règles typographiques se trouvent  dans le fichier CSS `_02-base.scss`.
 
-Les amoureux du rythme vertical ne pourront plus se passer du mixin `@include grid-childs()`. En effet il permet de calculer automatiquement la hauteur de ligne d'une taille de police de caractères passée en argument en fonction du rythme vertical du projet. Il est également possible de renseigner d'autres arguments comme sa graisse ou encore sa famille. En voici quelques exemples avec un rythme vertical de 2.4rem par défaut :
+Les amoureux du rythme vertical ne pourront plus se passer du mixin `@include grid-childs()`. En effet, il permet de calculer automatiquement la hauteur de ligne relative d'une taille de police de caractères passée en paramètre en suivant le rythme vertical du projet. Il est également possible de renseigner d'autres paramètres comme sa graisse ou encore sa famille. En voici quelques exemples avec un rythme vertical de 2.4rem par défaut :
 
-* **Hauteur de ligne d'une police de taille 1.9rem :**
+* **Hauteur de ligne relative d'une police de taille 1.9rem :**
 
 `.title {@include font-rythm(1.9rem)}` sera compilé en :
 
@@ -48,7 +48,7 @@ Les amoureux du rythme vertical ne pourront plus se passer du mixin `@include gr
 }
 ```
 
-* **Hauteur de ligne d'une police de taille 2.4rem et de famille "Arial, sans-serif" :**
+* **Hauteur de ligne relative d'une police de taille 2.4rem et de famille "Arial, sans-serif" :**
 
 `.title {@include font-rythm(2.4rem, "Arial, sans-serif")}` sera compilé en :
 
@@ -59,7 +59,7 @@ Les amoureux du rythme vertical ne pourront plus se passer du mixin `@include gr
 }
 ```
 
-* **Hauteur de ligne d'une police de taille 6.4rem :**
+* **Hauteur de ligne relative d'une police de taille 6.4rem :**
 
 `.title {@include font-rythm(6.4rem)}` sera compilé en :
 
@@ -69,14 +69,14 @@ Les amoureux du rythme vertical ne pourront plus se passer du mixin `@include gr
 }
 ```
 
-*Note: Vous remarquerez dans le dernier exemple que la taille du titre (6.4rem) dépasse la hauteur de base du rythme vertical (2.4rem). Pour être plus précis la taille du titre est comprise dans un rythme vertical trois fois supérieur à la hauteur de base soit 7.2rem (2.4rem x 3). Par conséquent le nouveau référentiel sera de 7.2rem et la valeur de la hauteur de ligne du titre sera de 1.125 (7.2rem / 2.4rem).*
+*Note: Vous remarquerez dans le dernier exemple que la taille du titre (6.4rem) dépasse la hauteur par défaut du rythme vertical (2.4rem). Pour être précis, la taille du titre est comprise dans trois hauteurs de ligne soit 7.2rem (2.4rem x 3). Par conséquent le nouveau référentiel sera de 7.2rem et la valeur de la hauteur de ligne relative au titre sera de 1.125 (7.2rem / 2.4rem).*
 
 ##Les grilles
 
 ####Les grilles à colonnes égales
 
 Vous pouvez générer n'importe quelle grille dans le fichier CSS `_04-grids.scss` grâce à l'appel du mixin `@include grid-childs()`.  
-Par défaut, si aucun argument n'est renseigné, la grille sera automatiquement générée en fonction de la largeur du conteneur, du nombre de colonnes et des gouttières (toutes ces variables étant présentes dans le fichier CSS `_00a-config.scss`). 
+Par défaut, si aucun paramètre n'est renseigné, la grille sera automatiquement générée en fonction de la largeur du conteneur, du nombre de colonnes et des gouttières (toutes ces variables étant présentes dans le fichier CSS `_00a-config.scss`). 
 
 En conservant les valeurs par défaut, `@include grid-childs()` sera compilé en :
 
@@ -97,7 +97,7 @@ En conservant les valeurs par défaut, `@include grid-childs()` sera compilé en
 
 *Note: Vous remarquerez que seules les valeurs entières divisibles par le nombre de colonnes de la grille sont générées, pour rappel il s'agissait d'une grille à 12 colonnes, les valeurs 2, 3, 4 et 6 ont donc été créées.*
 
-Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gouttière, un modificateur de classe ou des colonnes spécifiques. En voici quelques exemples :
+Il est également possible de renseigner un ou plusieurs paramètres, comme une nouvelle gouttière, un modificateur de classe ou des colonnes spécifiques. En voici quelques exemples :
 
 * **Grille à 4 colonnes :**
 
@@ -109,9 +109,9 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 }
 ```
 
-* **Grille de label "small" pour les colonnes 3 à 4 :**
+* **Grille de label "small" pour les colonnes 3 à 6 :**
 
-`@include grid-childs($modifier: "small", $start: 3, $end: 4)` sera compilé en :
+`@include grid-childs($modifier: "small", $start: 3, $end: 6)` sera compilé en :
 
 ```css
 .grid--small-3 > .grid__item {
@@ -119,6 +119,9 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 }
 .grid--small-4 > .grid__item {
     width: calc(25% - 1.2rem);
+}
+.grid--small-6 > .grid__item {
+    width: calc(16.6667% - 2.4rem);
 }
 ```
 
@@ -169,7 +172,7 @@ Il est possible de renseigner un ou plusieurs arguments, comme une nouvelle gout
 
 ####Les grilles à colonnes inégales
 
-Vous pouvez également générer des grilles à 2 colonnes inégales. Le principe est le même que précédemment, seul l'appel au mixin change :
+Vous pouvez également générer des grilles à 2 colonnes inégales. Le principe est le même que précédemment, seul l'appel du mixin change :
 
 `@include grid-uneven-childs()` sera compilé en :
 
@@ -244,7 +247,7 @@ Le fichier CSS `_07-helpers.scss` contient toutes les classes purement visuelles
 
 ####Les largeurs fluides (en pourcentage)
 
-L'appel au mixin `@include percentage-width()` va générer des largeurs fluides en pourcentage de 10% à 100%, la valeur d'incrémentation étant par défaut de 10. Il est possible de modifier cette valeur et même de se limiter à une plage de pourcentages :
+L'appel du mixin `@include percentage-width()` va générer des largeurs fluides en pourcentage de 10% à 100%, la valeur d'incrémentation étant par défaut de 10. Il est possible de modifier cette valeur et même de se limiter à une plage de pourcentages :
 
 * **Largeurs fluides auto-incrémentées de 5%, comprises entre 50% et 100% :**
 
@@ -302,7 +305,7 @@ L'appel au mixin `@include percentage-width()` va générer des largeurs fluides
 
 ####Les largeurs fixes (en *"rem"*)
 
-L'appel au mixin `@include fixed-width-col()` va générer des largeurs fixes en *"rem"* pour chaque colonne de la grille utilisée. La largeur est calculée en fonction du nombre de colonnes, de la largeur du conteneur et des gouttières renseignées dans le fichier CSS de configuration `_00a-config.scss`.
+L'appel du mixin `@include fixed-width-col()` va générer des largeurs fixes en *"rem"* pour chaque colonne de la grille utilisée. La largeur est calculée en fonction du nombre de colonnes, de la largeur du conteneur et des gouttières renseignées dans le fichier CSS de configuration `_00a-config.scss`.
 
 `@include fixed-width-col()` sera par défaut compilé en :
 
@@ -379,7 +382,7 @@ L'appel au mixin `@include fixed-width-col()` va générer des largeurs fixes en
 
 ####Les marges fixes
 
-L'appel au mixin `@include spacing-helpers("margin", "padding")` va générer des marges fixes externes, internes ou les deux en fonction des valeurs d'espacement renseignées dans le fichier CSS de configuration `_00a-config.scss`. Les initiales de `margin-top`, `margin-right`, `margin-bottom` et `margin-left` sont respectivement `mt`, `mr`, `mb` et `ml`.  
+L'appel du mixin `@include spacing-helpers("margin", "padding")` va générer des marges fixes externes, internes ou les deux en fonction des valeurs d'espacement renseignées dans le fichier CSS de configuration `_00a-config.scss`. Les initiales de `margin-top`, `margin-right`, `margin-bottom` et `margin-left` sont respectivement `mt`, `mr`, `mb` et `ml`.  
 Un suffixe concernant la largeur de la marge est ensuite ajouté. En voici quelques exemples :
 
 * **Générer toutes les marges externes et internes en fonction des largeurs d'espacement renseignées**
