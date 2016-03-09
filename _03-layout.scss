@@ -62,8 +62,23 @@ img.fl {
 .flex--h {
     flex-direction: row;
 }
+.flex--h-reverse {
+    flex-direction: row-reverse;
+}
 .flex--v {
     flex-direction: column;
+}
+.flex--v-reverse {
+    flex-direction: column-reverse;
+}
+.flex__item-initial {
+    flex: initial;
+}
+.flex__item-auto {
+    flex: auto;
+}
+.flex__item-none {
+    flex: none;
 }
 .flex__item-fluid {
     flex: 1;

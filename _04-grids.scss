@@ -5,7 +5,7 @@
 .grid {
     display: flex;
     flex-flow: row wrap;
-    margin-bottom: -$grid-spacer;
+    margin-bottom: -$row-spacing;
     margin-left: -$gutter;
 }
 
@@ -13,7 +13,7 @@
 .grid__item {
     flex: 0 0 auto;
     min-width: 0;
-    margin-bottom: $grid-spacer;
+    margin-bottom: $row-spacing;
     margin-left: $gutter;
 }
 @include grid-childs();
@@ -21,15 +21,50 @@
 // grid uneven childs
 @include grid-uneven-childs();
 
+// grid layout
+.grid--h {
+    flex-direction: row;
+}
+.grid--h-reverse {
+    flex-direction: row-reverse;
+}
+.grid--v {
+    flex-direction: column;
+}
+.grid--v-reverse {
+    flex-direction: column-reverse;
+}
+.grid__item--initial {
+    flex: initial;
+}
+.grid__item--auto {
+    flex: auto;
+}
+.grid__item--none {
+    flex: none;
+}
+.grid__item--fluid {
+    flex: 1;
+}
+.grid__item--first {
+    order: -1;
+}
+.grid__item--medium {
+    order : 0;
+}
+.grid__item--last {
+    order : 1;
+}
+
 /* grids responsive
    ========================================================================== */
 
 // grid small
 @media (max-width: $small-screen) {
-    @include grid-childs($modifier: "small", $start: 1, $end: 4);
+    @include grid-childs($modifier: "small", $end: 4);
 }
 
 // grid tiny
 @media (max-width: $tiny-screen) {
-    @include grid-childs($modifier: "tiny", $start: 1, $end: 2);
+    @include grid-childs($modifier: "tiny", $end: 2);
 }

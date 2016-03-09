@@ -1,6 +1,44 @@
 /* functions
    ========================================================================== */
 
+// rem {
+@function rem($value) {
+    $unit-extract: unit($value);
+    $number: $value / 1#{$unit-extract};
+    @if $number == 0 {
+        @return $number;
+    }
+    @if $unit-extract == "px" {
+        $value: $value / 10 / 1#{$unit-extract} * 1rem;
+    }
+    @else if $unit-extract == "em" {
+        $value: $value / 1#{$unit-extract} * $base-font-size;
+    }
+    @return $value;
+}
+
+// px to rem
+$base-font-size: rem($base-font-size);
+$h1-size: rem($h1-size);
+$h2-size: rem($h2-size);
+$h3-size: rem($h3-size);
+$h4-size: rem($h4-size);
+$h5-size: rem($h5-size);
+$h6-size: rem($h6-size);
+$big-size: rem($big-size);
+$small-size: rem($small-size);
+$tiny-value: rem($tiny-value);
+$small-value: rem($small-value);
+$medium-value: rem($medium-value);
+$large-value: rem($large-value);
+$field-height: rem($field-height);
+$label-size: rem($label-size);
+$field-size: rem($field-size);
+$button-size: rem($button-size);
+$wrapper: rem($wrapper);
+$gutter: rem($gutter);
+$row-spacing: rem($row-spacing);
+
 // decimal round
 @function decimal-round($number, $digits: 4) {
     $n: 1;
@@ -14,14 +52,16 @@
 }
 
 // line height
-@function line-height($font-size, $vertical-rythm: $base-font-size * $line-height) {
+@function line-height($font-size, $vertical-rhythm: $base-font-size * $line-height) {
+    $font-size: rem($font-size);
+    $vertical-rhythm: rem($vertical-rhythm);
     $coeff: 1;
-    $line-height-coeff: $vertical-rythm / $font-size;
-    @while $line-height-coeff < 1 {
+    $line-height: $vertical-rhythm / $font-size;
+    @while $line-height < 1 {
         $coeff: $coeff + 1;
-        $line-height-coeff: $vertical-rythm * $coeff / $font-size;
+        $line-height: $vertical-rhythm * $coeff / $font-size;
     }
-    @return decimal-round($line-height-coeff);
+    @return decimal-round($line-height);
 }
 
 // gcd
@@ -36,48 +76,47 @@
 
 // column width
 @function column-width($number) {
-    $column: ($wrapper - $gutter * ($columns - 1)) / $columns;
-    $column-width: $column * $number + $gutter * ($number - 1);
-    @return decimal-round($column-width);
+    @return decimal-round((($wrapper - $gutter * ($columns - 1)) / $columns) * $number + $gutter * ($number - 1));
 }
 
-// str perfix
+// str prefix
 @function str-prefix($string) {
-    $new-string: str-slice($string, 1, 1);
-    @return $new-string;
+    @return str-slice($string, 1, 1);
 }
 
 /* mixins
    ========================================================================== */
 
-// font rythm
-@mixin font-rythm($font-size, $font-family: null, $font-weight: null, $font-style: null) {
-    @if $font-family {
-        font-family: $font-family;
-    }
-    @if $font-weight {
-        font-weight: $font-weight;
-    }
-    @if $font-style {
-        font-style: $font-style;
-    }
+// vertical rhythm
+@mixin vertical-rhythm($font-size) {
+    $font-size: rem($font-size);
     font-size: $font-size;
     line-height: line-height($font-size);
 }
 
 // grid childs
-@mixin grid-childs($number: null, $modifier: null, $new-gutter: $gutter, $start: 2, $end: $columns) {
-    @if $new-gutter != $gutter {
+@mixin grid-childs($number: null, $modifier: null, $new-gutter: $gutter, $new-row-spacing: $row-spacing, $start: 1, $end: $columns) {
+    $new-gutter: rem($new-gutter);
+    $new-row-spacing: rem($new-row-spacing);
+    @if $new-gutter != $gutter or $new-row-spacing != $row-spacing {
         @if $modifier == null {
-            $modifier: "secondary";
+            $modifier: "warning";
         }
         [class*="grid--#{$modifier}"] {
-            margin-bottom: -$new-gutter;
-            margin-left: -$new-gutter;
-        }
-        [class*="grid--#{$modifier}"] > .grid__item {
-            margin-bottom: $new-gutter;
-            margin-left: $new-gutter;
+            @if $new-row-spacing != $row-spacing {
+                margin-bottom: -$new-row-spacing;
+            }
+            @if $new-gutter != $gutter {
+                margin-left: -$new-gutter;
+            }
+            & > .grid__item {
+                @if $new-row-spacing != $row-spacing {
+                    margin-bottom: $new-row-spacing;
+                }
+                @if $new-gutter != $gutter {
+                    margin-left: $new-gutter;
+                }
+            }
         }
     }
     @if $modifier {
@@ -91,7 +130,12 @@
         @if $columns % $i == 0 or $start == $end {
             .grid--#{$modifier}#{$i} {
                 & > .grid__item {
-                    width: calc(#{decimal-round(100% / $i)} - #{$new-gutter});
+                    @if $new-gutter == 0 {
+                        width: decimal-round(100% / $i);
+                    }
+                    @else {
+                        width: calc(#{decimal-round(100% / $i)} - #{$new-gutter});
+                    }
                 }
             }
         }
@@ -99,18 +143,28 @@
 }
 
 // grid uneven childs
-@mixin grid-uneven-childs($modifier: null, $new-gutter: $gutter, $start: 1, $end: ($columns / 2) - 1) {
-    @if $new-gutter != $gutter {
+@mixin grid-uneven-childs($modifier: null, $new-gutter: $gutter, $new-row-spacing: $row-spacing, $start: 1, $end: ($columns / 2) - 1) {
+    $new-gutter: rem($new-gutter);
+    $new-row-spacing: rem($new-row-spacing);
+    @if $new-gutter != $gutter or $new-row-spacing != $row-spacing {
         @if $modifier == null {
-            $modifier: "secondary";
+            $modifier: "warning";
         }
-        [class*="grid--#{$modifier}"] {
-            margin-bottom: -$new-gutter;
-            margin-left: -$new-gutter;
-        }
-        [class*="grid--#{$modifier}"] > .grid__item {
-            margin-bottom: $new-gutter;
-            margin-left: $new-gutter;
+        [class*="grid--uneven-#{$modifier}"] {
+            @if $new-row-spacing != $row-spacing {
+                margin-bottom: -$new-row-spacing;
+            }
+            @if $new-gutter != $gutter {
+                margin-left: -$new-gutter;
+            }
+            & > .grid__item {
+                @if $new-row-spacing != $row-spacing {
+                    margin-bottom: $new-row-spacing;
+                }
+                @if $new-gutter != $gutter {
+                    margin-left: $new-gutter;
+                }
+            }
         }
     }
     @if $modifier {
@@ -118,27 +172,49 @@
     }
     @for $i from $start through $end {
         $gcd: gcd($i, $columns);
-        .grid--#{$modifier}#{$i / $gcd}-#{$columns / $gcd} {
+        .grid--uneven-#{$modifier}#{$i / $gcd}-#{$columns / $gcd} {
             & > *:nth-child(odd) {
-                width: calc(#{decimal-round(percentage($i / $columns))} - #{$new-gutter});
+                @if $new-gutter == 0 {
+                    width: decimal-round(percentage($i / $columns));
+                }
+                @else {
+                    width: calc(#{decimal-round(percentage($i / $columns))} - #{$new-gutter});
+                }
             }
             & > *:nth-child(even) {
-                width: calc(#{decimal-round(percentage(($columns - $i) / $columns))} - #{$new-gutter});
+                @if $new-gutter == 0 {
+                    width: decimal-round(percentage(($columns - $i) / $columns));
+                }
+                @else {
+                    width: calc(#{decimal-round(percentage(($columns - $i) / $columns))} - #{$new-gutter});
+                }
             }
         }
-        .grid--#{$modifier}#{$columns / $gcd - $i / $gcd}-#{$columns / $gcd} {
+        .grid--uneven-#{$modifier}#{$columns / $gcd - $i / $gcd}-#{$columns / $gcd} {
             & > *:nth-child(odd) {
-                width: calc(#{decimal-round(percentage(($columns - $i) / $columns))} - #{$new-gutter});
+                @if $new-gutter == 0 {
+                    width: decimal-round(percentage(($columns - $i) / $columns));
+                }
+                @else {
+                    width: calc(#{decimal-round(percentage(($columns - $i) / $columns))} - #{$new-gutter});
+                }
             }
             & > *:nth-child(even) {
-                width: calc(#{decimal-round(percentage($i / $columns))} - #{$new-gutter});
+                @if $new-gutter == 0 {
+                    width: decimal-round(percentage($i / $columns));
+                }
+                @else {
+                    width: calc(#{decimal-round(percentage($i / $columns))} - #{$new-gutter});
+                }
             }
         }
     }
 }
 
-// padding rythm
-@mixin padding-rythm($font-size, $height: $field-height) {
+// field rhythm
+@mixin field-rhythm($font-size, $height: $field-height) {
+    $font-size: rem($font-size);
+    $height: rem($height);
     $padding: decimal-round(($height - line-height($font-size) * $font-size) / 2);
     @if $padding < 0 {
         padding: 0 $small-value;
@@ -176,8 +252,11 @@
         $end: $number;
     }
     @for $i from $start through $end {
-        .w#{$i}col {
+        .w#{$i}c {
             width: column-width($i);
+        }
+        .mw#{$i}c {
+            max-width: column-width($i);
         }
     }
 }

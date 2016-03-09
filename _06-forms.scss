@@ -14,8 +14,8 @@ optgroup {
 input,
 select,
 textarea {
-    @include padding-rythm($field-size);
-    @include font-rythm($field-size);
+    @include field-rhythm($field-size);
+    @include vertical-rhythm($field-size);
     height: $field-height;
     border: 1px solid #ccc;
 }
@@ -60,8 +60,8 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-    @include padding-rythm($button-size);
-    @include font-rythm($button-size);
+    @include field-rhythm($button-size);
+    @include vertical-rhythm($button-size);
     height: auto;
     border: 0;
     background: #ccc;
