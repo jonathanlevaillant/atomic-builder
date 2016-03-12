@@ -71,6 +71,30 @@ img.fl {
 .flex--v-reverse {
     flex-direction: column-reverse;
 }
+.flex--justify-center {
+    justify-content: center;
+}
+.flex--justify-start {
+    justify-content: flex-start;
+}
+.flex--justify-end {
+    justify-content: flex-end;
+}
+.flex--justify-between {
+    justify-content: space-between;
+}
+.flex--align-center {
+    align-items: center;
+}
+.flex--align-start {
+    align-items: flex-start;
+}
+.flex--align-end {
+    align-items: flex-end;
+}
+.flex--align-stretch {
+    align-items: stretch;
+}
 .flex__item-initial {
     flex: initial;
 }
