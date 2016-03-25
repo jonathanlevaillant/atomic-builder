@@ -690,10 +690,6 @@ img.fl {
     width: calc(8.3334% - 1.2rem);
 }
 
-.grid--5 > .grid__item {
-    width: calc(20% - 1.2rem);
-}
-
 .grid--uneven-1-12 > *:nth-child(odd) {
     width: calc(8.3334% - 1.2rem);
 }

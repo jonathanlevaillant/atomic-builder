@@ -17,7 +17,6 @@
     margin-left: $gutter;
 }
 @include grid-childs();
-@include grid-childs(5);
 
 // grid uneven childs
 @include grid-uneven-childs();
