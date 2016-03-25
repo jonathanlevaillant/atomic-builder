@@ -17,68 +17,13 @@
     margin-left: $gutter;
 }
 @include grid-childs();
+@include grid-childs(5);
 
 // grid uneven childs
 @include grid-uneven-childs();
 
-// grid layout
-.grid--h {
-    flex-direction: row;
-}
-.grid--h-reverse {
-    flex-direction: row-reverse;
-}
-.grid--v {
-    flex-direction: column;
-}
-.grid--v-reverse {
-    flex-direction: column-reverse;
-}
-.grid--justify-center {
-    justify-content: center;
-}
-.grid--justify-start {
-    justify-content: flex-start;
-}
-.grid--justify-end {
-    justify-content: flex-end;
-}
-.grid--justify-between {
-    justify-content: space-between;
-}
-.grid--align-center {
-    align-items: center;
-}
-.grid--align-start {
-    align-items: flex-start;
-}
-.grid--align-end {
-    align-items: flex-end;
-}
-.grid--align-stretch {
-    align-items: stretch;
-}
-.grid__item--initial {
-    flex: initial;
-}
-.grid__item--auto {
-    flex: auto;
-}
-.grid__item--none {
-    flex: none;
-}
-.grid__item--fluid {
-    flex: 1;
-}
-.grid__item--first {
-    order: -1;
-}
-.grid__item--medium {
-    order : 0;
-}
-.grid__item--last {
-    order : 1;
-}
+// grid helpers
+@include grid-helpers();
 
 /* grids responsive
    ========================================================================== */
@@ -86,27 +31,11 @@
 // grid small
 @media (max-width: $small-screen) {
     @include grid-childs($modifier: "small", $end: 4);
-    .grid__item--small-first {
-        order: -1;
-    }
-    .grid__item--small-medium {
-        order : 0;
-    }
-    .grid__item--small-last {
-        order : 1;
-    }
+    @include grid-helpers("small");
 }
 
 // grid tiny
 @media (max-width: $tiny-screen) {
     @include grid-childs($modifier: "tiny", $end: 2);
-    .grid__item--tiny-first {
-        order: -1;
-    }
-    .grid__item--tiny-medium {
-        order : 0;
-    }
-    .grid__item--tiny-last {
-        order : 1;
-    }
+    @include grid-helpers("tiny");
 }

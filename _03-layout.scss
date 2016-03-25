@@ -71,29 +71,23 @@ img.fl {
 .flex--v-reverse {
     flex-direction: column-reverse;
 }
-.flex--justify-center {
+.flex--main-center {
     justify-content: center;
 }
-.flex--justify-start {
+.flex--main-start {
     justify-content: flex-start;
 }
-.flex--justify-end {
+.flex--main-end {
     justify-content: flex-end;
 }
-.flex--justify-between {
-    justify-content: space-between;
-}
-.flex--align-center {
+.flex--cross-center {
     align-items: center;
 }
-.flex--align-start {
+.flex--cross-start {
     align-items: flex-start;
 }
-.flex--align-end {
+.flex--cross-end {
     align-items: flex-end;
-}
-.flex--align-stretch {
-    align-items: stretch;
 }
 .flex__item-initial {
     flex: initial;

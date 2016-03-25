@@ -211,6 +211,64 @@ $row-spacing: rem($row-spacing);
     }
 }
 
+// grid helpers
+@mixin grid-helpers($modifier: null) {
+    @if $modifier {
+        $modifier: $modifier + "-";
+    }
+    .grid--#{$modifier}h {
+        flex-direction: row;
+    }
+    .grid--#{$modifier}h-reverse {
+        flex-direction: row-reverse;
+    }
+    .grid--#{$modifier}v {
+        flex-direction: column;
+    }
+    .grid--#{$modifier}v-reverse {
+        flex-direction: column-reverse;
+    }
+    .grid--#{$modifier}main-center {
+        justify-content: center;
+    }
+    .grid--#{$modifier}main-start {
+        justify-content: flex-start;
+    }
+    .grid--#{$modifier}main-end {
+        justify-content: flex-end;
+    }
+    .grid--#{$modifier}cross-center {
+        align-items: center;
+    }
+    .grid--#{$modifier}cross-start {
+        align-items: flex-start;
+    }
+    .grid--#{$modifier}cross-end {
+        align-items: flex-end;
+    }
+    .grid__item--#{$modifier}initial {
+        flex: initial;
+    }
+    .grid__item--#{$modifier}auto {
+        flex: auto;
+    }
+    .grid__item--#{$modifier}none {
+        flex: none;
+    }
+    .grid__item--#{$modifier}fluid {
+        flex: 1;
+    }
+    .grid__item--#{$modifier}first {
+        order: -1;
+    }
+    .grid__item--#{$modifier}medium {
+        order : 0;
+    }
+    .grid__item--#{$modifier}last {
+        order : 1;
+    }
+}
+
 // field rhythm
 @mixin field-rhythm($font-size, $height: $field-height) {
     $font-size: rem($font-size);
