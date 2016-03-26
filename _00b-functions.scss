@@ -143,7 +143,7 @@ $row-spacing: rem($row-spacing);
 }
 
 // grid uneven childs
-@mixin grid-uneven-childs($modifier: null, $new-gutter: $gutter, $new-row-spacing: $row-spacing, $start: 1, $end: ($columns / 2) - 1) {
+@mixin grid-uneven-childs($number: null, $modifier: null, $new-gutter: $gutter, $new-row-spacing: $row-spacing, $start: 1, $end: ($columns / 2) - 1) {
     $new-gutter: rem($new-gutter);
     $new-row-spacing: rem($new-row-spacing);
     @if $new-gutter != $gutter or $new-row-spacing != $row-spacing {
@@ -169,6 +169,11 @@ $row-spacing: rem($row-spacing);
     }
     @if $modifier {
         $modifier: $modifier + "-";
+    }
+    @if $number {
+        $start: nth($number, 1);
+        $end: nth($number, 1);
+        $columns: nth($number, 2);
     }
     @for $i from $start through $end {
         $gcd: gcd($i, $columns);
