@@ -37,6 +37,7 @@ $field-size: rem($field-size);
 $button-size: rem($button-size);
 $wrapper: rem($wrapper);
 $gutter: rem($gutter);
+$margin: rem($margin);
 $row-spacing: rem($row-spacing);
 
 // decimal round
@@ -320,6 +321,19 @@ $row-spacing: rem($row-spacing);
         }
         .mw#{$i}c {
             max-width: column-width($i);
+        }
+    }
+}
+
+// wrapper
+@mixin wrapper() {
+    .wrapper {
+        max-width: $wrapper + $margin * 2;
+        margin-right: auto;
+        margin-left: auto;
+        @if $margin != 0 {
+            padding-right: $margin;
+            padding-left: $margin;
         }
     }
 }

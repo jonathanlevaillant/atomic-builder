@@ -34,11 +34,7 @@ ul.unstyled {
 
 // visual helpers fixed
 @include fixed-width-col();
-.wrapper {
-    max-width: $wrapper;
-    margin-right: auto;
-    margin-left: auto;
-}
+@include wrapper();
 .wauto {
     width: auto;
 }
