@@ -99,7 +99,7 @@ $medium-plus-screen: em($medium-plus-screen, 1.6rem);
     $font-size: rem($font-size);
     $vertical-rhythm: rem($vertical-rhythm);
     $coeff: 1;
-    @if $font-size != 0 {
+    @if $font-size != 0 and $vertical-rhythm !=0 {
 		$line-height: $vertical-rhythm / $font-size;
 		@while $line-height < 1 {
 			$coeff: $coeff + 1;
