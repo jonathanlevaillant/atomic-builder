@@ -1,6 +1,18 @@
 /* functions
    ========================================================================== */
 
+// decimal round
+@function decimal-round($number, $digits: 4) {
+    $n: 1;
+    @for $i from 1 through $digits {
+        $n: $n * 10;
+    }
+    @if round($number * 10) == $number * 10 {
+        @return $number;
+    }
+    @return ceil($number * $n) / $n;
+}
+
 // rem {
 @function rem($value) {
     $unit-extract: unit($value);
@@ -8,13 +20,47 @@
     @if $number == 0 {
         @return $number;
     }
+	@if $unit-extract == "rem" {
+        @return $value;
+    }
+	@if unitless($value) {
+		$value: $value / 10;
+	}
     @if $unit-extract == "px" {
-        $value: $value / 10 / 1#{$unit-extract} * 1rem;
+        $value: $number / 10;
     }
-    @else if $unit-extract == "em" {
-        $value: $value / 1#{$unit-extract} * $base-font-size;
+    @if $unit-extract == "em" {
+		@if unit($base-font-size) == "em" {
+			$value: $number;
+		}
+		@else {
+			$value: $number * ($base-font-size / 1#{unit($base-font-size)});
+		}
     }
-    @return $value;
+    @return decimal-round($value * 1rem);
+}
+
+// em {
+@function em($value, $context: $base-font-size) {
+	$unit-extract: unit($value);
+	$number: $value / 1#{$unit-extract};
+	$context: rem($context) * 10 / 1rem;
+	@if $number == 0 {
+        @return $number;
+    }
+	@if $unit-extract == "em" {
+        @return $value;
+    }
+	@if unitless($value) {
+		$value: $value;
+	}
+	@if $unit-extract == "px" {
+		$value: $number;
+	}
+	@if $unit-extract == "rem" {
+		$value: $number * 10;
+	}
+	@return decimal-round($value / $context * 1em);
 }
 
 // px to rem
@@ -40,29 +86,28 @@ $gutter: rem($gutter);
 $margin: rem($margin);
 $row-spacing: rem($row-spacing);
 
-// decimal round
-@function decimal-round($number, $digits: 4) {
-    $n: 1;
-    @for $i from 1 through $digits {
-        $n: $n * 10;
-    }
-    @if round($number * 10) == $number * 10 {
-        @return $number;
-    }
-    @return ceil($number * $n) / $n;
-}
+// px to em
+$tiny-screen: em($tiny-screen, 1.6rem);
+$tiny-plus-screen: em($tiny-plus-screen, 1.6rem);
+$small-screen: em($small-screen, 1.6rem);
+$small-plus-screen: em($small-plus-screen, 1.6rem);
+$medium-screen: em($medium-screen, 1.6rem);
+$medium-plus-screen: em($medium-plus-screen, 1.6rem);
 
 // line height
 @function line-height($font-size, $vertical-rhythm: $base-font-size * $line-height) {
     $font-size: rem($font-size);
     $vertical-rhythm: rem($vertical-rhythm);
     $coeff: 1;
-    $line-height: $vertical-rhythm / $font-size;
-    @while $line-height < 1 {
-        $coeff: $coeff + 1;
-        $line-height: $vertical-rhythm * $coeff / $font-size;
-    }
-    @return decimal-round($line-height);
+    @if $font-size != 0 {
+		$line-height: $vertical-rhythm / $font-size;
+		@while $line-height < 1 {
+			$coeff: $coeff + 1;
+			$line-height: $vertical-rhythm * $coeff / $font-size;
+		}
+		@return decimal-round($line-height);
+	}
+	@return decimal-round($line-height);
 }
 
 // gcd
@@ -89,10 +134,10 @@ $row-spacing: rem($row-spacing);
    ========================================================================== */
 
 // vertical rhythm
-@mixin vertical-rhythm($font-size) {
+@mixin vertical-rhythm($font-size, $vertical-rhythm: $base-font-size * $line-height) {
     $font-size: rem($font-size);
     font-size: $font-size;
-    line-height: line-height($font-size);
+    line-height: line-height($font-size, $vertical-rhythm);
 }
 
 // grid childs
