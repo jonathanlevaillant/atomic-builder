@@ -1,4 +1,4 @@
-# Framework SASS
+# Atomic Builder
 ### Un Framework SASS léger, flexible et responsive basé sur [KNACSS](https://github.com/alsacreations/KNACSS)
 
 Ce Framework SASS ultra léger *(20Ko)* permet de démarrer rapidement un projet en partant sur des bases saines. Il regroupe l'ensemble des bonnes pratiques en matière de **reset CSS**, de génération de **grilles fluides** et de **[rythme vertical](https://larlet.fr/david/biologeek/archives/20070819-l-importance-du-rythme-vertical-en-design-css/)**.
