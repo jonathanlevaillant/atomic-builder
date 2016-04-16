@@ -89,27 +89,30 @@ img.fl {
 .flex--cross-end {
     align-items: flex-end;
 }
-.flex__item-initial {
+.flex__item {
+    min-width: 0;
+}
+.flex__item--initial {
     flex: initial;
 }
-.flex__item-auto {
+.flex__item--auto {
     flex: auto;
 }
-.flex__item-none {
+.flex__item--none {
     flex: none;
 }
-.flex__item-fluid {
+.flex__item--fluid {
     flex: 1;
 }
-.flex__item-first {
+.flex__item--first {
     order: -1;
 }
-.flex__item-medium {
+.flex__item--medium {
     order : 0;
 }
-.flex__item-last {
+.flex__item--last {
     order : 1;
 }
-.flex__item-center {
+.flex__item--center {
     margin: auto;
 }

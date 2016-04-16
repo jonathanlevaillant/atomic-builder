@@ -1,0 +1,22 @@
+{
+  "name": "default",
+  "version": "1.0.0",
+  "devDependencies": {
+    "gulp": "latest",
+    "del": "latest",
+	"critical": "latest",
+    "gulp-load-plugins": "latest",
+    "gulp-sync": "latest",
+    "gulp-changed": "latest",
+    "gulp-htmlmin": "latest",
+    "gulp-sass": "latest",
+    "gulp-csscomb": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-cssbeautify": "latest",
+    "gulp-csso": "latest",
+    "gulp-imagemin": "latest",
+    "gulp-uglify": "latest",
+    "gulp-uncss": "latest",
+    "gulp-useref": "latest"
+  }
+}

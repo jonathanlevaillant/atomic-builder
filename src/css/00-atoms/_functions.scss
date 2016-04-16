@@ -77,7 +77,9 @@ $tiny-value: rem($tiny-value);
 $small-value: rem($small-value);
 $medium-value: rem($medium-value);
 $large-value: rem($large-value);
+$extra-value: rem($extra-value);
 $field-height: rem($field-height);
+$button-height: rem($button-height);
 $label-size: rem($label-size);
 $field-size: rem($field-size);
 $button-size: rem($button-size);
@@ -324,7 +326,8 @@ $medium-plus-screen: em($medium-plus-screen, 1.6rem);
 @mixin field-rhythm($font-size, $height: $field-height) {
     $font-size: rem($font-size);
     $height: rem($height);
-    $padding: decimal-round(($height - line-height($font-size) * $font-size) / 2);
+    $padding: em(($height - line-height($font-size) * $font-size) / 2, $font-size);
+    $small-value: em($small-value, $font-size);
     @if $padding < 0 {
         padding: 0 $small-value;
     }
@@ -385,7 +388,7 @@ $medium-plus-screen: em($medium-plus-screen, 1.6rem);
 
 // spacing helpers
 @mixin spacing-helpers($property...) {
-    $values: ($small-value: "s", $medium-value: "m", $large-value: "l");
+    $values: ($small-value: "s", $medium-value: "m", $large-value: "l", $extra-value: "e");
     $properties: $property;
     @each $property in $properties {
         .#{str-prefix($property)}an {

@@ -16,7 +16,7 @@ select,
 textarea {
     @include field-rhythm($field-size);
     @include vertical-rhythm($field-size);
-    height: $field-height;
+    height: em($field-height, $field-size);
     border: 1px solid #ccc;
 }
 label {
@@ -26,7 +26,7 @@ label {
     cursor: pointer;
 }
 textarea {
-    min-height: 2 * $field-height;
+    min-height: 2 * em($field-height, $field-size);
     resize: vertical;
 }
 select {
@@ -60,7 +60,7 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-    @include field-rhythm($button-size);
+    @include field-rhythm($button-size, $button-height);
     @include vertical-rhythm($button-size);
     height: auto;
     border: 0;
