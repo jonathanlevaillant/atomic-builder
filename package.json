@@ -15,6 +15,8 @@
     "gulp-cssbeautify": "latest",
     "gulp-csso": "latest",
     "gulp-imagemin": "latest",
+    "gulp-iconfont": "latest",
+    "gulp-ttf2woff": "latest",
     "gulp-uglify": "latest",
     "gulp-uncss": "latest",
     "gulp-useref": "latest"

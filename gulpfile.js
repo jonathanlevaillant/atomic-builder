@@ -17,9 +17,10 @@ var cssmin = 'css/styles.min.css';
 var js = 'js/*.js';
 var jsmin = 'js/global.min.js';
 var img = '/**/*.{png,jpg,jpeg,gif,svg}';
-var font = 'fonts/**';
+var font = 'fonts/**/*.ttf';
+var icon = 'fonts/icons/*.svg';
 
-/* task "build" = "clean" + "html" + "css" + "js" + "img" + "font"
+/* task "build" = "clean" + "html" + "css" + "js" + "img" + "font" + "icon"
    ========================================================================== */
 
 // task "clean" = del (destination)
@@ -57,7 +58,7 @@ gulp.task('js', function() {
 
 // task "img" = imagemin (source -> destination)
 gulp.task('img', function() {
-    return gulp.src(source + img)
+    return gulp.src([source + img, '!' + source + icon])
         .pipe(plugins.imagemin({
             progressive: true,
             interlaced: true,
@@ -66,14 +67,25 @@ gulp.task('img', function() {
         .pipe(gulp.dest(destination));
 });
 
-// task "font" = (source -> destination)
+// task "font" = ttf2woff (source -> destination)
 gulp.task('font', function() {
-    return gulp.src(source + font)
+    return gulp.src([source + font, '!' + source + icon])
+        .pipe(plugins.ttf2woff())
         .pipe(gulp.dest(destination + 'fonts/'))
 });
 
+// task "icon" = icon (source -> destination)
+gulp.task('icon', function() {
+    return gulp.src(source + icon)
+        .pipe(plugins.iconfont({
+            fontName: 'icons',
+            formats: ['woff', 'woff2']
+        }))
+        .pipe(gulp.dest(destination + 'fonts/icons/'));
+});
+
 // task "build"
-gulp.task('build', gulpsync.sync(['clean', ['html', 'css', 'js', 'img', 'font']]));
+gulp.task('build', gulpsync.sync(['clean', ['html', 'css', 'js', 'img', 'font', 'icon']]));
 
 /* task "prod" = "build" + "url" + "cssmin" + "jsmin" + "critical" + "htmlmin" + "cleancss" + "cleanjs"
    ========================================================================== */
