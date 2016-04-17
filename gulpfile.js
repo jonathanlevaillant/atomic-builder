@@ -20,7 +20,7 @@ var img = '/**/*.{png,jpg,jpeg,gif,svg}';
 var font = 'fonts/**/*.ttf';
 var icon = 'fonts/icons/*.svg';
 
-/* task "build" = "clean" + "html" + "css" + "js" + "img" + "font" + "icon"
+/* task "build" = "clean" + "html" + "css" + "js" + "img" + "woff" + "icon"
    ========================================================================== */
 
 // task "clean" = del (destination)
@@ -67,10 +67,17 @@ gulp.task('img', function() {
         .pipe(gulp.dest(destination));
 });
 
-// task "font" = ttf2woff (source -> destination)
-gulp.task('font', function() {
-    return gulp.src([source + font, '!' + source + icon])
+// task "woff" = ttf2woff (source -> destination)
+gulp.task('woff', function() {
+    return gulp.src(source + font)
         .pipe(plugins.ttf2woff())
+        .pipe(gulp.dest(destination + 'fonts/'))
+});
+
+// task "woff2" = ttf2woff2 (source -> destination)
+gulp.task('woff2', function() {
+    return gulp.src(source + font)
+        .pipe(plugins.ttf2woff2())
         .pipe(gulp.dest(destination + 'fonts/'))
 });
 
@@ -79,13 +86,17 @@ gulp.task('icon', function() {
     return gulp.src(source + icon)
         .pipe(plugins.iconfont({
             fontName: 'icons',
-            formats: ['woff', 'woff2']
+            formats: ['woff', 'woff2'],
+            fixedWidth: true,
+            normalize: true,
+            centerHorizontally: true,
+            timestamp: Math.round(Date.now()/1000)
         }))
         .pipe(gulp.dest(destination + 'fonts/icons/'));
 });
 
 // task "build"
-gulp.task('build', gulpsync.sync(['clean', ['html', 'css', 'js', 'img', 'font', 'icon']]));
+gulp.task('build', gulpsync.sync(['clean', ['html', 'css', 'js', 'img', 'woff', /*'woff2',*/ 'icon']]));
 
 /* task "prod" = "build" + "url" + "cssmin" + "jsmin" + "critical" + "htmlmin" + "cleancss" + "cleanjs"
    ========================================================================== */

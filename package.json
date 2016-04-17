@@ -17,6 +17,7 @@
     "gulp-imagemin": "latest",
     "gulp-iconfont": "latest",
     "gulp-ttf2woff": "latest",
+    "gulp-ttf2woff2": "latest",
     "gulp-uglify": "latest",
     "gulp-uncss": "latest",
     "gulp-useref": "latest"
