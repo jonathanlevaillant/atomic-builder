@@ -20,9 +20,11 @@ textarea {
     border: 1px solid #ccc;
 }
 label {
+    display: inline-flex;
+    align-items: center;
+    min-height: em($field-height, $label-size);
     margin-right: $small-value;
-    font-size: $label-size;
-    line-height: line-height($label-size, $field-height);
+    @include vertical-rhythm($label-size);
     cursor: pointer;
 }
 textarea {
@@ -60,7 +62,7 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-    @include field-rhythm($button-size, $button-height);
+    @include field-rhythm($button-size, $button-height, $medium-value);
     @include vertical-rhythm($button-size);
     height: auto;
     border: 0;

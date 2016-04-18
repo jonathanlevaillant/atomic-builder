@@ -1,5 +1,23 @@
 /* imports
    ========================================================================== */
+/* fonts
+   ========================================================================== */
+@font-face {
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-style: normal;
+
+    src: url('../fonts/open-sans/open-sans-400.woff2') format('woff2'), url('../fonts/open-sans/open-sans-400.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-weight: 700;
+    font-style: normal;
+
+    src: url('../fonts/open-sans/open-sans-700.woff2') format('woff2'), url('../fonts/open-sans/open-sans-700.woff') format('woff');
+}
+
 /* config
    ========================================================================== */
 /* functions
@@ -177,7 +195,7 @@ input[type='radio'] {
     height: auto;
     margin-right: 1.2rem;
     padding: 0;
-    vertical-align: baseline;
+    vertical-align: middle;
 }
 
 input[type='number']::-webkit-inner-spin-button,
@@ -434,6 +452,53 @@ svg {
     max-width: none !important;
 }
 
+/* icons
+   ========================================================================== */
+@font-face {
+    font-family: icons;
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('../fonts/icons/icons.woff2') format('woff2'), url('../fonts/icons/icons.woff') format('woff');
+}
+
+.icon::before,
+.icon-after::after {
+    font: normal normal normal 1.6em/0 icons;
+    position: relative;
+    top: -.05em;
+    display: inline-block;
+    margin: 0 .4em 0 0;
+    vertical-align: middle;
+    text-transform: none;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-after::after {
+    margin: 0 0 0 .4em;
+}
+
+.icon-after::before {
+    display: none !important;
+}
+
+.icon--facebook::before,
+.icon--facebook.icon-after::after {
+    content: '\e900';
+}
+
+.icon--twitter::before,
+.icon--twitter.icon-after::after {
+    content: '\e901';
+}
+
+.icon--google::before,
+.icon--google.icon-after::after {
+    content: '\e902';
+}
+
 /* forms
    ========================================================================== */
 input,
@@ -458,9 +523,18 @@ textarea {
 
 label {
     font-size: 1.5rem;
-    line-height: 2.4;
+    line-height: 1.6;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    min-height: 2.4em;
     margin-right: 1.2rem;
     cursor: pointer;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 
 textarea {
@@ -501,7 +575,7 @@ input[type='submit'] {
     font-size: 1.5rem;
     line-height: 1.6;
     height: auto;
-    padding: .4em .8em;
+    padding: .4em 1.6em;
     border: 0;
     background: #ccc;
 }

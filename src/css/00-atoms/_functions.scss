@@ -323,16 +323,16 @@ $medium-plus-screen: em($medium-plus-screen, 1.6rem);
 }
 
 // field rhythm
-@mixin field-rhythm($font-size, $height: $field-height) {
+@mixin field-rhythm($font-size, $height: $field-height, $padding-x: $small-value) {
     $font-size: rem($font-size);
     $height: rem($height);
-    $padding: em(($height - line-height($font-size) * $font-size) / 2, $font-size);
-    $small-value: em($small-value, $font-size);
-    @if $padding < 0 {
-        padding: 0 $small-value;
+    $padding-y: em(($height - line-height($font-size) * $font-size) / 2, $font-size);
+    $padding-x: em($padding-x, $font-size);
+    @if $padding-y < 0 {
+        padding: 0 $padding-x;
     }
     @else {
-        padding: $padding $small-value;
+        padding: $padding-y $padding-x;
     }
 }
 
