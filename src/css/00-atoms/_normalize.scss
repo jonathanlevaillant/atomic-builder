@@ -149,10 +149,12 @@ input::-moz-focus-inner {
 input[type="checkbox"],
 input[type="radio"] {
     box-sizing: border-box;
+    position: relative;
+    top: 1px;
     height: auto;
     margin-right: $small-value;
     padding: 0;
-    vertical-align: middle;
+    vertical-align: baseline;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
