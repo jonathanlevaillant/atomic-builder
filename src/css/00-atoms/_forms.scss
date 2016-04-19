@@ -22,13 +22,13 @@ textarea {
 label {
     display: inline-flex;
     align-items: center;
-    min-height: em($field-height, $label-size);
+    height: em($field-height, $label-size);
     margin-right: $small-value;
     @include vertical-rhythm($label-size);
     cursor: pointer;
 }
 textarea {
-    min-height: 2 * em($field-height, $field-size);
+    min-height: 3 * em($field-height, $field-size);
     resize: vertical;
 }
 select {
