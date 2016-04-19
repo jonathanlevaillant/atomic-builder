@@ -528,7 +528,7 @@ label {
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex;
-    min-height: 2.4em;
+    height: 2.4em;
     margin-right: 1.2rem;
     cursor: pointer;
     -webkit-box-align: center;
@@ -538,7 +538,7 @@ label {
 }
 
 textarea {
-    min-height: 4.8em;
+    min-height: 7.2em;
     resize: vertical;
 }
 
