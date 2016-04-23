@@ -134,7 +134,8 @@ gulp.task('critical', function() {
             base: destination,
             inline: true,
             height: 640,
-            minify: true
+            minify: true,
+            ignore: ['@font-face', /url\(/]
         }))
         .pipe(gulp.dest(destination));
 });
