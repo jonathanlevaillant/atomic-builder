@@ -3,7 +3,7 @@
 
 // icon font
 @font-face {
-    font-family: "<%= fontName %>";
+    font-family: <%= fontName %>;
     src: url("<%= fontPath %><%= fontName %>.woff2") format("woff2"),
          url("<%= fontPath %><%= fontName %>.woff") format("woff");
     font-weight: normal;
