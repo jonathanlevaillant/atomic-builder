@@ -3,19 +3,19 @@
 
 // icon font
 @font-face {
-    font-family: "icons";
-    src: url("../fonts/icons/icons.woff2") format("woff2"),
-         url("../fonts/icons/icons.woff") format("woff");
+    font-family: "<%= fontName %>";
+    src: url("<%= fontPath %><%= fontName %>.woff2") format("woff2"),
+         url("<%= fontPath %><%= fontName %>.woff") format("woff");
     font-weight: normal;
     font-style: normal;
 }
-.icon::before, .icon-after::after {
+.<%= className %>::before, .<%= className %>-after::after {
     position: relative;
 	top: -.05em;
 	display: inline-block;
 	vertical-align: middle;
     margin: 0 em($tiny-value) 0 0;
-	font: normal normal normal $line-height + em/0 icons;
+	font: normal normal normal $line-height + em/0 <%= fontName %>;
 	text-transform: none;
 	speak: none;
 	-webkit-font-smoothing: antialiased;
@@ -29,13 +29,7 @@
 }
 
 // library icons
-
-.icon--facebook::before, .icon--facebook.icon-after::after {
-    content: "\e900";
-}
-.icon--twitter::before, .icon--twitter.icon-after::after {
-    content: "\e901";
-}
-.icon--google::before, .icon--google.icon-after::after {
-    content: "\e902";
-}
+<% _.each(glyphs, function(glyph) { %>
+.<%= className %>--<%= glyph.name %>::before, .<%= className %>--<%= glyph.name %>.icon-after::after {
+    content: "\<%= glyph.unicode[0].charCodeAt(0).toString(16) %>";
+}<% }); %>
