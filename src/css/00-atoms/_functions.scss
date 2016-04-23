@@ -16,7 +16,7 @@
 // rem {
 @function rem($value) {
     $unit-extract: unit($value);
-    $number: $value / 1#{$unit-extract};
+    $number: $value / ($value * 0 + 1);
     @if $number == 0 {
         @return $number;
     }
@@ -34,7 +34,7 @@
 			$value: $number;
 		}
 		@else {
-			$value: $number * ($base-font-size / 1#{unit($base-font-size)});
+			$value: $number * ($base-font-size / ($base-font-size * 0 + 1));
 		}
     }
     @return decimal-round($value * 1rem);
@@ -43,7 +43,7 @@
 // em {
 @function em($value, $context: $base-font-size) {
 	$unit-extract: unit($value);
-	$number: $value / 1#{$unit-extract};
+	$number: $value / ($value * 0 + 1);
 	$context: rem($context) * 10 / 1rem;
 	@if $number == 0 {
         @return $number;
