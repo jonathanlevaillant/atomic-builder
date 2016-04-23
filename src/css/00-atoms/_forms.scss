@@ -20,10 +20,9 @@ textarea {
     border: 1px solid #ccc;
 }
 label {
-    display: inline-flex;
-    align-items: center;
-    height: em($field-height, $label-size);
+    display: inline-block;
     margin-right: $small-value;
+    @include field-rhythm($label-size, $field-height, 0);
     @include vertical-rhythm($label-size);
     cursor: pointer;
 }
