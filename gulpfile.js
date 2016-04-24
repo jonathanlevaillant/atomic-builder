@@ -29,6 +29,46 @@ gulp.task('clean', function() {
     return del(destination);
 });
 
+// task "html" = changed (source -> destination)
+gulp.task('html', function() {
+    return gulp.src(source + html)
+        .pipe(plugins.changed(destination))
+        .pipe(gulp.dest(destination))
+});
+
+// task "css" = sass + csscomb + autoprefixer + cssbeautify (source -> destination)
+gulp.task('css', function() {
+    return gulp.src([source + scss])
+        .pipe(plugins.wait(1000))
+        .pipe(plugins.sass({
+            errLogToConsole: true,
+            outputStyle: 'expanded'
+        })
+        .on('error', plugins.sass.logError))
+        .pipe(plugins.csscomb())
+        .pipe(plugins.autoprefixer())
+        .pipe(plugins.cssbeautify())
+        .pipe(gulp.dest(destination + 'css/'))
+});
+
+// task "js" = changed (source -> destination)
+gulp.task('js', function() {
+    return gulp.src(source + js)
+        .pipe(plugins.changed(destination + 'js/'))
+        .pipe(gulp.dest(destination + 'js/'))
+});
+
+// task "img" = imagemin (source -> destination)
+gulp.task('img', function() {
+    return gulp.src([source + img, '!' + source + icon])
+        .pipe(plugins.imagemin({
+            progressive: true,
+            interlaced: true,
+            multipass: true
+        }))
+        .pipe(gulp.dest(destination))
+});
+
 // task "icon" = icon (source -> source / source -> destination)
 gulp.task('icon', function() {
     gulp.src(source + icon)
@@ -53,31 +93,6 @@ gulp.task('icon', function() {
         .pipe(gulp.dest(destination + 'fonts/icons/'))
 });
 
-// task "html" = changed (source -> destination)
-gulp.task('html', function() {
-    return gulp.src(source + html)
-        .pipe(plugins.changed(destination))
-        .pipe(gulp.dest(destination))
-});
-
-// task "js" = changed (source -> destination)
-gulp.task('js', function() {
-    return gulp.src(source + js)
-        .pipe(plugins.changed(destination + 'js/'))
-        .pipe(gulp.dest(destination + 'js/'))
-});
-
-// task "img" = imagemin (source -> destination)
-gulp.task('img', function() {
-    return gulp.src([source + img, '!' + source + icon])
-        .pipe(plugins.imagemin({
-            progressive: true,
-            interlaced: true,
-            multipass: true
-        }))
-        .pipe(gulp.dest(destination))
-});
-
 // task "woff" = ttf2woff (source -> destination)
 gulp.task('woff', function() {
     return gulp.src(source + font)
@@ -92,22 +107,8 @@ gulp.task('woff2', function() {
         .pipe(gulp.dest(destination + 'fonts/'))
 });
 
-// task "css" = sass + csscomb + autoprefixer + cssbeautify (source -> destination)
-gulp.task('css', function() {
-    return gulp.src([source + scss])
-        .pipe(plugins.sass({
-            errLogToConsole: true,
-            outputStyle: 'expanded'
-        })
-        .on('error', plugins.sass.logError))
-        .pipe(plugins.csscomb())
-        .pipe(plugins.autoprefixer())
-        .pipe(plugins.cssbeautify())
-        .pipe(gulp.dest(destination + 'css/'))
-});
-
 // task "build"
-gulp.task('build', gulpsync.sync(['clean', 'icon', 'html', 'js', 'img', 'woff'/*, 'woff2'*/, 'css']));
+gulp.task('build', gulpsync.sync(['clean', 'icon', ['html', 'css', 'js', 'img', 'woff'/*, 'woff2'*/]]));
 
 /* task "prod" = "build" + "url" + "cssmin" + "jsmin" + "critical" + "htmlmin" + "cleancss" + "cleanjs"
    ========================================================================== */
