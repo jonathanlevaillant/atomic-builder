@@ -108,7 +108,7 @@ gulp.task('woff2', function() {
 });
 
 // task "build"
-gulp.task('build', gulpsync.sync(['clean', 'icon', ['html', 'css', 'js', 'img', 'woff'/*, 'woff2'*/]]));
+gulp.task('build', gulpsync.sync(['clean', 'icon', ['html', 'css', 'js', 'img', 'woff', 'woff2']]));
 
 /* task "prod" = "build" + "url" + "cssmin" + "jsmin" + "critical" + "htmlmin" + "cleancss" + "cleanjs"
    ========================================================================== */
