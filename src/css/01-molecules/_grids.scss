@@ -27,6 +27,12 @@
 /* grids responsive
    ========================================================================== */
 
+// grid medium
+@media (max-width: $medium-screen) {
+    @include grid-childs($modifier: "medium", $end: 6);
+    @include grid-helpers("medium");
+}
+
 // grid small
 @media (max-width: $small-screen) {
     @include grid-childs($modifier: "small", $end: 4);
