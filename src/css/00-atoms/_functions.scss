@@ -77,7 +77,7 @@ $tiny-value: rem($tiny-value);
 $small-value: rem($small-value);
 $medium-value: rem($medium-value);
 $large-value: rem($large-value);
-$extra-value: rem($extra-value);
+$extra-large-value: rem($extra-large-value);
 $field-height: rem($field-height);
 $button-height: rem($button-height);
 $label-size: rem($label-size);
@@ -388,7 +388,7 @@ $medium-plus-screen: em($medium-plus-screen, 1.6rem);
 
 // spacing helpers
 @mixin spacing-helpers($property...) {
-    $values: ($small-value: "s", $medium-value: "m", $large-value: "l", $extra-value: "e");
+    $values: ($small-value: "s", $medium-value: "m", $large-value: "l", $extra-large-value: "xl");
     $properties: $property;
     @each $property in $properties {
         .#{str-prefix($property)}an {
