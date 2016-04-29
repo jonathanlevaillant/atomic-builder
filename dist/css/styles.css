@@ -531,6 +531,7 @@ label,
     margin-right: 1.2rem;
     padding: .8em 0;
     cursor: pointer;
+    vertical-align: top;
 }
 
 .label--light {
