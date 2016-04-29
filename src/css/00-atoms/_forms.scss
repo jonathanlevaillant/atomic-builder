@@ -22,7 +22,6 @@ textarea {
 label,
 .label {
     display: inline-block;
-    vertical-align: top;
     margin-right: $small-value;
     @include field-rhythm($label-size, $field-height, 0);
     @include vertical-rhythm($label-size);
@@ -30,6 +29,7 @@ label,
 }
 .label--light {
     @include field-rhythm($label-size, $field-height / 2, 0);
+    vertical-align: top;
 }
 textarea {
     min-height: 3 * em($field-height, $field-size);
