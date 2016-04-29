@@ -518,8 +518,8 @@ select,
 textarea {
     font-size: 1.5rem;
     line-height: 1.6;
-    height: 2.4em;
-    padding: .4em .8em;
+    height: 3.2em;
+    padding: .8em .8em;
     border: 1px solid #ccc;
 }
 
@@ -528,12 +528,12 @@ label {
     line-height: 1.6;
     display: inline-block;
     margin-right: 1.2rem;
-    padding: .4em 0;
+    padding: .8em 0;
     cursor: pointer;
 }
 
 textarea {
-    min-height: 7.2em;
+    min-height: 9.6em;
     resize: vertical;
 }
 
@@ -570,7 +570,7 @@ input[type='submit'] {
     font-size: 1.5rem;
     line-height: 1.6;
     height: auto;
-    padding: .4em 1.6em;
+    padding: .8em 1.6em;
     border: 0;
     background: #ccc;
 }

@@ -7,6 +7,22 @@
 		<!-- build:css css/styles.min.css -->
         <link rel="stylesheet" href="css/styles.css" media="all">
         <!-- endbuild -->
+        <style>
+            body {
+                background: linear-gradient(to bottom, #ccc, #ccc 1px, #fff 1px, #fff 50%, #ccc 50%, #ccc calc(50% + 1px), #fff calc(50% + 1px), #fff);
+                background-size: 100% 48px;
+            }
+            .grid__item {
+                padding: .8em;
+                background: #eee;
+            }
+            .grid__item .grid__item {
+                background: #ddd;
+            }
+            .grid__item .grid__item .grid__item {
+                background: #ccc;
+            }
+        </style>
 	</head>
 	<body>
 		<article class="wrapper">
@@ -82,6 +98,119 @@
 			<p><button type="button">Button</button></p>
 			<p><a href="#" class="btn">Link Button</a></p>
 			<p><button type="button" disabled>Disabled Button</button></p>
+            <p>Grid 1 column</p>
+            <div class="grid grid--1">
+                <div class="grid__item">1</div>
+            </div>
+            <p>Grid 2 columns</p>
+            <div class="grid grid--2">
+                <div class="grid__item">1/2</div>
+                <div class="grid__item">1/2</div>
+            </div>
+            <p>Grid 3 columns</p>
+            <div class="grid grid--3">
+                <div class="grid__item">1/3</div>
+                <div class="grid__item">1/3</div>
+                <div class="grid__item">1/3</div>
+            </div>
+            <p>Grid 4 columns - Grid medium 1 column</p>
+            <div class="grid grid--4 grid--medium-1">
+                <div class="grid__item">1/4</div>
+                <div class="grid__item">1/4</div>
+                <div class="grid__item">1/4</div>
+                <div class="grid__item">1/4</div>
+            </div>
+            <p>Grid 6 columns - Grid small 2 columns</p>
+            <div class="grid grid--6 grid--small-2">
+                <div class="grid__item">1/6</div>
+                <div class="grid__item">1/6</div>
+                <div class="grid__item">1/6</div>
+                <div class="grid__item">1/6</div>
+                <div class="grid__item">1/6</div>
+                <div class="grid__item">1/6</div>
+            </div>
+            <p>Grid 12 columns - Grid medium 6 columns - Grid small 3 columns - Grid tiny 1 column</p>
+            <div class="grid grid--12 grid--medium-6 grid--small-3 grid--tiny-1">
+                <div class="grid__item">1/6</div>
+                <div class="grid__item">1/6</div>
+                <div class="grid__item">1/6</div>
+                <div class="grid__item">1/6</div>
+                <div class="grid__item">1/6</div>
+                <div class="grid__item">1/6</div>
+                <div class="grid__item">1/6</div>
+                <div class="grid__item">1/6</div>
+                <div class="grid__item">1/6</div>
+                <div class="grid__item">1/6</div>
+                <div class="grid__item">1/6</div>
+                <div class="grid__item">1/6</div>
+            </div>
+            <p>Grid 3 columns stretch (default)</p>
+            <div class="grid grid--3">
+                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non gravida venenatis. Praesent consequat lectus purus, ut scelerisque velit condimentum eu. Maecenas sagittis ante ut turpis varius interdum. Quisque tellus ipsum, eleifend non ipsum id, suscipit ultricies neque.</div>
+                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+            </div>
+            <p>Grid 3 columns start</p>
+            <div class="grid grid--3 grid--cross-start">
+                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non gravida venenatis. Praesent consequat lectus purus, ut scelerisque velit condimentum eu. Maecenas sagittis ante ut turpis varius interdum. Quisque tellus ipsum, eleifend non ipsum id, suscipit ultricies neque.</div>
+                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+            </div>
+            <p>Grid 3 columns center</p>
+            <div class="grid grid--3 grid--cross-center">
+                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non gravida venenatis. Praesent consequat lectus purus, ut scelerisque velit condimentum eu. Maecenas sagittis ante ut turpis varius interdum. Quisque tellus ipsum, eleifend non ipsum id, suscipit ultricies neque.</div>
+                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+            </div>
+            <p>Grid 3 columns end</p>
+            <div class="grid grid--3 grid--cross-end">
+                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non gravida venenatis. Praesent consequat lectus purus, ut scelerisque velit condimentum eu. Maecenas sagittis ante ut turpis varius interdum. Quisque tellus ipsum, eleifend non ipsum id, suscipit ultricies neque.</div>
+                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+            </div>
+            <p>Grid uneven 1/3</p>
+            <div class="grid grid--uneven-1-3">
+                <div class="grid__item">1/3</div>
+                <div class="grid__item">2/3</div>
+            </div>
+            <p>Grid uneven 3/4 - Grid small 1 column</p>
+            <div class="grid grid--uneven-3-4 grid--small-1">
+                <div class="grid__item">3/4</div>
+                <div class="grid__item">1/4</div>
+            </div>
+            <p>Grid uneven 3/4 - Grid medium 1/4 first item - Grid small 1 column</p>
+            <div class="grid grid--uneven-3-4 grid--small-1">
+                <div class="grid__item">3/4</div>
+                <div class="grid__item grid__item--medium-first">1/4</div>
+            </div>
+            <p>Grid 1/2 + 3 auto columns - Grid small 2 columns - Grid small 1/2 last item</p>
+            <div class="grid grid--2 grid--small-2">
+                <div class="grid__item grid__item--small-last">1/2</div>
+                <div class="grid__item grid__item--fluid grid__item--small-initial">auto</div>
+                <div class="grid__item grid__item--fluid grid__item--small-initial">auto</div>
+                <div class="grid__item grid__item--fluid grid__item--small-initial">auto</div>
+            </div>
+            <p>Grid auto column + 1/6 + auto column</p>
+            <div class="grid grid--6">
+                <div class="grid__item grid__item--fluid">auto</div>
+                <div class="grid__item">1/6</div>
+                <div class="grid__item grid__item--fluid">auto</div>
+            </div>
+            <p>Grid nesting columns</p>
+            <div class="grid grid--uneven-2-3">
+                <div class="grid__item">
+                    <div class="grid grid--uneven-1-3">
+                        <div class="grid__item">1/3</div>
+                        <div class="grid__item">
+                            <div class="grid grid--2">
+                                <div class="grid__item">1/2</div>
+                                <div class="grid__item">1/2</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid__item">1/3</div>
+            </div>
 		</article>
 	</body>
 </html>
