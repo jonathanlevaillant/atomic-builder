@@ -1,0 +1,17 @@
+/* medias
+   ========================================================================== */
+
+// media object
+.o-media {
+    overflow: hidden;
+}
+.o-media__img {
+    float: left;
+    margin-right: $grid-gutter;
+    margin-bottom: 1px;
+}
+.o-media__img--reverse {
+    float: right;
+    margin-right: auto;
+    margin-left: $grid-gutter;
+}

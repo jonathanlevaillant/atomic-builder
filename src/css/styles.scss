@@ -1,25 +1,30 @@
 /* imports
    ========================================================================== */
 
-// 00-atoms
-@import "00-atoms/fonts";
-@import "00-atoms/config";
-@import "00-atoms/functions";
-@import "00-atoms/normalize";
-@import "00-atoms/base";
-@import "00-atoms/icons";
-@import "00-atoms/forms";
-@import "00-atoms/tables";
+// import settings
+@import "settings/global-variables";
+@import "settings/color-variables";
+@import "settings/fonts";
 
-// 01-molecules
-@import "01-molecules/layout";
-@import "01-molecules/grids";
-@import "01-molecules/helpers";
-@import "01-molecules/responsive";
-@import "01-molecules/print";
+// import tools
+@import "tools/functions";
+@import "tools/mixins";
 
-// 02-organisms
+// import generic
+@import "generic/normalize";
 
-// 03-templates
+// import base
+@import "base/base";
+@import "base/forms";
+@import "base/tables";
+@import "base/print";
+@import "base/responsive";
 
-// 04-pages
+// import objects
+@import "objects/grids";
+@import "objects/layout";
+@import "objects/medias";
+@import "objects/utilities";
+
+// import components
+@import "components/icons";

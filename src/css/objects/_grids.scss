@@ -1,0 +1,49 @@
+/* grids
+   ========================================================================== */
+
+// grid container
+.o-grid {
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: -$grid-spacing;
+    margin-left: -$grid-gutter;
+}
+
+// grid childs
+.o-grid__item {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    padding-bottom: $grid-spacing;
+    padding-left: $grid-gutter;
+    min-height: 0;
+    min-width: 0;
+}
+
+// grid childs generator
+@include grid();
+
+// grid cols
+@include grid-cols();
+
+/* grids responsive
+   ========================================================================== */
+
+// grid childs large screen
+@media (max-width: $large-screen) {
+    @include grid("lg");
+}
+
+// grid childs medium screen
+@media (max-width: $medium-screen) {
+    @include grid("md", 6);
+}
+
+// grid childs small screen
+@media (max-width: $small-screen) {
+    @include grid("sm", 4);
+}
+
+// grid childs extra small screen
+@media (max-width: $extra-small-screen) {
+    @include grid("xs", 2);
+}

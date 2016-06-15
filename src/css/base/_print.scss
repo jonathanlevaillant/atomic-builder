@@ -1,13 +1,13 @@
-/* quick print reset
+/* print
    ========================================================================== */
 
 @media print {
 
-    // reset
+    // print reset
     * {
-        background: transparent !important;
-        box-shadow: none !important;
-        text-shadow: none !important;
+        text-shadow: none;
+        background: transparent;
+        box-shadow: none;
     }
     body {
         width: auto;
@@ -16,57 +16,53 @@
         font-size: 12pt;
     }
     p,
-    .p,
+    .c-p,
     h1,
-    .h1,
+    .c-h1,
     h2,
-    .h2,
+    .c-h2,
     h3,
-    .h3,
+    .c-h3,
     h4,
-    .h4,
+    .c-h4,
     h5,
-    .h5,
+    .c-h5,
     h6,
-    .h6,
+    .c-h6,
     blockquote,
     ul,
     ol {
         margin: auto;
         color: #000;
     }
-    .print {
-        display: block;
-    }
-    .no-print {
-        display: none;
-    }
 
-    // no orphans, no widows
+    // print no orphans, no widows
     p,
-    .p,
+    .c-p,
     blockquote {
         orphans: 3;
         widows: 3;
     }
 
-    // no breaks inside these elements
+    // print no breaks inside these elements
     blockquote,
     ul,
     ol {
         page-break-inside: avoid;
     }
 
-    // no breaks after these elements
+    // print no breaks after these elements
     h1,
-    .h1,
+    .c-h1,
     h2,
-    .h2,
+    .c-h2,
     h3,
-    .h3,
+    .c-h3,
     caption {
         page-break-after: avoid;
     }
+
+    // print links
     a {
         color: #000;
     }

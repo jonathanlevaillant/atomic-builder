@@ -1,7 +1,7 @@
 /* base
    ========================================================================== */
 
-// soft reset
+// base reset
 html {
     box-sizing: border-box;
 }
@@ -24,27 +24,27 @@ figure {
     margin-left: 0;
 }
 
-// typography
+// base typography
 html {
     font-size: 62.5%;
     font-size: calc(1em * .625);
 }
 body {
-    background-color: $base-background;
     font-family: $font-stack-common;
     @include vertical-rhythm($base-font-size);
-    color: $base-color;
+    color: $color-text;
+    background-color: $color-background;
 }
 a {
-    color: $base-color-link;
+    color: $color-link;
     &:hover,
     &:focus,
     &:active {
-        color: $base-color-link-hover;
+        color: $color-link-hover;
     }
 }
 p,
-.p,
+.c-p,
 ul,
 ol,
 dl,
@@ -60,110 +60,96 @@ figure {
     line-height: $line-height;
 }
 h1,
-.h1 {
+.c-h1 {
     margin-top: $medium-value;
     margin-bottom: 0;
     font-family: $font-stack-headings;
     @include vertical-rhythm($h1-size);
 }
 h2,
-.h2 {
+.c-h2 {
     margin-top: $medium-value;
     margin-bottom: 0;
     font-family: $font-stack-headings;
     @include vertical-rhythm($h2-size);
 }
 h3,
-.h3 {
+.c-h3 {
     margin-top: $medium-value;
     margin-bottom: 0;
     font-family: $font-stack-headings;
     @include vertical-rhythm($h3-size);
 }
 h4,
-.h4 {
+.c-h4 {
     margin-top: $medium-value;
     margin-bottom: 0;
     font-family: $font-stack-headings;
     @include vertical-rhythm($h4-size);
 }
 h5,
-.h5 {
+.c-h5 {
     margin-top: $medium-value;
     margin-bottom: 0;
     font-family: $font-stack-headings;
     @include vertical-rhythm($h5-size);
 }
 h6,
-.h6 {
+.c-h6 {
     margin-top: $medium-value;
     margin-bottom: 0;
     font-family: $font-stack-headings;
     @include vertical-rhythm($h6-size);
 }
-
-// alternate font-sizing
-.big {
-    font-size: $big-size;
-}
-.small {
-    font-size: $small-size;
-}
 code,
 pre,
 samp,
 kbd {
-    white-space: pre-line;
-    white-space: pre-wrap;
     font-family: $font-stack-monospace;
     line-height: normal;
+    white-space: pre-line;
+    white-space: pre-wrap;
 }
-.italic,
+em,
 address,
 cite,
-em,
 i,
 var {
     font-style: italic;
 }
 
-// browsers consistency
+// base margins
 p,
-.p,
+.c-p,
 ul,
 ol,
 dl,
 blockquote,
 pre,
 h1,
-.h1,
+.c-h1,
 h2,
-.h2,
+.c-h2,
 h3,
-.h3,
+.c-h3,
 h4,
-.h4,
+.c-h4,
 h5,
-.h5,
+.c-h5,
 h6,
-.h6,
-caption,
-details,
-figure {
+.c-h6 {
     &:first-child {
         margin-top: 0;
     }
 }
-
-// avoid margins on nested elements
 li p,
-li .p,
+li .c-p,
 li ul,
 li ol {
     margin-top: 0;
 }
 
-// max values
+// base max values
 img,
 table,
 td,
@@ -175,17 +161,4 @@ input,
 video,
 svg {
     max-width: 100%;
-}
-
-// google gmap3 bug fix on images
-.gm-style img {
-    height: 100%;
-}
-:not(.gm-style) img {
-    height: auto;
-}
-.gm-style img,
-.gmnoscreen img,
-.gmnoprint img {
-    max-width: none !important;
 }

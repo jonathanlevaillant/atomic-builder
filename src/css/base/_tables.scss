@@ -1,24 +1,24 @@
 /* tables
    ========================================================================== */
 
-// default table
+// table layout
 table,
-.table {
+.c-table {
     width: 100%;
     max-width: 100%;
-    table-layout: fixed;
     border-collapse: collapse;
+    table-layout: fixed;
     vertical-align: top;
 }
-.table {
+.c-table {
     display: table;
 }
-.table--auto {
-    table-layout:auto;
+.c-table--auto {
+    table-layout: auto;
 }
 td,
 th {
-    min-width: column-width(1);
+    min-width: width-col(1);
     vertical-align: top;
     cursor: default;
 }

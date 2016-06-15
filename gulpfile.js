@@ -19,7 +19,7 @@ var jsmin = 'js/global.min.js';
 var img = '/**/*.{png,jpg,jpeg,gif,svg}';
 var font = 'fonts/**/*.ttf';
 var icon = 'fonts/icons/*.svg';
-var template = 'css/00-atoms/template/_icons.scss';
+var template = 'css/components/template/_icons.scss';
 
 /* task "build" = "clean" + "html" + "css" + "js" + "img" + "woff" + "icon"
    ========================================================================== */
@@ -39,7 +39,6 @@ gulp.task('html', function() {
 // task "css" = sass + csscomb + autoprefixer + cssbeautify (source -> destination)
 gulp.task('css', function() {
     return gulp.src([source + scss])
-        .pipe(plugins.wait(1000))
         .pipe(plugins.sass({
             errLogToConsole: true,
             outputStyle: 'expanded'
@@ -75,7 +74,6 @@ gulp.task('icon', function() {
         .pipe(plugins.iconfont({
             fontName: 'icons',
             formats: ['woff', 'woff2'],
-            fixedWidth: true,
             normalize: true,
             centerHorizontally: true,
             timestamp: Math.round(Date.now()/1000)
@@ -88,7 +86,7 @@ gulp.task('icon', function() {
                     fontPath: '../fonts/icons/',
                     className: 'icon'
             }))
-            .pipe(gulp.dest(source + 'css/00-atoms/'))
+            .pipe(gulp.dest(source + 'css/components/'))
         })
         .pipe(gulp.dest(destination + 'fonts/icons/'))
 });
@@ -108,7 +106,7 @@ gulp.task('woff2', function() {
 });
 
 // task "build"
-gulp.task('build', gulpsync.sync(['clean', 'icon', ['html', 'css', 'js', 'img', 'woff', 'woff2']]));
+gulp.task('build', gulpsync.sync(['clean', 'icon', ['html', 'css', 'js', 'img', 'woff'/*, 'woff2'*/]]));
 
 /* task "prod" = "build" + "url" + "cssmin" + "jsmin" + "critical" + "htmlmin" + "cleancss" + "cleanjs"
    ========================================================================== */

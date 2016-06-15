@@ -1,0 +1,191 @@
+/* mixins
+   ========================================================================== */
+
+// mixin convert to rem
+$base-font-size         : rem($base-font-size);
+$h1-size                : rem($h1-size);
+$h2-size                : rem($h2-size);
+$h3-size                : rem($h3-size);
+$h4-size                : rem($h4-size);
+$h5-size                : rem($h5-size);
+$h6-size                : rem($h6-size);
+$big-size               : rem($big-size);
+$small-size             : rem($small-size);
+$label-size             : rem($label-size);
+$field-size             : rem($field-size);
+$btn-size               : rem($btn-size);
+$extra-small-value      : rem($extra-small-value);
+$small-value            : rem($small-value);
+$medium-value           : rem($medium-value);
+$large-value            : rem($large-value);
+$extra-large-value      : rem($extra-large-value);
+$field-height           : rem($field-height);
+$btn-height             : rem($btn-height);
+$wrapper-layout         : rem($wrapper-layout);
+$margin-layout          : rem($margin-layout);
+$grid-gutter            : rem($grid-gutter);
+$grid-spacing           : rem($grid-spacing);
+
+// mixin convert to em
+$extra-small-screen     : em($extra-small-screen, 16px);
+$small-screen           : em($small-screen, 16px);
+$medium-screen          : em($medium-screen, 16px);
+$large-screen           : em($large-screen, 16px);
+
+// mixin vertical rhythm
+@mixin vertical-rhythm($font-size, $vertical-rhythm: $base-font-size * $line-height) {
+    $font-size: rem($font-size);
+    font-size: $font-size;
+    line-height: line-height($font-size, $vertical-rhythm);
+}
+
+// mixin field rhythm
+@mixin field-rhythm($font-size, $height: $field-height, $padding-x: $small-value) {
+    $font-size: rem($font-size);
+    $height: rem($height);
+    $padding-y: em(($height - line-height($font-size) * $font-size) / 2, $font-size);
+    $padding-x: em($padding-x, $font-size);
+    @if $padding-y < 0 {
+        padding: 0 $padding-x;
+    }
+    @else {
+        padding: $padding-y $padding-x;
+    }
+}
+
+// mixin grid
+@mixin grid($modifier: null, $grid-number: $grid-number) {
+    @if $modifier {
+        $modifier: "\\@" + $modifier;
+    }
+    @for $i from 1 through $grid-number {
+        .o-grid--#{$i}#{$modifier} {
+            & > .o-grid__item {
+                width: decimal-round(100% / $i);
+            }
+        }
+    }
+}
+
+// mixin grid cols
+@mixin grid-cols($grid-number: $grid-number) {
+    @for $i from 1 through $grid-number {
+        .o-grid__item--col-#{$i} {
+            width: decimal-round(100% * $i / $grid-number);
+        }
+    }
+}
+
+// mixin width helpers
+@mixin width-helpers($start: 1, $end: 100, $step: 10) {
+    @for $i from $start through $end {
+        @if $i == 33 {
+            .u-w#{$i} {
+                width: decimal-round(100% / 3);
+            }
+        }
+        @else if $i == 66 {
+            .u-w#{$i} {
+                width: decimal-round(100% * 2 / 3);
+            }
+        }
+        @else if $i % $step == 0 or $i == 25 or $i == 75 {
+            .u-w#{$i} {
+                width: percentage($i / 100);
+            }
+        }
+    }
+    .u-wauto {
+        width: auto;
+    }
+}
+
+// mixin width cols
+@mixin width-cols($start: 1, $end: $grid-number) {
+    @for $i from $start through $end {
+        .u-col-#{$i} {
+            width: width-col($i);
+        }
+    }
+}
+
+// mixin wrapper
+@mixin wrapper() {
+    .o-wrapper {
+        margin-right: auto;
+        margin-left: auto;
+        @if $margin-layout != 0 {
+            padding-right: $margin-layout;
+            padding-left: $margin-layout;
+        }
+        max-width: $wrapper-layout + $margin-layout * 2;
+    }
+}
+
+// mixin spacing helpers
+@mixin spacing-helpers($property...) {
+    $values: ($extra-small-value: "xs", $small-value: "sm", $medium-value: "md", $large-value: "lg", $extra-large-value: "xl");
+    $properties: $property;
+    @each $property in $properties {
+        .u-#{slice($property)}an {
+            #{$property}: 0;
+        }
+        .u-#{slice($property)}tn {
+            #{$property}-top: 0;
+        }
+        .u-#{slice($property)}rn {
+            #{$property}-right: 0;
+        }
+        .u-#{slice($property)}bn {
+            #{$property}-bottom: 0;
+        }
+        .u-#{slice($property)}ln {
+            #{$property}-left: 0;
+        }
+        @each $value in $values {
+            .u-#{slice($property)}t#{nth($value, 2)} {
+                #{$property}-top: nth($value, 1);
+            }
+            .u-#{slice($property)}r#{nth($value, 2)} {
+                #{$property}-right: nth($value, 1);
+            }
+            .u-#{slice($property)}b#{nth($value, 2)} {
+                #{$property}-bottom: nth($value, 1);
+            }
+            .u-#{slice($property)}l#{nth($value, 2)} {
+                #{$property}-left: nth($value, 1);
+            }
+        }
+    }
+}
+
+// responsive helpers
+@mixin responsive-helpers($label) {
+    .u-hidden\@#{$label} {
+        display: none;
+    }
+    .u-visible\@#{$label} {
+        display: block;
+    }
+    .u-no-float\@#{$label} {
+        float: none;
+    }
+    .u-inbl\@#{$label} {
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+    }
+    .u-w100\@#{$label},
+    .u-wauto\@#{$label} {
+        display: block;
+        float: none;
+        clear: none;
+        width: auto;
+        margin-right: 0;
+        margin-left: 0;
+        border: 0;
+    }
+    .u-man\@#{$label} {
+        margin: 0;
+    }
+}

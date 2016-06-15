@@ -1,0 +1,19 @@
+/* color variables
+   ========================================================================== */
+
+// color variables name
+$_black                 : #000 !default;
+$_white                 : #fff !default;
+$_light-grey            : #ccc !default;
+$_dark-grey             : #333 !default;
+
+// color variables font
+$color-text             : $_black !default;
+$color-link             : $_dark-grey !default;
+$color-link-hover       : $_black !default;
+
+// color variables interface
+$color-background       : $_white !default;
+$color-background-btn   : $_light-grey !default;
+$color-border-field     : $_light-grey !default;
+$color-separator        : $_light-grey !default;

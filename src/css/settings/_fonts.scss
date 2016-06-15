@@ -1,0 +1,19 @@
+/* fonts
+   ========================================================================== */
+
+// font Open Sans 400
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/open-sans/open-sans-400.woff2") format("woff2"),
+         url("../fonts/open-sans/open-sans-400.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+// font Open Sans 700
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/open-sans/open-sans-700.woff2") format("woff2"),
+         url("../fonts/open-sans/open-sans-700.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+}

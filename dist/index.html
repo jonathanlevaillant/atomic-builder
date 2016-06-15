@@ -7,40 +7,40 @@
 		<!-- build:css css/styles.min.css -->
         <link rel="stylesheet" href="css/styles.css" media="all">
         <!-- endbuild -->
-        <style>
-            body {
-                background: linear-gradient(to bottom, #ccc, #ccc 1px, #fff 1px, #fff 50%, #ccc 50%, #ccc calc(50% + 1px), #fff calc(50% + 1px), #fff);
-                background-size: 100% 48px;
-            }
-            .grid__item {
-                padding: 1.6em;
-                background: #eee;
-            }
-            .grid__item .grid__item {
-                background: #ddd;
-            }
-            .grid__item .grid__item .grid__item {
-                background: #ccc;
-            }
-        </style>
+		<style>
+			body {
+				background: linear-gradient(to bottom, #ccc, #ccc 1px, #fff 1px, #fff 50%, #ccc 50%, #ccc calc(50% + 1px), #fff calc(50% + 1px), #fff);
+				background-size: 100% 48px;
+			}
+			.c-demo {
+				padding: 1.6em;
+				background: #eee;
+			}
+			.c-demo .c-demo {
+				background: #ddd;
+			}
+			.c-demo .c-demo .c-demo {
+				background: #ccc;
+			}
+		</style>
 	</head>
 	<body>
-		<article class="wrapper">
+		<article class="o-wrapper">
 			<h1>Heading Level 1</h1>
 			<h2>Heading Level 2</h2>
 			<h3>Heading Level 3</h3>
 			<h4>Heading Level 4</h4>
 			<h5>Heading Level 5</h5>
 			<h6>Heading Level 6</h6>
-			<p class="small-hidden tiny-hidden">This text is hidden on smaller screens</p>
-			<p class="large-hidden medium-hidden">This text is only visible on smaller screens</p>
-			<p class="medium-hidden">This text is hidden on medium screens only</p>
-			<p class="large-hidden small-hidden tiny-hidden">This text is only visible on medium screens</p>
-			<p class="large-hidden">This text is hidden on large screens</p>
-			<p class="medium-hidden small-hidden tiny-hidden">This text is only visible on large screens</p>
+			<p class="u-hidden@sm u-hidden@xs">This text is hidden on smaller screens</p>
+			<p class="u-hidden u-visible@sm u-visible@xs">This text is only visible on smaller screens</p>
+			<p class="u-hidden@md">This text is hidden on medium screens only</p>
+			<p class="u-hidden u-visible@md">This text is only visible on medium screens</p>
+			<p class="u-hidden@xl u-hidden@lg">This text is hidden on large screens</p>
+			<p class="u-hidden u-visible@xl u-visible@lg">This text is only visible on large screens</p>
 			<p>A paragraph (from the Greek paragraphos, "to write beside" or "written beside") is a self-contained unit of a discourse in
-			writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax
-			of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.</p>
+				writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax
+				of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.</p>
 			<p><a href="#">This is a text link</a></p>
 			<p><strong>Strong is used to indicate strong importance</strong></p>
 			<p><em>This text has added emphasis</em></p>
@@ -72,145 +72,139 @@
 				</li>
 				<li>This is the last list item</li>
 			</ol>
-			<p><span class="icon icon--facebook"></span><span class="icon icon--twitter"></span><span class="icon icon--google"></span></p>
+			<p><span class="c-icon c-icon--facebook"></span><span class="c-icon c-icon--twitter"></span><span class="c-icon c-icon--google"></span></p>
 			<p><label for="text">Text Input</label><input type="text" id="text" placeholder="Text Input" /></p>
 			<p><label for="emailaddress">Email Address</label><input type="email" id="emailaddress" placeholder="name@email.com" /></p>
 			<p><label for="search">Search</label><input type="search" id="search" placeholder="Enter Search Term" /></p>
 			<p><label for="password">Password<sup>*</sup></label><input type="password" id="password" placeholder="Type your Password" required /></p>
 			<p><label for="textarea">Textarea</label><textarea id="textarea" placeholder="Enter your message here"></textarea></p>
 			<p><label for="select">Select</label><select id="select"><option>Option One</option><option>Option Two</option><option>Option Three</option></select></p>
-			<fieldset class="p">
+			<fieldset class="c-p">
 				<legend>Checkbox</legend>
-				<ul class="unstyled mtn">
-					<li><input id="checkbox1" name="checkbox" type="checkbox" checked="checked"><label for="checkbox1" class="label--light">Choice A</label></li>
-					<li><input id="checkbox2" name="checkbox" type="checkbox"><label for="checkbox2" class="label--light">Choice B</label></li>
-					<li><input id="checkbox3" name="checkbox" type="checkbox"><label for="checkbox3" class="label--light">Choice C</label></li>
+				<ul class="u-list-unstyled u-mtn">
+					<li><input id="checkbox1" name="checkbox" type="checkbox" checked="checked"><label for="checkbox1" class="c-label--light">Choice A</label></li>
+					<li><input id="checkbox2" name="checkbox" type="checkbox"><label for="checkbox2" class="c-label--light">Choice B</label></li>
+					<li><input id="checkbox3" name="checkbox" type="checkbox"><label for="checkbox3" class="c-label--light">Choice C</label></li>
 				</ul>
 			</fieldset>
-			<fieldset class="p">
+			<fieldset class="c-p">
 				<legend>Radio</legend>
-				<ul class="unstyled mtn">
-					<li><input id="radio1" name="radio" type="radio" class="radio" checked="checked"><label for="radio1" class="label--light">Option 1<br />multiline</label></li>
-					<li><input id="radio2" name="radio" type="radio" class="radio"><label for="radio2" class="label--light">Option 2</label></li>
-					<li><input id="radio3" name="radio" type="radio" class="radio"><label for="radio3" class="label--light">Option 3</label></li>
+				<ul class="u-list-unstyled u-mtn">
+					<li><input id="radio1" name="radio" type="radio" checked="checked"><label for="radio1" class="c-label--light">Option 1<br />multiline</label></li>
+					<li><input id="radio2" name="radio" type="radio"><label for="radio2" class="c-label--light">Option 2</label></li>
+					<li><input id="radio3" name="radio" type="radio"><label for="radio3" class="c-label--light">Option 3</label></li>
 				</ul>
 			</fieldset>
 			<p><button type="button">Button</button></p>
-			<p><a href="#" class="btn">Link Button</a></p>
+			<p><a href="#" class="c-btn">Link Button</a></p>
 			<p><button type="button" disabled>Disabled Button</button></p>
-            <p>Grid 1 column</p>
-            <div class="grid grid--1">
-                <div class="grid__item">1</div>
-            </div>
-            <p>Grid 2 columns</p>
-            <div class="grid grid--2">
-                <div class="grid__item">1/2</div>
-                <div class="grid__item">1/2</div>
-            </div>
-            <p>Grid 3 columns</p>
-            <div class="grid grid--3">
-                <div class="grid__item">1/3</div>
-                <div class="grid__item">1/3</div>
-                <div class="grid__item">1/3</div>
-            </div>
-            <p>Grid 4 columns - Grid medium 1 column</p>
-            <div class="grid grid--4 grid--medium-1">
-                <div class="grid__item">1/4</div>
-                <div class="grid__item">1/4</div>
-                <div class="grid__item">1/4</div>
-                <div class="grid__item">1/4</div>
-            </div>
-            <p>Grid 6 columns - Grid small 2 columns</p>
-            <div class="grid grid--6 grid--small-2">
-                <div class="grid__item">1/6</div>
-                <div class="grid__item">1/6</div>
-                <div class="grid__item">1/6</div>
-                <div class="grid__item">1/6</div>
-                <div class="grid__item">1/6</div>
-                <div class="grid__item">1/6</div>
-            </div>
-            <p>Grid 12 columns - Grid medium 6 columns - Grid small 3 columns - Grid tiny 1 column</p>
-            <div class="grid grid--12 grid--medium-6 grid--small-3 grid--tiny-1">
-                <div class="grid__item">1/6</div>
-                <div class="grid__item">1/6</div>
-                <div class="grid__item">1/6</div>
-                <div class="grid__item">1/6</div>
-                <div class="grid__item">1/6</div>
-                <div class="grid__item">1/6</div>
-                <div class="grid__item">1/6</div>
-                <div class="grid__item">1/6</div>
-                <div class="grid__item">1/6</div>
-                <div class="grid__item">1/6</div>
-                <div class="grid__item">1/6</div>
-                <div class="grid__item">1/6</div>
-            </div>
-            <p>Grid 3 columns stretch (default)</p>
-            <div class="grid grid--3">
-                <div class="grid__item">LLorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</div>
-                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non gravida venenatis. Praesent consequat lectus purus, ut scelerisque velit condimentum eu. Maecenas sagittis ante ut turpis varius interdum. Quisque tellus ipsum, eleifend non ipsum id, suscipit ultricies neque.</div>
-                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</div>
-            </div>
-            <p>Grid 3 columns start</p>
-            <div class="grid grid--3 grid--cross-start">
-                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</div>
-                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non gravida venenatis. Praesent consequat lectus purus, ut scelerisque velit condimentum eu. Maecenas sagittis ante ut turpis varius interdum. Quisque tellus ipsum, eleifend non ipsum id, suscipit ultricies neque.</div>
-                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</div>
-            </div>
-            <p>Grid 3 columns center</p>
-            <div class="grid grid--3 grid--cross-center">
-                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</div>
-                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non gravida venenatis. Praesent consequat lectus purus, ut scelerisque velit condimentum eu. Maecenas sagittis ante ut turpis varius interdum. Quisque tellus ipsum, eleifend non ipsum id, suscipit ultricies neque.</div>
-                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</div>
-            </div>
-            <p>Grid 3 columns end</p>
-            <div class="grid grid--3 grid--cross-end">
-                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</div>
-                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non gravida venenatis. Praesent consequat lectus purus, ut scelerisque velit condimentum eu. Maecenas sagittis ante ut turpis varius interdum. Quisque tellus ipsum, eleifend non ipsum id, suscipit ultricies neque.</div>
-                <div class="grid__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</div>
-            </div>
-            <p>Grid uneven 1/3</p>
-            <div class="grid grid--uneven-1-3">
-                <div class="grid__item">1/3</div>
-                <div class="grid__item">2/3</div>
-            </div>
-            <p>Grid uneven 3/4 - Grid small 1 column</p>
-            <div class="grid grid--uneven-3-4 grid--small-1">
-                <div class="grid__item">3/4</div>
-                <div class="grid__item">1/4</div>
-            </div>
-            <p>Grid uneven 3/4 - Grid medium 1/4 first item - Grid small 1 column</p>
-            <div class="grid grid--uneven-3-4 grid--small-1">
-                <div class="grid__item">3/4</div>
-                <div class="grid__item grid__item--medium-first">1/4</div>
-            </div>
-            <p>Grid 1/2 + 3 auto columns - Grid small 2 columns - Grid small 1/2 last item</p>
-            <div class="grid grid--2 grid--small-2">
-                <div class="grid__item grid__item--small-last">1/2</div>
-                <div class="grid__item grid__item--fluid grid__item--small-initial">auto</div>
-                <div class="grid__item grid__item--fluid grid__item--small-initial">auto</div>
-                <div class="grid__item grid__item--fluid grid__item--small-initial">auto</div>
-            </div>
-            <p>Grid auto column + 1/6 + auto column</p>
-            <div class="grid grid--6">
-                <div class="grid__item grid__item--fluid">auto</div>
-                <div class="grid__item">1/6</div>
-                <div class="grid__item grid__item--fluid">auto</div>
-            </div>
-            <p>Grid nesting columns</p>
-            <div class="grid grid--uneven-2-3">
-                <div class="grid__item">
-                    <div class="grid grid--uneven-1-3 grid--small-1">
-                        <div class="grid__item">1/3</div>
-                        <div class="grid__item">
-                            <div class="grid grid--2">
-                                <div class="grid__item">1/2</div>
-                                <div class="grid__item">1/2</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid__item">1/3</div>
-            </div>
+			<p>Grid 2 equal columns</p>
+			<div class="o-grid o-grid--2">
+				<div class="o-grid__item"><p class="c-demo">1/2</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/2</p></div>
+			</div>
+			<p>Grid 3 equal columns</p>
+			<div class="o-grid o-grid--3">
+				<div class="o-grid__item"><p class="c-demo">1/3</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/3</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/3</p></div>
+			</div>
+			<p>Grid 4 equal columns @ Grid medium 1 column</p>
+			<div class="o-grid o-grid--4 o-grid--1@md">
+				<div class="o-grid__item"><p class="c-demo">1/4</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/4</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/4</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/4</p></div>
+			</div>
+			<p>Grid 6 equal columns @ Grid small 2 equal columns</p>
+			<div class="o-grid o-grid--6 o-grid--2@sm">
+				<div class="o-grid__item"><p class="c-demo">1/6</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/6</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/6</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/6</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/6</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/6</p></div>
+			</div>
+			<p>Grid 12 equal columns @ Grid medium 6 equal columns @ Grid small 3 equal columns @ Grid tiny 1 column</p>
+			<div class="o-grid o-grid--12 o-grid--6@md o-grid--3@sm o-grid--1@xs">
+				<div class="o-grid__item"><p class="c-demo">1/12</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/12</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/12</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/12</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/12</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/12</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/12</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/12</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/12</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/12</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/12</p></div>
+				<div class="o-grid__item"><p class="c-demo">1/12</p></div>
+			</div>
+			<p>Grid 3 equal columns - cross alignment start (default)</p>
+			<div class="o-grid o-grid--3">
+				<div class="o-grid__item"><p class="c-demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p></div>
+				<div class="o-grid__item"><p class="c-demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non gravida venenatis. Praesent consequat lectus purus, ut scelerisque velit condimentum eu. Maecenas sagittis ante ut turpis varius interdum. Quisque tellus ipsum, eleifend non ipsum id, suscipit ultricies neque.</p></div>
+				<div class="o-grid__item"><p class="c-demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p></div>
+			</div>
+			<p>Grid 3 equal columns - cross alignment stretch @ Grid medium 1 column</p>
+			<div class="o-grid o-grid--3 o-grid--1@md">
+				<div class="o-grid__item u-flex"><p class="c-demo u-flex-item-fluid">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p></div>
+				<div class="o-grid__item u-flex"><p class="c-demo u-flex-item-fluid">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non gravida venenatis. Praesent consequat lectus purus, ut scelerisque velit condimentum eu. Maecenas sagittis ante ut turpis varius interdum. Quisque tellus ipsum, eleifend non ipsum id, suscipit ultricies neque.</p></div>
+				<div class="o-grid__item u-flex"><p class="c-demo u-flex-item-fluid">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p></div>
+			</div>
+			<p>Grid 3 equal columns - cross alignment center</p>
+			<div class="o-grid o-grid--3">
+				<div class="o-grid__item u-flex u-flex-cross-center"><p class="c-demo u-flex-item-fluid">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p></div>
+				<div class="o-grid__item u-flex u-flex-cross-center"><p class="c-demo u-flex-item-fluid">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non gravida venenatis. Praesent consequat lectus purus, ut scelerisque velit condimentum eu. Maecenas sagittis ante ut turpis varius interdum. Quisque tellus ipsum, eleifend non ipsum id, suscipit ultricies neque.</p></div>
+				<div class="o-grid__item u-flex u-flex-cross-center"><p class="c-demo u-flex-item-fluid">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p></div>
+			</div>
+			<p>Grid 3 equal columns - cross alignment end</p>
+			<div class="o-grid o-grid--3">
+				<div class="o-grid__item u-flex u-flex-cross-end"><p class="c-demo u-flex-item-fluid">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p></div>
+				<div class="o-grid__item u-flex u-flex-cross-end"><p class="c-demo u-flex-item-fluid">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non gravida venenatis. Praesent consequat lectus purus, ut scelerisque velit condimentum eu. Maecenas sagittis ante ut turpis varius interdum. Quisque tellus ipsum, eleifend non ipsum id, suscipit ultricies neque.</p></div>
+				<div class="o-grid__item u-flex u-flex-cross-end"><p class="c-demo u-flex-item-fluid">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p></div>
+			</div>
+			<p>Grid uneven col 6 + col 4 - main alignment center</p>
+			<div class="o-grid u-flex-main-center">
+				<div class="o-grid__item o-grid__item--col-6"><p class="c-demo">col 6</p></div>
+				<div class="o-grid__item o-grid__item--col-4"><p class="c-demo">col 4</p></div>
+			</div>
+			<p>Grid uneven col 8 + col 4 first item @ Grid small 1 column</p>
+			<div class="o-grid o-grid--1@sm">
+				<div class="o-grid__item o-grid__item--col-8"><p class="c-demo">col 8</p></div>
+				<div class="o-grid__item o-grid__item--col-4 u-flex-item-first"><p class="c-demo">col 4 first item</p></div>
+			</div>
+			<p>Grid uneven col 4 + col 2 + col 2 + col 4 @ Grid small 2 equal columns</p>
+			<div class="o-grid o-grid--2@sm">
+				<div class="o-grid__item o-grid__item--col-4"><p class="c-demo">col 4</p></div>
+				<div class="o-grid__item o-grid__item--col-2"><p class="c-demo">col 2</p></div>
+				<div class="o-grid__item o-grid__item--col-2"><p class="c-demo">col 2</p></div>
+				<div class="o-grid__item o-grid__item--col-4"><p class="c-demo">col 4</p></div>
+			</div>
+			<p>Grid initial column (default) + auto column @ Grid small 1 column</p>
+			<div class="o-grid o-grid--1@sm">
+				<div class="o-grid__item"><p class="c-demo">initial column</p></div>
+				<div class="o-grid__item u-flex-item-auto"><p class="c-demo">auto column</p></div>
+			</div>
+			<p>Grid nesting columns @ Grid small 1 column</p>
+			<div class="o-grid o-grid--1@sm">
+				<div class="o-grid__item o-grid__item--col-8">
+					<div class="c-demo">
+						<div class="o-grid o-grid--1@sm">
+							<div class="o-grid__item o-grid__item--col-4 u-flex u-flex-cross-center"><p class="c-demo u-flex-item-fluid">col 4</p></div>
+							<div class="o-grid__item o-grid__item--col-8">
+								<div class="c-demo">
+									<div class="o-grid o-grid--2 o-grid--1@xs">
+										<div class="o-grid__item"><p class="c-demo">1/2</p></div>
+										<div class="o-grid__item"><p class="c-demo">1/2</p></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="o-grid__item o-grid__item--col-4 u-flex"><p class="c-demo u-flex-item-fluid">col 4</p></div>
+			</div>
 		</article>
 	</body>
 </html>

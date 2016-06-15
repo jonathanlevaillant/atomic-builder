@@ -24,6 +24,7 @@
         "gulp": "latest",
         "del": "latest",
         "critical": "latest",
+        "lodash": "latest",
         "gulp-load-plugins": "latest",
         "gulp-sync": "latest",
         "gulp-changed": "latest",

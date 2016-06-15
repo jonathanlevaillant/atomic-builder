@@ -1,0 +1,17 @@
+/* responsive
+   ========================================================================== */
+
+// responsive extra small screens
+@media (max-width: $extra-small-screen) {
+    div,
+    textarea,
+    table,
+    td,
+    th,
+    code,
+    pre,
+    samp {
+        hyphens: auto;
+        word-wrap: break-word;
+    }
+}
