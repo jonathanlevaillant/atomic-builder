@@ -265,6 +265,11 @@ html {
     box-sizing: inherit;
 }
 
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
 ul,
 ol {
     padding-left: 2.4rem;
