@@ -188,4 +188,7 @@ $large-screen           : em($large-screen, 16px);
     .u-man\@#{$label} {
         margin: 0;
     }
+    .u-txt-center\@#{$label} {
+        text-align: center;
+    }
 }
