@@ -90,6 +90,15 @@
 .u-flex-main-center {
     justify-content: center;
 }
+.u-flex-main-between {
+    justify-content: space-between;
+}
+.u-flex-main-around {
+    justify-content: space-around;
+}
+.u-flex-cross-baseline {
+    align-items: baseline;
+}
 .u-flex-cross-start {
     align-items: flex-start;
 }
