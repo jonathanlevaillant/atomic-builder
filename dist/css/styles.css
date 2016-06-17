@@ -125,7 +125,8 @@ sup {
     top: -.5em;
 }
 
-img {
+img,
+iframe {
     border-style: none;
 }
 
@@ -623,7 +624,7 @@ th {
 
 /* responsive
    ========================================================================== */
-@media (max-width: 20em) {
+@media (max-width: 64em) {
     div,
     textarea,
     table,
@@ -1007,6 +1008,24 @@ th {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
+}
+
+.u-flex-main-between {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.u-flex-main-around {
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+
+.u-flex-cross-baseline {
+    -webkit-box-align: baseline;
+    -ms-flex-align: baseline;
+    -ms-grid-row-align: baseline;
+    align-items: baseline;
 }
 
 .u-flex-cross-start {
@@ -1456,6 +1475,10 @@ th {
     .u-man\@xl {
         margin: 0;
     }
+
+    .u-txt-center\@xl {
+        text-align: center;
+    }
 }
 
 @media (min-width: 48.0625em) and (max-width: 64em) {
@@ -1490,6 +1513,10 @@ th {
 
     .u-man\@lg {
         margin: 0;
+    }
+
+    .u-txt-center\@lg {
+        text-align: center;
     }
 }
 
@@ -1526,6 +1553,10 @@ th {
     .u-man\@md {
         margin: 0;
     }
+
+    .u-txt-center\@md {
+        text-align: center;
+    }
 }
 
 @media (min-width: 20.0625em) and (max-width: 40em) {
@@ -1561,6 +1592,10 @@ th {
     .u-man\@sm {
         margin: 0;
     }
+
+    .u-txt-center\@sm {
+        text-align: center;
+    }
 }
 
 @media (max-width: 20em) {
@@ -1595,6 +1630,10 @@ th {
 
     .u-man\@xs {
         margin: 0;
+    }
+
+    .u-txt-center\@xs {
+        text-align: center;
     }
 }
 
