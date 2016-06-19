@@ -105,6 +105,12 @@ h6,
     font-family: $font-stack-headings;
     @include vertical-rhythm($h6-size);
 }
+.c-big {
+    @include vertical-rhythm($big-size);
+}
+.c-small {
+    @include vertical-rhythm($small-size);
+}
 code,
 pre,
 samp,
