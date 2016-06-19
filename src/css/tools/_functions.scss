@@ -74,6 +74,10 @@
 			$coeff: $coeff + 1;
 			$line-height: $vertical-rhythm * $coeff / $font-size;
 		}
+        @while $line-height >= 2 {
+            $coeff: $coeff + 1;
+            $line-height: $vertical-rhythm / $coeff / $font-size;;
+        }
 		@return decimal-round($line-height);
 	}
 	@return decimal-round($line-height);
