@@ -14,7 +14,7 @@ var html = '/**/*.html';
 var css = 'css/*.css';
 var scss = 'css/**/*.scss';
 var cssmin = 'css/styles.min.css';
-var js = 'js/*.js';
+var js = 'js/**/*.js';
 var jsmin = 'js/global.min.js';
 var img = '/**/*.{png,jpg,jpeg,gif,svg}';
 var font = 'fonts/**/*.ttf';
@@ -167,7 +167,8 @@ gulp.task('htmlmin', function() {
 			removeScriptTypeAttributes: true,
 			removeStyleLinkTypeAttributes: true,
 			removeOptionalTags: true,
-			minifyURLs: true
+			minifyURLs: true,
+            minifyJS: true
 		}))
         .pipe(gulp.dest(destination))
 });
@@ -179,7 +180,7 @@ gulp.task('cleancss', function() {
 
 // task "cleanjs" = del (destination -> destination)
 gulp.task('cleanjs', function() {
-    return del([destination + js, '!' + destination + jsmin])
+    return del([destination + 'js/*', '!' + destination + jsmin])
 });
 
 // task "prod"
