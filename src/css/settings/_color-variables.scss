@@ -4,16 +4,16 @@
 // color variables name
 $_black                 : #000 !default;
 $_white                 : #fff !default;
-$_light-grey            : #ccc !default;
-$_dark-grey             : #333 !default;
+$_silver                : #ccc !default;
+$_mine-shaft            : #333 !default;
 
 // color variables font
 $color-text             : $_black !default;
-$color-link             : $_dark-grey !default;
+$color-link             : $_mine-shaft !default;
 $color-link-hover       : $_black !default;
 
 // color variables interface
 $color-background       : $_white !default;
-$color-background-btn   : $_light-grey !default;
-$color-border-field     : $_light-grey !default;
-$color-separator        : $_light-grey !default;
+$color-background-btn   : $_silver !default;
+$color-border-field     : $_silver !default;
+$color-separator        : $_silver !default;
