@@ -15,8 +15,8 @@ input,
 select,
 textarea {
     height: em($field-height, $field-size);
-    border: 1px solid $color-border-field;
     @include field-rhythm($field-size);
+    border: 1px solid $color-border-field;
     @include vertical-rhythm($field-size);
 }
 label,
@@ -60,8 +60,8 @@ button,
     height: auto;
     @include field-rhythm($btn-size, $btn-height, $medium-value);
     border: 0;
-    @include vertical-rhythm($btn-size);
     background: $color-background-btn;
+    @include vertical-rhythm($btn-size);
     cursor: pointer;
 }
 button:focus,

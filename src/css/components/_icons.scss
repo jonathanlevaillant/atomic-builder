@@ -10,13 +10,13 @@
     font-style: normal;
 }
 .c-icon::before, .c-icon-after::after {
-    display: inline-block;
     position: relative;
     top: -.05em;
+    display: inline-block;
     margin: 0 em($extra-small-value) 0 0;
-    text-transform: none;
-    font: normal normal normal $line-height + em/0 icons;
     vertical-align: middle;
+    font: normal normal normal $line-height + em/0 icons;
+    text-transform: none;
     speak: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

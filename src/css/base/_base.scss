@@ -5,12 +5,10 @@
 html {
     box-sizing: border-box;
 }
-* {
+*,
+*::before,
+*::after {
     box-sizing: inherit;
-    &::before,
-    &::after {
-        box-sizing: inherit;
-    }
 }
 ul,
 ol {
@@ -34,10 +32,10 @@ html {
     font-size: calc(1em * .625);
 }
 body {
+    background-color: $color-background;
     font-family: $font-stack-common;
     @include vertical-rhythm($base-font-size);
     color: $color-text;
-    background-color: $color-background;
 }
 a {
     color: $color-link;

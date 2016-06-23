@@ -11,12 +11,12 @@
 
 // grid childs
 .o-grid__item {
-    flex: 0 0 auto;
     box-sizing: border-box;
+    flex: 0 0 auto;
+    min-width: 0;
+    min-height: 0;
     padding-bottom: $grid-spacing;
     padding-left: $grid-gutter;
-    min-height: 0;
-    min-width: 0;
 }
 
 // grid childs generator

@@ -76,9 +76,9 @@ small {
 sub,
 sup {
     position: relative;
+    vertical-align: baseline;
     font-size: 75%;
     line-height: 0;
-    vertical-align: baseline;
 }
 sub {
     bottom: -.25em;
@@ -105,16 +105,16 @@ samp {
     font-size: 1em;
 }
 hr {
-    display: block;
-    clear: both;
     box-sizing: content-box;
+    display: block;
+    overflow: visible;
+    clear: both;
     height: 1px;
     margin: calc(#{$medium-value} - 1px) 0 0;
     padding: 0;
     border: 0;
-    overflow: visible;
-    color: $color-separator;
     background-color: $color-separator;
+    color: $color-separator;
 }
 
 // normalize forms
@@ -161,10 +161,10 @@ fieldset {
     border: 0;
 }
 legend {
-    display: table;
     box-sizing: border-box;
-    padding: 0;
+    display: table;
     max-width: 100%;
+    padding: 0;
     border: 0;
     white-space: normal;
     color: inherit;
@@ -174,9 +174,9 @@ textarea {
 }
 [type="checkbox"],
 [type="radio"] {
+    box-sizing: border-box;
     position: relative;
     top: 1px;
-    box-sizing: border-box;
     height: auto;
     margin-right: $small-value;
     padding: 0;
@@ -196,8 +196,8 @@ textarea {
     -webkit-appearance: none;
 }
 ::-webkit-input-placeholder {
-    color: inherit;
     opacity: .54;
+    color: inherit;
 }
 ::-webkit-file-upload-button {
     -webkit-appearance: button;

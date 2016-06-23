@@ -112,13 +112,13 @@ $large-screen           : em($large-screen, 16px);
 // mixin wrapper
 @mixin wrapper() {
     .o-wrapper {
+        max-width: $wrapper-layout + $margin-layout * 2;
         margin-right: auto;
         margin-left: auto;
         @if $margin-layout != 0 {
             padding-right: $margin-layout;
             padding-left: $margin-layout;
         }
-        max-width: $wrapper-layout + $margin-layout * 2;
     }
 }
 
