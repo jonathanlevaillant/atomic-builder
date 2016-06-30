@@ -1,6 +1,6 @@
 {
     "name": "atomic-builder",
-    "version": "3.1.0",
+    "version": "3.1.1",
     "main": "dist/css/styles.css",
     "description": "An atomic front-end BEMIT framework",
     "author": "Jonathan Levaillant <jonathan.levaillant@outlook.com> (http://jonathanlevaillant.fr)",
