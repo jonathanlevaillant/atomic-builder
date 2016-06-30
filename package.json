@@ -1,29 +1,15 @@
 {
     "name": "atomic-builder",
-    "description": "Framework Sass",
     "version": "3.1.0",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/jonathanlevaillant/atomic-builder"
+    "main": "dist/css/styles.css",
+    "description": "An atomic front-end BEMIT framework",
+    "author": "Jonathan Levaillant <jonathan.levaillant@outlook.com> (http://jonathanlevaillant.fr)",
+    "scripts": {
+        "start": "gulp",
+        "deploy": "gulp prod"
     },
-    "bugs": "https://github.com/jonathanlevaillant/atomic-builder/issues",
-    "author": "Jonathan Levaillant <jonathan.levaillant@outlook.com> (http://jonathanlevaillant.fr/)",
-    "keywords": [
-        "framework",
-        "sass",
-        "css",
-        "workflow",
-        "atomic builder",
-        "atomic design",
-        "oocss",
-        "bem",
-        "bemit",
-        "itcss",
-        "vertical rhythm",
-        "responsive"
-    ],
-    "license": "ISC",
-    "dependencies": {
+    "license": "MIT",
+    "devDependencies": {
         "gulp": "latest",
         "del": "latest",
         "critical": "latest",
@@ -46,5 +32,27 @@
         "gulp-uglify": "latest",
         "gulp-useref": "latest",
         "gulp-htmlmin": "latest"
-    }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jonathanlevaillant/atomic-builder"
+    },
+    "bugs": {
+        "url": "https://github.com/jonathanlevaillant/atomic-builder/issues",
+        "email": "jonathan.levaillant@outlook.com"
+    },
+    "keywords": [
+        "framework",
+        "sass",
+        "css",
+        "workflow",
+        "atomic builder",
+        "atomic design",
+        "oocss",
+        "bem",
+        "bemit",
+        "itcss",
+        "vertical rhythm",
+        "responsive"
+    ]
 }
