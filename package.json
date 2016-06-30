@@ -13,9 +13,12 @@
         "sass",
         "css",
         "workflow",
+        "atomic builder",
         "atomic design",
         "oocss",
         "bem",
+        "bemit",
+        "itcss",
         "vertical rhythm",
         "responsive"
     ],
