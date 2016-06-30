@@ -1,0 +1,26 @@
+{
+    "name": "atomic-builder",
+    "version": "3.1.0",
+    "main": "dist/css/styles.css",
+    "description": "An atomic front-end BEMIT framework",
+    "author": "Jonathan Levaillant <jonathan.levaillant@outlook.com> (http://jonathanlevaillant.fr)",
+    "license": "MIT",
+    "keywords": [
+        "framework",
+        "sass",
+        "css",
+        "workflow",
+        "atomic builder",
+        "atomic design",
+        "oocss",
+        "bem",
+        "bemit",
+        "itcss",
+        "vertical rhythm",
+        "responsive"
+    ],
+    "ignore": [
+        ".gitignore",
+        "README.md"
+    ]
+}
