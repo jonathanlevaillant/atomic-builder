@@ -5,7 +5,8 @@
     "description": "An atomic front-end BEMIT framework",
     "author": "Jonathan Levaillant <jonathan.levaillant@outlook.com> (http://jonathanlevaillant.fr)",
     "scripts": {
-        "start": "gulp",
+        "build": "npm install && gulp",
+        "start": "gulp watch",
         "deploy": "gulp prod"
     },
     "license": "MIT",
