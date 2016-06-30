@@ -88,7 +88,7 @@
 
 // function width col
 @function width-col($number) {
-	@return percentage(decimal-round(((($wrapper-layout - $grid-gutter * ($grid-number - 1)) / $grid-number) * $number + $grid-gutter * ($number - 1)) * 100 / $wrapper-layout)) / 100;
+	@return percentage(decimal-round(((($container-layout - $grid-gutter * ($grid-number - 1)) / $grid-number) * $number + $grid-gutter * ($number - 1)) * 100 / $container-layout)) / 100;
 }
 
 // function slice

@@ -873,9 +873,9 @@ th {
     }
 }
 
-/* layout
+/* container
    ========================================================================== */
-.o-wrapper {
+.o-container {
     max-width: 100.8rem;
     margin-right: auto;
     margin-left: auto;
@@ -883,7 +883,7 @@ th {
     padding-left: 2.4rem;
 }
 
-/* medias
+/* media
    ========================================================================== */
 .o-media {
     overflow: hidden;

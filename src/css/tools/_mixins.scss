@@ -21,7 +21,7 @@ $large-value            : rem($large-value);
 $extra-large-value      : rem($extra-large-value);
 $field-height           : rem($field-height);
 $btn-height             : rem($btn-height);
-$wrapper-layout         : rem($wrapper-layout);
+$container-layout       : rem($container-layout);
 $margin-layout          : rem($margin-layout);
 $grid-gutter            : rem($grid-gutter);
 $grid-spacing           : rem($grid-spacing);
@@ -109,10 +109,10 @@ $large-screen           : em($large-screen, 16px);
     }
 }
 
-// mixin wrapper
-@mixin wrapper() {
-    .o-wrapper {
-        max-width: $wrapper-layout + $margin-layout * 2;
+// mixin container
+@mixin container() {
+    .o-container {
+        max-width: $container-layout + $margin-layout * 2;
         margin-right: auto;
         margin-left: auto;
         @if $margin-layout != 0 {
