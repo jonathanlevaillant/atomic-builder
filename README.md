@@ -1,22 +1,22 @@
 # Atomic Builder : Le micro-framework CSS ultra léger pour débuter vos projets front-end avec classe !
 
-Atomic Builder a pour volonté de se détacher des framework usines à gaz que sont Bootstrap et Foundation, en proposant un condensé de bonnes pratiques pour débuter vos projets front-end sereinement.
+Atomic Builder a pour volonté de se détacher des framework "usines à gaz" que sont Bootstrap et Foundation, en proposant un condensé de bonnes pratiques pour débuter vos projets front-end sereinement.
 
-Atomic Builder se base une architecture BEMIT = BEM + ITCSS. Un excellent article d'[Harry Roberts](http://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/) vous présente ce concept.
+Atomic Builder se base une architecture **BEMIT = BEM + ITCSS**. Un excellent article d'[Harry Roberts](http://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/) vous présente cette méthodologie.
 
-Ce framework a été pensé pour être utilisé avec le préprocesseur Sass et l'automatiseur de tâches Gulp.
+Ce framework a été pensé pour être utilisé avec le préprocesseur **Sass** et l'automatiseur de tâches **Gulp**.
 
-Pour la petite histoire, Atomic Builder était à l'origine basé sur celui de Raphaël Goetter, [Knacss](http://knacss.com/). Avec le temps, l'expérience et pour répondre à mes besoins professionnels, j'ai décidé de créer mon propre framework que j'utilise quotidiennement depuis 1 an.
+Pour la petite histoire, Atomic Builder était à l'origine basé sur celui de Raphaël Goetter : [Knacss](http://knacss.com/). Avec le temps, l'expérience et pour répondre à mes besoins professionnels, j'ai décidé de créer mon propre framework que j'utilise quotidiennement depuis 1 an.
 
 En voici les principales fonctionnalités :
 
-- Génération automatique de grilles.
+- Génération automatique des grilles.
 - Gestion avancée de la typographie.
-- Gestion du rythme vertical.
-- Création simplifiée des éléments de formulaires.
-- Génération automatique de polices d'icônes.
-- Classes utilitaires (approche DRY).
-- Gestion simplifiée du responsive.
+- Gestion et optimisation du rythme vertical.
+- Création simplifiée des éléments de formulaire.
+- Génération automatique des polices d'icônes.
+- Mise à disposition des classes utilitaires courantes (approche DRY).
+- Adapté à toutes les tailles d'écran (responsive).
 
 ## Installation
 
