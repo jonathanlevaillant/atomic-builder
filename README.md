@@ -42,22 +42,26 @@ Atomic Builder se basant sur l'architecture BEMIT, le dossier CSS se compose de 
 - objects : Dans ce dossier se trouve tous les objets abstraits et réutilisables comme les grilles, les conteneurs, les classes utilitaires, etc.
 - components : C'est dans ce dossier que vous devrez créer vos nouveaux composants spécifiques à votre projet.
 
-*PS : Vous avez peut-être remarqué qu'il manque le sous-dossier "trumps" qui est censé contenir les classes utilitaires. Pour une raison de simplicité j'ai préféré regrouper ces classes dans le dossier "objects", ce qui me semblait plus pertinent étant donné qu'il est également question de classes réutilisables.*
+*PS : Vous avez peut-être remarqué qu'il manque le sous-dossier "trumps" qui est censé contenir les classes utilitaires. Pour une raison de simplicité j'ai préféré regrouper ces classes dans le dossier "objects", ce qui me semblait plus pertinent étant donné que ce sont également des classes réutilisables.*
 
 ## Conventions de nommage
 
 En suivant la logique d'architecture BEMIT, un système de nommage a été mis en place :
 
-- Les classes utilitaires : `.u-txt-center`.
-- Les objets : `.o-grid`.
-- Les composants : `.c-icon`.
-- Les nouveaux contextes d'affichage (scope) : `.s-wysiwyg`.
-- Les états ou conditions : `.is-active`.
-- Les composants devant être ciblés en JavaScript : `.js-slider`.
-- Les suffixes responsive : `.u-hidden\@print`.
-- Les éléments : `.o-grid__item`.
-- Les modificateurs de blocs : `.o-grid--2`.
-- Les modificateurs d'éléments : `.o-grid__item--col-4`.
+**Préfixes :**
+
+- Les classes utilitaires : `u-`.
+- Les objets : `o-`.
+- Les composants : `c-`.
+- Les nouveaux contextes de mise en forme (scope) : `s-`.
+- Les états ou conditions : `is-`, `has-`.
+- Les composants ciblés en JavaScript : `js-`.
+
+**Suffixes :**
+
+- Le responsive : `@breakpoint`.
+- Les éléments : `__element`.
+- Les modificateurs : `--modifier`.
 
 ## Bien débuter
 
