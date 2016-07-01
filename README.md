@@ -65,21 +65,21 @@ En suivant la logique d'architecture BEMIT, un système de nommage a été mis e
 
 ## Bien débuter
 
-L'étape la plus important quand vous débuterez un projet sera de mettre à jour les variables globales dans le fichier ```_global-variables.scss```. Vous pourrez définir la taille des différents titres, du corps du texte, des boutons et des champs de formulaires, du nombre de colonnes dans la grille, de la largeur des gouttières, etc.
+L'étape la plus important quand vous débuterez un projet sera de mettre à jour les variables globales dans le fichier `_global-variables.scss`. Vous pourrez définir la taille des différents titres, du corps du texte, des boutons et des champs de formulaires, du nombre de colonnes dans la grille, de la largeur des gouttières, etc.
 
-Une fois ces variables renseignées, il suffira de compléter le dernier fichier de configuration correspondant aux couleurs utilisées dans votre projet ```_color-variables.scss```.
+Une fois ces variables renseignées, il vous suffira juste de compléter le dernier fichier de configuration correspondant aux couleurs utilisées dans votre projet `_color-variables.scss`.
 
-Pour résumé, vous n'aurez besoin de modifier que ces deux fichiers pour générer automatiquement la feuille de styles CSS de base qui correspondra à votre projet. En effet, toute la typographie, les grilles, les éléments de formulaires, les points de rupture, etc. seront générés en fonction de ces variables.
-Adieu les heures passées à configurer les tailles de polices, les marges externes, internes, les boutons, les champs de formulaires, les grilles, les gouttières, etc. Tout sera administrable via ces deux fichiers.
+En résumé, vous n'aurez besoin de modifier que ces deux fichiers de configuration pour générer automatiquement la feuille de styles CSS de base propre à votre projet.
+En effet, toute la typographie, les grilles, les éléments de formulaire, les points de rupture, etc. seront générés grâce à ces variables.
 
-Voici quelques exemples d'automatisation :
+Voici quelques exemples de configuration :
 
 ```css
 $base-font-size         : 1.5rem !default;
 $line-height            : 1.6 !default;
 ```
 
-**=> La taille de la police de base sera de 1.5rem soit 15px et sa hauteur de ligne de 1.6 (le rythme vertical sera calculé automatiquement : 1.5rem * 1.6 = 2.4rem soit 24px).**
+*La taille de la police de base sera de 1.5rem soit 15px et la hauteur de ligne de base de 1.6 (le rythme vertical sera calculé automatiquement : 1.5rem * 1.6 = 2.4rem soit 24px).*
 
 ```css
 $field-height   : 48px !default;
