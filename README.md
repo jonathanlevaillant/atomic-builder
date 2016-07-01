@@ -86,14 +86,14 @@ $field-height   : 48px !default;
 $btn-height     : 48px !default;
 ```
 
-**=> La hauteur des champs et des boutons de formulaires sera de 4.8rem soit 48px (les marges internes et les hauteurs de ligne des champs et des boutons seront calculés automatiquement).**
+* La hauteur des champs et des boutons de formulaire sera de 48px (les marges internes et les hauteurs de ligne des champs et des boutons seront ajustés en conséquence).*
 
 ```css
 $grid-number    : 12 !default;
 $grid-gutter    : 2.4rem !default;
 ```
 
-**=> La grille sera composée de 12 colonnes avec des gouttières de largeur 2.4rem (il est possible de mettre directement l'unité en rem).**
+* La grille sera composée de 12 colonnes avec des gouttières de largeur 2.4rem soit 24px.*
 
 ```css
 $h1-size        : 6.4rem !default;
@@ -101,17 +101,19 @@ $h2-size        : 3.9rem !default;
 $h3-size        : 2.4rem !default;
 ```
 
-**=> Les tailles des titres h1, h2, h3 seront définis respectivement à 6.4rem, 3.9rem et 2.4rem (la hauteur de ligne des titres sera calculée automatiquement pour suivre le rythme vertical calculé précédemment).**
+* La taille des titres h1, h2, h3 sera défini respectivement à 6.4rem, 3.9rem et 2.4rem (la hauteur de ligne des titres sera calculée automatiquement pour suivre le rythme vertical calculé précédemment).*
+
+*PS : Il est possible de renseigner des unités en pixel, rem et em. Par défaut les unités du fichier de configuration seront converties en rem à l'exception des unités de points de rupture qui seront converties en em.*
 
 ## Et ensuite ?
 
-Une fois la base du projet mis en place, tous les modules spécifiques devront être implémentés dans le dossier **components**.
-C'est normalement à cette étape que vous devrez commencer à produire du code CSS :)
+Une fois la base du projet mis en place, tous les modules spécifiques devront être ajoutés dans le dossier **components**.
+Normalement, à cette étape vous devriez commencer à écrire du code CSS !
 
 ## Bonus
 
-Voici la description des tâches Gulp que vous utiliserez régulièrement :
+Voici la description des tâches Gulp d'Atomic Builder :
 
 - `gulp` : Compile les fichiers Sass en CSS natif (propriétés auto-préfixées, ordonnées et indentées), les images sont optimisées et les polices de caractères ttf sont converties en woff et woff2.
-- `gulp icon` : Les icônes svg dans le dossier "fonts/icons/" sont converties en police de caractères (le code CSS d'appel des icônes est généré automatiquement dans le fichier ```_icons.scss```, **il ne faut donc pas l'éditer**).
-- `gulp prod` : Les fichiers CSS, HTML et JS sont minifiés, un chemin critique CSS est rajouté dans chaque fichier HTML, les fichiers JS sont concaténés.
+- `gulp icon` : Les icônes svg dans le dossier **fonts/icons/** sont converties en police de caractères (le code CSS d'appel des icônes est généré automatiquement dans le fichier `_icons.scss`, **il ne faut pas l'éditer**).
+- `gulp prod` : Les fichiers CSS, HTML et JS sont optimisés, un chemin critique CSS est rajouté dans chaque fichier HTML, les fichiers JS sont concaténés.
