@@ -6,7 +6,8 @@ Atomic Builder se base une architecture **BEMIT = BEM + ITCSS**. Un excellent ar
 
 Ce framework a été pensé pour être utilisé avec le préprocesseur **Sass** et "l'automatiseur de tâches" **Gulp**.
 
-Pour la petite histoire, Atomic Builder était à l'origine basé sur celui de Raphaël Goetter : [Knacss](http://knacss.com/). Avec le temps, l'expérience et pour répondre à mes besoins professionnels, j'ai décidé de créer mon propre framework que j'utilise quotidiennement depuis 1 an.
+Atomic Builder était initialement basé sur le framework de Raphaël Goetter : [KNACSS](http://knacss.com/).
+Avec le temps, mon expérience d'intégrateur depuis huit ans et pour répondre à mes besoins professionnels, j'ai décidé de créer mon propre framework que j'utilise quotidiennement depuis plus d'un an.
 
 En voici les principales fonctionnalités :
 
@@ -15,14 +16,15 @@ En voici les principales fonctionnalités :
 - Gestion et optimisation du rythme vertical.
 - Création simplifiée des éléments de formulaire.
 - Génération automatique des polices d'icônes.
-- Mise à disposition des classes utilitaires courantes (approche DRY).
+- Collection de classes utilitaires (approche DRY).
 - Adapté à toutes les tailles d'écran (responsive).
 
 ## Installation
 
-- Si vous ne souhaitez utiliser que la feuille de style en [CSS classique](https://raw.githubusercontent.com/jonathanlevaillant/atomic-builder/master/dist/css/styles.css).
-- Si vous utilisez un préprocesseur Sass mais que vous ne souhaitez pas utiliser d'automatiseur de tâches, vous pourrez récupérer la [version Sass](https://github.com/jonathanlevaillant/atomic-builder/tree/master/src/css).
-- Si vous souhaitez utiliser tout le potentiel d'Atomic Builder, vous pourrez installer le projet via Bower : ```bower install atomic-builder```.
+- Si vous ne souhaitez récupérer que la feuille de style en [CSS natif](https://raw.githubusercontent.com/jonathanlevaillant/atomic-builder/master/dist/css/styles.css).
+- Si vous utilisez un préprocesseur Sass mais que vous ne souhaitez pas utiliser "d'automatiseur de tâches", vous pourrez récupérer la [version Sass](https://github.com/jonathanlevaillant/atomic-builder/tree/master/src/css).
+- Si vous souhaitez utiliser tout le potentiel d'Atomic Builder, vous pourrez installer le projet via **Bower** :
+```bower install atomic-builder```.
 
 ## Compatibilité
 
