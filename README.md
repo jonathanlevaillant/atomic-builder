@@ -42,7 +42,7 @@ Atomic Builder se basant sur l'architecture BEMIT, le dossier CSS se compose de 
 - objects : Dans ce dossier se trouve tous les objets abstraits et réutilisables comme les grilles, les conteneurs, les classes utilitaires, etc.
 - components : C'est dans ce dossier que vous devrez créer vos nouveaux composants spécifiques à votre projet.
 
-*PS : Vous avez peut être remarqué qu'il manque le sous-dossier "trumps" qui est censé contenir les classes utilitaires. Pour une raison de simplicité j'ai préféré regrouper ces classes dans le dossier "objects", ce qui me semblait plus pertinent.*
+*PS : Vous avez peut-être remarqué qu'il manque le sous-dossier "trumps" qui est censé contenir les classes utilitaires. Pour une raison de simplicité j'ai préféré regrouper ces classes dans le dossier "objects", ce qui me semblait plus pertinent étant donné qu'il est également question de classes réutilisables.*
 
 ## Conventions de nommage
 
