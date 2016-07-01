@@ -4,7 +4,7 @@ Atomic Builder a pour volonté de se détacher des framework "usines à gaz" que
 
 Atomic Builder se base une architecture **BEMIT = BEM + ITCSS**. Un excellent article d'[Harry Roberts](http://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/) vous présente cette méthodologie.
 
-Ce framework a été pensé pour être utilisé avec le préprocesseur **Sass** et l'automatiseur de tâches **Gulp**.
+Ce framework a été pensé pour être utilisé avec le préprocesseur **Sass** et "l'automatiseur de tâches" **Gulp**.
 
 Pour la petite histoire, Atomic Builder était à l'origine basé sur celui de Raphaël Goetter : [Knacss](http://knacss.com/). Avec le temps, l'expérience et pour répondre à mes besoins professionnels, j'ai décidé de créer mon propre framework que j'utilise quotidiennement depuis 1 an.
 
