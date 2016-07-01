@@ -23,8 +23,7 @@ En voici les principales fonctionnalités :
 
 - Si vous ne souhaitez récupérer que la feuille de style en [CSS natif](https://raw.githubusercontent.com/jonathanlevaillant/atomic-builder/master/dist/css/styles.css).
 - Si vous utilisez un préprocesseur Sass mais que vous ne souhaitez pas utiliser "d'automatiseur de tâches", vous pourrez récupérer la [version Sass](https://github.com/jonathanlevaillant/atomic-builder/tree/master/src/css).
-- Si vous souhaitez utiliser tout le potentiel d'Atomic Builder, vous pourrez installer le projet via **Bower** :
-```bower install atomic-builder```.
+- Si vous souhaitez utiliser tout le potentiel d'Atomic Builder, vous pourrez installer le projet via **Bower** : `bower install atomic-builder`.
 
 ## Compatibilité
 
@@ -32,7 +31,7 @@ Atomic Builder est compatible avec l'ensemble des navigateurs à partir d'IE10 i
 
 ## Structure
 
-Votre projet sera constitué de deux dossiers **src** (dossier de travail) et **dist** (dossier de production, où seront créés les fichiers produits par Gulp).
+Votre projet est constitué de deux dossiers **src** (dossier de travail) et **dist** (dossier de production, où seront créés les fichiers produits par Gulp).
 
 Atomic Builder se basant sur l'architecture BEMIT, le dossier CSS se compose de six sous-dossiers :
 
@@ -41,7 +40,9 @@ Atomic Builder se basant sur l'architecture BEMIT, le dossier CSS se compose de 
 - generic : Il s'agit du célèbre reset CSS [normalize](http://necolas.github.io/normalize.css/), utilisé par Twitter, Github, etc. Il n'est pas nécessaire de le modifier.
 - base : Ce dossier comprend tous les styles permettant de mettre en forme les éléments de base comme les éléments typographiques, tableaux, formulaires, etc.
 - objects : Dans ce dossier se trouve tous les objets abstraits et réutilisables comme les grilles, les conteneurs, les classes utilitaires, etc.
-- components : C'est dans ce dossier que vous devrez créer vos nouveaux composants graphiques spécifiques à votre projet.
+- components : C'est dans ce dossier que vous devrez créer vos nouveaux composants spécifiques à votre projet.
+
+*PS : Vous avez peut être remarqué qu'il manque le sous-dossier "trumps" qui est censé contenir les classes utilitaires. Pour une raison de simplicité j'ai préféré regrouper ces classes dans le dossier "objects", ce qui me semblait plus pertinent.*
 
 ## Conventions de nommage
 
