@@ -42,7 +42,7 @@ Atomic Builder se basant sur l'architecture BEMIT, le dossier CSS se compose de 
 - objects : Dans ce dossier se trouve tous les objets abstraits et réutilisables comme les grilles, les conteneurs, les classes utilitaires, etc.
 - components : C'est dans ce dossier que vous devrez créer vos nouveaux composants spécifiques à votre projet.
 
-*PS : Vous avez peut-être remarqué qu'il manque le sous-dossier "trumps" qui est censé contenir les classes utilitaires. Pour une raison de simplicité j'ai préféré regrouper ces classes dans le dossier "objects", ce qui me semblait plus pertinent étant donné que ce sont également des classes réutilisables.*
+➜ *Vous avez peut-être remarqué qu'il manque le sous-dossier "trumps" qui est censé contenir les classes utilitaires. Pour une raison de simplicité j'ai préféré regrouper ces classes dans le dossier "objects", ce qui me semblait plus pertinent étant donné que ce sont également des classes réutilisables.*
 
 ## Conventions de nommage
 
@@ -72,7 +72,7 @@ Une fois ces variables renseignées, il vous suffira simplement de compléter le
 En résumé, vous n'aurez besoin de modifier que ces deux fichiers de configuration pour générer automatiquement la feuille de styles CSS de base propre à votre projet.
 En effet, toute la typographie, les grilles, les éléments de formulaire, les points de rupture, etc. seront générés grâce à ces variables.
 
-*Une fois le projet installé, vous trouverez dans le dossier dist un template HTML [guide.html](https://github.com/jonathanlevaillant/atomic-builder/blob/master/dist/guide.html) regroupant tous les modules de base générés via les fichiers `_global-variables.scss` et `_color-variables.scss`. Il s'agit d'un guide de styles permettant d'avoir un aperçu en temps réel lorsque vous modifierez les variables de configuration par défaut.*
+➜ *Une fois le projet installé, vous trouverez dans le dossier dist un template HTML [guide.html](https://github.com/jonathanlevaillant/atomic-builder/blob/master/dist/guide.html) regroupant tous les modules de base générés via les fichiers `_global-variables.scss` et `_color-variables.scss`. Il s'agit d'un guide de styles permettant d'avoir un aperçu en temps réel lorsque vous modifierez les variables de configuration par défaut.*
 
 Voici quelques exemples de configuration :
 
