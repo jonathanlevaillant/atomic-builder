@@ -21,9 +21,14 @@ En voici les principales fonctionnalités :
 
 ## Installation
 
-- Si vous ne souhaitez récupérer que la feuille de style en [CSS natif](https://raw.githubusercontent.com/jonathanlevaillant/atomic-builder/master/dist/css/styles.css).
-- Si vous utilisez un préprocesseur Sass mais que vous ne souhaitez pas utiliser "d'automatiseur de tâches", vous pourrez récupérer la [version Sass](https://github.com/jonathanlevaillant/atomic-builder/tree/master/src/css).
-- Si vous souhaitez utiliser tout le potentiel d'Atomic Builder, vous pourrez installer le projet via **Bower** : `bower install atomic-builder`.
+Plusieurs options sont disponibles :
+
+- Télécharger la dernière version d'[Atomic Builder](https://github.com/jonathanlevaillant/atomic-builder/archive/master.zip).
+- Télécharger la feuille de style compilée en [CSS natif](https://raw.githubusercontent.com/jonathanlevaillant/atomic-builder/master/dist/css/styles.css).
+- Télécharger la version [Sass](https://github.com/jonathanlevaillant/atomic-builder/tree/master/src/css).
+- Cloner le dépôt : `git clone https://github.com/jonathanlevaillant/atomic-builder.git`.
+- Installation avec [Bower](https://bower.io/search/) : `bower install atomic-builder`.
+- Installation avec [npm](https://www.npmjs.com/) : `npm install atomic-builder`.
 
 ## Compatibilité
 
