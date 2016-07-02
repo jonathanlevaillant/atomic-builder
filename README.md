@@ -2,7 +2,7 @@
 
 Atomic Builder a pour volonté de se détacher des framework "usines à gaz" que sont Bootstrap et Foundation, en proposant un condensé de bonnes pratiques pour débuter vos projets front-end sereinement.
 
-Atomic Builder se base une architecture **BEMIT = BEM + ITCSS**. Un excellent article d'[Harry Roberts](http://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/) vous présente cette méthodologie.
+Atomic Builder se base sur une architecture **BEMIT = BEM + ITCSS**. Un excellent article d'[Harry Roberts](http://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/) vous présente cette méthodologie.
 
 Ce framework a été pensé pour être utilisé avec le préprocesseur **Sass** et "l'automatiseur de tâches" **Gulp**.
 
@@ -72,6 +72,8 @@ Une fois ces variables renseignées, il vous suffira juste de compléter le dern
 En résumé, vous n'aurez besoin de modifier que ces deux fichiers de configuration pour générer automatiquement la feuille de styles CSS de base propre à votre projet.
 En effet, toute la typographie, les grilles, les éléments de formulaire, les points de rupture, etc. seront générés grâce à ces variables.
 
+*PS : Une fois le projet installé, vous trouverez dans le dossier **dist** un template HTML **guide.html** regroupant tous les modules de base générés via les fichiers `_global-variables.scss` et `_color-variables.scss`. Il s'agit d'un guide de styles permettant d'avoir un aperçu en temps réel lorsque vous modifierez les variables de configuration par défaut.*
+
 Voici quelques exemples de configuration :
 
 ```css
@@ -86,14 +88,14 @@ $field-height   : 48px !default;
 $btn-height     : 48px !default;
 ```
 
-* La hauteur des champs et des boutons de formulaire sera de 48px (les marges internes et les hauteurs de ligne des champs et des boutons seront ajustés en conséquence).*
+*La hauteur des champs et des boutons de formulaire sera de 48px (les marges internes et les hauteurs de ligne des champs et des boutons seront ajustés en conséquence).*
 
 ```css
 $grid-number    : 12 !default;
 $grid-gutter    : 2.4rem !default;
 ```
 
-* La grille sera composée de 12 colonnes avec des gouttières de largeur 2.4rem soit 24px.*
+*La grille sera composée de 12 colonnes avec des gouttières de largeur 2.4rem soit 24px.*
 
 ```css
 $h1-size        : 6.4rem !default;
@@ -101,7 +103,7 @@ $h2-size        : 3.9rem !default;
 $h3-size        : 2.4rem !default;
 ```
 
-* La taille des titres h1, h2, h3 sera défini respectivement à 6.4rem, 3.9rem et 2.4rem (la hauteur de ligne des titres sera calculée automatiquement pour suivre le rythme vertical calculé précédemment).*
+*La taille des titres h1, h2, h3 sera défini respectivement à 6.4rem, 3.9rem et 2.4rem (la hauteur de ligne des titres sera calculée automatiquement pour suivre le rythme vertical calculé précédemment).*
 
 *PS : Il est possible de renseigner des unités en pixel, rem et em. Par défaut les unités du fichier de configuration seront converties en rem à l'exception des unités de points de rupture qui seront converties en em.*
 
@@ -115,5 +117,6 @@ Normalement, à cette étape vous devriez commencer à écrire du code CSS !
 Voici la description des tâches Gulp d'Atomic Builder :
 
 - `gulp` : Compile les fichiers Sass en CSS natif (propriétés auto-préfixées, ordonnées et indentées), les images sont optimisées et les polices de caractères ttf sont converties en woff et woff2.
+- `gulp watch` : Surveille automatiquement toute modification de contenu des fichiers Sass, HTML et JS.
 - `gulp icon` : Les icônes svg dans le dossier **fonts/icons/** sont converties en police de caractères (le code CSS d'appel des icônes est généré automatiquement dans le fichier `_icons.scss`, **il ne faut pas l'éditer**).
 - `gulp prod` : Les fichiers CSS, HTML et JS sont optimisés, un chemin critique CSS est rajouté dans chaque fichier HTML, les fichiers JS sont concaténés.
