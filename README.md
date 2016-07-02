@@ -67,12 +67,12 @@ En suivant la logique d'architecture BEMIT, un système de nommage a été mis e
 
 L'étape la plus important quand vous débuterez un projet sera de mettre à jour les variables globales dans le fichier `_global-variables.scss`. Vous pourrez définir la taille des différents titres, du corps du texte, des boutons et des champs de formulaires, du nombre de colonnes dans la grille, de la largeur des gouttières, etc.
 
-Une fois ces variables renseignées, il vous suffira juste de compléter le dernier fichier de configuration correspondant aux couleurs utilisées dans votre projet `_color-variables.scss`.
+Une fois ces variables renseignées, il vous suffira simplement de compléter le dernier fichier de configuration correspondant aux couleurs utilisées dans votre projet `_color-variables.scss`.
 
 En résumé, vous n'aurez besoin de modifier que ces deux fichiers de configuration pour générer automatiquement la feuille de styles CSS de base propre à votre projet.
 En effet, toute la typographie, les grilles, les éléments de formulaire, les points de rupture, etc. seront générés grâce à ces variables.
 
-*PS : Une fois le projet installé, vous trouverez dans le dossier **dist** un template HTML **guide.html** regroupant tous les modules de base générés via les fichiers `_global-variables.scss` et `_color-variables.scss`. Il s'agit d'un guide de styles permettant d'avoir un aperçu en temps réel lorsque vous modifierez les variables de configuration par défaut.*
+*Une fois le projet installé, vous trouverez dans le dossier dist un template HTML [guide.html](https://github.com/jonathanlevaillant/atomic-builder/blob/master/dist/guide.html) regroupant tous les modules de base générés via les fichiers `_global-variables.scss` et `_color-variables.scss`. Il s'agit d'un guide de styles permettant d'avoir un aperçu en temps réel lorsque vous modifierez les variables de configuration par défaut.*
 
 Voici quelques exemples de configuration :
 
@@ -105,7 +105,7 @@ $h3-size        : 2.4rem !default;
 
 *La taille des titres h1, h2, h3 sera défini respectivement à 6.4rem, 3.9rem et 2.4rem (la hauteur de ligne des titres sera calculée automatiquement pour suivre le rythme vertical calculé précédemment).*
 
-*PS : Il est possible de renseigner des unités en pixel, rem et em. Par défaut les unités du fichier de configuration seront converties en rem à l'exception des unités de points de rupture qui seront converties en em.*
+À titre informatif, il est possible de renseigner des unités en pixel, rem et em. Par défaut les unités du fichier de configuration seront converties en rem à l'exception des unités de points de rupture qui seront converties en em.
 
 ## Et ensuite ?
 
