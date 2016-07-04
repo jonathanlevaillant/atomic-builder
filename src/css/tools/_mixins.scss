@@ -120,6 +120,9 @@ $large-screen           : em($large-screen, 16px);
             padding-left: $margin-layout;
         }
     }
+    .o-container--fluid {
+        max-width: none;
+    }
 }
 
 // mixin spacing helpers
