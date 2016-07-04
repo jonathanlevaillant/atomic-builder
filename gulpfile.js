@@ -45,7 +45,10 @@ gulp.task('css', function() {
         })
         .on('error', plugins.sass.logError))
         .pipe(plugins.csscomb())
-        .pipe(plugins.autoprefixer())
+        .pipe(plugins.autoprefixer({
+            browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'],
+            cascade: false
+        }))
         .pipe(plugins.cssbeautify())
         .pipe(gulp.dest(destination + 'css/'))
 });
