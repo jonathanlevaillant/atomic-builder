@@ -3,7 +3,7 @@ var gulp = require('gulp');
 
 // include plugins
 var plugins = require('gulp-load-plugins')();
-var gulpsync = require('gulp-sync')(gulp);
+var sync = require('run-sequence');
 var del = require('del');
 var critical = require('critical').stream;
 
@@ -21,12 +21,35 @@ var font = 'fonts/**/*.ttf';
 var icon = 'fonts/icons/*.svg';
 var template = 'css/components/template/_icons.scss';
 
-/* task "build" = "clean" + "html" + "css" + "js" + "img" + "woff" + "icon"
+/* task "build" = "clean" + "icon" + ["html" + "js" + "img" + "woff" + "woff2"] + "css"
    ========================================================================== */
 
 // task "clean" = del (destination)
 gulp.task('clean', function() {
-    return del(destination);
+    return del(destination)
+});
+
+// task "icon" = icon (source -> source / source -> destination)
+gulp.task('icon', function() {
+    return gulp.src(source + icon)
+        .pipe(plugins.iconfont({
+            fontName: 'icons',
+            formats: ['woff', 'woff2'],
+            normalize: true,
+            centerHorizontally: true,
+            timestamp: Math.round(Date.now()/1000)
+        }))
+        .on('glyphs', function(glyphs) {
+            gulp.src(source + template)
+                .pipe(plugins.consolidate('lodash', {
+                    glyphs: glyphs,
+                    fontName: 'icons',
+                    fontPath: '../fonts/icons/',
+                    className: 'icon'
+                }))
+                .pipe(gulp.dest(source + 'css/components/'))
+        })
+        .pipe(gulp.dest(destination + 'fonts/icons/'))
 });
 
 // task "html" = changed (source -> destination)
@@ -34,23 +57,6 @@ gulp.task('html', function() {
     return gulp.src(source + html)
         .pipe(plugins.changed(destination))
         .pipe(gulp.dest(destination))
-});
-
-// task "css" = sass + csscomb + autoprefixer + cssbeautify (source -> destination)
-gulp.task('css', function() {
-    return gulp.src([source + scss])
-        .pipe(plugins.sass({
-            errLogToConsole: true,
-            outputStyle: 'expanded'
-        })
-        .on('error', plugins.sass.logError))
-        .pipe(plugins.csscomb())
-        .pipe(plugins.autoprefixer({
-            browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'],
-            cascade: false
-        }))
-        .pipe(plugins.cssbeautify())
-        .pipe(gulp.dest(destination + 'css/'))
 });
 
 // task "js" = changed (source -> destination)
@@ -71,29 +77,6 @@ gulp.task('img', function() {
         .pipe(gulp.dest(destination))
 });
 
-// task "icon" = icon (source -> source / source -> destination)
-gulp.task('icon', function() {
-    gulp.src(source + icon)
-        .pipe(plugins.iconfont({
-            fontName: 'icons',
-            formats: ['woff', 'woff2'],
-            normalize: true,
-            centerHorizontally: true,
-            timestamp: Math.round(Date.now()/1000)
-        }))
-        .on('glyphs', function(glyphs) {
-            gulp.src(source + template)
-                .pipe(plugins.consolidate('lodash', {
-                    glyphs: glyphs,
-                    fontName: 'icons',
-                    fontPath: '../fonts/icons/',
-                    className: 'icon'
-            }))
-            .pipe(gulp.dest(source + 'css/components/'))
-        })
-        .pipe(gulp.dest(destination + 'fonts/icons/'))
-});
-
 // task "woff" = ttf2woff (source -> destination)
 gulp.task('woff', function() {
     return gulp.src(source + font)
@@ -108,10 +91,29 @@ gulp.task('woff2', function() {
         .pipe(gulp.dest(destination + 'fonts/'))
 });
 
-// task "build"
-gulp.task('build', gulpsync.sync(['clean', 'icon', ['html', 'css', 'js', 'img', 'woff'/*, 'woff2'*/]]));
+// task "css" = sass + csscomb + autoprefixer + cssbeautify (source -> destination)
+gulp.task('css', function() {
+    return gulp.src(source + scss)
+        .pipe(plugins.sass({
+                errLogToConsole: true,
+                outputStyle: 'expanded'
+            })
+            .on('error', plugins.sass.logError))
+        .pipe(plugins.csscomb())
+        .pipe(plugins.autoprefixer({
+            browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'],
+            cascade: false
+        }))
+        .pipe(plugins.cssbeautify())
+        .pipe(gulp.dest(destination + 'css/'))
+});
 
-/* task "prod" = "build" + "url" + "cssmin" + "jsmin" + "critical" + "htmlmin" + "cleancss" + "cleanjs"
+// task "build"
+gulp.task('build', function(callback) {
+    sync('clean', 'icon', ['html', 'js', 'img', 'woff'/*, 'woff2'*/], 'css', callback)
+});
+
+/* task "prod" = "build" + "url" + ["cssmin" + "jsmin"] + "critical" + "htmlmin" + ["cleancss" + "cleanjs"]
    ========================================================================== */
 
 // task "url" = useref (destination -> destination)
@@ -187,7 +189,9 @@ gulp.task('cleanjs', function() {
 });
 
 // task "prod"
-gulp.task('prod', gulpsync.sync(['build', 'url', ['cssmin', 'jsmin'], 'critical', 'htmlmin', ['cleancss', 'cleanjs']]));
+gulp.task('prod', function(callback) {
+    sync('build', 'url', ['cssmin', 'jsmin'], 'critical', 'htmlmin', ['cleancss', 'cleanjs'], callback)
+});
 
 /* task "watch" = "css" + "html" + "js"
    ========================================================================== */
