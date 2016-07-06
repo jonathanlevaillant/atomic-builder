@@ -121,7 +121,6 @@ Normalement, à cette étape vous devriez commencer à écrire du code CSS !
 
 Voici la description des tâches Gulp d'Atomic Builder :
 
-- `gulp` : Compile les fichiers Sass en CSS natif (propriétés auto-préfixées, ordonnées et indentées), les images sont optimisées et les polices de caractères ttf sont converties en woff et woff2.
+- `gulp` : Compile les fichiers Sass en CSS natif (propriétés auto-préfixées, ordonnées et indentées), les images sont optimisées, les icônes svg et les polices de caractères ttf sont converties en woff et woff2.
 - `gulp watch` : Surveille automatiquement toute modification de contenu des fichiers Sass, HTML et JS.
-- `gulp icon` : Les icônes svg dans le dossier **fonts/icons/** sont converties en police de caractères (le code CSS d'appel des icônes est généré automatiquement dans le fichier `_icons.scss`, **il ne faut pas l'éditer**).
 - `gulp prod` : Les fichiers CSS, HTML et JS sont optimisés, un chemin critique CSS est rajouté dans chaque fichier HTML, les fichiers JS sont concaténés.
