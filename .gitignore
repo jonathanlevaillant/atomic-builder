@@ -1,9 +1,9 @@
-# Ignore docs files
+# ignore docs files
 _gh_pages
 _site
 .ruby-version
 
-# Numerous always-ignore extensions
+# numerous always-ignore extensions
 *.diff
 *.err
 *.log
@@ -15,7 +15,7 @@ _site
 *.zip
 *~
 
-# OS or Editor folders
+# os or editor folders
 ._*
 .cache
 .DS_Store
@@ -29,13 +29,13 @@ _site
 nbproject
 Thumbs.db
 
-# Komodo
+# komodo
 .komodotools
 *.komodoproject
 
-# Jekyll metadata
+# jekyll metadata
 docs/.jekyll-metadata
 
-# Folders to ignore
+# folders to ignore
 bower_components
 node_modules
