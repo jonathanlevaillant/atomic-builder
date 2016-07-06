@@ -137,7 +137,7 @@ gulp.task('cssmin', function() {
 gulp.task('jsmin', function() {
     return gulp.src(destination + jsmin)
         .pipe(plugins.uglify({
-        output: {max_line_len: 400000}
+            output: {max_line_len: 400000}
         }))
         .pipe(gulp.dest(destination + 'js/'))
 });
