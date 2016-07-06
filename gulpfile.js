@@ -95,10 +95,10 @@ gulp.task('woff2', function() {
 gulp.task('css', function() {
     return gulp.src(source + scss)
         .pipe(plugins.sass({
-                errLogToConsole: true,
-                outputStyle: 'expanded'
-            })
-            .on('error', plugins.sass.logError))
+            errLogToConsole: true,
+            outputStyle: 'expanded'
+        })
+        .on('error', plugins.sass.logError))
         .pipe(plugins.csscomb())
         .pipe(plugins.autoprefixer({
             browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'],
@@ -120,7 +120,7 @@ gulp.task('build', function(callback) {
 gulp.task('url', function() {
     return gulp.src(destination + html)
         .pipe(plugins.useref())
-		.pipe(gulp.dest(destination))
+        .pipe(gulp.dest(destination))
 });
 
 // task "cssmin" = uncss + csso (destination -> destination)
@@ -128,7 +128,7 @@ gulp.task('cssmin', function() {
     return gulp.src(destination + cssmin)
         .pipe(plugins.uncss({
             html: [destination + html]
-		}))
+        }))
         .pipe(plugins.csso())
         .pipe(gulp.dest(destination + 'css/'))
 });
@@ -137,8 +137,8 @@ gulp.task('cssmin', function() {
 gulp.task('jsmin', function() {
     return gulp.src(destination + jsmin)
         .pipe(plugins.uglify({
-            output: {max_line_len: 400000}
-		}))
+        output: {max_line_len: 400000}
+        }))
         .pipe(gulp.dest(destination + 'js/'))
 });
 
@@ -159,22 +159,22 @@ gulp.task('critical', function() {
 gulp.task('htmlmin', function() {
     return gulp.src(destination + html)
         .pipe(plugins.htmlmin({
-			removeComments: true,
-			removeCommentsFromCDATA: true,
-			removeCDATASectionsFromCDATA: true,
-			collapseWhitespace: true,
-			collapseBooleanAttributes: true,
-			removeAttributeQuotes: true,
-			removeRedundantAttributes: true,
-			preventAttributesEscaping: true,
-			useShortDoctype: true,
-			removeEmptyAttributes: true,
-			removeScriptTypeAttributes: true,
-			removeStyleLinkTypeAttributes: true,
-			removeOptionalTags: true,
-			minifyURLs: true,
+            removeComments: true,
+            removeCommentsFromCDATA: true,
+            removeCDATASectionsFromCDATA: true,
+            collapseWhitespace: true,
+            collapseBooleanAttributes: true,
+            removeAttributeQuotes: true,
+            removeRedundantAttributes: true,
+            preventAttributesEscaping: true,
+            useShortDoctype: true,
+            removeEmptyAttributes: true,
+            removeScriptTypeAttributes: true,
+            removeStyleLinkTypeAttributes: true,
+            removeOptionalTags: true,
+            minifyURLs: true,
             minifyJS: true
-		}))
+        }))
         .pipe(gulp.dest(destination))
 });
 

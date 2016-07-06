@@ -20,78 +20,78 @@
     @if $number == 0 {
         @return $number;
     }
-	@if $unit-extract == "rem" {
+    @if $unit-extract == "rem" {
         @return $value;
     }
-	@if unitless($value) {
-		$value: $value / 10;
-	}
+    @if unitless($value) {
+        $value: $value / 10;
+    }
     @if $unit-extract == "px" {
         $value: $number / 10;
     }
     @if $unit-extract == "em" {
-		@if unit($base-font-size) == "em" {
-			$value: $number;
-		}
-		@else {
-			$value: $number * ($base-font-size / ($base-font-size * 0 + 1));
-		}
+        @if unit($base-font-size) == "em" {
+            $value: $number;
+        }
+        @else {
+            $value: $number * ($base-font-size / ($base-font-size * 0 + 1));
+        }
     }
     @return decimal-round($value * 1rem);
 }
 
 // function em
 @function em($value, $context: $base-font-size) {
-	$unit-extract: unit($value);
-	$number: $value / ($value * 0 + 1);
-	$context: rem($context) * 10 / 1rem;
-	@if $number == 0 {
+    $unit-extract: unit($value);
+    $number: $value / ($value * 0 + 1);
+    $context: rem($context) * 10 / 1rem;
+    @if $number == 0 {
         @return $number;
     }
-	@if $unit-extract == "em" {
+    @if $unit-extract == "em" {
         @return $value;
     }
-	@if unitless($value) {
-		$value: $value;
-	}
-	@if $unit-extract == "px" {
-		$value: $number;
-	}
-	@if $unit-extract == "rem" {
-		$value: $number * 10;
-	}
-	@return decimal-round($value / $context * 1em);
+    @if unitless($value) {
+        $value: $value;
+    }
+    @if $unit-extract == "px" {
+        $value: $number;
+    }
+    @if $unit-extract == "rem" {
+        $value: $number * 10;
+    }
+    @return decimal-round($value / $context * 1em);
 }
 
 // function line height
 @function line-height($font-size, $vertical-rhythm: $base-font-size * $line-height) {
-	$font-size: rem($font-size);
-	$base-rhythm: rem($base-font-size * $line-height);
-	$vertical-rhythm: rem($vertical-rhythm);
-	$coeff: 1;
-	@if $font-size != 0 and $vertical-rhythm != 0 {
-		$line-height: $vertical-rhythm / $font-size;
-		@if $base-rhythm == $vertical-rhythm {
-			@while $line-height < 1 {
-				$coeff: $coeff + 1;
-				$line-height: $vertical-rhythm * $coeff / $font-size;
-			}
-			@while $line-height >= 2 {
-				$coeff: $coeff + 1;
-				$line-height: $vertical-rhythm / $coeff / $font-size;
-			}
-		}
-		@return decimal-round($line-height);
-	}
-	@return decimal-round($line-height);
+    $font-size: rem($font-size);
+    $base-rhythm: rem($base-font-size * $line-height);
+    $vertical-rhythm: rem($vertical-rhythm);
+    $coeff: 1;
+    @if $font-size != 0 and $vertical-rhythm != 0 {
+        $line-height: $vertical-rhythm / $font-size;
+        @if $base-rhythm == $vertical-rhythm {
+            @while $line-height < 1 {
+                $coeff: $coeff + 1;
+                $line-height: $vertical-rhythm * $coeff / $font-size;
+            }
+            @while $line-height >= 2 {
+                $coeff: $coeff + 1;
+                $line-height: $vertical-rhythm / $coeff / $font-size;
+            }
+        }
+        @return decimal-round($line-height);
+    }
+    @return decimal-round($line-height);
 }
 
 // function width col
 @function width-col($number) {
-	@return percentage(decimal-round(((($container-layout - $grid-gutter * ($grid-number - 1)) / $grid-number) * $number + $grid-gutter * ($number - 1)) * 100 / $container-layout)) / 100;
+    @return percentage(decimal-round(((($container-layout - $grid-gutter * ($grid-number - 1)) / $grid-number) * $number + $grid-gutter * ($number - 1)) * 100 / $container-layout)) / 100;
 }
 
 // function slice
 @function slice($string) {
-	@return str-slice($string, 1, 1);
+    @return str-slice($string, 1, 1);
 }
