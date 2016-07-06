@@ -82,30 +82,30 @@ En effet, toute la typographie, les grilles, les éléments de formulaire, les p
 Voici quelques exemples de configuration :
 
 ```css
-$base-font-size         : 1.5rem !default;
-$line-height            : 1.6 !default;
+$base-font-size     : 1.5rem !default;
+$line-height        : 1.6 !default;
 ```
 
 ➜ *La taille de la police de base sera de 1.5rem soit 15px et la hauteur de ligne de base de 1.6 (le rythme vertical sera calculé automatiquement : 1.5rem * 1.6 = 2.4rem soit 24px).*
 
 ```css
-$field-height   : 48px !default;
-$btn-height     : 48px !default;
+$field-height       : 48px !default;
+$btn-height         : 48px !default;
 ```
 
 ➜ *La hauteur des champs et des boutons de formulaire sera de 48px (les marges internes et les hauteurs de ligne des champs et des boutons seront ajustés en conséquence).*
 
 ```css
-$grid-number    : 12 !default;
-$grid-gutter    : 2.4rem !default;
+$grid-number        : 12 !default;
+$grid-gutter        : 2.4rem !default;
 ```
 
 ➜ *La grille sera composée de 12 colonnes avec des gouttières de largeur 2.4rem soit 24px.*
 
 ```css
-$h1-size        : 6.4rem !default;
-$h2-size        : 3.9rem !default;
-$h3-size        : 2.4rem !default;
+$h1-size            : 6.4rem !default;
+$h2-size            : 3.9rem !default;
+$h3-size            : 2.4rem !default;
 ```
 
 ➜ *La taille des titres h1, h2, h3 sera défini respectivement à 6.4rem, 3.9rem et 2.4rem (la hauteur de ligne des titres sera calculée automatiquement pour suivre le rythme vertical calculé précédemment).*
