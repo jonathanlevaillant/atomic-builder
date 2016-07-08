@@ -64,7 +64,7 @@
 }
 
 // function line height
-@function line-height($font-size, $vertical-rhythm: $base-font-size * $line-height) {
+@function line-height($font-size, $vertical-rhythm: $base-font-size * $line-height, $minor: true) {
     $font-size: rem($font-size);
     $base-rhythm: rem($base-font-size * $line-height);
     $vertical-rhythm: rem($vertical-rhythm);
@@ -76,9 +76,11 @@
                 $coeff: $coeff + 1;
                 $line-height: $vertical-rhythm * $coeff / $font-size;
             }
-            @while $line-height >= 2 {
-                $coeff: $coeff + 1;
-                $line-height: $vertical-rhythm / $coeff / $font-size;
+            @if $minor {
+                @while $line-height >= 2 {
+                    $coeff: $coeff + 1;
+                    $line-height: $vertical-rhythm / $coeff / $font-size;
+                }
             }
         }
         @return decimal-round($line-height);

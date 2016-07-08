@@ -15,21 +15,22 @@ input,
 select,
 textarea {
     height: em($field-height, $field-size);
-    @include field-rhythm($field-size);
+    @include field-rhythm($field-size, $minor: false);
     border: 1px solid $color-border-field;
-    @include vertical-rhythm($field-size);
+    @include vertical-rhythm($field-size, $minor: false);
 }
 label,
 .c-label {
     display: inline-table;
     margin-right: $small-value;
-    @include field-rhythm($label-size, $field-height, 0);
-    @include vertical-rhythm($label-size);
+    @include field-rhythm($label-size, $field-height, 0, false);
+    @include vertical-rhythm($label-size, $minor: false);
     cursor: pointer;
 }
 .c-label--light {
     padding-top: 0;
     padding-bottom: 0;
+    vertical-align: top;
 }
 textarea {
     min-height: 3 * em($field-height, $field-size);
@@ -58,10 +59,10 @@ button,
 [type="reset"],
 [type="submit"] {
     height: auto;
-    @include field-rhythm($btn-size, $btn-height, $medium-value);
+    @include field-rhythm($btn-size, $btn-height, $medium-value, false);
     border: 0;
     background: $color-background-btn;
-    @include vertical-rhythm($btn-size);
+    @include vertical-rhythm($btn-size, $minor: false);
     cursor: pointer;
 }
 button:focus,
