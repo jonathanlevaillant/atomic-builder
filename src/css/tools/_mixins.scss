@@ -33,14 +33,14 @@ $medium-screen          : em($medium-screen, 16px);
 $large-screen           : em($large-screen, 16px);
 
 // mixin vertical rhythm
-@mixin vertical-rhythm($font-size, $vertical-rhythm: $base-font-size * $line-height, $minor: true) {
+@mixin vertical-rhythm($font-size, $vertical-rhythm: $base-font-size * $line-height, $minor: false) {
     $font-size: rem($font-size);
     font-size: $font-size;
     line-height: line-height($font-size, $vertical-rhythm, $minor);
 }
 
 // mixin field rhythm
-@mixin field-rhythm($font-size, $height: $field-height, $padding-x: $small-value, $minor: true) {
+@mixin field-rhythm($font-size, $height: $field-height, $padding-x: $small-value, $minor: false) {
     $font-size: rem($font-size);
     $height: rem($height);
     $padding-y: em(($height - line-height($font-size, $minor: $minor) * $font-size) / 2, $font-size);

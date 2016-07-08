@@ -15,16 +15,16 @@ input,
 select,
 textarea {
     height: em($field-height, $field-size);
-    @include field-rhythm($field-size, $minor: false);
+    @include field-rhythm($field-size);
     border: 1px solid $color-border-field;
-    @include vertical-rhythm($field-size, $minor: false);
+    @include vertical-rhythm($field-size);
 }
 label,
 .c-label {
     display: inline-table;
     margin-right: $small-value;
-    @include field-rhythm($label-size, $field-height, 0, false);
-    @include vertical-rhythm($label-size, $minor: false);
+    @include field-rhythm($label-size, $field-height, 0);
+    @include vertical-rhythm($label-size);
     cursor: pointer;
 }
 .c-label--light {
@@ -62,7 +62,7 @@ button,
     @include field-rhythm($btn-size, $btn-height, $medium-value, false);
     border: 0;
     background: $color-background-btn;
-    @include vertical-rhythm($btn-size, $minor: false);
+    @include vertical-rhythm($btn-size);
     cursor: pointer;
 }
 button:focus,

@@ -87,27 +87,27 @@ h4,
     margin-top: $medium-value;
     margin-bottom: 0;
     font-family: $font-stack-headings;
-    @include vertical-rhythm($h4-size);
+    @include vertical-rhythm($h4-size, $minor: true);
 }
 h5,
 .c-h5 {
     margin-top: $medium-value;
     margin-bottom: 0;
     font-family: $font-stack-headings;
-    @include vertical-rhythm($h5-size);
+    @include vertical-rhythm($h5-size, $minor: true);
 }
 h6,
 .c-h6 {
     margin-top: $medium-value;
     margin-bottom: 0;
     font-family: $font-stack-headings;
-    @include vertical-rhythm($h6-size);
+    @include vertical-rhythm($h6-size, $minor: true);
 }
 .c-big {
     @include vertical-rhythm($big-size);
 }
 .c-small {
-    @include vertical-rhythm($small-size);
+    @include vertical-rhythm($small-size, $minor: true);
 }
 code,
 pre,
