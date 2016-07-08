@@ -487,6 +487,7 @@ label,
 .c-label--light {
     padding-top: 0;
     padding-bottom: 0;
+    vertical-align: top;
 }
 
 textarea {
