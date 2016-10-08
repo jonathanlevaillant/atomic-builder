@@ -22,9 +22,6 @@
     -moz-osx-font-smoothing: grayscale;
 }
 .c-icon-after {
-    &::before {
-        display: none;
-    }
     &::after {
         margin: 0 0 0 em($extra-small-value);
     }
@@ -32,12 +29,12 @@
 
 // icons library
 
-.c-icon--facebook::before, .c-icon--facebook.c-icon-after::after {
+.c-icon--facebook::before, .c-icon-after--facebook::after {
     content: "\ea01";
 }
-.c-icon--google::before, .c-icon--google.c-icon-after::after {
+.c-icon--google::before, .c-icon-after--google::after {
     content: "\ea02";
 }
-.c-icon--twitter::before, .c-icon--twitter.c-icon-after::after {
+.c-icon--twitter::before, .c-icon-after--twitter::after {
     content: "\ea03";
 }

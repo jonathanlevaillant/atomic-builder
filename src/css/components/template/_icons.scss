@@ -21,10 +21,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-.c-icon-after {
-    &::before {
-        display: none;
-    }
+.c-<%= className %>-after {
     &::after {
         margin: 0 0 0 em($extra-small-value);
     }
@@ -32,6 +29,6 @@
 
 // icons library
 <% _.each(glyphs, function(glyph) { %>
-.c-<%= className %>--<%= glyph.name %>::before, .c-<%= className %>--<%= glyph.name %>.c-icon-after::after {
+.c-<%= className %>--<%= glyph.name %>::before, .c-<%= className %>-after--<%= glyph.name %>::after {
     content: "\<%= glyph.unicode[0].charCodeAt(0).toString(16) %>";
 }<% }); %>

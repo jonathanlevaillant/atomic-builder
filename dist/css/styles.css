@@ -1684,25 +1684,21 @@ th {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.c-icon-after::before {
-    display: none;
-}
-
 .c-icon-after::after {
     margin: 0 0 0 .4em;
 }
 
 .c-icon--facebook::before,
-.c-icon--facebook.c-icon-after::after {
+.c-icon-after--facebook::after {
     content: '\ea01';
 }
 
 .c-icon--google::before,
-.c-icon--google.c-icon-after::after {
+.c-icon-after--google::after {
     content: '\ea02';
 }
 
 .c-icon--twitter::before,
-.c-icon--twitter.c-icon-after::after {
+.c-icon-after--twitter::after {
     content: '\ea03';
 }
