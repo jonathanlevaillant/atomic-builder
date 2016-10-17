@@ -69,7 +69,7 @@
     $base-rhythm: rem($base-font-size * $line-height);
     $vertical-rhythm: rem($vertical-rhythm);
     $coeff: 1;
-    @if $font-size != 0 and $vertical-rhythm != 0 {
+    @if ($apply-vertical-rhythm or $vertical-rhythm != $base-font-size * $line-height) and $font-size != 0 and $vertical-rhythm != 0 {
         $line-height: $vertical-rhythm / $font-size;
         @if $base-rhythm == $vertical-rhythm {
             @while $line-height < 1 {
