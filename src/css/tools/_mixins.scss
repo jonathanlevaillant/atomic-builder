@@ -14,6 +14,10 @@ $small-size             : rem($small-size);
 $label-size             : rem($label-size);
 $field-size             : rem($field-size);
 $btn-size               : rem($btn-size);
+$container-layout       : rem($container-layout);
+$margin-layout          : rem($margin-layout);
+$grid-gutter            : rem($grid-gutter);
+$grid-spacing           : rem($grid-spacing);
 $extra-small-value      : rem($extra-small-value);
 $small-value            : rem($small-value);
 $medium-value           : rem($medium-value);
@@ -21,10 +25,6 @@ $large-value            : rem($large-value);
 $extra-large-value      : rem($extra-large-value);
 $field-height           : rem($field-height);
 $btn-height             : rem($btn-height);
-$container-layout       : rem($container-layout);
-$margin-layout          : rem($margin-layout);
-$grid-gutter            : rem($grid-gutter);
-$grid-spacing           : rem($grid-spacing);
 
 // mixin convert to em
 $extra-small-screen     : em($extra-small-screen, 16px);

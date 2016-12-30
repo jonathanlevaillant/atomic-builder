@@ -1,7 +1,7 @@
-/* global variables
+/* global
    ========================================================================== */
 
-// global variables font sizes
+// global font sizes
 $base-font-size         : 1.5rem !default;
 $line-height            : 1.6 !default;
 $h1-size                : 6.4rem !default;
@@ -16,36 +16,36 @@ $label-size             : 1.5rem !default;
 $field-size             : 1.5rem !default;
 $btn-size               : 1.5rem !default;
 
-// global variables font stacks
+// global vertical rhythm
+$apply-vertical-rhythm  : true !default;
+
+// global font stacks
 $font-stack-common      : "Open Sans", Arial, sans-serif !default;
 $font-stack-headings    : Georgia, "Times New Roman", serif !default;
 $font-stack-monospace   : consolas, courier, monospace !default;
 
-// global variables spacings
+// global layout
+$container-layout       : 96rem !default;
+$margin-layout          : 2.4rem !default;
+
+// global grids
+$grid-number            : 12 !default;
+$grid-gutter            : 2.4rem !default;
+$grid-spacing           : 2.4rem !default;
+
+// global spacings
 $extra-small-value      : .6rem !default;
 $small-value            : 1.2rem !default;
 $medium-value           : 2.4rem !default;
 $large-value            : 4.8rem !default;
 $extra-large-value      : 7.2rem !default;
 
-// global variables forms
+// global form items
 $field-height           : 4.8rem !default;
 $btn-height             : 4.8rem !default;
 
-// global variables breakpoints
+// global breakpoints
 $extra-small-screen     : 20em !default; // 320px
 $small-screen           : 40em !default; // 640px
 $medium-screen          : 48em !default; // 768px
 $large-screen           : 64em !default; // 1024px
-
-// global variables layout
-$container-layout       : 96rem !default;
-$margin-layout          : 2.4rem !default;
-
-// global variables grids
-$grid-number            : 12 !default;
-$grid-gutter            : 2.4rem !default;
-$grid-spacing           : 2.4rem !default;
-
-// apply vertical rhythm
-$apply-vertical-rhythm  : true !default;
