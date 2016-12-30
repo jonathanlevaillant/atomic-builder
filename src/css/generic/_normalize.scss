@@ -1,49 +1,43 @@
 /* normalize
    ========================================================================== */
 
-// normalize reset
+// normalize document
 html {
     font-family: sans-serif;
+    line-height: 1.15;
     text-size-adjust: 100%;
 }
+
+// normalize sections
 body {
     margin: 0;
 }
-
-// normalize html5 tags
 article,
 aside,
-details,
-figcaption,
-figure,
 footer,
 header,
-main,
-menu,
 nav,
-section,
-summary {
+section {
     display: block;
 }
-audio,
-canvas,
-progress,
-video {
-    display: inline-block;
+
+// normalize grouping content
+figcaption,
+figure,
+main {
+    display: block;
 }
-audio:not([controls]) {
-    display: none;
+hr {
+    box-sizing: content-box;
+    overflow: visible;
     height: 0;
 }
-progress {
-    vertical-align: baseline;
-}
-template,
-[hidden] {
-    display: none;
+pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
 }
 
-// normalize links
+// normalize text-level semantics
 a {
     background-color: transparent;
     -webkit-text-decoration-skip: objects;
@@ -52,8 +46,6 @@ a {
         outline-width: 0;
     }
 }
-
-// normalize text-level semantics
 abbr[title] {
     border-bottom: 0;
     text-decoration: underline;
@@ -66,6 +58,12 @@ strong {
 b,
 strong {
     font-weight: bolder;
+}
+code,
+kbd,
+samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
 }
 dfn {
     font-style: italic;
@@ -88,45 +86,29 @@ sup {
 }
 
 // normalize embedded content
-img,
-iframe {
+audio,
+video {
+    display: inline-block;
+}
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+img {
     border-style: none;
 }
 svg:not(:root) {
     overflow: hidden;
 }
 
-// normalize grouping content
-code,
-kbd,
-pre,
-samp {
-    font-family: monospace, monospace;
-    font-size: 1em;
-}
-hr {
-    box-sizing: content-box;
-    display: block;
-    overflow: visible;
-    clear: both;
-    height: 1px;
-    margin: calc(#{$medium-value} - 1px) 0 0;
-    padding: 0;
-    border: 0;
-    background-color: $color-separator;
-    color: $color-separator;
-}
-
 // normalize forms
 button,
 input,
+optgroup,
 select,
 textarea {
     margin: 0;
     font: inherit;
-}
-optgroup {
-    font-weight: bold;
 }
 button,
 input {
@@ -169,19 +151,17 @@ legend {
     white-space: normal;
     color: inherit;
 }
+progress {
+    display: inline-block;
+    vertical-align: baseline;
+}
 textarea {
     overflow: auto;
 }
 [type="checkbox"],
 [type="radio"] {
     box-sizing: border-box;
-    position: relative;
-    top: 1px;
-    height: auto;
-    margin-right: $small-value;
     padding: 0;
-    border: 0;
-    vertical-align: baseline;
 }
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
@@ -195,11 +175,33 @@ textarea {
 [type="search"]::-webkit-search-decoration {
     -webkit-appearance: none;
 }
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit;
+}
 ::-webkit-input-placeholder {
     opacity: .54;
     color: inherit;
 }
-::-webkit-file-upload-button {
-    -webkit-appearance: button;
-    font: inherit;
+
+// normalize interactive
+details,
+menu {
+    display: block;
+}
+summary {
+    display: list-item;
+}
+
+// normalize scripting
+canvas {
+    display: inline-block;
+}
+template {
+    display: none;
+}
+
+// normalize scripting
+[hidden] {
+    display: none;
 }
