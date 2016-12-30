@@ -1,0 +1,19 @@
+/* fields
+   ========================================================================== */
+
+// field default
+.c-field {
+    height: em($field-height, $field-size);
+    @include field-rhythm($field-size);
+    border: 1px solid $color-border-field;
+    @include vertical-rhythm($field-size);
+}
+
+// field option
+.c-field--option {
+    position: relative;
+    top: -1px;
+    height: auto;
+    padding: 0;
+    border: 0;
+}
