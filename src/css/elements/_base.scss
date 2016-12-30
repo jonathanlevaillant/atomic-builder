@@ -6,8 +6,8 @@ html {
     box-sizing: border-box;
 }
 *,
-*::before,
-*::after {
+::before,
+::after {
     box-sizing: inherit;
 }
 
@@ -17,17 +17,17 @@ html {
     font-size: calc(1em * .625);
 }
 body {
-    background-color: $color-background;
+    background-color: $white;
     font-family: $font-stack-common;
     @include vertical-rhythm($base-font-size);
-    color: $color-text;
+    color: $black;
 }
 a {
-    color: $color-link;
+    color: $slate-grey;
     &:hover,
     &:focus,
     &:active {
-        color: $color-link-hover;
+        color: $slate-grey;
     }
 }
 ul,
@@ -103,8 +103,8 @@ h6,
     font-family: $font-stack-headings;
     @include vertical-rhythm($h6-size, $minor: true);
 }
-.c-big {
-    @include vertical-rhythm($big-size);
+.c-large {
+    @include vertical-rhythm($large-size);
 }
 .c-small {
     @include vertical-rhythm($small-size, $minor: true);

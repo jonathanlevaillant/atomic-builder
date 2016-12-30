@@ -33,7 +33,7 @@
     ul,
     ol {
         margin: auto;
-        color: #000;
+        color: $black;
     }
 
     // print no orphans, no widows
@@ -64,7 +64,7 @@
 
     // print links
     a {
-        color: #000;
+        color: $black;
     }
     a[href^="javascript:"],
     a[href^="#"] {

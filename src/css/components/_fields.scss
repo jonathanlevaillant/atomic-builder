@@ -5,7 +5,7 @@
 .c-field {
     height: em($field-height, $field-size);
     @include field-rhythm($field-size);
-    border: 1px solid $color-border-field;
+    border: 1px solid $silver;
     @include vertical-rhythm($field-size);
 }
 
