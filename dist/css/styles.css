@@ -1705,7 +1705,6 @@ th {
     font-size: 1.5rem;
     line-height: 1.6;
     display: inline-block;
-    height: auto;
     padding: .8em 1.6em;
     cursor: pointer;
     text-decoration: none;
