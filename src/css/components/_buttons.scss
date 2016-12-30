@@ -1,0 +1,14 @@
+/* buttons
+   ========================================================================== */
+
+// button default
+.c-btn {
+    height: auto;
+    display: inline-block;
+    @include field-rhythm($btn-size, $btn-height, $medium-value);
+    border: 0;
+    background: $color-background-btn;
+    @include vertical-rhythm($btn-size);
+    text-decoration: none;
+    cursor: pointer;
+}
