@@ -455,6 +455,7 @@ svg {
 /* forms
    ========================================================================== */
 button,
+.c-btn,
 input,
 optgroup,
 select,
@@ -485,7 +486,8 @@ select {
 }
 
 [type='button']:focus,
-button:focus {
+button:focus,
+.c-btn:focus {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
