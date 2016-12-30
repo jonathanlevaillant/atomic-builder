@@ -266,8 +266,8 @@ html {
 }
 
 *,
-*::before,
-*::after {
+::before,
+::after {
     box-sizing: inherit;
 }
 
@@ -291,7 +291,7 @@ a {
 a:hover,
 a:focus,
 a:active {
-    color: #000;
+    color: #333;
 }
 
 ul,
@@ -381,7 +381,7 @@ h6,
     margin-bottom: 0;
 }
 
-.c-big {
+.c-large {
     font-size: 1.7rem;
     line-height: 1.4118;
 }
@@ -894,7 +894,7 @@ th {
     margin-left: auto;
 }
 
-.u-big {
+.u-large {
     font-size: 1.7rem;
 }
 
