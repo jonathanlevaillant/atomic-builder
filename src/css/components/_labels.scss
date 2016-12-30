@@ -1,0 +1,19 @@
+/* labels
+   ========================================================================== */
+
+// label default
+.c-label {
+    display: inline-block;
+    margin-right: $small-value;
+    @include field-rhythm($label-size, $field-height, 0);
+    vertical-align: top;
+    @include vertical-rhythm($label-size);
+}
+
+// label option
+.c-label--option {
+    margin-right: 0;
+    margin-left: $small-value;
+    padding-top: 0;
+    padding-bottom: 0;
+}
