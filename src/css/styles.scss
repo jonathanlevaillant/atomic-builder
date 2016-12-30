@@ -13,12 +13,12 @@
 // import generic
 @import "generic/normalize";
 
-// import base
-@import "base/base";
-@import "base/forms";
-@import "base/tables";
-@import "base/print";
-@import "base/responsive";
+// import elements
+@import "elements/base";
+@import "elements/forms";
+@import "elements/tables";
+@import "elements/print";
+@import "elements/responsive";
 
 // import objects
 @import "objects/grids";
@@ -28,3 +28,7 @@
 
 // import components
 @import "components/icons";
+@import "components/labels";
+@import "components/fields";
+@import "components/buttons";
+@import "components/separators";
