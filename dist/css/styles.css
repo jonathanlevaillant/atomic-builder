@@ -1,8 +1,8 @@
 /* imports
    ========================================================================== */
-/* global variables
+/* global
    ========================================================================== */
-/* color variables
+/* colors
    ========================================================================== */
 /* fonts
    ========================================================================== */
@@ -995,24 +995,28 @@ th {
 .u-flex-cross-baseline {
     -webkit-box-align: baseline;
     -ms-flex-align: baseline;
+    -ms-grid-row-align: baseline;
     align-items: baseline;
 }
 
 .u-flex-cross-start {
     -webkit-box-align: start;
     -ms-flex-align: start;
+    -ms-grid-row-align: flex-start;
     align-items: flex-start;
 }
 
 .u-flex-cross-end {
     -webkit-box-align: end;
     -ms-flex-align: end;
+    -ms-grid-row-align: flex-end;
     align-items: flex-end;
 }
 
 .u-flex-cross-center {
     -webkit-box-align: center;
     -ms-flex-align: center;
+    -ms-grid-row-align: center;
     align-items: center;
 }
 
