@@ -3,6 +3,7 @@
 
 // form items
 button,
+.c-btn,
 input,
 optgroup,
 select,
@@ -30,7 +31,8 @@ select {
     }
 }
 [type="button"],
-button {
+button,
+.c-btn {
     &:focus {
         -webkit-tap-highlight-color: transparent;
         user-select: none;
