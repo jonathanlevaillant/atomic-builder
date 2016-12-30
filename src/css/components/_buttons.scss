@@ -3,7 +3,6 @@
 
 // button default
 .c-btn {
-    height: auto;
     display: inline-block;
     @include field-rhythm($btn-size, $btn-height, $medium-value);
     border: 0;
