@@ -1,7 +1,7 @@
 /* base
    ========================================================================== */
 
-// base reset
+// base border-box-model
 html {
     box-sizing: border-box;
 }
@@ -10,25 +10,10 @@ html {
 *::after {
     box-sizing: inherit;
 }
-ul,
-ol {
-    padding-left: $medium-value;
-}
-img {
-    vertical-align: middle;
-}
-img:not([src$=".svg"]) {
-    height: auto;
-}
-blockquote,
-figure {
-    margin-right: 0;
-    margin-left: 0;
-}
 
-// base typography
+// base reset
 html {
-    font-size: .625em;
+    font-size: 62.5%;
     font-size: calc(1em * .625);
 }
 body {
@@ -45,6 +30,21 @@ a {
         color: $color-link-hover;
     }
 }
+ul,
+ol {
+    padding-left: $medium-value;
+}
+img {
+    height: auto;
+    vertical-align: middle;
+}
+blockquote,
+figure {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+// base typography
 p,
 .c-p,
 ul,

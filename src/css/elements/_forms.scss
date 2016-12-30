@@ -1,0 +1,38 @@
+/* forms
+   ========================================================================== */
+
+// form items
+button,
+input,
+optgroup,
+select,
+textarea {
+    color: $color-text;
+}
+label {
+    vertical-align: middle;
+    cursor: pointer;
+}
+textarea {
+    min-height: 3 * em($field-height, $field-size);
+    vertical-align: top;
+    resize: vertical;
+}
+select {
+    -webkit-appearance: menulist-button;
+}
+[type="search"] {
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+        display: none;
+    }
+}
+[type="button"],
+button {
+    &:focus {
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+    }
+}
