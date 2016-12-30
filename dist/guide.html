@@ -49,7 +49,7 @@
             <p>The <u>u element</u> is text with an unarticulated, though explicitly rendered, non-textual annotation</p>
             <p><small>This small text is small for fine print, etc.</small></p>
             <p><code>This is what inline code looks like.</code></p>
-            <hr />
+            <hr class="c-separator" />
             <ul>
                 <li>This is a list item in an unordered list</li>
                 <li>An unordered list is a list in which the sequence of items is not important. Sometimes, an unordered list is a bulleted list. And this is a long list item in an unordered list that can wrap onto a new line.</li>
@@ -73,31 +73,31 @@
                 <li>This is the last list item</li>
             </ol>
             <p><span class="c-icon c-icon--facebook"></span><span class="c-icon c-icon--twitter"></span><span class="c-icon c-icon--google"></span></p>
-            <p><label for="text">Text Input</label><input type="text" id="text" placeholder="Text Input" /></p>
-            <p><label for="emailaddress">Email Address</label><input type="email" id="emailaddress" placeholder="name@email.com" /></p>
-            <p><label for="search">Search</label><input type="search" id="search" placeholder="Enter Search Term" /></p>
-            <p><label for="password">Password<sup>*</sup></label><input type="password" id="password" placeholder="Type your Password" required /></p>
-            <p><label for="textarea">Textarea</label><textarea id="textarea" placeholder="Enter your message here"></textarea></p>
-            <p><label for="select">Select</label><select id="select"><option>Option One</option><option>Option Two</option><option>Option Three</option></select></p>
+            <p><label for="text" class="c-label">Text Input</label><input type="text" id="text" class="c-field" placeholder="Text Input" /></p>
+            <p><label for="emailaddress" class="c-label">Email Address</label><input type="email" id="emailaddress" class="c-field" placeholder="name@email.com" /></p>
+            <p><label for="search" class="c-label">Search</label><input type="search" id="search" class="c-field" placeholder="Enter Search Term" /></p>
+            <p><label for="password" class="c-label">Password<sup>*</sup></label><input type="password" id="password" class="c-field" placeholder="Type your Password" required /></p>
+            <p><label for="textarea" class="c-label">Textarea</label><textarea id="textarea" class="c-field" placeholder="Enter your message here"></textarea></p>
+            <p><label for="select" class="c-label">Select</label><select id="select" class="c-field"><option>Option One</option><option>Option Two</option><option>Option Three</option></select></p>
             <fieldset class="c-p">
                 <legend>Checkbox</legend>
                 <ul class="u-list-unstyled u-mtn">
-                    <li><input id="checkbox1" name="checkbox" type="checkbox" checked="checked"><label for="checkbox1" class="c-label--light">Choice A</label></li>
-                    <li><input id="checkbox2" name="checkbox" type="checkbox"><label for="checkbox2" class="c-label--light">Choice B</label></li>
-                    <li><input id="checkbox3" name="checkbox" type="checkbox"><label for="checkbox3" class="c-label--light">Choice C</label></li>
+                    <li><input id="checkbox1" class="c-field c-field--option" name="checkbox" type="checkbox" checked="checked"><label for="checkbox1" class="c-label c-label--option">Choice A</label></li>
+                    <li><input id="checkbox2" class="c-field c-field--option" name="checkbox" type="checkbox"><label for="checkbox2" class="c-label c-label--option">Choice B</label></li>
+                    <li><input id="checkbox3" class="c-field c-field--option" name="checkbox" type="checkbox"><label for="checkbox3" class="c-label c-label--option">Choice C</label></li>
                 </ul>
             </fieldset>
             <fieldset class="c-p">
                 <legend>Radio</legend>
                 <ul class="u-list-unstyled u-mtn">
-                    <li><input id="radio1" name="radio" type="radio" checked="checked"><label for="radio1" class="c-label--light">Option 1<br />multiline</label></li>
-                    <li><input id="radio2" name="radio" type="radio"><label for="radio2" class="c-label--light">Option 2</label></li>
-                    <li><input id="radio3" name="radio" type="radio"><label for="radio3" class="c-label--light">Option 3</label></li>
+                    <li><input id="radio1" class="c-field c-field--option" name="radio" type="radio" checked="checked"><label for="radio1" class="c-label c-label--option">Option 1<br />multiline</label></li>
+                    <li><input id="radio2" class="c-field c-field--option" name="radio" type="radio"><label for="radio2" class="c-label c-label--option">Option 2</label></li>
+                    <li><input id="radio3" class="c-field c-field--option" name="radio" type="radio"><label for="radio3" class="c-label c-label--option">Option 3</label></li>
                 </ul>
             </fieldset>
-            <p><button type="button">Button</button></p>
+            <p><button type="button" class="c-btn">Button</button></p>
             <p><a href="#" class="c-btn">Link Button</a></p>
-            <p><button type="button" disabled>Disabled Button</button></p>
+            <p><button type="button" class="c-btn" disabled>Disabled Button</button></p>
             <p>Grid 2 equal columns</p>
             <div class="o-grid o-grid--2">
                 <div class="o-grid__item"><p class="c-demo">1/2</p></div>

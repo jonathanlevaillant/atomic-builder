@@ -30,6 +30,7 @@
    ========================================================================== */
 html {
     font-family: sans-serif;
+    line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     text-size-adjust: 100%;
@@ -41,38 +42,28 @@ body {
 
 article,
 aside,
-details,
-figcaption,
-figure,
 footer,
 header,
-main,
-menu,
 nav,
-section,
-summary {
+section {
     display: block;
 }
 
-audio,
-canvas,
-progress,
-video {
-    display: inline-block;
+figcaption,
+figure,
+main {
+    display: block;
 }
 
-audio:not([controls]) {
-    display: none;
+hr {
+    overflow: visible;
+    box-sizing: content-box;
     height: 0;
 }
 
-progress {
-    vertical-align: baseline;
-}
-
-template,
-[hidden] {
-    display: none;
+pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
 }
 
 a {
@@ -101,6 +92,13 @@ strong {
     font-weight: bolder;
 }
 
+code,
+kbd,
+samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
+
 dfn {
     font-style: italic;
 }
@@ -125,8 +123,17 @@ sup {
     top: -.5em;
 }
 
-img,
-iframe {
+audio,
+video {
+    display: inline-block;
+}
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+img {
     border-style: none;
 }
 
@@ -134,37 +141,13 @@ svg:not(:root) {
     overflow: hidden;
 }
 
-code,
-kbd,
-pre,
-samp {
-    font-family: monospace, monospace;
-    font-size: 1em;
-}
-
-hr {
-    display: block;
-    clear: both;
-    overflow: visible;
-    box-sizing: content-box;
-    height: 1px;
-    margin: calc(2.4rem - 1px) 0 0;
-    padding: 0;
-    color: #ccc;
-    border: 0;
-    background-color: #ccc;
-}
-
 button,
 input,
+optgroup,
 select,
 textarea {
     font: inherit;
     margin: 0;
-}
-
-optgroup {
-    font-weight: bold;
 }
 
 button,
@@ -215,20 +198,19 @@ legend {
     border: 0;
 }
 
+progress {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
 textarea {
     overflow: auto;
 }
 
 [type='checkbox'],
 [type='radio'] {
-    position: relative;
-    top: 1px;
     box-sizing: border-box;
-    height: auto;
-    margin-right: 1.2rem;
     padding: 0;
-    vertical-align: baseline;
-    border: 0;
 }
 
 [type='number']::-webkit-inner-spin-button,
@@ -246,14 +228,35 @@ textarea {
     -webkit-appearance: none;
 }
 
+::-webkit-file-upload-button {
+    font: inherit;
+    -webkit-appearance: button;
+}
+
 ::-webkit-input-placeholder {
     opacity: .54;
     color: inherit;
 }
 
-::-webkit-file-upload-button {
-    font: inherit;
-    -webkit-appearance: button;
+details,
+menu {
+    display: block;
+}
+
+summary {
+    display: list-item;
+}
+
+canvas {
+    display: inline-block;
+}
+
+template {
+    display: none;
+}
+
+[hidden] {
+    display: none;
 }
 
 /* base
@@ -268,27 +271,8 @@ html {
     box-sizing: inherit;
 }
 
-ul,
-ol {
-    padding-left: 2.4rem;
-}
-
-img {
-    vertical-align: middle;
-}
-
-img:not([src$='.svg']) {
-    height: auto;
-}
-
-blockquote,
-figure {
-    margin-right: 0;
-    margin-left: 0;
-}
-
 html {
-    font-size: .625em;
+    font-size: 62.5%;
     font-size: calc(1em * .625);
 }
 
@@ -308,6 +292,22 @@ a:hover,
 a:focus,
 a:active {
     color: #000;
+}
+
+ul,
+ol {
+    padding-left: 2.4rem;
+}
+
+img {
+    height: auto;
+    vertical-align: middle;
+}
+
+blockquote,
+figure {
+    margin-right: 0;
+    margin-left: 0;
 }
 
 p,
@@ -455,44 +455,22 @@ svg {
 /* forms
    ========================================================================== */
 button,
-.c-btn,
 input,
 optgroup,
 select,
 textarea {
-    vertical-align: top;
     color: #000;
 }
 
-input,
-select,
-textarea {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    height: 3.2em;
-    padding: .8em .8em;
-    border: 1px solid #ccc;
-}
-
-label,
-.c-label {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    display: inline-table;
-    margin-right: 1.2rem;
-    padding: .8em 0;
+label {
     cursor: pointer;
-}
-
-.c-label--light {
-    padding-top: 0;
-    padding-bottom: 0;
-    vertical-align: top;
+    vertical-align: middle;
 }
 
 textarea {
     min-height: 9.6em;
     resize: vertical;
+    vertical-align: top;
 }
 
 select {
@@ -506,28 +484,8 @@ select {
     display: none;
 }
 
-.c-btn {
-    display: inline-block;
-    text-decoration: none;
-}
-
-button,
-.c-btn,
-[type='button'],
-[type='reset'],
-[type='submit'] {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    height: auto;
-    padding: .8em 1.6em;
-    cursor: pointer;
-    border: 0;
-    background: #ccc;
-}
-
-button:focus,
-.c-btn:focus,
-[type='button']:focus {
+[type='button']:focus,
+button:focus {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -633,7 +591,7 @@ th {
 
 /* responsive
    ========================================================================== */
-@media (max-width: 64em) {
+@media (max-width: 20em) {
     div,
     textarea,
     table,
@@ -1037,28 +995,24 @@ th {
 .u-flex-cross-baseline {
     -webkit-box-align: baseline;
     -ms-flex-align: baseline;
-    -ms-grid-row-align: baseline;
     align-items: baseline;
 }
 
 .u-flex-cross-start {
     -webkit-box-align: start;
     -ms-flex-align: start;
-    -ms-grid-row-align: flex-start;
     align-items: flex-start;
 }
 
 .u-flex-cross-end {
     -webkit-box-align: end;
     -ms-flex-align: end;
-    -ms-grid-row-align: flex-end;
     align-items: flex-end;
 }
 
 .u-flex-cross-center {
     -webkit-box-align: center;
     -ms-flex-align: center;
-    -ms-grid-row-align: center;
     align-items: center;
 }
 
@@ -1701,4 +1655,67 @@ th {
 .c-icon--twitter::before,
 .c-icon-after--twitter::after {
     content: '\ea03';
+}
+
+/* labels
+   ========================================================================== */
+.c-label {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    display: inline-block;
+    margin-right: 1.2rem;
+    padding: .8em 0;
+    vertical-align: top;
+}
+
+.c-label--option {
+    margin-right: 0;
+    margin-left: 1.2rem;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* fields
+   ========================================================================== */
+.c-field {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    height: 3.2em;
+    padding: .8em .8em;
+    border: 1px solid #ccc;
+}
+
+.c-field--option {
+    position: relative;
+    top: -1px;
+    height: auto;
+    padding: 0;
+    border: 0;
+}
+
+/* buttons
+   ========================================================================== */
+.c-btn {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    display: inline-block;
+    height: auto;
+    padding: .8em 1.6em;
+    cursor: pointer;
+    text-decoration: none;
+    border: 0;
+    background: #ccc;
+}
+
+/* separators
+   ========================================================================== */
+.c-separator {
+    display: block;
+    clear: both;
+    height: 1px;
+    margin: calc(2.4rem - 1px) 0 0;
+    padding: 0;
+    color: #ccc;
+    border: 0;
+    background-color: #ccc;
 }
