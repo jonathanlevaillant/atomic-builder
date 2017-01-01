@@ -1663,6 +1663,21 @@ th {
     content: '\ea03';
 }
 
+/* symbols
+   ========================================================================== */
+.c-symbol {
+    display: inline-block;
+    margin: 0 .4em 0 0;
+    vertical-align: top;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
+.c-symbol--after {
+    margin: 0 0 0 .4em;
+}
+
 /* labels
    ========================================================================== */
 .c-label {

@@ -16,12 +16,13 @@ var scss = 'css/**/*.scss';
 var cssmin = 'css/styles.min.css';
 var js = 'js/**/*.js';
 var jsmin = 'js/global.min.js';
-var img = '/**/*.{png,jpg,jpeg,gif,svg}';
+var img = 'img/*.{png,jpg,jpeg,gif,svg}';
+var symbols = 'img/symbols/*.svg';
 var font = 'fonts/**/*.ttf';
 var icon = 'fonts/icons/*.svg';
 var template = 'css/components/template/_icons.scss';
 
-/* task "build" = "clean" + "icon" + ["html" + "js" + "img" + "woff" + "woff2"] + "css"
+/* task "build" = "clean" + "icon" + ["html" + "js" + "img" + "symbols" + "woff" + "woff2"] + "css"
    ========================================================================== */
 
 // task "clean" = del (destination)
@@ -50,6 +51,21 @@ gulp.task('icon', function() {
                 .pipe(gulp.dest(source + 'css/components/'))
         })
         .pipe(gulp.dest(destination + 'fonts/icons/'))
+});
+
+// task "symbols" = svgSprite (source -> destination)
+config = {
+    mode: {
+        symbol: {
+            dest: '',
+            sprite: 'symbols.svg'
+        }
+    }
+};
+gulp.task('symbols', function() {
+    return gulp.src(source + symbols)
+        .pipe(plugins.svgSprite(config))
+        .pipe(gulp.dest(destination + '/img/symbols/'));
 });
 
 // task "html" = changed (source -> destination)
@@ -110,7 +126,7 @@ gulp.task('css', function() {
 
 // task "build"
 gulp.task('build', function(callback) {
-    sync('clean', 'icon', ['html', 'js', 'img', 'woff'/*, 'woff2'*/], 'css', callback)
+    sync('clean', 'icon', ['html', 'js', 'img', 'symbols', 'woff'/*, 'woff2'*/], 'css', callback)
 });
 
 /* task "prod" = "build" + "url" + ["cssmin" + "jsmin"] + "critical" + "htmlmin" + ["cleancss" + "cleanjs"]

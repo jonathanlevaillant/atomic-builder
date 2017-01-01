@@ -1,0 +1,15 @@
+/* symbols
+   ========================================================================== */
+
+// symbol init
+.c-symbol {
+    display: inline-block;
+    margin: 0 em($extra-small-value) 0 0;
+    vertical-align: top;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+.c-symbol--after {
+    margin: 0 0 0 em($extra-small-value);
+}
