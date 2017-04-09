@@ -1,0 +1,59 @@
+/* utilities
+   ========================================================================== */
+
+@if $enable-utilities {
+
+    // invisible content
+    .is-disabled,
+    [disabled] {
+        opacity: .5;
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+    .u-visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        border: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+    }
+
+    // unstyled list
+    .u-list-unstyled {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    // utilities generator
+    @include utilities();
+
+    /* responsive
+       ========================================================================== */
+
+    // desktops
+    @media (min-width: bp(lg-plus)) {
+        @include utilities("lg");
+    }
+
+    // tablets
+    @media (min-width: bp(md-plus)) and (max-width: bp(lg)) {
+        @include utilities("md");
+    }
+
+    // landscape phones
+    @media (min-width: bp(sm-plus)) and (max-width: bp(md)) {
+        @include utilities("sm");
+    }
+
+    // portrait phones
+    @media (max-width: bp(sm)) {
+        @include utilities("xs");
+    }
+
+    /* print
+       ========================================================================== */
+
+    @include utilities("print");
+}

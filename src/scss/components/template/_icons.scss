@@ -1,34 +1,59 @@
 /* icons
    ========================================================================== */
 
-// icons font
-@font-face {
-    font-family: "<%= fontName %>";
-    src: url("<%= fontPath %><%= fontName %>.woff2") format("woff2"),
-         url("<%= fontPath %><%= fontName %>.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-}
-.c-<%= className %>::before, .c-<%= className %>-after::after {
-    position: relative;
-    top: -.05em;
-    display: inline-block;
-    margin: 0 em($extra-small-value) 0 0;
-    vertical-align: middle;
-    font: normal normal normal $line-height + em/0 <%= fontName %>;
-    text-transform: none;
-    speak: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-.c-<%= className %>-after {
-    &::after {
-        margin: 0 0 0 em($extra-small-value);
+@if $enable-icon-fonts {
+
+    // icon fonts
+    @font-face {
+        font-family: "<%= fontName %>";
+        src: url("<%= fontPath %><%= fontName %>.woff2") format("woff2"),
+             url("<%= fontPath %><%= fontName %>.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+    }
+    .c-<%= className %>::before, .c-<%= className %>-after::after {
+        position: relative;
+        top: -.05em;
+        display: inline-block;
+        margin: 0 em(spacer(xs), $baseline) 0 0;
+        vertical-align: middle;
+        font: normal normal normal $line-height-base + em/0 <%= fontName %>;
+        text-transform: none;
+        speak: none;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .c-<%= className %>-after {
+        &::after {
+            margin: 0 0 0 em(spacer(xs), $baseline);
+        }
+    }
+
+    // icons generator
+    <% _.each(glyphs, function(glyph) { %>
+    .c-<%= className %>--<%= glyph.name %>::before, .c-<%= className %>-after--<%= glyph.name %>::after {
+        content: "\<%= glyph.unicode[0].charCodeAt(0).toString(16) %>";
+    }<% }); %>
+
+    // larger icons
+    .c-<%= className %>--lg::before, .c-<%= className %>-after--lg::after {
+        font-size: $line-height-base * 2 + em;
+    }
+    .c-<%= className %>--xl::before, .c-<%= className %>-after--xl::after {
+        font-size: $line-height-base * 3 + em;
+    }
+
+    // close icons
+    .c-<%= className %>--close::before, .c-<%= className %>-after--close::after {
+        position: static;
+        margin: 0;
+        vertical-align: top;
+        line-height: 1;
+    }
+
+    // monospace icons
+    .c-<%= className %>--monospace::before, .c-<%= className %>-after--monospace::after {
+        width: 1em;
+        text-align: center;
     }
 }
-
-// icons library
-<% _.each(glyphs, function(glyph) { %>
-.c-<%= className %>--<%= glyph.name %>::before, .c-<%= className %>-after--<%= glyph.name %>::after {
-    content: "\<%= glyph.unicode[0].charCodeAt(0).toString(16) %>";
-}<% }); %>

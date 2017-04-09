@@ -4,55 +4,51 @@
         <meta charset="UTF-8">
         <title>Style Guides</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- build:css css/styles.min.css -->
-        <link rel="stylesheet" href="css/styles.css" media="all">
+        <!-- build:css css/main.min.css -->
+        <link rel="stylesheet" href="css/main.css" media="all">
         <!-- endbuild -->
-        <style>
-            body {
-                background: linear-gradient(to bottom, #ccc, #ccc 1px, #fff 1px, #fff 50%, #ccc 50%, #ccc calc(50% + 1px), #fff calc(50% + 1px), #fff);
-                background-size: 100% 48px;
-            }
-            .c-demo {
-                padding: 1.6em;
-                background: #eee;
-            }
-            .c-demo .c-demo {
-                background: #ddd;
-            }
-            .c-demo .c-demo .c-demo {
-                background: #ccc;
-            }
-        </style>
     </head>
-    <body>
+    <body class="c-demo">
         <article class="o-container">
+            <h2 class="c-demo__title">Headings</h2>
             <h1>Heading Level 1</h1>
             <h2>Heading Level 2</h2>
             <h3>Heading Level 3</h3>
             <h4>Heading Level 4</h4>
             <h5>Heading Level 5</h5>
             <h6>Heading Level 6</h6>
-            <p class="u-hidden@sm u-hidden@xs">This text is hidden on smaller screens</p>
-            <p class="u-hidden u-visible@sm u-visible@xs">This text is only visible on smaller screens</p>
-            <p class="u-hidden@md">This text is hidden on medium screens only</p>
-            <p class="u-hidden u-visible@md">This text is only visible on medium screens</p>
-            <p class="u-hidden@xl u-hidden@lg">This text is hidden on large screens</p>
-            <p class="u-hidden u-visible@xl u-visible@lg">This text is only visible on large screens</p>
+            <h2 class="c-demo__title">Paragraph</h2>
             <p>A paragraph (from the Greek paragraphos, "to write beside" or "written beside") is a self-contained unit of a discourse in
             writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax
             of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.</p>
+            <h2 class="c-demo__title">Inline elements</h2>
             <p><a href="#">This is a text link</a></p>
             <p><strong>Strong is used to indicate strong importance</strong></p>
             <p><em>This text has added emphasis</em></p>
             <p>The <b>b element</b> is stylistically different text from normal text, without any special importance</p>
             <p>The <i>i element</i> is text that is set off from the normal text</p>
             <p>The <u>u element</u> is text with an unarticulated, though explicitly rendered, non-textual annotation</p>
+            <p><del>This text is deleted</del> and <ins>This text is inserted</ins></p>
+            <p><s>This text has a strikethrough</s></p>
+            <p>Superscript<sup>®</sup></p>
+            <p>Subscript for things like H<sub>2</sub>O</p>
             <p><small>This small text is small for fine print, etc.</small></p>
+            <p>Abbreviation: <abbr title="HyperText Markup Language">HTML</abbr></p>
+            <p>Keybord input: <kbd>Cmd</kbd></p>
+            <p><q cite="https://developer.mozilla.org/en-US/docs/HTML/Element/q">This text is a short inline quotation</q></p>
+            <p><cite>This is a citation</cite></p>
+            <p>The <dfn>dfn element</dfn> indicates a definition.</p>
+            <p>The <mark>mark element</mark> indicates a highlight</p>
             <p><code>This is what inline code looks like.</code></p>
+            <p><samp>This is sample output from a computer program</samp></p>
+            <p>The <var>variable element</var>, such as <var>x</var> = <var>y</var></p>
+            <h2 class="c-demo__title">Horizontal Rule</h2>
             <hr class="c-separator" />
+            <h2 class="c-demo__title">Lists</h2>
             <ul>
                 <li>This is a list item in an unordered list</li>
-                <li>An unordered list is a list in which the sequence of items is not important. Sometimes, an unordered list is a bulleted list. And this is a long list item in an unordered list that can wrap onto a new line.</li>
+                <li>An unordered list is a list in which the sequence of items is not important. Sometimes, an unordered list is a bulleted list.
+                    And this is a long list item in an unordered list that can wrap onto a new line.</li>
                 <li>Lists can be nested inside of each other
                     <ul>
                         <li>This is a nested list item</li>
@@ -72,139 +68,284 @@
                 </li>
                 <li>This is the last list item</li>
             </ol>
-            <p><span class="c-icon c-icon--facebook"></span><span class="c-icon c-icon--twitter"></span><span class="c-icon c-icon--google"></span></p>
-            <p><svg class="c-symbol" width="12" height="24"><use xlink:href="img/symbols/symbols.svg#facebook"></use></svg><svg class="c-symbol" width="29" height="24"><use xlink:href="img/symbols/symbols.svg#twitter"></use></svg><svg class="c-symbol" width="24" height="24"><use xlink:href="img/symbols/symbols.svg#google"></use></svg></p>
-            <p><label for="text" class="c-label">Text Input</label><input type="text" id="text" class="c-field" placeholder="Text Input" /></p>
-            <p><label for="emailaddress" class="c-label">Email Address</label><input type="email" id="emailaddress" class="c-field" placeholder="name@email.com" /></p>
-            <p><label for="search" class="c-label">Search</label><input type="search" id="search" class="c-field" placeholder="Enter Search Term" /></p>
-            <p><label for="password" class="c-label">Password<sup>*</sup></label><input type="password" id="password" class="c-field" placeholder="Type your Password" required /></p>
-            <p><label for="textarea" class="c-label">Textarea</label><textarea id="textarea" class="c-field" placeholder="Enter your message here"></textarea></p>
-            <p><label for="select" class="c-label">Select</label><select id="select" class="c-field"><option>Option One</option><option>Option Two</option><option>Option Three</option></select></p>
-            <fieldset class="c-p">
-                <legend>Checkbox</legend>
-                <ul class="u-list-unstyled u-mtn">
-                    <li><input id="checkbox1" class="c-field c-field--option" name="checkbox" type="checkbox" checked="checked"><label for="checkbox1" class="c-label c-label--option">Choice A</label></li>
-                    <li><input id="checkbox2" class="c-field c-field--option" name="checkbox" type="checkbox"><label for="checkbox2" class="c-label c-label--option">Choice B</label></li>
-                    <li><input id="checkbox3" class="c-field c-field--option" name="checkbox" type="checkbox"><label for="checkbox3" class="c-label c-label--option">Choice C</label></li>
+            <h2 class="c-demo__title">Icons</h2>
+            <ul class="u-list-unstyled u-flex">
+                <li><span class="c-icon c-icon--facebook"></span></li>
+                <li><span class="c-icon c-icon--twitter"></span></li>
+                <li><span class="c-icon c-icon--google"></span></li>
+            </ul>
+            <ul class="u-list-unstyled u-flex">
+                <li><svg class="c-symbol" width="12" height="24"><use xlink:href="img/symbols/symbols.svg#facebook"></use></svg></li>
+                <li><svg class="c-symbol" width="29" height="24"><use xlink:href="img/symbols/symbols.svg#twitter"></use></svg></li>
+                <li><svg class="c-symbol" width="24" height="24"><use xlink:href="img/symbols/symbols.svg#google"></use></svg></li>
+            </ul>
+            <h2 class="c-demo__title">Forms</h2>
+            <p>
+                <label for="text" class="c-label">Text field</label>
+                <input type="text" id="text" class="c-field" placeholder="Text input" />
+            </p>
+            <p>
+                <label for="email" class="c-label">Email address</label>
+                <input type="email" id="email" class="c-field" placeholder="Enter email" />
+            </p>
+            <p>
+                <label for="password" class="c-label">Password</label>
+                <input type="password" id="password" class="c-field" placeholder="Password" />
+            </p>
+            <p>
+                <label for="textarea" class="c-label">Textarea</label>
+                <textarea id="textarea" class="c-field" placeholder="Enter your message here"></textarea>
+            </p>
+            <p>
+                <label for="select" class="c-label">Select menu</label>
+                <select id="select" class="c-field c-field--select">
+                    <option>Option One</option>
+                    <option>Option Two</option>
+                    <option>Option Three</option>
+                </select>
+            </p>
+            <fieldset class="u-p">
+                <legend>Checkboxes</legend>
+                <ul class="u-list-unstyled">
+                    <li>
+                        <input id="checkbox1" class="c-field c-field--check" name="checkbox" type="checkbox" checked="checked">
+                        <label for="checkbox1" class="c-label c-label--check">Choice 1</label>
+                    </li>
+                    <li>
+                        <input id="checkbox2" class="c-field c-field--check" name="checkbox" type="checkbox">
+                        <label for="checkbox2" class="c-label c-label--check">Choice 2</label>
+                    </li>
+                    <li>
+                        <input id="checkbox3" class="c-field c-field--check" name="checkbox" type="checkbox">
+                        <label for="checkbox3" class="c-label c-label--check">Choice 3</label>
+                    </li>
                 </ul>
             </fieldset>
-            <fieldset class="c-p">
-                <legend>Radio</legend>
+            <fieldset class="u-p">
+                <legend>Radio buttons</legend>
                 <ul class="u-list-unstyled u-mtn">
-                    <li><input id="radio1" class="c-field c-field--option" name="radio" type="radio" checked="checked"><label for="radio1" class="c-label c-label--option">Option 1<br />multiline</label></li>
-                    <li><input id="radio2" class="c-field c-field--option" name="radio" type="radio"><label for="radio2" class="c-label c-label--option">Option 2</label></li>
-                    <li><input id="radio3" class="c-field c-field--option" name="radio" type="radio"><label for="radio3" class="c-label c-label--option">Option 3</label></li>
+                    <li>
+                        <input id="radio1" class="c-field c-field--check" name="radio" type="radio" checked="checked">
+                        <label for="radio1" class="c-label c-label--check">Multi-line<br />option 1</label>
+                    </li>
+                    <li>
+                        <input id="radio2" class="c-field c-field--check" name="radio" type="radio">
+                        <label for="radio2" class="c-label c-label--check">Option 2</label>
+                    </li>
+                    <li>
+                        <input id="radio3" class="c-field c-field--check" name="radio" type="radio">
+                        <label for="radio3" class="c-label c-label--check">Option 3</label>
+                    </li>
                 </ul>
             </fieldset>
+            <h2 class="c-demo__title">Buttons</h2>
             <p><button type="button" class="c-btn">Button</button></p>
-            <p><a href="#" class="c-btn">Link Button</a></p>
-            <p><button type="button" class="c-btn" disabled>Disabled Button</button></p>
-            <p>Grid 2 equal columns</p>
-            <div class="o-grid o-grid--2">
-                <div class="o-grid__item"><p class="c-demo">1/2</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/2</p></div>
+            <p><a href="#" class="c-btn">Button link</a></p>
+            <p><button type="button" class="c-btn" disabled>Disabled button</button></p>
+            <h2 class="c-demo__title">Grid layout</h2>
+            <div class="o-grid o-grid--2 u-p">
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 2</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 2</div>
+                </div>
             </div>
-            <p>Grid 3 equal columns</p>
-            <div class="o-grid o-grid--3">
-                <div class="o-grid__item"><p class="c-demo">1/3</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/3</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/3</p></div>
+            <div class="o-grid o-grid--3 u-p">
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 3</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 3</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 3</div>
+                </div>
             </div>
-            <p>Grid 4 equal columns @ Grid medium 1 column</p>
-            <div class="o-grid o-grid--4 o-grid--1@md">
-                <div class="o-grid__item"><p class="c-demo">1/4</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/4</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/4</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/4</p></div>
+            <div class="o-grid o-grid--4 o-grid--2@xs u-p">
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 4</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 4</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 4</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 4</div>
+                </div>
             </div>
-            <p>Grid 6 equal columns @ Grid small 2 equal columns</p>
-            <div class="o-grid o-grid--6 o-grid--2@sm">
-                <div class="o-grid__item"><p class="c-demo">1/6</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/6</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/6</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/6</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/6</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/6</p></div>
+            <div class="o-grid o-grid--6 o-grid--3@sm o-grid--2@xs u-p">
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 6</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 6</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 6</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 6</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 6</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 6</div>
+                </div>
             </div>
-            <p>Grid 12 equal columns @ Grid medium 6 equal columns @ Grid small 3 equal columns @ Grid tiny 1 column</p>
-            <div class="o-grid o-grid--12 o-grid--6@md o-grid--3@sm o-grid--1@xs">
-                <div class="o-grid__item"><p class="c-demo">1/12</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/12</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/12</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/12</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/12</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/12</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/12</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/12</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/12</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/12</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/12</p></div>
-                <div class="o-grid__item"><p class="c-demo">1/12</p></div>
+            <div class="o-grid o-grid--12 o-grid--6@md o-grid--3@sm o-grid--2@xs u-p">
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 12</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 12</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 12</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 12</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 12</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 12</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 12</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 12</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 12</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 12</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 12</div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">1 of 12</div>
+                </div>
             </div>
-            <p>Grid 3 equal columns - cross alignment start (default)</p>
-            <div class="o-grid o-grid--3">
-                <div class="o-grid__item"><p class="c-demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p></div>
-                <div class="o-grid__item"><p class="c-demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non gravida venenatis. Praesent consequat lectus purus, ut scelerisque velit condimentum eu. Maecenas sagittis ante ut turpis varius interdum. Quisque tellus ipsum, eleifend non ipsum id, suscipit ultricies neque.</p></div>
-                <div class="o-grid__item"><p class="c-demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p></div>
+            <div class="o-grid u-p">
+                <div class="o-grid__col o-grid__col--6 o-grid__col--12@sm o-grid__col--12@xs">
+                    <div class="c-demo__box">1 of 2</div>
+                </div>
+                <div class="o-grid__col o-grid__col--3 o-grid__col--6@sm o-grid__col--12@xs">
+                    <div class="c-demo__box">1 of 4</div>
+                </div>
+                <div class="o-grid__col o-grid__col--3 o-grid__col--6@sm o-grid__col--12@xs">
+                    <div class="c-demo__box">1 of 4</div>
+                </div>
             </div>
-            <p>Grid 3 equal columns - cross alignment stretch @ Grid medium 1 column</p>
-            <div class="o-grid o-grid--3 o-grid--1@md">
-                <div class="o-grid__item u-flex"><p class="c-demo u-flex-item-fluid">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p></div>
-                <div class="o-grid__item u-flex"><p class="c-demo u-flex-item-fluid">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non gravida venenatis. Praesent consequat lectus purus, ut scelerisque velit condimentum eu. Maecenas sagittis ante ut turpis varius interdum. Quisque tellus ipsum, eleifend non ipsum id, suscipit ultricies neque.</p></div>
-                <div class="o-grid__item u-flex"><p class="c-demo u-flex-item-fluid">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p></div>
+            <div class="o-grid u-p">
+                <div class="o-grid__col o-grid__col--2 o-grid__col--6@sm o-grid__col--12@xs">
+                    <div class="c-demo__box">1 of 6</div>
+                </div>
+                <div class="o-grid__col o-grid__col--4 o-grid__col--6@sm o-grid__col--12@xs">
+                    <div class="c-demo__box">1 of 3</div>
+                </div>
+                <div class="o-grid__col o-grid__col--4 o-grid__col--6@sm o-grid__col--12@xs">
+                    <div class="c-demo__box">1 of 3</div>
+                </div>
+                <div class="o-grid__col o-grid__col--2 o-grid__col--6@sm o-grid__col--12@xs">
+                    <div class="c-demo__box">1 of 6</div>
+                </div>
             </div>
-            <p>Grid 3 equal columns - cross alignment center</p>
-            <div class="o-grid o-grid--3 u-flex-cross-center">
-                <div class="o-grid__item"><p class="c-demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p></div>
-                <div class="o-grid__item"><p class="c-demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non gravida venenatis. Praesent consequat lectus purus, ut scelerisque velit condimentum eu. Maecenas sagittis ante ut turpis varius interdum. Quisque tellus ipsum, eleifend non ipsum id, suscipit ultricies neque.</p></div>
-                <div class="o-grid__item"><p class="c-demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p></div>
+            <div class="o-grid u-p">
+                <div class="o-grid__col o-grid__col--12@sm o-grid__col--12@xs">
+                    <div class="c-demo__box">Initial column</div>
+                </div>
+                <div class="o-grid__col o-grid__col--12@sm o-grid__col--12@xs u-flex-item-fluid u-flex-item-none@sm u-flex-item-none@xs">
+                    <div class="c-demo__box">Fluid column</div>
+                </div>
             </div>
-            <p>Grid 3 equal columns - cross alignment end</p>
-            <div class="o-grid o-grid--3 u-flex-cross-end">
-                <div class="o-grid__item"><p class="c-demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p></div>
-                <div class="o-grid__item"><p class="c-demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non gravida venenatis. Praesent consequat lectus purus, ut scelerisque velit condimentum eu. Maecenas sagittis ante ut turpis varius interdum. Quisque tellus ipsum, eleifend non ipsum id, suscipit ultricies neque.</p></div>
-                <div class="o-grid__item"><p class="c-demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p></div>
+            <div class="o-grid o-grid--3 o-grid--1@sm o-grid--1@xs u-p">
+                <div class="o-grid__col">
+                    <div class="c-demo__box">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p>
+                    </div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p>
+                    </div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p>
+                    </div>
+                </div>
             </div>
-            <p>Grid uneven col 6 + col 4 - main alignment center</p>
-            <div class="o-grid u-flex-main-center">
-                <div class="o-grid__item o-grid__item--col-6"><p class="c-demo">col 6</p></div>
-                <div class="o-grid__item o-grid__item--col-4"><p class="c-demo">col 4</p></div>
+            <div class="o-grid o-grid--3 o-grid--1@sm o-grid--1@xs u-p">
+                <div class="o-grid__col u-flex u-flex-column">
+                    <div class="c-demo__box u-flex-item-fluid">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p>
+                    </div>
+                </div>
+                <div class="o-grid__col u-flex u-flex-column">
+                    <div class="c-demo__box u-flex-item-fluid">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p>
+                    </div>
+                </div>
+                <div class="o-grid__col u-flex u-flex-column">
+                    <div class="c-demo__box u-flex-item-fluid">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p>
+                    </div>
+                </div>
             </div>
-            <p>Grid uneven col 8 + col 4 first item @ Grid small 1 column</p>
-            <div class="o-grid o-grid--1@sm">
-                <div class="o-grid__item o-grid__item--col-8"><p class="c-demo">col 8</p></div>
-                <div class="o-grid__item o-grid__item--col-4 u-flex-item-first"><p class="c-demo">col 4 first item</p></div>
+            <div class="o-grid o-grid--3 o-grid--1@sm o-grid--1@xs u-flex-cross-end u-p">
+                <div class="o-grid__col">
+                    <div class="c-demo__box">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p>
+                    </div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p>
+                    </div>
+                </div>
+                <div class="o-grid__col">
+                    <div class="c-demo__box">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p>
+                    </div>
+                </div>
             </div>
-            <p>Grid uneven col 4 + col 2 + col 2 + col 4 @ Grid small 2 equal columns</p>
-            <div class="o-grid o-grid--2@sm">
-                <div class="o-grid__item o-grid__item--col-4"><p class="c-demo">col 4</p></div>
-                <div class="o-grid__item o-grid__item--col-2"><p class="c-demo">col 2</p></div>
-                <div class="o-grid__item o-grid__item--col-2"><p class="c-demo">col 2</p></div>
-                <div class="o-grid__item o-grid__item--col-4"><p class="c-demo">col 4</p></div>
-            </div>
-            <p>Grid initial column (default) + fluid column @ Grid small 1 column</p>
-            <div class="o-grid o-grid--1@sm">
-                <div class="o-grid__item"><p class="c-demo">initial column</p></div>
-                <div class="o-grid__item u-flex-item-fluid"><p class="c-demo">fluid column</p></div>
-            </div>
-            <p>Grid nesting columns @ Grid small 1 column</p>
-            <div class="o-grid o-grid--1@sm">
-                <div class="o-grid__item o-grid__item--col-8">
-                    <div class="c-demo">
-                        <div class="o-grid o-grid--1@sm">
-                            <div class="o-grid__item o-grid__item--col-4 u-flex u-flex-cross-center"><p class="c-demo u-flex-item-fluid">col 4</p></div>
-                            <div class="o-grid__item o-grid__item--col-8">
-                                <div class="c-demo">
-                                    <div class="o-grid o-grid--2 o-grid--1@xs">
-                                        <div class="o-grid__item"><p class="c-demo">1/2</p></div>
-                                        <div class="o-grid__item"><p class="c-demo">1/2</p></div>
+            <div class="o-grid u-p">
+                <div class="o-grid__col o-grid__col--8">
+                    <div class="c-demo__box">
+                        <div class="o-grid u-flex-cross-center">
+                            <div class="o-grid__col o-grid__col--4">
+                                <div class="c-demo__box">1 of 4</div>
+                            </div>
+                            <div class="o-grid__col o-grid__col--8">
+                                <div class="c-demo__box">
+                                    <div class="o-grid o-grid--2">
+                                        <div class="o-grid__col">
+                                            <div class="c-demo__box">1 of 2</div>
+                                        </div>
+                                        <div class="o-grid__col">
+                                            <div class="c-demo__box">1 of 2</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="o-grid__item o-grid__item--col-4 u-flex"><p class="c-demo u-flex-item-fluid">col 4</p></div>
+                <div class="o-grid__col o-grid__col--4 u-flex u-flex-column">
+                    <div class="c-demo__box u-flex-item-fluid">1 of 3</div>
+                </div>
             </div>
         </article>
     </body>

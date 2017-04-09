@@ -1,8 +1,11 @@
 /* colors
    ========================================================================== */
 
-// colors name
-$black                 : #000 !default;
-$slate-grey            : #333 !default;
-$silver                : #ccc !default;
-$white                 : #fff !default;
+// colors => http://www.colors.commutercreative.com/grid/
+$colors: (
+    black               : #000,
+    grey                : #333,
+    silver              : #ccc,
+    white               : #fff,
+    steel-blue         : #4876C3
+) !default;

@@ -1,17 +1,22 @@
-/* media
+/* media object
    ========================================================================== */
 
-// media object
 .o-media {
-    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+}
+.o-media__body {
+    flex: 1;
 }
 .o-media__img {
-    float: left;
-    margin-right: $grid-gutter;
-    margin-bottom: 1px;
+    margin-right: spacer(md);
 }
-.o-media__img--reverse {
-    float: right;
-    margin-right: auto;
-    margin-left: $grid-gutter;
+
+// reverse
+.o-media--reverse {
+    flex-direction: row-reverse;
+}
+.o-media--reverse > .o-media__img {
+    margin-right: 0;
+    margin-left: spacer(md);
 }

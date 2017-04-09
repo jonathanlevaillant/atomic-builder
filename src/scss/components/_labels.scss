@@ -1,19 +1,17 @@
 /* labels
    ========================================================================== */
 
-// label default
 .c-label {
     display: inline-block;
-    margin-right: $small-value;
-    @include field-rhythm($label-size, $field-height, 0);
+    margin-right: spacer(sm);
+    @include rhythm-form($label-font-size, $padding-x: 0);
     vertical-align: top;
-    @include vertical-rhythm($label-size);
 }
 
-// label option
-.c-label--option {
+// label for checkboxes and radio buttons
+.c-label--check {
+    height: auto;
     margin-right: 0;
-    margin-left: $small-value;
-    padding-top: 0;
-    padding-bottom: 0;
+    margin-left: spacer(xs);
+    padding: 0;
 }

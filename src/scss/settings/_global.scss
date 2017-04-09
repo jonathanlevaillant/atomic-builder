@@ -1,51 +1,68 @@
 /* global
    ========================================================================== */
 
-// global font sizes
-$base-font-size         : 1.5rem !default;
-$line-height            : 1.6 !default;
-$h1-size                : 6.4rem !default;
-$h2-size                : 3.9rem !default;
-$h3-size                : 2.4rem !default;
-$h4-size                : 1.9rem !default;
-$h5-size                : 1.7rem !default;
-$h6-size                : 1.5rem !default;
-$large-size             : 1.7rem !default;
-$small-size             : 1.2rem !default;
-$label-size             : 1.5rem !default;
-$field-size             : 1.5rem !default;
-$btn-size               : 1.5rem !default;
+// fonts
+$font-family-base       : "Trebuchet MS", Helvetica, sans-serif !default;
+$font-family-headings   : Bitter, Georgia, serif !default;
+$font-family-monospace  : "Courier New", Courier, monospace !default;
 
-// global vertical rhythm
-$apply-vertical-rhythm  : true !default;
+// body text
+$font-size-base         : 1.6rem !default;
+$line-height-base       : 1.5 !default; // auto => 1.2
 
-// global font stacks
-$font-stack-common      : "Open Sans", Arial, sans-serif !default;
-$font-stack-headings    : Georgia, "Times New Roman", serif !default;
-$font-stack-monospace   : consolas, courier, monospace !default;
+$font-size-lg           : 2rem !default;
+$font-size-sm           : 1.28rem !default;
 
-// global layout
-$container-layout       : 96rem !default;
-$margin-layout          : 2.4rem !default;
+// baseline => you can override this auto value with a custom value
+$baseline               : $font-size-base * $line-height-base !default;
 
-// global grids
-$grid-number            : 12 !default;
-$grid-gutter            : 2.4rem !default;
-$grid-spacing           : 2.4rem !default;
+// headings => scale 1.25 (major third)
+$font-size-h1           : 4rem !default;
+$font-size-h2           : 3.125rem !default;
+$font-size-h3           : 2.5rem !default;
+$font-size-h4           : 2rem !default;
+$font-size-h5           : 1.6rem !default;
+$font-size-h6           : 1.28rem !default;
 
-// global spacings
-$extra-small-value      : .6rem !default;
-$small-value            : 1.2rem !default;
-$medium-value           : 2.4rem !default;
-$large-value            : 4.8rem !default;
-$extra-large-value      : 7.2rem !default;
+// grid containers
+$container-width        : 96rem !default;
+$grid-columns           : 12 !default;
+$grid-gutter-width      : $baseline !default;
+$grid-offset-width      : $baseline !default;
 
-// global form items
-$field-height           : 4.8rem !default;
-$btn-height             : 4.8rem !default;
+// form fields
+$field-height           : $baseline * 2 !default;
+$field-padding-x        : $baseline / 2 !default;
+$field-font-size        : 1.6rem !default;
+$label-font-size        : 1.6rem !default;
 
-// global breakpoints
-$extra-small-screen     : 20em !default; // 320px
-$small-screen           : 40em !default; // 640px
-$medium-screen          : 48em !default; // 768px
-$large-screen           : 64em !default; // 1024px
+// form buttons
+$btn-height             : $baseline * 2 !default;
+$btn-padding-x          : $baseline !default;
+$btn-font-size          : 1.6rem !default;
+
+// spacers => scale baseline
+$spacers: (
+    n                   : 0,
+    xs                  : $baseline / 3,
+    sm                  : $baseline / 2,
+    md                  : $baseline,
+    lg                  : $baseline * 2,
+    xl                  : $baseline * 3
+) !default;
+
+// breakpoints
+$breakpoints: (
+    xs                  : 30em, // 480px => portrait phones
+    sm                  : 40em, // 640px => landscape phones
+    md                  : 48em, // 768px => tablets
+    lg                  : 64em  // 1024px => desktops
+) !default;
+
+// options
+$enable-rhythm          : true !default;
+$enable-utilities       : true !default;
+$enable-icon-fonts      : true !default;
+$enable-symbols         : true !default;
+$enable-hyphens         : true !default;
+$enable-print-styles    : true !default;

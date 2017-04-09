@@ -2,23 +2,15 @@
    ========================================================================== */
 
 // table layout
-table,
-.c-table {
+table {
     width: 100%;
-    max-width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
     vertical-align: top;
 }
-.c-table {
-    display: table;
-}
-.c-table--auto {
-    table-layout: auto;
-}
 td,
 th {
-    min-width: width-col(1);
+    padding: 0;
     vertical-align: top;
     cursor: default;
 }

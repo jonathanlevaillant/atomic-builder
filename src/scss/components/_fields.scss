@@ -1,19 +1,22 @@
 /* fields
    ========================================================================== */
 
-// field default
 .c-field {
-    height: em($field-height, $field-size);
-    @include field-rhythm($field-size);
-    border: 1px solid $silver;
-    @include vertical-rhythm($field-size);
+    @include rhythm-form();
+    border: 1px solid color(silver);
+    border-radius: em(2px, $field-font-size);
+    vertical-align: top;
 }
 
-// field option
-.c-field--option {
+// checkboxes and radio buttons
+.c-field--check {
     position: relative;
     top: 1px;
-    height: auto;
-    padding: 0;
-    border: 0;
+    @include rhythm-form($field-check: true);
+}
+
+// fix selects paddings
+.c-field--select {
+    padding-top: 0;
+    padding-bottom: 0;
 }

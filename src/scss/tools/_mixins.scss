@@ -1,197 +1,403 @@
 /* mixins
    ========================================================================== */
 
-// mixin convert to rem
-$base-font-size         : rem($base-font-size);
-$h1-size                : rem($h1-size);
-$h2-size                : rem($h2-size);
-$h3-size                : rem($h3-size);
-$h4-size                : rem($h4-size);
-$h5-size                : rem($h5-size);
-$h6-size                : rem($h6-size);
-$large-size             : rem($large-size);
-$small-size             : rem($small-size);
-$label-size             : rem($label-size);
-$field-size             : rem($field-size);
-$btn-size               : rem($btn-size);
-$container-layout       : rem($container-layout);
-$margin-layout          : rem($margin-layout);
-$grid-gutter            : rem($grid-gutter);
-$grid-spacing           : rem($grid-spacing);
-$extra-small-value      : rem($extra-small-value);
-$small-value            : rem($small-value);
-$medium-value           : rem($medium-value);
-$large-value            : rem($large-value);
-$extra-large-value      : rem($extra-large-value);
+// units to rem
+$font-size-base         : rem($font-size-base);
+
+$font-size-lg           : rem($font-size-lg);
+$font-size-sm           : rem($font-size-sm);
+
+$baseline               : rem($baseline);
+
+$font-size-h1           : rem($font-size-h1);
+$font-size-h2           : rem($font-size-h2);
+$font-size-h3           : rem($font-size-h3);
+$font-size-h4           : rem($font-size-h4);
+$font-size-h5           : rem($font-size-h5);
+$font-size-h6           : rem($font-size-h6);
+
+$container-width        : rem($container-width);
+$grid-gutter-width      : rem($grid-gutter-width);
+$grid-offset-width      : rem($grid-offset-width);
+
 $field-height           : rem($field-height);
+$field-padding-x        : rem($field-padding-x);
+$field-font-size        : rem($field-font-size);
+$label-font-size        : rem($label-font-size);
+
 $btn-height             : rem($btn-height);
+$btn-padding-x          : rem($btn-padding-x);
+$btn-font-size          : rem($btn-font-size);
 
-// mixin convert to em
-$extra-small-screen     : em($extra-small-screen, 16px);
-$small-screen           : em($small-screen, 16px);
-$medium-screen          : em($medium-screen, 16px);
-$large-screen           : em($large-screen, 16px);
+// rhythm
+@mixin rhythm($font-size: $font-size-base, $rhythm: null, $minor: false) {
+    font-size: rem($font-size);
 
-// mixin vertical rhythm
-@mixin vertical-rhythm($font-size, $vertical-rhythm: $base-font-size * $line-height, $minor: false) {
-    $font-size: rem($font-size);
-    font-size: $font-size;
-    line-height: line-height($font-size, $vertical-rhythm, $minor);
+    @if $enable-rhythm or $rhythm {
+        $custom: false;
+
+        @if not $rhythm {
+            $rhythm: $baseline;
+        } @else {
+            $custom: true;
+        }
+        line-height: line-height($font-size, $rhythm, $minor, $custom);
+    }
 }
 
-// mixin field rhythm
-@mixin field-rhythm($font-size, $height: $field-height, $padding-x: $small-value, $minor: false) {
+// rhythm form
+@mixin rhythm-form($font-size: $field-font-size, $height: $field-height, $padding-x: $field-padding-x, $field-check: false) {
     $font-size: rem($font-size);
     $height: rem($height);
-    $padding-y: em(($height - line-height($font-size, $minor: $minor) * $font-size) / 2, $font-size);
+    $line-height: line-height($font-size);
     $padding-x: em($padding-x, $font-size);
+    $padding-y: em(($height - $font-size * $line-height) / 2, $font-size);
+
     @if $padding-y < 0 {
-        padding: 0 $padding-x;
+        $padding-y: 0;
     }
-    @else {
-        padding: $padding-y $padding-x;
+    @if $field-check {
+        $padding-x: null;
+        $padding-y: null;
+        $font-size: null;
+        $line-height: null;
+
+        @if $enable-rhythm {
+            $height: line-height($label-font-size) * $label-font-size;
+        } @else {
+            $height: $label-font-size * $line-height-base;
+        }
     }
+    height: em($height, $font-size);
+    padding: $padding-y $padding-x;
+    font-size: $font-size;
+    line-height: $line-height;
 }
 
-// mixin grid
-@mixin grid($modifier: null, $grid-number: $grid-number) {
-    @if $modifier {
-        $modifier: "\\@" + $modifier;
-    }
-    @for $i from 1 through $grid-number {
-        .o-grid--#{$i}#{$modifier} {
-            & > .o-grid__item {
-                width: decimal-round(100% / $i);
-            }
-        }
-    }
-}
-
-// mixin grid cols
-@mixin grid-cols($grid-number: $grid-number) {
-    @for $i from 1 through $grid-number {
-        .o-grid__item--col-#{$i} {
-            width: decimal-round(100% * $i / $grid-number);
-        }
-    }
-}
-
-// mixin width helpers
-@mixin width-helpers($start: 1, $end: 100, $step: 10) {
-    @for $i from $start through $end {
-        @if $i == 33 {
-            .u-w#{$i} {
-                width: decimal-round(100% / 3);
-            }
-        }
-        @else if $i == 66 {
-            .u-w#{$i} {
-                width: decimal-round(100% * 2 / 3);
-            }
-        }
-        @else if $i % $step == 0 or $i == 25 or $i == 75 {
-            .u-w#{$i} {
-                width: percentage($i / 100);
-            }
-        }
-    }
-    .u-wauto {
-        width: auto;
-    }
-}
-
-// mixin width cols
-@mixin width-cols($start: 1, $end: $grid-number) {
-    @for $i from $start through $end {
-        .u-col-#{$i} {
-            width: width-col($i);
-        }
-    }
-}
-
-// mixin container
+// container
 @mixin container() {
     .o-container {
-        max-width: $container-layout + $margin-layout * 2;
+        max-width: $container-width + $grid-offset-width * 2;
         margin-right: auto;
         margin-left: auto;
-        @if $margin-layout != 0 {
-            padding-right: $margin-layout;
-            padding-left: $margin-layout;
+
+        @if $grid-offset-width != 0 {
+            padding-right: $grid-offset-width;
+            padding-left: $grid-offset-width;
         }
     }
-    .o-container--fluid {
+    .o-container--auto {
         max-width: none;
     }
 }
 
-// mixin spacing helpers
-@mixin spacing-helpers($property...) {
-    $values: ($extra-small-value: "xs", $small-value: "sm", $medium-value: "md", $large-value: "lg", $extra-large-value: "xl");
-    $properties: $property;
-    @each $property in $properties {
-        .u-#{slice($property)}an {
-            #{$property}: 0;
+// grid columns
+@mixin grid-columns($modifier: null) {
+    @if $modifier {
+        $modifier: "\\@" + $modifier;
+    }
+    @for $i from 1 through $grid-columns {
+        .o-grid--#{$i}#{$modifier} > .o-grid__col {
+            width: calc(100% / #{$i});
         }
-        .u-#{slice($property)}tn {
-            #{$property}-top: 0;
+        .o-grid__col--#{$i}#{$modifier} {
+            width: calc(#{$i} * 100% / #{$grid-columns});
         }
-        .u-#{slice($property)}rn {
-            #{$property}-right: 0;
-        }
-        .u-#{slice($property)}bn {
-            #{$property}-bottom: 0;
-        }
-        .u-#{slice($property)}ln {
-            #{$property}-left: 0;
-        }
-        @each $value in $values {
-            .u-#{slice($property)}t#{nth($value, 2)} {
-                #{$property}-top: nth($value, 1);
-            }
-            .u-#{slice($property)}r#{nth($value, 2)} {
-                #{$property}-right: nth($value, 1);
-            }
-            .u-#{slice($property)}b#{nth($value, 2)} {
-                #{$property}-bottom: nth($value, 1);
-            }
-            .u-#{slice($property)}l#{nth($value, 2)} {
-                #{$property}-left: nth($value, 1);
+    }
+}
+
+// sizes
+@mixin sizes($start: 1, $end: 100, $step: 25, $modifier: null) {
+    @for $i from $start through $end {
+        @if $i % $step == 0 {
+            .u-w#{$i}#{$modifier} {
+                width: $i * 1%;
             }
         }
     }
 }
 
-// responsive helpers
-@mixin responsive-helpers($label) {
-    .u-hidden\@#{$label} {
+// spacers
+@mixin spacers($modifier: null) {
+    @each $spacer-name, $spacer-value in $spacers {
+        $spacer-value: rem($spacer-value);
+
+        .u-m-#{$spacer-name}#{$modifier}{
+            margin: $spacer-value;
+        }
+        .u-mt-#{$spacer-name}#{$modifier} {
+            margin-top: $spacer-value;
+        }
+        .u-mr-#{$spacer-name}#{$modifier} {
+            margin-right: $spacer-value;
+        }
+        .u-mb-#{$spacer-name}#{$modifier} {
+            margin-bottom: $spacer-value;
+        }
+        .u-ml-#{$spacer-name}#{$modifier} {
+            margin-left: $spacer-value;
+        }
+        .u-p-#{$spacer-name}#{$modifier}{
+            padding: $spacer-value;
+        }
+        .u-pt-#{$spacer-name}#{$modifier} {
+            padding-top: $spacer-value;
+        }
+        .u-pr-#{$spacer-name}#{$modifier} {
+            padding-right: $spacer-value;
+        }
+        .u-pb-#{$spacer-name}#{$modifier} {
+            padding-bottom: $spacer-value;
+        }
+        .u-pl-#{$spacer-name}#{$modifier} {
+            padding-left: $spacer-value;
+        }
+    }
+}
+
+// colors
+@mixin colors($modifier: null) {
+    @each $color-name, $color-code in $colors {
+        .u-color-#{$color-name}#{$modifier} {
+            color: $color-code;
+        }
+    }
+}
+
+// utilities
+@mixin utilities($modifier: null) {
+    @if $modifier {
+        $modifier: "\\@" + $modifier;
+    }
+
+    // display
+    .u-visible#{$modifier} {
+        display: block;
+    }
+    .u-hidden#{$modifier} {
         display: none;
     }
-    .u-visible\@#{$label} {
-        display: block;
+    .u-inline#{$modifier} {
+        display: inline;
     }
-    .u-no-float\@#{$label} {
-        float: none;
-    }
-    .u-inbl\@#{$label} {
+    .u-inline-block#{$modifier} {
         display: inline-block;
-        float: none;
         vertical-align: top;
     }
-    .u-w100\@#{$label},
-    .u-wauto\@#{$label} {
-        display: block;
+
+    // blocks alignment
+    .u-right#{$modifier} {
+        margin-left: auto;
+    }
+    .u-left#{$modifier} {
+        margin-right: auto;
+    }
+    .u-center#{$modifier} {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    // floating elements
+    .u-float-right#{$modifier} {
+        float: right;
+    }
+    .u-float-left#{$modifier} {
+        float: left;
+    }
+    .u-no-float#{$modifier} {
         float: none;
-        clear: none;
-        width: auto;
-        margin-right: 0;
-        margin-left: 0;
-        border: 0;
     }
-    .u-man\@#{$label} {
-        margin: 0;
+
+    // clearfix
+    .u-clear#{$modifier} {
+        clear: both;
     }
-    .u-txt-center\@#{$label} {
+    .u-clearfix#{$modifier} {
+        &::after {
+            content: "";
+            display: table;
+            clear: both;
+            border-collapse: collapse;
+        }
+    }
+
+    // bfc
+    .u-mod#{$modifier} {
+        overflow: hidden;
+    }
+
+    // flexbox
+    .u-flex#{$modifier} {
+        display: flex;
+    }
+    .u-inline-flex#{$modifier} {
+        display: inline-flex;
+    }
+    .u-flex-nowrap#{$modifier} {
+        flex-wrap: nowrap;
+    }
+    .u-flex-wrap#{$modifier} {
+        flex-wrap: wrap;
+    }
+    .u-flex-wrap-reverse#{$modifier} {
+        flex-wrap: wrap-reverse;
+    }
+    .u-flex-row#{$modifier} {
+        flex-direction: row;
+    }
+    .u-flex-row-reverse#{$modifier} {
+        flex-direction: row-reverse;
+    }
+    .u-flex-column#{$modifier} {
+        flex-direction: column;
+    }
+    .u-flex-column-reverse#{$modifier} {
+        flex-direction: column-reverse;
+    }
+    .u-flex-main-start#{$modifier} {
+        justify-content: flex-start;
+    }
+    .u-flex-main-end#{$modifier} {
+        justify-content: flex-end;
+    }
+    .u-flex-main-center#{$modifier} {
+        justify-content: center;
+    }
+    .u-flex-main-between#{$modifier} {
+        justify-content: space-between;
+    }
+    .u-flex-main-around#{$modifier} {
+        justify-content: space-around;
+    }
+    .u-flex-cross-start#{$modifier} {
+        align-items: flex-start;
+    }
+    .u-flex-cross-end#{$modifier} {
+        align-items: flex-end;
+    }
+    .u-flex-cross-center#{$modifier} {
+        align-items: center;
+    }
+    .u-flex-cross-baseline#{$modifier} {
+        align-items: baseline;
+    }
+    .u-flex-cross-stretch#{$modifier} {
+        align-items: stretch;
+    }
+    .u-flex-self-start#{$modifier} {
+        align-self: flex-start;
+    }
+    .u-flex-self-end#{$modifier} {
+        align-self: flex-end;
+    }
+    .u-flex-self-center#{$modifier} {
+        align-self: center;
+    }
+    .u-flex-self-baseline#{$modifier} {
+        align-self: baseline;
+    }
+    .u-flex-self-stretch#{$modifier} {
+        align-self: stretch;
+    }
+    .u-flex-item-fluid#{$modifier} {
+        flex: 1;
+    }
+    .u-flex-item-auto#{$modifier} {
+        flex: auto;
+    }
+    .u-flex-item-initial#{$modifier} {
+        flex: initial;
+    }
+    .u-flex-item-none#{$modifier} {
+        flex: none;
+    }
+    .u-flex-item-first#{$modifier} {
+        order: -1;
+    }
+    .u-flex-item-medium#{$modifier} {
+        order : 0;
+    }
+    .u-flex-item-last#{$modifier} {
+        order : 1;
+    }
+    .u-flex-item-top#{$modifier} {
+        margin-bottom: auto;
+    }
+    .u-flex-item-bottom#{$modifier} {
+        margin-top: auto;
+    }
+    .u-flex-item-center#{$modifier} {
+        margin: auto;
+    }
+
+    // typography
+    .u-txt-right#{$modifier} {
+        text-align: right;
+    }
+    .u-txt-center#{$modifier} {
         text-align: center;
     }
+    .u-txt-left#{$modifier} {
+        text-align: left;
+    }
+    .u-txt-lowercase#{$modifier} {
+        text-transform: lowercase;
+    }
+    .u-txt-uppercase#{$modifier} {
+        text-transform: uppercase;
+    }
+    .u-txt-capitalize#{$modifier} {
+        text-transform: capitalize;
+    }
+    .u-txt-lg#{$modifier} {
+        @include rhythm($font-size-lg);
+    }
+    .u-txt-sm#{$modifier} {
+        @include rhythm($font-size-sm);
+    }
+    .u-txt-h1#{$modifier} {
+        font-family: $font-family-headings;
+        font-weight: 700;
+        @include rhythm($font-size-h1);
+    }
+    .u-txt-h2#{$modifier} {
+        font-family: $font-family-headings;
+        font-weight: 700;
+        @include rhythm($font-size-h2);
+    }
+    .u-txt-h3#{$modifier} {
+        font-family: $font-family-headings;
+        font-weight: 700;
+        @include rhythm($font-size-h3);
+    }
+    .u-txt-h4#{$modifier} {
+        font-family: $font-family-headings;
+        font-weight: 700;
+        @include rhythm($font-size-h4);
+    }
+    .u-txt-h5#{$modifier} {
+        font-family: $font-family-headings;
+        font-weight: 700;
+        @include rhythm($font-size-h5);
+    }
+    .u-txt-h6#{$modifier} {
+        font-family: $font-family-headings;
+        font-weight: 700;
+        @include rhythm($font-size-h6);
+    }
+    .u-p#{$modifier} {
+        margin-top: spacer(md);
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    // sizes
+    @include sizes($modifier: $modifier);
+
+    // spacers
+    @include spacers($modifier);
+
+    // colors
+    @include colors($modifier);
 }

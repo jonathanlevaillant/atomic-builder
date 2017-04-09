@@ -1,13 +1,22 @@
 /* buttons
    ========================================================================== */
 
-// button default
 .c-btn {
     display: inline-block;
-    @include field-rhythm($btn-size, $btn-height, $medium-value);
+    vertical-align: top;
+    @include rhythm-form($btn-font-size, $btn-height, $btn-padding-x);
     border: 0;
-    background: $silver;
-    @include vertical-rhythm($btn-size);
+    background-color: color(steel-blue);
+    border-radius: em(2px, $btn-font-size);
+    box-shadow: em(1px, $btn-font-size) em(1px, $btn-font-size) em(1px, $btn-font-size) rgba(color(black), .25);
     text-decoration: none;
+    font-weight: 700;
+    color: color(white);
     cursor: pointer;
+    &:focus,
+    &:hover,
+    &:active {
+        opacity: .9;
+        color: color(white);
+    }
 }

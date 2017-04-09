@@ -1,15 +1,17 @@
 /* symbols
    ========================================================================== */
 
-// symbol init
-.c-symbol {
-    display: inline-block;
-    margin: 0 em($extra-small-value) 0 0;
-    vertical-align: top;
-    stroke-width: 0;
-    stroke: currentColor;
-    fill: currentColor;
-}
-.c-symbol--after {
-    margin: 0 0 0 em($extra-small-value);
+@if $enable-symbols {
+    .c-symbol {
+        display: inline-block;
+        height: line-height($font-size-base) * $font-size-base;
+        margin: 0 spacer(xs) 0 0;
+        vertical-align: top;
+        stroke-width: 0;
+        stroke: currentColor;
+        fill: currentColor;
+    }
+    .c-symbol--after {
+        margin: 0 0 0 spacer(xs);
+    }
 }

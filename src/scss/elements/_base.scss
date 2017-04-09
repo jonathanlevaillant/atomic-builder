@@ -1,7 +1,7 @@
 /* base
    ========================================================================== */
 
-// base border-box-model
+// switching to border-box model for all elements
 html {
     box-sizing: border-box;
 }
@@ -11,28 +11,29 @@ html {
     box-sizing: inherit;
 }
 
-// base elements
+// elements
 html {
     font-size: 62.5%;
     font-size: calc(1em * .625);
+    line-height: $line-height-base;
 }
 body {
-    background-color: $white;
-    font-family: $font-stack-common;
-    @include vertical-rhythm($base-font-size);
-    color: $black;
+    background-color: color(white);
+    font-family: $font-family-base;
+    @include rhythm($font-size-base);
+    color: color(black);
 }
 a {
-    color: $slate-grey;
-    &:hover,
+    color: color(steel-blue);
     &:focus,
+    &:hover,
     &:active {
-        color: $slate-grey;
+        color: color(steel-blue);
     }
 }
 ul,
 ol {
-    padding-left: $medium-value;
+    padding-left: spacer(md);
 }
 img {
     height: auto;
@@ -44,77 +45,63 @@ figure {
     margin-left: 0;
 }
 
-// base typography
+// font-sizing for content
 p,
-.c-p,
 ul,
 ol,
 dl,
+hr,
 blockquote,
 pre,
-td,
-th,
-caption,
 details,
 figure {
-    margin-top: $medium-value;
+    margin-top: spacer(md);
     margin-bottom: 0;
-    line-height: $line-height;
+    @include rhythm($font-size-base);
 }
-h1,
-.c-h1 {
-    margin-top: $medium-value;
+h1 {
+    margin-top: spacer(md);
     margin-bottom: 0;
-    font-family: $font-stack-headings;
-    @include vertical-rhythm($h1-size);
+    font-family: $font-family-headings;
+    @include rhythm($font-size-h1);
 }
-h2,
-.c-h2 {
-    margin-top: $medium-value;
+h2 {
+    margin-top: spacer(md);
     margin-bottom: 0;
-    font-family: $font-stack-headings;
-    @include vertical-rhythm($h2-size);
+    font-family: $font-family-headings;
+    @include rhythm($font-size-h2);
 }
-h3,
-.c-h3 {
-    margin-top: $medium-value;
+h3 {
+    margin-top: spacer(md);
     margin-bottom: 0;
-    font-family: $font-stack-headings;
-    @include vertical-rhythm($h3-size);
+    font-family: $font-family-headings;
+    @include rhythm($font-size-h3);
 }
-h4,
-.c-h4 {
-    margin-top: $medium-value;
+h4 {
+    margin-top: spacer(md);
     margin-bottom: 0;
-    font-family: $font-stack-headings;
-    @include vertical-rhythm($h4-size, $minor: true);
+    font-family: $font-family-headings;
+    @include rhythm($font-size-h4);
 }
-h5,
-.c-h5 {
-    margin-top: $medium-value;
+h5 {
+    margin-top: spacer(md);
     margin-bottom: 0;
-    font-family: $font-stack-headings;
-    @include vertical-rhythm($h5-size, $minor: true);
+    font-family: $font-family-headings;
+    @include rhythm($font-size-h5);
 }
-h6,
-.c-h6 {
-    margin-top: $medium-value;
+h6 {
+    margin-top: spacer(md);
     margin-bottom: 0;
-    font-family: $font-stack-headings;
-    @include vertical-rhythm($h6-size, $minor: true);
-}
-.c-large {
-    @include vertical-rhythm($large-size);
-}
-.c-small {
-    @include vertical-rhythm($small-size, $minor: true);
+    font-family: $font-family-headings;
+    @include rhythm($font-size-h6);
 }
 code,
 pre,
 samp,
 kbd {
-    font-family: $font-stack-monospace;
-    line-height: normal;
+    vertical-align: top;
+    font-family: $font-family-monospace;
+    line-height: inherit;
     white-space: pre-line;
     white-space: pre-wrap;
 }
@@ -126,39 +113,28 @@ var {
     font-style: italic;
 }
 
-// base margins
+// avoid top margins on first content element
 p,
-.c-p,
 ul,
 ol,
 dl,
+hr,
 blockquote,
 pre,
+details,
 figure,
 h1,
-.c-h1,
 h2,
-.c-h2,
 h3,
-.c-h3,
 h4,
-.c-h4,
 h5,
-.c-h5,
-h6,
-.c-h6 {
+h6 {
     &:first-child {
         margin-top: 0;
     }
 }
-li p,
-li .c-p,
-li ul,
-li ol {
-    margin-top: 0;
-}
 
-// base max values
+// max values
 img,
 table,
 td,

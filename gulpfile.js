@@ -4,7 +4,6 @@ var gulp = require('gulp');
 // include plugins
 var plugins = require('gulp-load-plugins')();
 var run = require('run-sequence');
-var del = require('del');
 var critical = require('critical').stream;
 
 // paths root
@@ -15,22 +14,17 @@ var destination = './dist/';
 var html = '**/*.html';
 var css = 'css/*.css';
 var scss = 'scss/**/*.+(scss|sass|css)';
-var cssmin = 'css/styles.min.css';
+var cssmin = 'css/main.min.css';
 var js = 'js/**/*.js';
 var jsmin = 'js/global.min.js';
 var images = 'img/*.+(png|jpg|jpeg|gif|svg)';
 var symbols = 'img/symbols/*.svg';
-var fonts = 'fonts/**/*.ttf';
+var fonts = 'fonts/**/*';
 var icons = 'fonts/icons/*.svg';
 var template = 'scss/components/template/_icons.scss';
 
-/* task "build" = "clean" + "glyphs" + ["symbols" + "html" + "js" + "images" + "fonts"] + "css"
+/* task "build" = "glyphs" + ["symbols" + "html" + "js" + "images" + "fonts"] + "css"
    ========================================================================== */
-
-// task "clean" = del (destination)
-gulp.task('clean', function() {
-    return del(destination)
-});
 
 // task "glyphs" = iconfont (source -> source / source -> destination)
 gulp.task('glyphs', function() {
@@ -94,17 +88,9 @@ gulp.task('images', function() {
         .pipe(gulp.dest(destination + 'img/'))
 });
 
-// task "fonts" = ttf2woff (source -> destination)
+// task "fonts" = (source -> destination)
 gulp.task('fonts', function() {
-    return gulp.src(source + fonts)
-        .pipe(plugins.ttf2woff())
-        .pipe(gulp.dest(destination + 'fonts/'))
-});
-
-// task "woff2" = ttf2woff2 (source -> destination)
-gulp.task('woff2', function() {
-    return gulp.src(source + fonts)
-        .pipe(plugins.ttf2woff2())
+    return gulp.src([source + fonts, '!' + source + icons])
         .pipe(gulp.dest(destination + 'fonts/'))
 });
 
@@ -127,10 +113,10 @@ gulp.task('css', function() {
 
 // task "build"
 gulp.task('build', function(callback) {
-    run('clean', 'glyphs', ['symbols', 'html', 'js', 'images', 'fonts'], 'css', callback)
+    run('glyphs', ['symbols', 'html', 'js', 'images', 'fonts'], 'css', callback)
 });
 
-/* task "prod" = "build" + "url" + ["cssmin" + "jsmin"] + "critical" + "htmlmin" + ["cleancss" + "cleanjs"]
+/* task "prod" = "url" + ["cssmin" + "jsmin"] + "critical" + "htmlmin"
    ========================================================================== */
 
 // task "url" = useref (destination -> destination)
@@ -146,7 +132,7 @@ gulp.task('cssmin', function() {
         .pipe(plugins.uncss({
             html: [destination + html]
         }))
-        .pipe(plugins.csso())
+        .pipe(plugins.cssnano())
         .pipe(gulp.dest(destination + 'css/'))
 });
 
@@ -195,19 +181,9 @@ gulp.task('htmlmin', function() {
         .pipe(gulp.dest(destination))
 });
 
-// task "cleancss" = del (destination -> destination)
-gulp.task('cleancss', function() {
-    return del([destination + css, '!' + destination + cssmin])
-});
-
-// task "cleanjs" = del (destination -> destination)
-gulp.task('cleanjs', function() {
-    return del([destination + 'js/*', '!' + destination + jsmin])
-});
-
 // task "prod"
 gulp.task('prod', function(callback) {
-    run('build', 'url', ['cssmin', 'jsmin'], 'critical', 'htmlmin', ['cleancss', 'cleanjs'], callback)
+    run('url', ['cssmin', 'jsmin'], /*'critical',*/ 'htmlmin', callback)
 });
 
 /* task "watch" = "css" + "html" + "js"

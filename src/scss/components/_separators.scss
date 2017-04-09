@@ -1,14 +1,15 @@
 /* separators
    ========================================================================== */
 
-// separator default
 .c-separator {
     display: block;
     clear: both;
-    height: 1px;
-    margin: calc(#{$medium-value} - 1px) 0 0;
+    height: 2px;
+    margin-right: 0;
+    margin-bottom: -2px;
+    margin-left: 0;
     padding: 0;
     border: 0;
-    background-color: $silver;
-    color: $silver;
+    background-color: color(silver);
+    color: color(silver);
 }

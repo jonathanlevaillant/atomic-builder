@@ -1,21 +1,20 @@
 /* forms
    ========================================================================== */
 
-// form items
+// items
 button,
-.c-btn,
 input,
 optgroup,
 select,
 textarea {
-    color: $black;
+    color: color(black);
 }
 label {
     vertical-align: middle;
     cursor: pointer;
 }
 textarea {
-    min-height: 3 * em($field-height, $field-size);
+    min-height: 3 * em($field-height, $field-font-size);
     vertical-align: top;
     resize: vertical;
 }
@@ -31,8 +30,7 @@ select {
     }
 }
 [type="button"],
-button,
-.c-btn {
+button {
     &:focus {
         -webkit-tap-highlight-color: transparent;
         user-select: none;

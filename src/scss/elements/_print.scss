@@ -1,75 +1,66 @@
 /* print
    ========================================================================== */
 
-@media print {
+@if $enable-print-styles {
+    @media print {
 
-    // print quick reset
-    * {
-        background: transparent;
-        box-shadow: none;
-        text-shadow: none;
-    }
-    body {
-        width: auto;
-        margin: auto;
-        font-family: serif;
-        font-size: 12pt;
-    }
-    p,
-    .c-p,
-    h1,
-    .c-h1,
-    h2,
-    .c-h2,
-    h3,
-    .c-h3,
-    h4,
-    .c-h4,
-    h5,
-    .c-h5,
-    h6,
-    .c-h6,
-    blockquote,
-    ul,
-    ol {
-        margin: auto;
-        color: $black;
-    }
+        // quick print reset
+        * {
+            background: transparent;
+            box-shadow: none;
+            text-shadow: none;
+        }
+        body {
+            width: auto;
+            margin: auto;
+            font-family: serif;
+            font-size: 12pt;
+        }
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        blockquote,
+        ul,
+        ol {
+            margin: auto;
+            color: color(black);
+        }
 
-    // print no orphans, no widows
-    p,
-    .c-p,
-    blockquote {
-        orphans: 3;
-        widows: 3;
-    }
+        // no orphans, no widows
+        p,
+        blockquote {
+            orphans: 3;
+            widows: 3;
+        }
 
-    // print no breaks inside these elements
-    blockquote,
-    ul,
-    ol {
-        page-break-inside: avoid;
-    }
+        // no breaks inside these elements
+        blockquote,
+        ul,
+        ol {
+            page-break-inside: avoid;
+        }
 
-    // print no breaks after these elements
-    h1,
-    .c-h1,
-    h2,
-    .c-h2,
-    h3,
-    .c-h3,
-    caption {
-        page-break-after: avoid;
-    }
+        // no breaks after these elements
+        h1,
+        h2,
+        h3,
+        caption {
+            page-break-after: avoid;
+        }
 
-    // print links
-    a {
-        color: $black;
-    }
-    a[href^="javascript:"],
-    a[href^="#"] {
-        &::after {
-            content: "";
+        // links
+        a {
+            color: color(black);
+        }
+        a[href^="javascript:"],
+        a[href^="#"] {
+            &::after {
+                content: "";
+            }
         }
     }
 }

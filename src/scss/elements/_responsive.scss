@@ -1,17 +1,20 @@
 /* responsive
    ========================================================================== */
 
-// responsive extra small screens
-@media (max-width: $extra-small-screen) {
-    div,
-    textarea,
-    table,
-    td,
-    th,
-    code,
-    pre,
-    samp {
-        hyphens: auto;
-        word-wrap: break-word;
+@if $enable-hyphens {
+    @media (max-width: bp(xs)) {
+
+        // hyphens
+        div,
+        textarea,
+        table,
+        td,
+        th,
+        code,
+        pre,
+        samp {
+            hyphens: auto;
+            word-wrap: break-word;
+        }
     }
 }

@@ -1,99 +1,109 @@
 /* functions
    ========================================================================== */
 
-// function decimal round
-@function decimal-round($number, $digits: 4) {
-    $n: 1;
-    @for $i from 1 through $digits {
-        $n: $n * 10;
+// parse int
+@function parse-int($number) {
+    @if type-of($number) == "number" {
+        @return $number / ($number * 0 + 1);
     }
-    @if round($number * 10) == $number * 10 {
-        @return $number;
-    }
-    @return ceil($number * $n) / $n;
+    @return $number;
 }
 
-// function rem
+// units to rem
 @function rem($value) {
-    $unit-extract: unit($value);
-    $number: $value / ($value * 0 + 1);
-    @if $number == 0 {
-        @return $number;
-    }
-    @if $unit-extract == "rem" {
-        @return $value;
-    }
-    @if unitless($value) {
-        $value: $value / 10;
-    }
-    @if $unit-extract == "px" {
-        $value: $number / 10;
-    }
-    @if $unit-extract == "em" {
-        @if unit($base-font-size) == "em" {
-            $value: $number;
+    @if type-of($value) == "number" {
+        $number: parse-int($value);
+        $unit: unit($value);
+
+        @if $number == 0 or $unit == "rem" {
+            @return $value;
         }
-        @else {
-            $value: $number * ($base-font-size / ($base-font-size * 0 + 1));
-        }
+        @return $number / 10 * 1rem;
     }
-    @return decimal-round($value * 1rem);
+    @return $value;
 }
 
-// function em
-@function em($value, $context: $base-font-size) {
-    $unit-extract: unit($value);
-    $number: $value / ($value * 0 + 1);
-    $context: rem($context) * 10 / 1rem;
-    @if $number == 0 {
-        @return $number;
+// units to em
+@function em($value, $context: $font-size-base) {
+    @if type-of($value) == "number" and type-of($context) == "number" {
+        $number: parse-int($value);
+        $unit: unit($value);
+        $context: parse-int(rem($context)) * 10;
+
+        @if $number == 0 or $unit == "em" {
+            @return $value;
+        }
+        @if $unit == "rem" {
+            $number: $number * 10;
+        }
+        @return $number / $context * 1em;
     }
-    @if $unit-extract == "em" {
-        @return $value;
-    }
-    @if unitless($value) {
-        $value: $value;
-    }
-    @if $unit-extract == "px" {
-        $value: $number;
-    }
-    @if $unit-extract == "rem" {
-        $value: $number * 10;
-    }
-    @return decimal-round($value / $context * 1em);
+    @return $value;
 }
 
-// function line height
-@function line-height($font-size, $vertical-rhythm: $base-font-size * $line-height, $minor: false) {
-    $font-size: rem($font-size);
-    $base-rhythm: rem($base-font-size * $line-height);
-    $vertical-rhythm: rem($vertical-rhythm);
-    $coeff: 1;
-    @if ($apply-vertical-rhythm or $vertical-rhythm != $base-font-size * $line-height) and $font-size != 0 and $vertical-rhythm != 0 {
-        $line-height: $vertical-rhythm / $font-size;
-        @if $base-rhythm == $vertical-rhythm {
+// core line height
+@function line-height($font-size, $rhythm: $baseline, $minor: false, $custom: false) {
+    @if type-of($font-size) == "number" and type-of($rhythm) == "number" and type-of($minor) == "bool" and type-of($custom) == "bool" {
+        $font-size: rem($font-size);
+        $rhythm: rem($rhythm);
+        $scale: 1;
+        $line-height: $rhythm / $font-size;
+
+        @if $custom {
+            @return $line-height;
+        }
+        @if $enable-rhythm {
             @while $line-height < 1 {
-                $coeff: $coeff + 1;
-                $line-height: $vertical-rhythm * $coeff / $font-size;
+                $scale: $scale + 1;
+                $line-height: $rhythm * $scale / $font-size;
             }
             @if $minor {
                 @while $line-height >= 2 {
-                    $coeff: $coeff + 1;
-                    $line-height: $vertical-rhythm / $coeff / $font-size;
+                    $scale: $scale + 1;
+                    $line-height: $rhythm / $scale / $font-size;
                 }
             }
+            @return $line-height;
         }
-        @return decimal-round($line-height);
     }
-    @return decimal-round($line-height);
+    @return $line-height-base;
 }
 
-// function width col
-@function width-col($number) {
-    @return percentage(decimal-round(((($container-layout - $grid-gutter * ($grid-number - 1)) / $grid-number) * $number + $grid-gutter * ($number - 1)) * 100 / $container-layout)) / 100;
+// get color
+@function color($color) {
+    @if map-has-key($colors, $color) {
+        @return map-get($colors, $color);
+    }
+    @warn "Unfortunately, no value could be retrieved from #{$colors}";
 }
 
-// function slice
-@function slice($string) {
-    @return str-slice($string, 1, 1);
+// get spacer
+@each $spacer-name, $spacer-value in $spacers {
+    $spacers: map-merge($spacers, ($spacer-name: rem($spacer-value)));
+}
+
+@function spacer($spacer) {
+    @if map-has-key($spacers, $spacer) {
+        @return map-get($spacers, $spacer);
+    }
+    @warn "Unfortunately, no value could be retrieved from #{$spacers}";
+}
+
+// get breakpoints
+$breakpoints-plus: ();
+
+@each $bp-name, $bp-value in $breakpoints {
+    $breakpoints: map-merge($breakpoints, ($bp-name: em($bp-value, 16px)));
+}
+@each $bp-name, $bp-value in $breakpoints {
+    $breakpoints-plus: map-merge($breakpoints-plus, ($bp-name + "-plus": $bp-value + .0625));
+}
+
+$breakpoints: map-merge($breakpoints, $breakpoints-plus);
+
+@function bp($bp) {
+    @if map-has-key($breakpoints, $bp) {
+        @return map-get($breakpoints, $bp);
+    }
+    @warn "Unfortunately, no value could be retrieved from #{$breakpoints}";
 }
