@@ -64,10 +64,9 @@ gulp.task('symbols', function() {
         .pipe(gulp.dest(destination + 'img/symbols/'));
 });
 
-// task "html" = changed (source -> destination)
+// task "html" = (source -> destination)
 gulp.task('html', function() {
     return gulp.src(source + html)
-        .pipe(plugins.changed(destination))
         .pipe(gulp.dest(destination))
 });
 

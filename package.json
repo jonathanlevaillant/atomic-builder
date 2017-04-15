@@ -1,56 +1,55 @@
 {
-  "name": "atomic-builder",
-  "version": "5.0.0",
-  "main": "dist/css/main.css",
-  "description": "An atomic front-end BEMIT framework",
-  "author": "Jonathan Levaillant <jonathan.levaillant@outlook.com> (http://jonathanlevaillant.fr)",
-  "scripts": {
-    "build": "npm install && gulp",
-    "start": "gulp watch",
-    "deploy": "gulp prod"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "critical": "^0.8.4",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.1",
-    "gulp-changed": "^2.0.0",
-    "gulp-consolidate": "^0.2.0",
-    "gulp-cssbeautify": "^0.1.3",
-    "gulp-csscomb": "^3.0.8",
-    "gulp-cssnano": "^2.1.2",
-    "gulp-htmlmin": "^3.0.0",
-    "gulp-iconfont": "^8.0.1",
-    "gulp-imagemin": "^3.2.0",
-    "gulp-load-plugins": "^1.5.0",
-    "gulp-sass": "^3.1.0",
-    "gulp-svg-sprite": "^1.3.6",
-    "gulp-uglify": "^2.1.2",
-    "gulp-uncss": "^1.0.6",
-    "gulp-useref": "^3.1.2",
-    "lodash": "^4.17.4",
-    "run-sequence": "^1.2.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jonathanlevaillant/atomic-builder"
-  },
-  "bugs": {
-    "url": "https://github.com/jonathanlevaillant/atomic-builder/issues",
-    "email": "jonathan.levaillant@outlook.com"
-  },
-  "keywords": [
-    "framework",
-    "sass",
-    "css",
-    "workflow",
-    "atomic builder",
-    "atomic design",
-    "oocss",
-    "bem",
-    "bemit",
-    "itcss",
-    "vertical rhythm",
-    "responsive"
-  ]
+    "name": "atomic-builder",
+    "description": "An atomic front-end BEMIT framework",
+    "version": "5.0.0",
+    "keywords": [
+        "framework",
+        "sass",
+        "css",
+        "atomic design",
+        "oocss",
+        "bem",
+        "bemit",
+        "itcss",
+        "vertical rhythm",
+        "responsive"
+    ],
+    "author": "Jonathan Levaillant <jonathan.levaillant@outlook.com> (http://jonathanlevaillant.fr)",
+    "scripts": {
+        "build": "gulp",
+        "deploy": "gulp prod"
+    },
+    "main": "dist/guide.html",
+    "style": "dist/css/main.css",
+    "sass": "src/scss/main.scss",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jonathanlevaillant/atomic-builder.git"
+    },
+    "bugs": {
+        "url": "https://github.com/jonathanlevaillant/atomic-builder/issues",
+        "email": "jonathan.levaillant@outlook.com"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "critical": "^0.8.4",
+        "gulp": "^3.9.1",
+        "gulp-autoprefixer": "^3.1.1",
+        "gulp-changed": "^2.0.0",
+        "gulp-consolidate": "^0.2.0",
+        "gulp-cssbeautify": "^0.1.3",
+        "gulp-csscomb": "^3.0.8",
+        "gulp-cssnano": "^2.1.2",
+        "gulp-htmlmin": "^3.0.0",
+        "gulp-iconfont": "^8.0.1",
+        "gulp-imagemin": "^3.2.0",
+        "gulp-load-plugins": "^1.5.0",
+        "gulp-sass": "^3.1.0",
+        "gulp-svg-sprite": "^1.3.6",
+        "gulp-uglify": "^2.1.2",
+        "gulp-uncss": "^1.0.6",
+        "gulp-useref": "^3.1.2",
+        "lodash": "^4.17.4",
+        "run-sequence": "^1.2.2"
+    }
 }
