@@ -1299,7 +1299,6 @@ th {
 /* demo
    ========================================================================== */
 .c-demo {
-    background: -webkit-linear-gradient(top, rgba(204, 204, 204, .5), rgba(204, 204, 204, .5) 1px, #fff 1px, #fff 50%, rgba(204, 204, 204, .5) 50%, rgba(204, 204, 204, .5) calc(50% + 1px), #fff calc(50% + 1px), #fff);
     background: linear-gradient(to bottom, rgba(204, 204, 204, .5), rgba(204, 204, 204, .5) 1px, #fff 1px, #fff 50%, rgba(204, 204, 204, .5) 50%, rgba(204, 204, 204, .5) calc(50% + 1px), #fff calc(50% + 1px), #fff);
     background-size: 100% 4.8rem;
 }

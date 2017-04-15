@@ -17,7 +17,7 @@
         display: inline-block;
         margin: 0 em(spacer(xs), $baseline) 0 0;
         vertical-align: middle;
-        font: normal normal normal $line-height-base + em/0 <%= fontName %>;
+        font: normal normal normal #{em($baseline)}/0 <%= fontName %>;
         text-transform: none;
         speak: none;
         -webkit-font-smoothing: antialiased;
@@ -37,10 +37,10 @@
 
     // larger icons
     .c-<%= className %>--lg::before, .c-<%= className %>-after--lg::after {
-        font-size: $line-height-base * 2 + em;
+        font-size: em($baseline * 2);
     }
     .c-<%= className %>--xl::before, .c-<%= className %>-after--xl::after {
-        font-size: $line-height-base * 3 + em;
+        font-size: em($baseline * 3);
     }
 
     // close icons

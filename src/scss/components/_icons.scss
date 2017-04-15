@@ -17,7 +17,7 @@
         display: inline-block;
         margin: 0 em(spacer(xs), $baseline) 0 0;
         vertical-align: middle;
-        font: normal normal normal $line-height-base + em/0 icons;
+        font: normal normal normal #{em($baseline)}/0 icons;
         text-transform: none;
         speak: none;
         -webkit-font-smoothing: antialiased;
@@ -30,7 +30,7 @@
     }
 
     // icons generator
-
+    
     .c-icon--facebook::before, .c-icon-after--facebook::after {
         content: "\ea01";
     }
@@ -43,10 +43,10 @@
 
     // larger icons
     .c-icon--lg::before, .c-icon-after--lg::after {
-        font-size: $line-height-base * 2 + em;
+        font-size: em($baseline * 2);
     }
     .c-icon--xl::before, .c-icon-after--xl::after {
-        font-size: $line-height-base * 3 + em;
+        font-size: em($baseline * 3);
     }
 
     // close icons
