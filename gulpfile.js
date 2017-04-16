@@ -4,7 +4,6 @@ var gulp = require('gulp');
 // include plugins
 var plugins = require('gulp-load-plugins')();
 var run = require('run-sequence');
-var critical = require('critical').stream;
 
 // paths root
 var source = './src/';
@@ -115,7 +114,7 @@ gulp.task('build', function(callback) {
     run('glyphs', ['symbols', 'html', 'js', 'images', 'fonts'], 'css', callback)
 });
 
-/* task "prod" = "url" + ["cssmin" + "jsmin"] + "critical" + "htmlmin"
+/* task "prod" = "url" + ["cssmin" + "jsmin"]
    ========================================================================== */
 
 // task "url" = useref (destination -> destination)
@@ -125,12 +124,9 @@ gulp.task('url', function() {
         .pipe(gulp.dest(destination))
 });
 
-// task "cssmin" = uncss + csso (destination -> destination)
+// task "cssmin" = cssnano (destination -> destination)
 gulp.task('cssmin', function() {
     return gulp.src(destination + cssmin)
-        .pipe(plugins.uncss({
-            html: [destination + html]
-        }))
         .pipe(plugins.cssnano())
         .pipe(gulp.dest(destination + 'css/'))
 });
@@ -144,45 +140,9 @@ gulp.task('jsmin', function() {
         .pipe(gulp.dest(destination + 'js/'))
 });
 
-// task "critical" = critical (destination -> destination)
-gulp.task('critical', function() {
-    return gulp.src(destination + html)
-        .pipe(critical({
-            base: destination,
-            inline: true,
-            height: 640,
-            minify: true,
-            ignore: ['@font-face', /url\(/]
-        }))
-        .pipe(gulp.dest(destination))
-});
-
-// task "htmlmin" = htmlmin (destination -> destination)
-gulp.task('htmlmin', function() {
-    return gulp.src(destination + html)
-        .pipe(plugins.htmlmin({
-            removeComments: true,
-            removeCommentsFromCDATA: true,
-            removeCDATASectionsFromCDATA: true,
-            collapseWhitespace: true,
-            collapseBooleanAttributes: true,
-            removeAttributeQuotes: true,
-            removeRedundantAttributes: true,
-            preventAttributesEscaping: true,
-            useShortDoctype: true,
-            removeEmptyAttributes: true,
-            removeScriptTypeAttributes: true,
-            removeStyleLinkTypeAttributes: true,
-            removeOptionalTags: true,
-            minifyURLs: true,
-            minifyJS: true
-        }))
-        .pipe(gulp.dest(destination))
-});
-
 // task "prod"
 gulp.task('prod', function(callback) {
-    run('url', ['cssmin', 'jsmin'], /*'critical',*/ 'htmlmin', callback)
+    run('url', ['cssmin', 'jsmin'], callback)
 });
 
 /* task "watch" = "css" + "html" + "js"
