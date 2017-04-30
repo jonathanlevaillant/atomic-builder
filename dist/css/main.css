@@ -1233,7 +1233,8 @@ th {
 .c-label--check {
     margin-right: 0;
     margin-left: .8rem;
-    padding: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 /* fields
