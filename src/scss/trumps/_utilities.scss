@@ -55,5 +55,7 @@
     /* print
        ========================================================================== */
 
-    @include utilities("print");
+    @if $enable-print-styles {
+        @include utilities("print");
+    }
 }
