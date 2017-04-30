@@ -25,11 +25,6 @@ body {
 }
 a {
     color: color(steel-blue);
-    &:focus,
-    &:hover,
-    &:active {
-        color: color(steel-blue);
-    }
 }
 ul,
 ol {
