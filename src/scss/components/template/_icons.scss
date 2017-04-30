@@ -56,4 +56,12 @@
         width: 1em;
         text-align: center;
     }
+
+    // flip icons
+    .c-<%= className %>--flip-horizontal::before, .c-<%= className %>-after--flip-horizontal::after {
+        transform: scaleX(-1);
+    }
+    .c-<%= className %>--flip-vertical::before, .c-<%= className %>-after--flip-vertical::after {
+        transform: scaleY(-1);
+    }
 }

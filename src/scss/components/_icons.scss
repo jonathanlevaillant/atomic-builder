@@ -62,4 +62,12 @@
         width: 1em;
         text-align: center;
     }
+
+    // flip icons
+    .c-icon--flip-horizontal::before, .c-icon-after--flip-horizontal::after {
+        transform: scaleX(-1);
+    }
+    .c-icon--flip-vertical::before, .c-icon-after--flip-vertical::after {
+        transform: scaleY(-1);
+    }
 }
