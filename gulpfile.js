@@ -16,13 +16,13 @@ var scss = 'scss/**/*.+(scss|sass|css)';
 var cssmin = 'css/main.min.css';
 var js = 'js/**/*.js';
 var jsmin = 'js/global.min.js';
-var images = 'img/*.+(png|jpg|jpeg|gif|svg)';
+var images = 'img/**/*.+(png|jpg|jpeg|gif|svg)';
 var symbols = 'img/symbols/*.svg';
 var fonts = 'fonts/**/*';
 var icons = 'fonts/icons/*.svg';
 var template = 'scss/components/template/_icons.scss';
 
-/* task "build" = "glyphs" + ["symbols" + "html" + "js" + "images" + "fonts"] + "css"
+/* task "glyphs" = "glyphs"
    ========================================================================== */
 
 // task "glyphs" = iconfont (source -> source / source -> destination)
@@ -48,48 +48,13 @@ gulp.task('glyphs', function() {
         .pipe(gulp.dest(destination + 'fonts/icons/'))
 });
 
-// task "symbols" = svgSprite (source -> destination)
-config = {
-    mode: {
-        symbol: {
-            dest: '',
-            sprite: 'symbols.svg'
-        }
-    }
-};
-gulp.task('symbols', function() {
-    return gulp.src(source + symbols)
-        .pipe(plugins.svgSprite(config))
-        .pipe(gulp.dest(destination + 'img/symbols/'));
-});
+/* task "build" = ["html" + "css" + "js" + "img" + "symbols" + "fonts"]
+   ========================================================================== */
 
 // task "html" = (source -> destination)
 gulp.task('html', function() {
     return gulp.src(source + html)
         .pipe(gulp.dest(destination))
-});
-
-// task "js" = changed (source -> destination)
-gulp.task('js', function() {
-    return gulp.src(source + js)
-        .pipe(plugins.changed(destination + 'js/'))
-        .pipe(gulp.dest(destination + 'js/'))
-});
-
-// task "images" = imagemin (source -> destination)
-gulp.task('images', function() {
-    return gulp.src(source + images)
-        .pipe(plugins.imagemin({
-            progressive: true,
-            interlaced: true
-        }))
-        .pipe(gulp.dest(destination + 'img/'))
-});
-
-// task "fonts" = (source -> destination)
-gulp.task('fonts', function() {
-    return gulp.src([source + fonts, '!' + source + icons])
-        .pipe(gulp.dest(destination + 'fonts/'))
 });
 
 // task "css" = sass + csscomb + autoprefixer + cssbeautify (source -> destination)
@@ -109,12 +74,46 @@ gulp.task('css', function() {
         .pipe(gulp.dest(destination + 'css/'))
 });
 
-// task "build"
-gulp.task('build', function(callback) {
-    run('glyphs', ['symbols', 'html', 'js', 'images', 'fonts'], 'css', callback)
+// task "js" = changed (source -> destination)
+gulp.task('js', function() {
+    return gulp.src(source + js)
+        .pipe(plugins.changed(destination + 'js/'))
+        .pipe(gulp.dest(destination + 'js/'))
 });
 
-/* task "prod" = "url" + ["cssmin" + "jsmin"]
+// task "img" = (source -> destination)
+gulp.task('img', function() {
+    return gulp.src([source + images, '!' + source + symbols])
+        .pipe(gulp.dest(destination + 'img/'))
+});
+
+// task "symbols" = svgSprite (source -> destination)
+config = {
+    mode: {
+        symbol: {
+            dest: '',
+            sprite: 'symbols.svg'
+        }
+    }
+};
+gulp.task('symbols', function() {
+    return gulp.src(source + symbols)
+        .pipe(plugins.svgSprite(config))
+        .pipe(gulp.dest(destination + 'img/symbols/'));
+});
+
+// task "fonts" = (source -> destination)
+gulp.task('fonts', function() {
+    return gulp.src([source + fonts, '!' + source + icons])
+        .pipe(gulp.dest(destination + 'fonts/'))
+});
+
+// task "build"
+gulp.task('build', function(callback) {
+    run(['html', 'css', 'js', 'img', 'symbols', 'fonts'], callback)
+});
+
+/* task "prod" = "url" + ["cssmin" + "jsmin" + "imgmin"]
    ========================================================================== */
 
 // task "url" = useref (destination -> destination)
@@ -140,17 +139,27 @@ gulp.task('jsmin', function() {
         .pipe(gulp.dest(destination + 'js/'))
 });
 
+// task "imgmin" = imagemin (destination -> destination)
+gulp.task('imgmin', function() {
+    return gulp.src([destination + images, '!' + destination + symbols])
+        .pipe(plugins.imagemin({
+            progressive: true,
+            interlaced: true
+        }))
+        .pipe(gulp.dest(destination + 'img/'))
+});
+
 // task "prod"
 gulp.task('prod', function(callback) {
-    run('url', ['cssmin', 'jsmin'], callback)
+    run('url', ['cssmin', 'jsmin', 'imgmin'], callback)
 });
 
 /* task "watch" = "css" + "html" + "js"
    ========================================================================== */
 
 gulp.task('watch', function() {
-    gulp.watch(source + scss, ['css']);
     gulp.watch(source + html, ['html']);
+    gulp.watch(source + scss, ['css']);
     gulp.watch(source + js, ['js']);
 });
 
