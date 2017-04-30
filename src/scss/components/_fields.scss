@@ -2,7 +2,7 @@
    ========================================================================== */
 
 .c-field {
-    @include rhythm-form($field-fixed: true);
+    @include rhythm-field();
     border: 1px solid color(silver);
     border-radius: em(2px, $field-font-size);
     background-color: color(white);
@@ -13,7 +13,7 @@
 .c-field--check {
     position: relative;
     top: 1px;
-    @include rhythm-form($field-check: true);
+    @include rhythm-check();
 }
 
 // fix selects paddings

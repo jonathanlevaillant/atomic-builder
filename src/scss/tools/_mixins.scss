@@ -46,7 +46,7 @@ $btn-font-size          : rem($btn-font-size);
 }
 
 // rhythm form
-@mixin rhythm-form($font-size: $field-font-size, $height: $field-height, $padding-x: $field-padding-x, $field-check: false, $field-fixed: false) {
+@mixin rhythm-form($font-size, $height, $padding-x, $field-fixed) {
     $font-size: rem($font-size);
     $height: rem($height);
     $line-height: line-height($font-size);
@@ -56,25 +56,32 @@ $btn-font-size          : rem($btn-font-size);
     @if $padding-y < 0 {
         $padding-y: 0;
     }
-    @if $field-check {
-        $field-fixed: true;
-        $padding-x: null;
-        $padding-y: null;
-        $font-size: null;
-        $line-height: null;
-
-        @if $enable-rhythm {
-            $height: line-height($label-font-size) * $label-font-size;
-        } @else {
-            $height: $label-font-size * $line-height-base;
-        }
-    }
     @if $field-fixed {
         height: em($height, $font-size);
     }
     padding: $padding-y $padding-x;
     font-size: $font-size;
     line-height: $line-height;
+}
+
+// rhythm field
+@mixin rhythm-field($font-size: $field-font-size, $height: $field-height, $padding-x: $field-padding-x) {
+    @include rhythm-form($font-size, $height, $padding-x, true);
+}
+
+// rhythm check
+@mixin rhythm-check($font-size: $label-font-size) {
+    height: $font-size * line-height($font-size);
+}
+
+// rhythm label
+@mixin rhythm-label($font-size: $label-font-size, $height: $field-height, $padding-x: 0) {
+    @include rhythm-form($font-size, $height, $padding-x, false);
+}
+
+// rhythm btn
+@mixin rhythm-btn($font-size: $btn-font-size, $height: $btn-height, $padding-x: $btn-padding-x) {
+    @include rhythm-form($font-size, $height, $padding-x, false);
 }
 
 // container

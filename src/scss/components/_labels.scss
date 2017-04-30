@@ -4,7 +4,7 @@
 .c-label {
     display: inline-block;
     margin-right: spacer(sm);
-    @include rhythm-form($label-font-size, $padding-x: 0);
+    @include rhythm-label();
     vertical-align: top;
 }
 
@@ -12,5 +12,6 @@
 .c-label--check {
     margin-right: 0;
     margin-left: spacer(xs);
-    padding: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 }

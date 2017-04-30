@@ -4,7 +4,7 @@
 .c-btn {
     display: inline-block;
     vertical-align: top;
-    @include rhythm-form($btn-font-size, $btn-height, $btn-padding-x);
+    @include rhythm-btn();
     border: 0;
     background-color: color(steel-blue);
     border-radius: em(2px, $btn-font-size);
