@@ -289,12 +289,6 @@ a {
     color: #4876c3;
 }
 
-a:focus,
-a:hover,
-a:active {
-    color: #4876c3;
-}
-
 ul,
 ol {
     padding-left: 2.4rem;
@@ -1197,6 +1191,18 @@ th {
     text-align: center;
 }
 
+.c-icon--flip-horizontal::before,
+.c-icon-after--flip-horizontal::after {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.c-icon--flip-vertical::before,
+.c-icon-after--flip-vertical::after {
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+}
+
 /* symbols
    ========================================================================== */
 .c-symbol {
@@ -1219,14 +1225,12 @@ th {
     font-size: 1.6rem;
     line-height: 1.5;
     display: inline-block;
-    height: 3em;
     margin-right: 1.2rem;
     padding: .75em 0;
     vertical-align: top;
 }
 
 .c-label--check {
-    height: auto;
     margin-right: 0;
     margin-left: .8rem;
     padding: 0;
@@ -1242,6 +1246,7 @@ th {
     vertical-align: top;
     border: 1px solid #ccc;
     border-radius: .125em;
+    background-color: #fff;
 }
 
 .c-field--check {
@@ -1262,7 +1267,6 @@ th {
     font-weight: 700;
     line-height: 1.5;
     display: inline-block;
-    height: 3em;
     padding: .75em 1.5em;
     cursor: pointer;
     vertical-align: top;
