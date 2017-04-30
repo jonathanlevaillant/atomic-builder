@@ -2,9 +2,10 @@
    ========================================================================== */
 
 .c-field {
-    @include rhythm-form();
+    @include rhythm-form($field-fixed: true);
     border: 1px solid color(silver);
     border-radius: em(2px, $field-font-size);
+    background-color: color(white);
     vertical-align: top;
 }
 

@@ -46,7 +46,7 @@ $btn-font-size          : rem($btn-font-size);
 }
 
 // rhythm form
-@mixin rhythm-form($font-size: $field-font-size, $height: $field-height, $padding-x: $field-padding-x, $field-check: false) {
+@mixin rhythm-form($font-size: $field-font-size, $height: $field-height, $padding-x: $field-padding-x, $field-check: false, $field-fixed: false) {
     $font-size: rem($font-size);
     $height: rem($height);
     $line-height: line-height($font-size);
@@ -57,6 +57,7 @@ $btn-font-size          : rem($btn-font-size);
         $padding-y: 0;
     }
     @if $field-check {
+        $field-fixed: true;
         $padding-x: null;
         $padding-y: null;
         $font-size: null;
@@ -68,7 +69,9 @@ $btn-font-size          : rem($btn-font-size);
             $height: $label-font-size * $line-height-base;
         }
     }
-    height: em($height, $font-size);
+    @if $field-fixed {
+        height: em($height, $font-size);
+    }
     padding: $padding-y $padding-x;
     font-size: $font-size;
     line-height: $line-height;
