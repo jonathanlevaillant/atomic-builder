@@ -1,7 +1,7 @@
 {
     "name": "atomic-builder",
     "description": "An atomic front-end BEMIT framework",
-    "version": "5.0.3",
+    "version": "5.0.4",
     "keywords": [
         "framework",
         "sass",
@@ -16,8 +16,9 @@
     ],
     "author": "Jonathan Levaillant <jonathan.levaillant@outlook.com> (http://jonathanlevaillant.fr)",
     "scripts": {
-        "build": "gulp",
-        "deploy": "gulp prod"
+        "watch": "gulp glyphs && gulp && gulp watch",
+        "build": "gulp glyphs && gulp",
+        "prod": "gulp prod"
     },
     "main": "dist/guide.html",
     "style": "dist/css/main.css",
