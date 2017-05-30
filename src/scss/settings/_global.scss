@@ -53,8 +53,7 @@ $spacers: (
 
 // breakpoints
 $breakpoints: (
-    xs                  : 30em, // 480px => portrait phones
-    sm                  : 40em, // 640px => landscape phones
+    sm                  : 40em, // 640px => phones
     md                  : 48em, // 768px => tablets
     lg                  : 64em  // 1024px => desktops
 ) !default;
