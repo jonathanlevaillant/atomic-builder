@@ -1,126 +1,364 @@
-# Atomic Builder : Le micro-framework CSS ultra léger pour débuter vos projets front-end avec classe !
+# Atomic Builder
 
-Atomic Builder a pour volonté de se détacher des framework "usines à gaz" que sont Bootstrap et Foundation, en proposant un condensé de bonnes pratiques pour débuter vos projets front-end sereinement.
+Atomic Builder a été conçu comme point de départ d'un projet Front-End avec le juste nécessaire à la différence de la 
+plupart des framework CSS du marché comme [Bootstrap](http://getbootstrap.com/) ou
+[Zurb Foundation](http://foundation.zurb.com/) proposant quant à eux des composants déjà stylisés.
 
-Atomic Builder se base sur une architecture **BEMIT = BEM + ITCSS**. Un excellent article d'[Harry Roberts](http://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/) vous présente cette méthodologie.
+Atomic Builder est avant tout destiné aux intégrateurs web soucieux d'un code CSS de qualité et désirant débuter 
+leurs projets par de bonnes pratiques, des conventions de nommage solides et une modularité à toute épreuve.
 
-Ce framework a été pensé pour être utilisé avec le préprocesseur **Sass** et "l'automatiseur de tâches" **Gulp**.
+En effet, Atomic Builder se base sur l'architecture **ITCSS** d'[Harry Roberts](https://csswizardry.com/) et la 
+méthodologie **BEM** élaborée par [Yandex](https://en.bem.info/methodology/) qui a fait ses preuves.
+ 
+**BEM** + **ITCSS** = **[BEMIT](https://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/)**
 
-Atomic Builder était initialement basé sur le framework de Raphaël Goetter : [KNACSS](http://knacss.com/).
-Avec le temps, mon expérience d'intégrateur depuis huit ans et pour répondre à mes besoins professionnels, j'ai décidé de créer mon propre framework que j'utilise quotidiennement depuis plus d'un an.
+## Fonctionnalités
 
-En voici les principales fonctionnalités :
-
-- Génération automatique des grilles.
+- Fichier de configuration personnalisable.
 - Gestion avancée de la typographie.
-- Gestion et optimisation du rythme vertical.
-- Création simplifiée des éléments de formulaire.
-- Génération automatique des polices d'icônes.
-- Collection de classes utilitaires (approche DRY).
-- Adapté à toutes les tailles d'écran (responsive).
+- Mise en place automatique du rythme vertical.
+- Génération de grilles flexibles et responsives.
+- Mise en place simplifiée des éléments de formulaire.
+- Accessibilité renforcée. (Unités fluides en "em", "rem" et "%".)
+- Génération automatique des classes utilitaires. (Approche DRY.)
 
 ## Installation
 
-Plusieurs options sont disponibles :
+Plusieurs options s'offrent à vous :
 
-- Télécharger la dernière version d'[Atomic Builder](https://github.com/jonathanlevaillant/atomic-builder/archive/master.zip).
-- Télécharger la feuille de style compilée en [CSS natif](https://raw.githubusercontent.com/jonathanlevaillant/atomic-builder/master/dist/css/styles.css).
-- Télécharger la version [Sass](https://github.com/jonathanlevaillant/atomic-builder/tree/master/src/css).
-- Cloner le dépôt : `git clone https://github.com/jonathanlevaillant/atomic-builder.git`.
-- Installation avec [Bower](https://bower.io/search/) : `bower install atomic-builder`.
-- Installation avec [npm](https://www.npmjs.com/) : `npm install atomic-builder`.
+- [Télécharger la dernière version](https://github.com/jonathanlevaillant/atomic-builder/archive/master.zip).
+- Cloner le dépôt : `https://github.com/jonathanlevaillant/atomic-builder.git`.
+- Installation avec [NPM](https://www.npmjs.com/) : `npm install atomic-builder`.
+- Installation avec [Yarn](https://yarnpkg.com/lang/en/) : `yarn add atomic-builder`.
+- Installation avec [Bower](https://bower.io/) : `bower install atomic-builder`.
 
 ## Compatibilité
 
-Atomic Builder est compatible avec l'ensemble des navigateurs à partir d'IE10 inclus.
+Atomic Builder est compatible avec l'ensemble des navigateurs de bureau et mobiles à partir d'IE10 inclus.
 
-## Structure
+## Technologies
 
-Votre projet est constitué de deux dossiers **src** (dossier de travail) et **dist** (dossier de production, où seront créés les fichiers produits par Gulp).
+- Préprocesseur CSS : [Sass](http://sass-lang.com/).
+- Automatiseur de tâches : [Gulp](http://gulpjs.com/).
 
-Atomic Builder se basant sur l'architecture BEMIT, le dossier CSS se compose de six sous-dossiers :
+## Scripts
 
-- settings : Ce dossier est destiné aux fichiers de configuration du projet, variables globales, couleurs et polices de caractères.
-- tools : Pour les utilisateurs de Sass, c'est ici que vous devrez rajouter vos fonctions et vos mixins.
-- generic : Il s'agit du célèbre reset CSS [normalize](http://necolas.github.io/normalize.css/), utilisé par Twitter, Github, etc. Il n'est pas nécessaire de le modifier.
-- base : Ce dossier comprend tous les styles permettant de mettre en forme les éléments de base comme les éléments typographiques, tableaux, formulaires, etc.
-- objects : Dans ce dossier se trouve tous les objets abstraits et réutilisables comme les grilles, les conteneurs, les classes utilitaires, etc.
-- components : C'est dans ce dossier que vous devrez créer vos nouveaux composants spécifiques à votre projet.
+Trois scripts sont disponibles dans le fichier `package.json`, ils font référence aux tâches Gulp définies dans le 
+fichier de configuration `gulpfile.js` :
 
-➜ *Vous avez peut-être remarqué qu'il manque le sous-dossier "trumps" qui est censé contenir les classes utilitaires. Pour une raison de simplicité j'ai préféré regrouper ces classes dans le dossier "objects", ce qui me semblait plus pertinent étant donné que ce sont également des classes réutilisables.*
+- Tâche **watch** (HTML, CSS et JS) : `yarn run watch`.
+- Tâche **build** (compilation Sass, génération des glyphes et des symboles SVG) : `yarn run build`.
+- Tâche **prod** (minification et optimisation du CSS, du JS et des images) : `yarn run prod`.
+
+Il est recommandé de mettre à jour les fichiers `package.json` et `gulpfile.js` afin de rajouter/modifier des scripts 
+selon les besoins du projet.
+
+## Architecture
+
+Atomic Builder est constitué d'un dossier source `/src` et d'un dossier destination `/dist`.
+
+Le dossier `/dist` est généré à chaque build, il ne faut donc pas éditer les fichiers de ce dossier.  
+Le dossier `/src` contient les assets du projet, à savoir les fonts, les images, le JS et le CSS qui va nous intéresser 
+plus particulièrement.
+
+L'architecture ITCSS se compose de sept sections bien distinctes :
+
+- **Settings** : Contient les variables globales de configuration, comme les couleurs, les polices, etc.
+- **Tools** : Contient les fonctions et mixins Sass. (Ces deux premières sections ne doivent pas générer de CSS.)
+- **Generic** : Contient les styles destinés au reset/[normalize](https://necolas.github.io/normalize.css/).
+- **Elements** : Contient les styles par défaut des éléments HTML comme les titres, les paragraphes, les champs de 
+formulaire, etc. (Seuls des sélecteurs de type doivent être présents.)
+- **Objects** : Contient les classes orientées objets (OOCSS) comme les grilles, les conteneurs, les médias. 
+(Sélecteurs de classe.)
+- **Components** : Contient les composants d'UI spécifiques au projet. (Sélecteurs de classe.)
+- **Trumps** : Contient les classes utilitaires réutilisables et à fortes spécificités.
 
 ## Conventions de nommage
 
-En suivant la logique d'architecture BEMIT, un système de nommage a été mis en place :
+L'architecture BEMIT propose également un système de nommage intuitif permettant aux intégrateurs web et aux développeurs 
+de comprendre rapidement le rôle d'un composant.
 
-**Préfixes :**
+### Préfixes
 
-- Les classes utilitaires : `u-`.
-- Les objets : `o-`.
-- Les composants : `c-`.
-- Les nouveaux contextes de mise en forme (scope) : `s-`.
-- Les états ou conditions : `is-`, `has-`.
-- Les composants ciblés en JavaScript : `js-`.
+- Composants : `c-`.
+- Objets : `o-`.
+- Classes utilitaires : `u-`.
+- Conditions, états : `is-`, `has-`.
+- Ciblage JS : `js-`.
 
-**Suffixes :**
+### Suffixes (si nécessaire)
 
-- Le responsive : `@breakpoint`.
-- Les éléments : `__element`.
-- Les modificateurs : `--modifier`.
+La classe sera effective en fonction du média ciblé par ce suffixe `class@media` :
 
-## Bien débuter
+- `u-hidden@print` : Classe utilitaire permettant de cacher un élément lors de l'impression.
+- `u-txt-center@sm` : Classe utilitaire permettant de centrer un élément textuel pour les résolutions d'écran inférieures
+ou égales à 768px et supérieures à 640px. (Configuration par défaut.)
 
-L'étape la plus important quand vous débuterez un projet sera de mettre à jour les variables globales dans le fichier `_global-variables.scss`. Vous pourrez définir la taille des différents titres, du corps du texte, des boutons et des champs de formulaires, du nombre de colonnes dans la grille, de la largeur des gouttières, etc.
+### Syntaxe BEM
 
-Une fois ces variables renseignées, il vous suffira simplement de compléter le dernier fichier de configuration correspondant aux couleurs utilisées dans votre projet `_color-variables.scss`.
+La méthodologie BEM propose une nomenclature simple basée sur un concept de blocs, d'éléments et de modificateurs :
 
-En résumé, vous n'aurez besoin de modifier que ces deux fichiers de configuration pour générer automatiquement la feuille de styles CSS de base propre à votre projet.
-En effet, toute la typographie, les grilles, les éléments de formulaire, les points de rupture, etc. seront générés grâce à ces variables.
+- **Bloc** : Le bloc fait référence à un composant d'UI autonome (`c-component`).
+- **Élément** : L'élément est une partie d'un bloc, le contexte d'un élément est celui de son bloc (`c-component__element`).
+- **Modificateur** : Le modificateur est une propriété qui sert à créer des variantes d'un bloc (`c-component--modifier`).
 
-➜ *Une fois le projet installé, vous trouverez dans le dossier dist un template HTML [guide.html](https://github.com/jonathanlevaillant/atomic-builder/blob/master/dist/guide.html) regroupant tous les modules de base générés via les fichiers `_global-variables.scss` et `_color-variables.scss`. Il s'agit d'un guide de styles permettant d'avoir un aperçu en temps réel lorsque vous modifierez les variables de configuration par défaut.*
+## Configuration d'un nouveau projet
 
-Voici quelques exemples de configuration :
+La première étape en débutant un nouveau projet est de mettre à jour les **trois fichiers de configuration** situés dans 
+le dossier `/src/scss/settings`.
 
-```css
-$base-font-size     : 1.5rem !default;
-$line-height        : 1.6 !default;
+### 1) `_global.scss`
+
+Ce fichier permet de définir le rendu par défaut des éléments typographiques (paragraphes, titres, etc.), 
+des grilles, des éléments de formulaire, des espacements, des points de rupture utilisés dans le projet ainsi que
+des options à activer.
+
+#### Typographie
+
+```
+$font-family-base       : "Trebuchet MS", Helvetica, sans-serif !default;
+$font-family-headings   : Bitter, Georgia, serif !default;
+$font-family-monospace  : "Courier New", Courier, monospace !default;
+```
+   
+Ces variables définissent les polices de caractères utilisées pour les éléments textuels, les titres et les 
+éléments à chasse fixe.
+
+---
+
+```
+$font-size-base         : 1.6rem !default;
+$line-height-base       : 1.5 !default; // auto => 1.2
 ```
 
-➜ *La taille de la police de base sera de 1.5rem soit 15px et la hauteur de ligne de base de 1.6 (le rythme vertical sera calculé automatiquement : 1.5rem * 1.6 = 2.4rem soit 24px).*
+Ces variables définissent la taille de la police de base ainsi l'interligne relative à celle-ci.
 
-```css
-$field-height       : 48px !default;
-$btn-height         : 48px !default;
+*Astuce : La valeur "auto" dans Photoshop correspond à une interligne d'environ 1.2.*  
+
+*Important : L'interligne étant relative à la taille de la police de base, elle doit être renseignée sans unité.*
+
+---
+
+```
+$font-size-lg           : 2rem !default;
+$font-size-sm           : 1.28rem !default;
 ```
 
-➜ *La hauteur des champs et des boutons de formulaire sera de 48px (les marges internes et les hauteurs de ligne des champs et des boutons seront ajustés en conséquence).*
+Ces variables définissent les tailles de polices "large" et "small" par rapport à la taille de la police de base.
 
-```css
-$grid-number        : 12 !default;
-$grid-gutter        : 2.4rem !default;
+---
+
+```
+$baseline               : $font-size-base * $line-height-base !default;
 ```
 
-➜ *La grille sera composée de 12 colonnes avec des gouttières de largeur 2.4rem soit 24px.*
+Si le projet se base sur un rythme vertical, cette variable correspond à la ligne de base ou "baseline".
 
-```css
-$h1-size            : 6.4rem !default;
-$h2-size            : 3.9rem !default;
-$h3-size            : 2.4rem !default;
+Cette hauteur est calculée automatiquement en fonction de la taille de la police de base et de son interligne relative.
+
+Il est également possible de renseigner une valeur personnalisée comme 8, 12 ou 24 pixels par exemple.  
+Dans ce cas, cette valeur personnalisée servira de référence pour le calcul du rythme vertical et l'interligne relative 
+définie précédemment ne sera plus effective.
+
+*Astuce : Le rythme vertical peut être désactivé si nécessaire dans ce même fichier de configuration.   
+Dans ce cas, l'interligne relative servira de référence et la "baseline" ne sera plus prise en compte.*
+
+---
+
+```
+$font-size-h1           : 4rem !default;
+$font-size-h2           : 3.125rem !default;
+$font-size-h3           : 2.5rem !default;
+$font-size-h4           : 2rem !default;
+$font-size-h5           : 1.6rem !default;
+$font-size-h6           : 1.28rem !default;
 ```
 
-➜ *La taille des titres h1, h2, h3 sera défini respectivement à 6.4rem, 3.9rem et 2.4rem (la hauteur de ligne des titres sera calculée automatiquement pour suivre le rythme vertical calculé précédemment).*
+Ces variables permettent de configurer les différentes tailles de police de titres, (six niveaux de titres).
 
-À titre informatif, il est possible de renseigner des unités en pixel, rem et em. Par défaut les unités du fichier de configuration seront converties en rem à l'exception des unités de points de rupture qui seront converties en em.
+*Astuce : Il est conseillé d'utiliser un **[ratio normalisé](http://www.modularscale.com/)** comme 1.25, 1.33, 1.5 
+ou 1.6125 (golden ratio).*
 
-## Et ensuite ?
+#### Grilles
 
-Une fois la base du projet mis en place, tous les modules spécifiques devront être ajoutés dans le dossier **components**.
-Normalement, à cette étape vous devriez commencer à écrire du code CSS !
+```
+$container-width        : 96rem !default;
+$grid-columns           : 12 !default;
+$grid-gutter-width      : $baseline !default;
+$grid-offset-width      : $baseline !default;
+```
 
-## Bonus
+Ces variables définissent les caractéristiques de la grille utilisée dans le projet, à savoir la largeur du conteneur, 
+le nombre de colonnes (en général 12, 16 ou 24 colonnes), la largeur des gouttières et des marges latérales.
 
-Voici la description des tâches Gulp d'Atomic Builder :
+*Astuce : Il est possible d'utiliser différentes grilles au sein d'un même projet en définissant un modificateur de grille
+avec de nouvelles propriétés.   
+Un exemple d'une grille sans gouttière se trouve dans le dossier `/src/scss/objects/_grids.scss`.*
 
-- `gulp` : Compile les fichiers Sass en CSS natif (propriétés auto-préfixées, ordonnées et indentées), les images sont optimisées, les icônes svg et les polices de caractères ttf sont converties en woff et woff2.
-- `gulp watch` : Surveille automatiquement toute modification de contenu des fichiers Sass, HTML et JS.
-- `gulp prod` : Les fichiers CSS, HTML et JS sont optimisés, un chemin critique CSS est rajouté dans chaque fichier HTML, les fichiers JS sont concaténés.
+#### Éléments de formulaire
+
+```
+$field-height           : $baseline * 2 !default;
+$field-padding-x        : $baseline / 2 !default;
+$field-font-size        : 1.6rem !default;
+$label-font-size        : 1.6rem !default;
+```
+
+Ces variables contrôlent les dimensions et les tailles de police des champs de formulaire, boutons radios, 
+cases à cocher, labels, etc.
+
+```
+$btn-height             : $baseline * 2 !default;
+$btn-padding-x          : $baseline !default;
+$btn-font-size          : 1.6rem !default;
+```
+
+Ces variables contrôlent les dimensions et les tailles de police des champs de validation de formulaire et des boutons.
+
+#### Espacements
+
+```
+$spacers: (
+    n                   : 0,
+    xs                  : $baseline / 3,
+    sm                  : $baseline / 2,
+    md                  : $baseline,
+    lg                  : $baseline * 2,
+    xl                  : $baseline * 3
+) !default;
+```
+
+Ces variables définissent les différentes valeurs d'espacement utilisées dans le projet.   
+Par défaut, six valeurs sont renseignées, de la plus petite `n` à la plus grande `xl`.  
+Il est possible d'en rajouter ou d'en supprimer selon les besoins du projet.
+
+Ces variables sont de types "maps", pour pouvoir y accéder, une fonction `spacer(key)` est disponible. 
+
+Par exemple :
+
+```
+.c-demo__box {
+    padding: calc(#{spacer(sm)} - 1px);
+}
+```
+
+sera compilé en :
+
+```
+.c-demo__box {
+    padding: calc(1.2rem - 1px);
+}
+```
+
+*Astuce : Les classes utilitaires d'espacement sont générées automatiquement en fonction des clées et des valeurs de la 
+"map".*
+
+#### Points de rupture
+
+```
+$breakpoints: (
+    sm                  : 40em, // 640px => phones
+    md                  : 48em, // 768px => tablets
+    lg                  : 64em  // 1024px => desktops
+) !default;
+```
+
+Ces variables définissent les points de rupture utilisés dans le projet.     
+Par défaut, trois valeurs sont renseignées, elles correspondent aux résolutions pour mobiles, tablettes et écrans larges.  
+Il est possible d'en rajouter ou d'en supprimer selon les besoins du projet.
+
+Ces variables sont de types "maps", pour pouvoir y accéder, une fonction `bp(key)` est disponible.
+
+*Astuce : Un script ajoute automatiquement les valeurs supérieures pour chacun des points de rupture définie dans la "map", 
+pour accéder à ces nouvelles clés, la syntaxe est la suivante : `<key-plus>`.*   
+
+*Convention : Pour éviter que les intervalles ne se chevauchent, les points de rupture doivent suivre ce format :   
+`@media (min-width: bp(key-plus)) and (max-width: bp(key)) { ... }`.*
+
+Par exemple :
+
+```
+@media (min-width: bp(md-plus)) and (max-width: bp(lg)) {
+    .u-txt-center\@md {
+        text-align: center;
+    }
+}
+```
+
+sera compilé en :
+
+```
+@media (min-width: 48.0625em) and (max-width: 64em) {
+    .u-txt-center\@md {
+        text-align: center;
+    }
+}
+```
+
+#### Options
+
+```
+$enable-rhythm          : true !default;
+$enable-utilities       : true !default;
+$enable-icon-fonts      : true !default;
+$enable-symbols         : true !default;
+$enable-hyphens         : true !default;
+$enable-print-styles    : true !default;
+```
+
+Ces variables permettent d'activer ou de désactiver certaines options :
+
+- `$enable-rhythm` : Active la gestion du rythme vertical basé sur la variable `$baseline`.
+- `$enable-utilities` : Active la génération des classes utilitaires responsives.
+- `$enable-icon-fonts` : Active la gestion des polices d'icônes.
+- `$enable-symbols` : Active la gestion des sprites SVG.
+- `$enable-hyphens` : Active la gestion des césures sur mobiles.
+- `$enable-print-styles` : Active la génération d'une feuille de style CSS destinée à l'impression.
+
+### 2) `_colors.scss`
+
+Ce fichier permet de définir la palette de couleurs utilisée dans le projet.
+Il est possible d'ajouter ou de supprimer des couleurs selon les besoins du projet.
+
+Ces variables sont de types "maps", pour pouvoir y accéder, une fonction `color(key)` est disponible. 
+
+Par exemple :
+
+```
+a {
+    color: color(steel-blue);
+}
+```
+
+sera compilé en :
+
+```
+a {
+    color: #4876C3;
+}
+```
+
+*Astuce : Les classes utilitaires de couleurs sont générées automatiquement en fonction des clés et des valeurs de la 
+"map".*
+
+### 3) `_fonts.scss`
+
+Ce fichier permet de définir les différentes polices de caractères utilisée dans le projet.
+Il est conseillé de ne pas utiliser plus de deux polices de caractères différentes pour des raisons de performance.
+
+*Astuce : Les formats des polices de caractères recommandés pour le web sont le "woff" et "woff2"*
+
+## Et maintenant ?
+
+Il est vivement recommandé de parcourir les différentes fonctions et mixins disponibles dans le dossier `/src/scss/tools`, 
+notamment les mixins destinés au calcul du rythme vertical, à la génération des grilles et les fonctions de conversions 
+d'unités.
+
+Vous trouverez également un guide de style à la racine du dossier `/src` regroupant tous les composants d'Atomic Builder.
+
+Maintenant que le projet est correctement configuré, il est temps de créer vos nouveaux composants, à vous de jouer ! 
+
+## Ils nous font confiance
+
+- [Vinci Autoroutes](https://www.vinci-autoroutes.com/fr)
+- [Happyview](https://www.happyview.fr/)
