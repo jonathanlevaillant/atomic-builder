@@ -2,7 +2,7 @@
    ========================================================================== */
 
 @if $enable-hyphens {
-    @media (max-width: bp(xs)) {
+    @media (max-width: bp(sm)) {
 
         // hyphens
         div,
