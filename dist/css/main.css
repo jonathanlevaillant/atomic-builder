@@ -536,7 +536,7 @@ th {
 
 /* responsive
    ========================================================================== */
-@media (max-width: 30em) {
+@media (max-width: 40em) {
     div,
     textarea,
     table,
