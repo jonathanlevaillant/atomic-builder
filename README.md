@@ -1,3 +1,7 @@
+<p>
+    <img src="http://jonathanlevaillant.fr/img/atomic-builder-logo.svg" width=72 height=72 alt="Atomic Builder" />
+</p>
+
 # Atomic Builder
 
 Atomic Builder a été conçu comme point de départ d'un projet Front-End avec le juste nécessaire à la différence de la 
