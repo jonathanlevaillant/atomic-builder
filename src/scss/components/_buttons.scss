@@ -10,7 +10,7 @@
     border-radius: em(2px, $btn-font-size);
     box-shadow: em(1px, $btn-font-size) em(1px, $btn-font-size) em(1px, $btn-font-size) rgba(color(black), .25);
     text-decoration: none;
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     color: color(white);
     cursor: pointer;
     &:focus,

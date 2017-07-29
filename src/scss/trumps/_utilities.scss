@@ -29,32 +29,32 @@
     // headings
     .u-txt-h1 {
         font-family: $font-family-headings;
-        font-weight: 700;
+        font-weight: $font-weight-bold;
         @include rhythm($font-size-h1);
     }
     .u-txt-h2 {
         font-family: $font-family-headings;
-        font-weight: 700;
+        font-weight: $font-weight-bold;
         @include rhythm($font-size-h2);
     }
     .u-txt-h3 {
         font-family: $font-family-headings;
-        font-weight: 700;
+        font-weight: $font-weight-bold;
         @include rhythm($font-size-h3);
     }
     .u-txt-h4 {
         font-family: $font-family-headings;
-        font-weight: 700;
+        font-weight: $font-weight-bold;
         @include rhythm($font-size-h4);
     }
     .u-txt-h5 {
         font-family: $font-family-headings;
-        font-weight: 700;
+        font-weight: $font-weight-bold;
         @include rhythm($font-size-h5);
     }
     .u-txt-h6 {
         font-family: $font-family-headings;
-        font-weight: 700;
+        font-weight: $font-weight-bold;
         @include rhythm($font-size-h6);
     }
 

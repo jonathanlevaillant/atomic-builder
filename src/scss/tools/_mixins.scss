@@ -375,6 +375,12 @@ $btn-font-size          : rem($btn-font-size);
     .u-txt-capitalize#{$modifier} {
         text-transform: capitalize;
     }
+    .u-txt-normal#{$modifier} {
+        font-weight: $font-weight-normal;
+    }
+    .u-txt-bold#{$modifier} {
+        font-weight: $font-weight-bold;
+    }
 
     // sizes
     @include sizes($modifier: $modifier);

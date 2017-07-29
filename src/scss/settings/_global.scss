@@ -15,6 +15,9 @@ $font-sizes: (
     lg                  : 2rem,
 ) !default;
 
+$font-weight-normal     : 400 !default;
+$font-weight-bold       : 700 !default;
+
 // baseline => you can override this auto value with a custom value
 $baseline               : $font-size-base * $line-height-base !default;
 

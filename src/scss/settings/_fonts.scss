@@ -6,7 +6,7 @@
     font-family: Bitter;
     src: url("../fonts/bitter/bitter-400.woff2") format("woff2"),
          url("../fonts/bitter/bitter-400.woff") format("woff");
-    font-weight: 400;
+    font-weight: $font-weight-normal;
     font-style: normal;
 }
 
@@ -15,6 +15,6 @@
     font-family: Bitter;
     src: url("../fonts/bitter/bitter-700.woff2") format("woff2"),
          url("../fonts/bitter/bitter-700.woff") format("woff");
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     font-style: normal;
 }
