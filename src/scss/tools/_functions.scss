@@ -69,15 +69,7 @@
     @return $line-height-base;
 }
 
-// get color
-@function color($color) {
-    @if map-has-key($colors, $color) {
-        @return map-get($colors, $color);
-    }
-    @warn "Unfortunately, no value could be retrieved from #{$colors}";
-}
-
-// get spacer
+// spacer maps
 @each $spacer-name, $spacer-value in $spacers {
     $spacers: map-merge($spacers, ($spacer-name: rem($spacer-value)));
 }
@@ -89,7 +81,39 @@
     @warn "Unfortunately, no value could be retrieved from #{$spacers}";
 }
 
-// get breakpoints
+// font size maps
+@function font-size($font-size, $line-height: null) {
+    @if map-has-key($font-sizes, $font-size) {
+        $map-custom: map-get($font-sizes, $font-size);
+
+        @if type-of($map-custom) == "map" {
+            $map-custom-font-size: map-get($map-custom, "font-size");
+            $map-custom-line-height: map-get($map-custom, "line-height");
+
+            @if not $line-height {
+                @return $map-custom-font-size;
+            }
+            @if $line-height {
+                @return $map-custom-font-size * $map-custom-line-height;
+            }
+        }
+        @if $line-height {
+            @return null;
+        }
+        @return map-get($font-sizes, $font-size);
+    }
+    @warn "Unfortunately, no value could be retrieved from #{$font-sizes}";
+}
+
+// color maps
+@function color($color) {
+    @if map-has-key($colors, $color) {
+        @return map-get($colors, $color);
+    }
+    @warn "Unfortunately, no value could be retrieved from #{$colors}";
+}
+
+// breakpoint maps
 $breakpoints-plus: ();
 
 @each $bp-name, $bp-value in $breakpoints {

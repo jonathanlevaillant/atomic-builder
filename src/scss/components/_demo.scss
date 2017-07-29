@@ -25,7 +25,7 @@
     margin-bottom: -2px;
     border-bottom: 2px solid color(steel-blue);
     font-family: $font-family-base;
-    @include rhythm($font-size-lg);
+    @include rhythm(font-size(lg));
     color: color(steel-blue);
 }
 .c-demo__box {

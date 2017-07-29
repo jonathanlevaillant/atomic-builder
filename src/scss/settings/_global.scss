@@ -10,8 +10,10 @@ $font-family-monospace  : "Courier New", Courier, monospace !default;
 $font-size-base         : 1.6rem !default;
 $line-height-base       : 1.5 !default; // auto => 1.2
 
-$font-size-lg           : 2rem !default;
-$font-size-sm           : 1.28rem !default;
+$font-sizes: (
+    sm                  : 1.28rem,
+    lg                  : 2rem,
+) !default;
 
 // baseline => you can override this auto value with a custom value
 $baseline               : $font-size-base * $line-height-base !default;
@@ -25,7 +27,7 @@ $font-size-h5           : 1.6rem !default;
 $font-size-h6           : 1.28rem !default;
 
 // grid containers
-$container-width        : 96rem !default;
+$container-width        : $baseline * 40 !default;
 $grid-columns           : 12 !default;
 $grid-gutter-width      : $baseline !default;
 $grid-offset-width      : $baseline !default;

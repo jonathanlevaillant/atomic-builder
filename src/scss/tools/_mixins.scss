@@ -4,9 +4,6 @@
 // units to rem
 $font-size-base         : rem($font-size-base);
 
-$font-size-lg           : rem($font-size-lg);
-$font-size-sm           : rem($font-size-sm);
-
 $baseline               : rem($baseline);
 
 $font-size-h1           : rem($font-size-h1);
@@ -127,7 +124,7 @@ $btn-font-size          : rem($btn-font-size);
     }
 }
 
-// spacers
+// spacers utilities
 @mixin spacers($modifier: null) {
     @each $spacer-name, $spacer-value in $spacers {
         $spacer-value: rem($spacer-value);
@@ -163,9 +160,24 @@ $btn-font-size          : rem($btn-font-size);
             padding-left: $spacer-value;
         }
     }
+    .u-p#{$modifier} {
+        margin-top: spacer(md);
+        &:first-child {
+            margin-top: 0;
+        }
+    }
 }
 
-// colors
+// font sizes utilities
+@mixin font-sizes($modifier: null) {
+    @each $font-size-name, $font-size-value in $font-sizes {
+        .u-txt-#{$font-size-name}#{$modifier} {
+            @include rhythm(font-size($font-size-name), font-size($font-size-name, true));
+        }
+    }
+}
+
+// colors utilities
 @mixin colors($modifier: null) {
     @each $color-name, $color-code in $colors {
         .u-color-#{$color-name}#{$modifier} {
@@ -174,7 +186,7 @@ $btn-font-size          : rem($btn-font-size);
     }
 }
 
-// utilities
+// global utilities
 @mixin utilities($modifier: null) {
     @if $modifier {
         $modifier: "\\@" + $modifier;
@@ -359,54 +371,15 @@ $btn-font-size          : rem($btn-font-size);
     .u-txt-capitalize#{$modifier} {
         text-transform: capitalize;
     }
-    .u-txt-lg#{$modifier} {
-        @include rhythm($font-size-lg);
-    }
-    .u-txt-sm#{$modifier} {
-        @include rhythm($font-size-sm);
-    }
-    .u-txt-h1#{$modifier} {
-        font-family: $font-family-headings;
-        font-weight: 700;
-        @include rhythm($font-size-h1);
-    }
-    .u-txt-h2#{$modifier} {
-        font-family: $font-family-headings;
-        font-weight: 700;
-        @include rhythm($font-size-h2);
-    }
-    .u-txt-h3#{$modifier} {
-        font-family: $font-family-headings;
-        font-weight: 700;
-        @include rhythm($font-size-h3);
-    }
-    .u-txt-h4#{$modifier} {
-        font-family: $font-family-headings;
-        font-weight: 700;
-        @include rhythm($font-size-h4);
-    }
-    .u-txt-h5#{$modifier} {
-        font-family: $font-family-headings;
-        font-weight: 700;
-        @include rhythm($font-size-h5);
-    }
-    .u-txt-h6#{$modifier} {
-        font-family: $font-family-headings;
-        font-weight: 700;
-        @include rhythm($font-size-h6);
-    }
-    .u-p#{$modifier} {
-        margin-top: spacer(md);
-        &:first-child {
-            margin-top: 0;
-        }
-    }
 
     // sizes
     @include sizes($modifier: $modifier);
 
     // spacers
     @include spacers($modifier);
+
+    // font sizes
+    @include font-sizes($modifier);
 
     // colors
     @include colors($modifier);
