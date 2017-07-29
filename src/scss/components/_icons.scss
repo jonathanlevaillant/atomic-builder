@@ -1,73 +1,51 @@
 /* icons
    ========================================================================== */
 
-@if $enable-icon-fonts {
+.c-icon {
+    position: relative;
+    top: -.1em;
+    display: inline-block;
+    vertical-align: middle;
+}
+.c-icon__svg {
+    display: inline-block;
+    vertical-align: top;
+    width: auto;
+    height: em($baseline);
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
 
-    // icon fonts
-    @font-face {
-        font-family: "icons";
-        src: url("../fonts/icons/icons.woff2") format("woff2"),
-             url("../fonts/icons/icons.woff") format("woff");
-        font-weight: normal;
-        font-style: normal;
-    }
-    .c-icon::before, .c-icon-after::after {
-        position: relative;
-        top: -.05em;
-        display: inline-block;
-        margin: 0 em(spacer(xs), $baseline) 0 0;
-        vertical-align: middle;
-        font: normal normal normal #{em($baseline)}/0 icons;
-        text-transform: none;
-        speak: none;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-    .c-icon-after {
-        &::after {
-            margin: 0 0 0 em(spacer(xs), $baseline);
-        }
-    }
+// close
+.c-icon--close {
+    position: static;
+    vertical-align: top;
+}
 
-    // icons generator
+// bold
+.c-icon--bold .c-icon__svg {
+    stroke-width: .3em;
+}
+.c-icon--bolder .c-icon__svg {
+    stroke-width: .6em;
+}
 
-    .c-icon--facebook::before, .c-icon-after--facebook::after {
-        content: "\ea01";
-    }
-    .c-icon--google::before, .c-icon-after--google::after {
-        content: "\ea02";
-    }
-    .c-icon--twitter::before, .c-icon-after--twitter::after {
-        content: "\ea03";
-    }
+// rotate
+.c-icon--rotate-90 {
+    transform: rotate(90deg);
+}
+.c-icon--rotate-180 {
+    transform: rotate(180deg);
+}
+.c-icon--rotate-270 {
+    transform: rotate(270deg);
+}
 
-    // larger icons
-    .c-icon--lg::before, .c-icon-after--lg::after {
-        font-size: em($baseline * 2);
-    }
-    .c-icon--xl::before, .c-icon-after--xl::after {
-        font-size: em($baseline * 3);
-    }
-
-    // close icons
-    .c-icon--close::before, .c-icon-after--close::after {
-        position: static;
-        margin: 0;
-        vertical-align: top;
-        line-height: 1;
-    }
-
-    // monospace icons
-    .c-icon--monospace::before, .c-icon-after--monospace::after {
-        width: 1em;
-        text-align: center;
-    }
-
-    // flip icons
-    .c-icon--flip-horizontal::before, .c-icon-after--flip-horizontal::after {
-        transform: scaleX(-1);
-    }
-    .c-icon--flip-vertical::before, .c-icon-after--flip-vertical::after {
-        transform: scaleY(-1);
-    }
+// flip
+.c-icon--flip-horizontal {
+    transform: scaleX(-1);
+}
+.c-icon--flip-vertical {
+    transform: scaleY(-1);
 }
