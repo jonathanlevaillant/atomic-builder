@@ -18,16 +18,18 @@ $font-sizes: (
 $font-weight-normal     : 400 !default;
 $font-weight-bold       : 700 !default;
 
-// baseline => you can override this auto value with a custom value
+// baseline => you can override this default value with a custom value
 $baseline               : $font-size-base * $line-height-base !default;
 
-// headings => scale 1.25 (major third)
-$font-size-h1           : 4rem !default;
-$font-size-h2           : 3.125rem !default;
-$font-size-h3           : 2.5rem !default;
-$font-size-h4           : 2rem !default;
-$font-size-h5           : 1.6rem !default;
-$font-size-h6           : 1.28rem !default;
+// headings => default ratio 1.25 (major third)
+$ratio                  : 1.25 !default;
+
+$font-size-h6           : $font-size-base / $ratio !default;
+$font-size-h5           : $font-size-base !default;
+$font-size-h4           : $font-size-base * $ratio !default;
+$font-size-h3           : $font-size-h4 * $ratio !default;
+$font-size-h2           : $font-size-h3 * $ratio !default;
+$font-size-h1           : $font-size-h2 * $ratio !default;
 
 // grid containers
 $container-width        : $baseline * 40 !default;
