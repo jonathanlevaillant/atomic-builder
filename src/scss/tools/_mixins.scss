@@ -356,6 +356,19 @@ $btn-font-size          : rem($btn-font-size);
         margin: auto;
     }
 
+    // columns
+    .u-col#{$modifier} {
+        column-gap: $grid-gutter-width;
+    }
+    @for $i from 1 through $grid-columns {
+        .u-col-#{$i}#{$modifier} {
+            column-count: $i;
+        }
+    }
+    .u-col-item#{$modifier} {
+        break-inside: avoid;
+    }
+
     // typography
     .u-txt-right#{$modifier} {
         text-align: right;
