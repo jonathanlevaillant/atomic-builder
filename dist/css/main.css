@@ -32,6 +32,7 @@ html {
     font-family: sans-serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     text-size-adjust: 100%;
 }
@@ -57,6 +58,7 @@ main {
 
 hr {
     overflow: visible;
+    -webkit-box-sizing: content-box;
     box-sizing: content-box;
     height: 0;
 }
@@ -78,6 +80,7 @@ a:active {
 
 abbr[title] {
     text-decoration: underline;
+    -webkit-text-decoration: underline dotted;
     text-decoration: underline dotted;
     border-bottom: 0;
 }
@@ -191,6 +194,7 @@ fieldset {
 
 legend {
     display: table;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     max-width: 100%;
     padding: 0;
@@ -209,6 +213,7 @@ textarea {
 
 [type='checkbox'],
 [type='radio'] {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding: 0;
 }
@@ -262,12 +267,14 @@ template {
 /* base
    ========================================================================== */
 html {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 *,
 ::before,
 ::after {
+    -webkit-box-sizing: inherit;
     box-sizing: inherit;
 }
 
@@ -480,6 +487,7 @@ th {
 @media print {
     * {
         background: transparent;
+        -webkit-box-shadow: none;
         box-shadow: none;
         text-shadow: none;
     }
@@ -567,6 +575,7 @@ th {
 }
 
 .o-grid__col {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     min-width: 0;
     min-height: 0;
@@ -1126,97 +1135,59 @@ th {
 
 /* icons
    ========================================================================== */
-@font-face {
-    font-family: 'icons';
-    font-weight: normal;
-    font-style: normal;
-
-    src: url('../fonts/icons/icons.woff2') format('woff2'), url('../fonts/icons/icons.woff') format('woff');
-}
-
-.c-icon::before,
-.c-icon-after::after {
-    font: normal normal normal 1.5em/0 icons;
+.c-icon {
     position: relative;
-    top: -.05em;
+    top: -.1em;
     display: inline-block;
-    margin: 0 .33333em 0 0;
     vertical-align: middle;
-    text-transform: none;
-    speak: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
-.c-icon-after::after {
-    margin: 0 0 0 .33333em;
-}
-
-.c-icon--facebook::before,
-.c-icon-after--facebook::after {
-    content: '\ea01';
-}
-
-.c-icon--google::before,
-.c-icon-after--google::after {
-    content: '\ea02';
-}
-
-.c-icon--twitter::before,
-.c-icon-after--twitter::after {
-    content: '\ea03';
-}
-
-.c-icon--lg::before,
-.c-icon-after--lg::after {
-    font-size: 3em;
-}
-
-.c-icon--xl::before,
-.c-icon-after--xl::after {
-    font-size: 4.5em;
-}
-
-.c-icon--close::before,
-.c-icon-after--close::after {
-    line-height: 1;
-    position: static;
-    margin: 0;
-    vertical-align: top;
-}
-
-.c-icon--monospace::before,
-.c-icon-after--monospace::after {
-    width: 1em;
-    text-align: center;
-}
-
-.c-icon--flip-horizontal::before,
-.c-icon-after--flip-horizontal::after {
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-}
-
-.c-icon--flip-vertical::before,
-.c-icon-after--flip-vertical::after {
-    -webkit-transform: scaleY(-1);
-    transform: scaleY(-1);
-}
-
-/* symbols
-   ========================================================================== */
-.c-symbol {
+.c-icon__svg {
     display: inline-block;
-    height: 2.4rem;
-    margin: 0 .8rem 0 0;
+    width: auto;
+    height: 1.5em;
     vertical-align: top;
     stroke-width: 0;
     stroke: currentColor;
     fill: currentColor;
 }
 
-.c-symbol--after {
-    margin: 0 0 0 .8rem;
+.c-icon--close {
+    position: static;
+    vertical-align: top;
+}
+
+.c-icon--bold .c-icon__svg {
+    stroke-width: .3em;
+}
+
+.c-icon--bolder .c-icon__svg {
+    stroke-width: .6em;
+}
+
+.c-icon--rotate-90 {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.c-icon--rotate-180 {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.c-icon--rotate-270 {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+
+.c-icon--flip-horizontal {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.c-icon--flip-vertical {
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
 }
 
 /* labels
@@ -1276,6 +1247,7 @@ th {
     border: 0;
     border-radius: .125em;
     background-color: #4876c3;
+    -webkit-box-shadow: .0625em .0625em .0625em rgba(0, 0, 0, .25);
     box-shadow: .0625em .0625em .0625em rgba(0, 0, 0, .25);
 }
 
@@ -1572,7 +1544,6 @@ th {
 
 .u-flex-self-center {
     -ms-flex-item-align: center;
-    -ms-grid-row-align: center;
     align-self: center;
 }
 
@@ -1583,7 +1554,6 @@ th {
 
 .u-flex-self-stretch {
     -ms-flex-item-align: stretch;
-    -ms-grid-row-align: stretch;
     align-self: stretch;
 }
 
@@ -1643,85 +1613,71 @@ th {
 
 .u-col {
     -webkit-column-gap: 2.4rem;
-    -moz-column-gap: 2.4rem;
     column-gap: 2.4rem;
 }
 
 .u-col-1 {
     -webkit-column-count: 1;
-    -moz-column-count: 1;
     column-count: 1;
 }
 
 .u-col-2 {
     -webkit-column-count: 2;
-    -moz-column-count: 2;
     column-count: 2;
 }
 
 .u-col-3 {
     -webkit-column-count: 3;
-    -moz-column-count: 3;
     column-count: 3;
 }
 
 .u-col-4 {
     -webkit-column-count: 4;
-    -moz-column-count: 4;
     column-count: 4;
 }
 
 .u-col-5 {
     -webkit-column-count: 5;
-    -moz-column-count: 5;
     column-count: 5;
 }
 
 .u-col-6 {
     -webkit-column-count: 6;
-    -moz-column-count: 6;
     column-count: 6;
 }
 
 .u-col-7 {
     -webkit-column-count: 7;
-    -moz-column-count: 7;
     column-count: 7;
 }
 
 .u-col-8 {
     -webkit-column-count: 8;
-    -moz-column-count: 8;
     column-count: 8;
 }
 
 .u-col-9 {
     -webkit-column-count: 9;
-    -moz-column-count: 9;
     column-count: 9;
 }
 
 .u-col-10 {
     -webkit-column-count: 10;
-    -moz-column-count: 10;
     column-count: 10;
 }
 
 .u-col-11 {
     -webkit-column-count: 11;
-    -moz-column-count: 11;
     column-count: 11;
 }
 
 .u-col-12 {
     -webkit-column-count: 12;
-    -moz-column-count: 12;
     column-count: 12;
 }
 
 .u-col-item {
     -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
     break-inside: avoid;
 }
 
@@ -2242,7 +2198,6 @@ th {
 
     .u-flex-self-center\@lg {
         -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
         align-self: center;
     }
 
@@ -2253,7 +2208,6 @@ th {
 
     .u-flex-self-stretch\@lg {
         -ms-flex-item-align: stretch;
-        -ms-grid-row-align: stretch;
         align-self: stretch;
     }
 
@@ -2313,85 +2267,71 @@ th {
 
     .u-col\@lg {
         -webkit-column-gap: 2.4rem;
-        -moz-column-gap: 2.4rem;
         column-gap: 2.4rem;
     }
 
     .u-col-1\@lg {
         -webkit-column-count: 1;
-        -moz-column-count: 1;
         column-count: 1;
     }
 
     .u-col-2\@lg {
         -webkit-column-count: 2;
-        -moz-column-count: 2;
         column-count: 2;
     }
 
     .u-col-3\@lg {
         -webkit-column-count: 3;
-        -moz-column-count: 3;
         column-count: 3;
     }
 
     .u-col-4\@lg {
         -webkit-column-count: 4;
-        -moz-column-count: 4;
         column-count: 4;
     }
 
     .u-col-5\@lg {
         -webkit-column-count: 5;
-        -moz-column-count: 5;
         column-count: 5;
     }
 
     .u-col-6\@lg {
         -webkit-column-count: 6;
-        -moz-column-count: 6;
         column-count: 6;
     }
 
     .u-col-7\@lg {
         -webkit-column-count: 7;
-        -moz-column-count: 7;
         column-count: 7;
     }
 
     .u-col-8\@lg {
         -webkit-column-count: 8;
-        -moz-column-count: 8;
         column-count: 8;
     }
 
     .u-col-9\@lg {
         -webkit-column-count: 9;
-        -moz-column-count: 9;
         column-count: 9;
     }
 
     .u-col-10\@lg {
         -webkit-column-count: 10;
-        -moz-column-count: 10;
         column-count: 10;
     }
 
     .u-col-11\@lg {
         -webkit-column-count: 11;
-        -moz-column-count: 11;
         column-count: 11;
     }
 
     .u-col-12\@lg {
         -webkit-column-count: 12;
-        -moz-column-count: 12;
         column-count: 12;
     }
 
     .u-col-item\@lg {
         -webkit-column-break-inside: avoid;
-        page-break-inside: avoid;
         break-inside: avoid;
     }
 
@@ -2911,7 +2851,6 @@ th {
 
     .u-flex-self-center\@md {
         -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
         align-self: center;
     }
 
@@ -2922,7 +2861,6 @@ th {
 
     .u-flex-self-stretch\@md {
         -ms-flex-item-align: stretch;
-        -ms-grid-row-align: stretch;
         align-self: stretch;
     }
 
@@ -2982,85 +2920,71 @@ th {
 
     .u-col\@md {
         -webkit-column-gap: 2.4rem;
-        -moz-column-gap: 2.4rem;
         column-gap: 2.4rem;
     }
 
     .u-col-1\@md {
         -webkit-column-count: 1;
-        -moz-column-count: 1;
         column-count: 1;
     }
 
     .u-col-2\@md {
         -webkit-column-count: 2;
-        -moz-column-count: 2;
         column-count: 2;
     }
 
     .u-col-3\@md {
         -webkit-column-count: 3;
-        -moz-column-count: 3;
         column-count: 3;
     }
 
     .u-col-4\@md {
         -webkit-column-count: 4;
-        -moz-column-count: 4;
         column-count: 4;
     }
 
     .u-col-5\@md {
         -webkit-column-count: 5;
-        -moz-column-count: 5;
         column-count: 5;
     }
 
     .u-col-6\@md {
         -webkit-column-count: 6;
-        -moz-column-count: 6;
         column-count: 6;
     }
 
     .u-col-7\@md {
         -webkit-column-count: 7;
-        -moz-column-count: 7;
         column-count: 7;
     }
 
     .u-col-8\@md {
         -webkit-column-count: 8;
-        -moz-column-count: 8;
         column-count: 8;
     }
 
     .u-col-9\@md {
         -webkit-column-count: 9;
-        -moz-column-count: 9;
         column-count: 9;
     }
 
     .u-col-10\@md {
         -webkit-column-count: 10;
-        -moz-column-count: 10;
         column-count: 10;
     }
 
     .u-col-11\@md {
         -webkit-column-count: 11;
-        -moz-column-count: 11;
         column-count: 11;
     }
 
     .u-col-12\@md {
         -webkit-column-count: 12;
-        -moz-column-count: 12;
         column-count: 12;
     }
 
     .u-col-item\@md {
         -webkit-column-break-inside: avoid;
-        page-break-inside: avoid;
         break-inside: avoid;
     }
 
@@ -3580,7 +3504,6 @@ th {
 
     .u-flex-self-center\@sm {
         -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
         align-self: center;
     }
 
@@ -3591,7 +3514,6 @@ th {
 
     .u-flex-self-stretch\@sm {
         -ms-flex-item-align: stretch;
-        -ms-grid-row-align: stretch;
         align-self: stretch;
     }
 
@@ -3651,85 +3573,71 @@ th {
 
     .u-col\@sm {
         -webkit-column-gap: 2.4rem;
-        -moz-column-gap: 2.4rem;
         column-gap: 2.4rem;
     }
 
     .u-col-1\@sm {
         -webkit-column-count: 1;
-        -moz-column-count: 1;
         column-count: 1;
     }
 
     .u-col-2\@sm {
         -webkit-column-count: 2;
-        -moz-column-count: 2;
         column-count: 2;
     }
 
     .u-col-3\@sm {
         -webkit-column-count: 3;
-        -moz-column-count: 3;
         column-count: 3;
     }
 
     .u-col-4\@sm {
         -webkit-column-count: 4;
-        -moz-column-count: 4;
         column-count: 4;
     }
 
     .u-col-5\@sm {
         -webkit-column-count: 5;
-        -moz-column-count: 5;
         column-count: 5;
     }
 
     .u-col-6\@sm {
         -webkit-column-count: 6;
-        -moz-column-count: 6;
         column-count: 6;
     }
 
     .u-col-7\@sm {
         -webkit-column-count: 7;
-        -moz-column-count: 7;
         column-count: 7;
     }
 
     .u-col-8\@sm {
         -webkit-column-count: 8;
-        -moz-column-count: 8;
         column-count: 8;
     }
 
     .u-col-9\@sm {
         -webkit-column-count: 9;
-        -moz-column-count: 9;
         column-count: 9;
     }
 
     .u-col-10\@sm {
         -webkit-column-count: 10;
-        -moz-column-count: 10;
         column-count: 10;
     }
 
     .u-col-11\@sm {
         -webkit-column-count: 11;
-        -moz-column-count: 11;
         column-count: 11;
     }
 
     .u-col-12\@sm {
         -webkit-column-count: 12;
-        -moz-column-count: 12;
         column-count: 12;
     }
 
     .u-col-item\@sm {
         -webkit-column-break-inside: avoid;
-        page-break-inside: avoid;
         break-inside: avoid;
     }
 
@@ -4249,7 +4157,6 @@ th {
 
     .u-flex-self-center\@xs {
         -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
         align-self: center;
     }
 
@@ -4260,7 +4167,6 @@ th {
 
     .u-flex-self-stretch\@xs {
         -ms-flex-item-align: stretch;
-        -ms-grid-row-align: stretch;
         align-self: stretch;
     }
 
@@ -4320,85 +4226,71 @@ th {
 
     .u-col\@xs {
         -webkit-column-gap: 2.4rem;
-        -moz-column-gap: 2.4rem;
         column-gap: 2.4rem;
     }
 
     .u-col-1\@xs {
         -webkit-column-count: 1;
-        -moz-column-count: 1;
         column-count: 1;
     }
 
     .u-col-2\@xs {
         -webkit-column-count: 2;
-        -moz-column-count: 2;
         column-count: 2;
     }
 
     .u-col-3\@xs {
         -webkit-column-count: 3;
-        -moz-column-count: 3;
         column-count: 3;
     }
 
     .u-col-4\@xs {
         -webkit-column-count: 4;
-        -moz-column-count: 4;
         column-count: 4;
     }
 
     .u-col-5\@xs {
         -webkit-column-count: 5;
-        -moz-column-count: 5;
         column-count: 5;
     }
 
     .u-col-6\@xs {
         -webkit-column-count: 6;
-        -moz-column-count: 6;
         column-count: 6;
     }
 
     .u-col-7\@xs {
         -webkit-column-count: 7;
-        -moz-column-count: 7;
         column-count: 7;
     }
 
     .u-col-8\@xs {
         -webkit-column-count: 8;
-        -moz-column-count: 8;
         column-count: 8;
     }
 
     .u-col-9\@xs {
         -webkit-column-count: 9;
-        -moz-column-count: 9;
         column-count: 9;
     }
 
     .u-col-10\@xs {
         -webkit-column-count: 10;
-        -moz-column-count: 10;
         column-count: 10;
     }
 
     .u-col-11\@xs {
         -webkit-column-count: 11;
-        -moz-column-count: 11;
         column-count: 11;
     }
 
     .u-col-12\@xs {
         -webkit-column-count: 12;
-        -moz-column-count: 12;
         column-count: 12;
     }
 
     .u-col-item\@xs {
         -webkit-column-break-inside: avoid;
-        page-break-inside: avoid;
         break-inside: avoid;
     }
 
@@ -4919,7 +4811,6 @@ th {
 
 .u-flex-self-center\@print {
     -ms-flex-item-align: center;
-    -ms-grid-row-align: center;
     align-self: center;
 }
 
@@ -4930,7 +4821,6 @@ th {
 
 .u-flex-self-stretch\@print {
     -ms-flex-item-align: stretch;
-    -ms-grid-row-align: stretch;
     align-self: stretch;
 }
 
@@ -4990,85 +4880,71 @@ th {
 
 .u-col\@print {
     -webkit-column-gap: 2.4rem;
-    -moz-column-gap: 2.4rem;
     column-gap: 2.4rem;
 }
 
 .u-col-1\@print {
     -webkit-column-count: 1;
-    -moz-column-count: 1;
     column-count: 1;
 }
 
 .u-col-2\@print {
     -webkit-column-count: 2;
-    -moz-column-count: 2;
     column-count: 2;
 }
 
 .u-col-3\@print {
     -webkit-column-count: 3;
-    -moz-column-count: 3;
     column-count: 3;
 }
 
 .u-col-4\@print {
     -webkit-column-count: 4;
-    -moz-column-count: 4;
     column-count: 4;
 }
 
 .u-col-5\@print {
     -webkit-column-count: 5;
-    -moz-column-count: 5;
     column-count: 5;
 }
 
 .u-col-6\@print {
     -webkit-column-count: 6;
-    -moz-column-count: 6;
     column-count: 6;
 }
 
 .u-col-7\@print {
     -webkit-column-count: 7;
-    -moz-column-count: 7;
     column-count: 7;
 }
 
 .u-col-8\@print {
     -webkit-column-count: 8;
-    -moz-column-count: 8;
     column-count: 8;
 }
 
 .u-col-9\@print {
     -webkit-column-count: 9;
-    -moz-column-count: 9;
     column-count: 9;
 }
 
 .u-col-10\@print {
     -webkit-column-count: 10;
-    -moz-column-count: 10;
     column-count: 10;
 }
 
 .u-col-11\@print {
     -webkit-column-count: 11;
-    -moz-column-count: 11;
     column-count: 11;
 }
 
 .u-col-12\@print {
     -webkit-column-count: 12;
-    -moz-column-count: 12;
     column-count: 12;
 }
 
 .u-col-item\@print {
     -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
     break-inside: avoid;
 }
 
