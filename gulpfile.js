@@ -11,44 +11,14 @@ var destination = './dist/';
 
 // paths files
 var html = '**/*.html';
-var css = 'css/*.css';
 var scss = 'scss/**/*.+(scss|sass|css)';
-var cssmin = 'css/main.min.css';
 var js = 'js/**/*.js';
-var jsmin = 'js/global.min.js';
 var images = 'img/**/*.+(png|jpg|jpeg|gif|svg)';
-var symbols = 'img/symbols/*.svg';
 var fonts = 'fonts/**/*';
-var icons = 'fonts/icons/*.svg';
-var template = 'scss/components/template/_icons.scss';
+var cssmin = 'css/main.min.css';
+var jsmin = 'js/global.min.js';
 
-/* task "glyphs" = "glyphs"
-   ========================================================================== */
-
-// task "glyphs" = iconfont (source -> source / source -> destination)
-gulp.task('glyphs', function() {
-    return gulp.src(source + icons)
-        .pipe(plugins.iconfont({
-            fontName: 'icons',
-            formats: ['woff', 'woff2'],
-            normalize: true,
-            centerHorizontally: true,
-            timestamp: Math.round(Date.now()/1000)
-        }))
-        .on('glyphs', function(glyphs) {
-            gulp.src(source + template)
-                .pipe(plugins.consolidate('lodash', {
-                    glyphs: glyphs,
-                    fontName: 'icons',
-                    fontPath: '../fonts/icons/',
-                    className: 'icon'
-                }))
-                .pipe(gulp.dest(source + 'scss/components/'))
-        })
-        .pipe(gulp.dest(destination + 'fonts/icons/'))
-});
-
-/* task "build" = ["html" + "css" + "js" + "img" + "symbols" + "fonts"]
+/* task "build" = ["html" + "css" + "js" + "img" + "fonts"]
    ========================================================================== */
 
 // task "html" = (source -> destination)
@@ -83,34 +53,19 @@ gulp.task('js', function() {
 
 // task "img" = (source -> destination)
 gulp.task('img', function() {
-    return gulp.src([source + images, '!' + source + symbols])
+    return gulp.src(source + images)
         .pipe(gulp.dest(destination + 'img/'))
-});
-
-// task "symbols" = svgSprite (source -> destination)
-config = {
-    mode: {
-        symbol: {
-            dest: '',
-            sprite: 'symbols.svg'
-        }
-    }
-};
-gulp.task('symbols', function() {
-    return gulp.src(source + symbols)
-        .pipe(plugins.svgSprite(config))
-        .pipe(gulp.dest(destination + 'img/symbols/'));
 });
 
 // task "fonts" = (source -> destination)
 gulp.task('fonts', function() {
-    return gulp.src([source + fonts, '!' + source + icons])
+    return gulp.src(source + fonts)
         .pipe(gulp.dest(destination + 'fonts/'))
 });
 
 // task "build"
 gulp.task('build', function(callback) {
-    run(['html', 'css', 'js', 'img', 'symbols', 'fonts'], callback)
+    run(['html', 'css', 'js', 'img', 'fonts'], callback)
 });
 
 /* task "prod" = "url" + ["cssmin" + "jsmin" + "imgmin"]
@@ -141,11 +96,18 @@ gulp.task('jsmin', function() {
 
 // task "imgmin" = imagemin (destination -> destination)
 gulp.task('imgmin', function() {
-    return gulp.src([destination + images, '!' + destination + symbols])
-        .pipe(plugins.imagemin({
-            progressive: true,
-            interlaced: true
-        }))
+    return gulp.src(destination + images)
+        .pipe(plugins.imagemin([
+            plugins.imagemin.gifsicle({
+                interlaced: true
+            }),
+            plugins.imagemin.jpegtran({
+                progressive: true
+            }),
+            plugins.imagemin.svgo({plugins: [{
+                removeUnknownsAndDefaults: false
+            }]})
+        ]))
         .pipe(gulp.dest(destination + 'img/'))
 });
 
