@@ -1347,6 +1347,48 @@ th {
     list-style: none;
 }
 
+.u-txt-h1 {
+    font-family: Bitter, Georgia, serif;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.u-txt-h2 {
+    font-family: Bitter, Georgia, serif;
+    font-size: 3.125rem;
+    font-weight: 700;
+    line-height: 1.536;
+}
+
+.u-txt-h3 {
+    font-family: Bitter, Georgia, serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.92;
+}
+
+.u-txt-h4 {
+    font-family: Bitter, Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.u-txt-h5 {
+    font-family: Bitter, Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.u-txt-h6 {
+    font-family: Bitter, Georgia, serif;
+    font-size: 1.28rem;
+    font-weight: 700;
+    line-height: 1.875;
+}
+
 .u-visible {
     display: block;
 }
@@ -1623,66 +1665,6 @@ th {
     text-transform: capitalize;
 }
 
-.u-txt-lg {
-    font-size: 2rem;
-    line-height: 1.2;
-}
-
-.u-txt-sm {
-    font-size: 1.28rem;
-    line-height: 1.875;
-}
-
-.u-txt-h1 {
-    font-family: Bitter, Georgia, serif;
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-.u-txt-h2 {
-    font-family: Bitter, Georgia, serif;
-    font-size: 3.125rem;
-    font-weight: 700;
-    line-height: 1.536;
-}
-
-.u-txt-h3 {
-    font-family: Bitter, Georgia, serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    line-height: 1.92;
-}
-
-.u-txt-h4 {
-    font-family: Bitter, Georgia, serif;
-    font-size: 2rem;
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-.u-txt-h5 {
-    font-family: Bitter, Georgia, serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    line-height: 1.5;
-}
-
-.u-txt-h6 {
-    font-family: Bitter, Georgia, serif;
-    font-size: 1.28rem;
-    font-weight: 700;
-    line-height: 1.875;
-}
-
-.u-p {
-    margin-top: 2.4rem;
-}
-
-.u-p:first-child {
-    margin-top: 0;
-}
-
 .u-w25 {
     width: 25%;
 }
@@ -1937,6 +1919,24 @@ th {
 
 .u-pl-xl {
     padding-left: 7.2rem;
+}
+
+.u-p {
+    margin-top: 2.4rem;
+}
+
+.u-p:first-child {
+    margin-top: 0;
+}
+
+.u-txt-sm {
+    font-size: 1.28rem;
+    line-height: 1.875;
+}
+
+.u-txt-lg {
+    font-size: 2rem;
+    line-height: 1.2;
 }
 
 .u-color-black {
@@ -2238,66 +2238,6 @@ th {
         text-transform: capitalize;
     }
 
-    .u-txt-lg\@lg {
-        font-size: 2rem;
-        line-height: 1.2;
-    }
-
-    .u-txt-sm\@lg {
-        font-size: 1.28rem;
-        line-height: 1.875;
-    }
-
-    .u-txt-h1\@lg {
-        font-family: Bitter, Georgia, serif;
-        font-size: 4rem;
-        font-weight: 700;
-        line-height: 1.2;
-    }
-
-    .u-txt-h2\@lg {
-        font-family: Bitter, Georgia, serif;
-        font-size: 3.125rem;
-        font-weight: 700;
-        line-height: 1.536;
-    }
-
-    .u-txt-h3\@lg {
-        font-family: Bitter, Georgia, serif;
-        font-size: 2.5rem;
-        font-weight: 700;
-        line-height: 1.92;
-    }
-
-    .u-txt-h4\@lg {
-        font-family: Bitter, Georgia, serif;
-        font-size: 2rem;
-        font-weight: 700;
-        line-height: 1.2;
-    }
-
-    .u-txt-h5\@lg {
-        font-family: Bitter, Georgia, serif;
-        font-size: 1.6rem;
-        font-weight: 700;
-        line-height: 1.5;
-    }
-
-    .u-txt-h6\@lg {
-        font-family: Bitter, Georgia, serif;
-        font-size: 1.28rem;
-        font-weight: 700;
-        line-height: 1.875;
-    }
-
-    .u-p\@lg {
-        margin-top: 2.4rem;
-    }
-
-    .u-p\@lg:first-child {
-        margin-top: 0;
-    }
-
     .u-w25\@lg {
         width: 25%;
     }
@@ -2552,6 +2492,24 @@ th {
 
     .u-pl-xl\@lg {
         padding-left: 7.2rem;
+    }
+
+    .u-p\@lg {
+        margin-top: 2.4rem;
+    }
+
+    .u-p\@lg:first-child {
+        margin-top: 0;
+    }
+
+    .u-txt-sm\@lg {
+        font-size: 1.28rem;
+        line-height: 1.875;
+    }
+
+    .u-txt-lg\@lg {
+        font-size: 2rem;
+        line-height: 1.2;
     }
 
     .u-color-black\@lg {
@@ -2852,66 +2810,6 @@ th {
         text-transform: capitalize;
     }
 
-    .u-txt-lg\@md {
-        font-size: 2rem;
-        line-height: 1.2;
-    }
-
-    .u-txt-sm\@md {
-        font-size: 1.28rem;
-        line-height: 1.875;
-    }
-
-    .u-txt-h1\@md {
-        font-family: Bitter, Georgia, serif;
-        font-size: 4rem;
-        font-weight: 700;
-        line-height: 1.2;
-    }
-
-    .u-txt-h2\@md {
-        font-family: Bitter, Georgia, serif;
-        font-size: 3.125rem;
-        font-weight: 700;
-        line-height: 1.536;
-    }
-
-    .u-txt-h3\@md {
-        font-family: Bitter, Georgia, serif;
-        font-size: 2.5rem;
-        font-weight: 700;
-        line-height: 1.92;
-    }
-
-    .u-txt-h4\@md {
-        font-family: Bitter, Georgia, serif;
-        font-size: 2rem;
-        font-weight: 700;
-        line-height: 1.2;
-    }
-
-    .u-txt-h5\@md {
-        font-family: Bitter, Georgia, serif;
-        font-size: 1.6rem;
-        font-weight: 700;
-        line-height: 1.5;
-    }
-
-    .u-txt-h6\@md {
-        font-family: Bitter, Georgia, serif;
-        font-size: 1.28rem;
-        font-weight: 700;
-        line-height: 1.875;
-    }
-
-    .u-p\@md {
-        margin-top: 2.4rem;
-    }
-
-    .u-p\@md:first-child {
-        margin-top: 0;
-    }
-
     .u-w25\@md {
         width: 25%;
     }
@@ -3166,6 +3064,24 @@ th {
 
     .u-pl-xl\@md {
         padding-left: 7.2rem;
+    }
+
+    .u-p\@md {
+        margin-top: 2.4rem;
+    }
+
+    .u-p\@md:first-child {
+        margin-top: 0;
+    }
+
+    .u-txt-sm\@md {
+        font-size: 1.28rem;
+        line-height: 1.875;
+    }
+
+    .u-txt-lg\@md {
+        font-size: 2rem;
+        line-height: 1.2;
     }
 
     .u-color-black\@md {
@@ -3466,66 +3382,6 @@ th {
         text-transform: capitalize;
     }
 
-    .u-txt-lg\@sm {
-        font-size: 2rem;
-        line-height: 1.2;
-    }
-
-    .u-txt-sm\@sm {
-        font-size: 1.28rem;
-        line-height: 1.875;
-    }
-
-    .u-txt-h1\@sm {
-        font-family: Bitter, Georgia, serif;
-        font-size: 4rem;
-        font-weight: 700;
-        line-height: 1.2;
-    }
-
-    .u-txt-h2\@sm {
-        font-family: Bitter, Georgia, serif;
-        font-size: 3.125rem;
-        font-weight: 700;
-        line-height: 1.536;
-    }
-
-    .u-txt-h3\@sm {
-        font-family: Bitter, Georgia, serif;
-        font-size: 2.5rem;
-        font-weight: 700;
-        line-height: 1.92;
-    }
-
-    .u-txt-h4\@sm {
-        font-family: Bitter, Georgia, serif;
-        font-size: 2rem;
-        font-weight: 700;
-        line-height: 1.2;
-    }
-
-    .u-txt-h5\@sm {
-        font-family: Bitter, Georgia, serif;
-        font-size: 1.6rem;
-        font-weight: 700;
-        line-height: 1.5;
-    }
-
-    .u-txt-h6\@sm {
-        font-family: Bitter, Georgia, serif;
-        font-size: 1.28rem;
-        font-weight: 700;
-        line-height: 1.875;
-    }
-
-    .u-p\@sm {
-        margin-top: 2.4rem;
-    }
-
-    .u-p\@sm:first-child {
-        margin-top: 0;
-    }
-
     .u-w25\@sm {
         width: 25%;
     }
@@ -3780,6 +3636,24 @@ th {
 
     .u-pl-xl\@sm {
         padding-left: 7.2rem;
+    }
+
+    .u-p\@sm {
+        margin-top: 2.4rem;
+    }
+
+    .u-p\@sm:first-child {
+        margin-top: 0;
+    }
+
+    .u-txt-sm\@sm {
+        font-size: 1.28rem;
+        line-height: 1.875;
+    }
+
+    .u-txt-lg\@sm {
+        font-size: 2rem;
+        line-height: 1.2;
     }
 
     .u-color-black\@sm {
@@ -4080,66 +3954,6 @@ th {
         text-transform: capitalize;
     }
 
-    .u-txt-lg\@xs {
-        font-size: 2rem;
-        line-height: 1.2;
-    }
-
-    .u-txt-sm\@xs {
-        font-size: 1.28rem;
-        line-height: 1.875;
-    }
-
-    .u-txt-h1\@xs {
-        font-family: Bitter, Georgia, serif;
-        font-size: 4rem;
-        font-weight: 700;
-        line-height: 1.2;
-    }
-
-    .u-txt-h2\@xs {
-        font-family: Bitter, Georgia, serif;
-        font-size: 3.125rem;
-        font-weight: 700;
-        line-height: 1.536;
-    }
-
-    .u-txt-h3\@xs {
-        font-family: Bitter, Georgia, serif;
-        font-size: 2.5rem;
-        font-weight: 700;
-        line-height: 1.92;
-    }
-
-    .u-txt-h4\@xs {
-        font-family: Bitter, Georgia, serif;
-        font-size: 2rem;
-        font-weight: 700;
-        line-height: 1.2;
-    }
-
-    .u-txt-h5\@xs {
-        font-family: Bitter, Georgia, serif;
-        font-size: 1.6rem;
-        font-weight: 700;
-        line-height: 1.5;
-    }
-
-    .u-txt-h6\@xs {
-        font-family: Bitter, Georgia, serif;
-        font-size: 1.28rem;
-        font-weight: 700;
-        line-height: 1.875;
-    }
-
-    .u-p\@xs {
-        margin-top: 2.4rem;
-    }
-
-    .u-p\@xs:first-child {
-        margin-top: 0;
-    }
-
     .u-w25\@xs {
         width: 25%;
     }
@@ -4394,6 +4208,24 @@ th {
 
     .u-pl-xl\@xs {
         padding-left: 7.2rem;
+    }
+
+    .u-p\@xs {
+        margin-top: 2.4rem;
+    }
+
+    .u-p\@xs:first-child {
+        margin-top: 0;
+    }
+
+    .u-txt-sm\@xs {
+        font-size: 1.28rem;
+        line-height: 1.875;
+    }
+
+    .u-txt-lg\@xs {
+        font-size: 2rem;
+        line-height: 1.2;
     }
 
     .u-color-black\@xs {
@@ -4695,66 +4527,6 @@ th {
     text-transform: capitalize;
 }
 
-.u-txt-lg\@print {
-    font-size: 2rem;
-    line-height: 1.2;
-}
-
-.u-txt-sm\@print {
-    font-size: 1.28rem;
-    line-height: 1.875;
-}
-
-.u-txt-h1\@print {
-    font-family: Bitter, Georgia, serif;
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-.u-txt-h2\@print {
-    font-family: Bitter, Georgia, serif;
-    font-size: 3.125rem;
-    font-weight: 700;
-    line-height: 1.536;
-}
-
-.u-txt-h3\@print {
-    font-family: Bitter, Georgia, serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    line-height: 1.92;
-}
-
-.u-txt-h4\@print {
-    font-family: Bitter, Georgia, serif;
-    font-size: 2rem;
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-.u-txt-h5\@print {
-    font-family: Bitter, Georgia, serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    line-height: 1.5;
-}
-
-.u-txt-h6\@print {
-    font-family: Bitter, Georgia, serif;
-    font-size: 1.28rem;
-    font-weight: 700;
-    line-height: 1.875;
-}
-
-.u-p\@print {
-    margin-top: 2.4rem;
-}
-
-.u-p\@print:first-child {
-    margin-top: 0;
-}
-
 .u-w25\@print {
     width: 25%;
 }
@@ -5009,6 +4781,24 @@ th {
 
 .u-pl-xl\@print {
     padding-left: 7.2rem;
+}
+
+.u-p\@print {
+    margin-top: 2.4rem;
+}
+
+.u-p\@print:first-child {
+    margin-top: 0;
+}
+
+.u-txt-sm\@print {
+    font-size: 1.28rem;
+    line-height: 1.875;
+}
+
+.u-txt-lg\@print {
+    font-size: 2rem;
+    line-height: 1.2;
 }
 
 .u-color-black\@print {
