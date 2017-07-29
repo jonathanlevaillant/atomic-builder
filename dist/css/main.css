@@ -322,8 +322,8 @@ figure {
 
 h1 {
     font-family: Bitter, Georgia, serif;
-    font-size: 4rem;
-    line-height: 1.2;
+    font-size: 3.90625rem;
+    line-height: 1.2288;
     margin-top: 2.4rem;
     margin-bottom: 0;
 }
@@ -1349,9 +1349,9 @@ th {
 
 .u-txt-h1 {
     font-family: Bitter, Georgia, serif;
-    font-size: 4rem;
+    font-size: 3.90625rem;
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 1.2288;
 }
 
 .u-txt-h2 {
@@ -2026,6 +2026,11 @@ th {
     line-height: 1.875;
 }
 
+.u-txt-md {
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
 .u-txt-lg {
     font-size: 2rem;
     line-height: 1.2;
@@ -2689,6 +2694,11 @@ th {
     .u-txt-sm\@lg {
         font-size: 1.28rem;
         line-height: 1.875;
+    }
+
+    .u-txt-md\@lg {
+        font-size: 1.6rem;
+        line-height: 1.5;
     }
 
     .u-txt-lg\@lg {
@@ -3355,6 +3365,11 @@ th {
         line-height: 1.875;
     }
 
+    .u-txt-md\@md {
+        font-size: 1.6rem;
+        line-height: 1.5;
+    }
+
     .u-txt-lg\@md {
         font-size: 2rem;
         line-height: 1.2;
@@ -4017,6 +4032,11 @@ th {
     .u-txt-sm\@sm {
         font-size: 1.28rem;
         line-height: 1.875;
+    }
+
+    .u-txt-md\@sm {
+        font-size: 1.6rem;
+        line-height: 1.5;
     }
 
     .u-txt-lg\@sm {
@@ -4683,6 +4703,11 @@ th {
         line-height: 1.875;
     }
 
+    .u-txt-md\@xs {
+        font-size: 1.6rem;
+        line-height: 1.5;
+    }
+
     .u-txt-lg\@xs {
         font-size: 2rem;
         line-height: 1.2;
@@ -5346,6 +5371,11 @@ th {
 .u-txt-sm\@print {
     font-size: 1.28rem;
     line-height: 1.875;
+}
+
+.u-txt-md\@print {
+    font-size: 1.6rem;
+    line-height: 1.5;
 }
 
 .u-txt-lg\@print {
