@@ -27,8 +27,12 @@ $btn-padding-x          : rem($btn-padding-x);
 $btn-font-size          : rem($btn-font-size);
 
 // rhythm
-@mixin rhythm($font-size: $font-size-base, $rhythm: null, $minor: false) {
-    font-size: rem($font-size);
+@mixin rhythm($font-size: $font-size-base, $rhythm: null, $minor: false, $unit-to: "rem") {
+    @if $unit-to == "em" {
+        font-size: em($font-size);
+    } @else {
+        font-size: rem($font-size);
+    }
 
     @if $enable-rhythm or $rhythm {
         $custom: false;
