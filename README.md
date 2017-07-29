@@ -4,14 +4,14 @@
 
 # Atomic Builder
 
-Atomic Builder a été conçu comme point de départ d'un projet Front-End avec le juste nécessaire à la différence de la 
+Atomic Builder a été conçu comme point de départ d'un projet Front-End avec le juste nécessaire contrairement à la 
 plupart des framework CSS du marché comme [Bootstrap](http://getbootstrap.com/) ou
-[Zurb Foundation](http://foundation.zurb.com/) proposant quant à eux des composants déjà stylisés.
+[Zurb Foundation](http://foundation.zurb.com/) proposant des composants déjà stylisés.
 
 Atomic Builder est avant tout destiné aux intégrateurs web soucieux d'un code CSS de qualité et désirant débuter 
 leurs projets par de bonnes pratiques, des conventions de nommage solides et une modularité à toute épreuve.
 
-En effet, Atomic Builder se base sur l'architecture **ITCSS** d'[Harry Roberts](https://csswizardry.com/) et la 
+Atomic Builder se base sur l'architecture **ITCSS** d'[Harry Roberts](https://csswizardry.com/) et la 
 méthodologie **BEM** élaborée par [Yandex](https://en.bem.info/methodology/) qui a fait ses preuves.
  
 **BEM** + **ITCSS** = **[BEMIT](https://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/)**
@@ -20,7 +20,8 @@ méthodologie **BEM** élaborée par [Yandex](https://en.bem.info/methodology/) 
 
 - Fichier de configuration personnalisable.
 - Gestion avancée de la typographie.
-- Mise en place automatique du rythme vertical.
+- Mise en place automatique d'un rythme vertical.
+- Variables basées par défaut sur ce rythme vertical.
 - Génération de grilles flexibles et responsives.
 - Mise en place simplifiée des éléments de formulaire.
 - Accessibilité renforcée. (Unités fluides en "em", "rem" et "%".)
@@ -51,7 +52,7 @@ Trois scripts sont disponibles dans le fichier `package.json`, ils font référe
 fichier de configuration `gulpfile.js` :
 
 - Tâche **watch** (HTML, CSS et JS) : `yarn run watch`.
-- Tâche **build** (compilation Sass, génération des glyphes et des symboles SVG) : `yarn run build`.
+- Tâche **build** (compilation Sass, copie du JS, des images, des fonts et des icônes SVG) : `yarn run build`.
 - Tâche **prod** (minification et optimisation du CSS, du JS et des images) : `yarn run prod`.
 
 Il est recommandé de mettre à jour les fichiers `package.json` et `gulpfile.js` afin de rajouter/modifier des scripts 
@@ -62,8 +63,8 @@ selon les besoins du projet.
 Atomic Builder est constitué d'un dossier source `/src` et d'un dossier destination `/dist`.
 
 Le dossier `/dist` est généré à chaque build, il ne faut donc pas éditer les fichiers de ce dossier.  
-Le dossier `/src` contient les assets du projet, à savoir les fonts, les images, le JS et le CSS qui va nous intéresser 
-plus particulièrement.
+Le dossier `/src` contient les assets du projet, à savoir les fonts, les images, les icônes SVG, le JS et le CSS 
+qui va nous intéresser plus particulièrement.
 
 L'architecture ITCSS se compose de sept sections bien distinctes :
 
@@ -92,7 +93,7 @@ de comprendre rapidement le rôle d'un composant.
 
 ### Suffixes (si nécessaire)
 
-La classe sera effective en fonction du média ciblé par ce suffixe `class@media` :
+La classe sera effective en fonction du média ciblé par celui-ci `class@media` :
 
 - `u-hidden@print` : Classe utilitaire permettant de cacher un élément lors de l'impression.
 - `u-txt-center@sm` : Classe utilitaire permettant de centrer un élément textuel pour les résolutions d'écran inférieures
@@ -144,11 +145,12 @@ Ces variables définissent la taille de la police de base ainsi l'interligne rel
 ---
 
 ```
-$font-size-lg           : 2rem !default;
-$font-size-sm           : 1.28rem !default;
+$font-weight-normal     : 400 !default;
+$font-weight-bold       : 700 !default;
 ```
 
-Ces variables définissent les tailles de polices "large" et "small" par rapport à la taille de la police de base.
+Ces variables définissent les différentes graisses utilisées pour le texte.   
+Il est possible d'en rajouter ou d'en supprimer selon les besoins du projet.
 
 ---
 
@@ -170,12 +172,14 @@ Dans ce cas, l'interligne relative servira de référence et la "baseline" ne se
 ---
 
 ```
-$font-size-h1           : 4rem !default;
-$font-size-h2           : 3.125rem !default;
-$font-size-h3           : 2.5rem !default;
-$font-size-h4           : 2rem !default;
-$font-size-h5           : 1.6rem !default;
-$font-size-h6           : 1.28rem !default;
+$ratio                  : 1.25 !default;
+
+$font-size-h6           : $font-size-base / $ratio !default;
+$font-size-h5           : $font-size-base !default;
+$font-size-h4           : $font-size-base * $ratio !default;
+$font-size-h3           : $font-size-h4 * $ratio !default;
+$font-size-h2           : $font-size-h3 * $ratio !default;
+$font-size-h1           : $font-size-h2 * $ratio !default;
 ```
 
 Ces variables permettent de configurer les différentes tailles de police de titres, (six niveaux de titres).
@@ -183,10 +187,45 @@ Ces variables permettent de configurer les différentes tailles de police de tit
 *Astuce : Il est conseillé d'utiliser un **[ratio normalisé](http://www.modularscale.com/)** comme 1.25, 1.33, 1.5 
 ou 1.6125 (golden ratio).*
 
+---
+
+```
+$font-sizes: (
+    sm                  : $font-size-h6,
+    md                  : $font-size-h5,
+    lg                  : $font-size-h4,
+) !default;
+```
+
+Ces variables définissent les différentes tailles de polices utilisées dans le projet.   
+Par défaut, trois valeurs sont renseignées, de la plus petite `sm` à la plus grande `lg`.   
+Il est possible d'en rajouter ou d'en supprimer selon les besoins du projet.
+
+Ces variables sont de types "maps", pour pouvoir y accéder, une fonction `font-size(key)` est disponible.
+
+Par exemple :
+
+```
+small {
+    font-size: font-size(sm);
+}
+```
+
+sera compilé en :
+
+```
+small {
+    font-size: 1.28rem;
+}
+```
+
+*Astuce : Les classes utilitaires de tailles de polices sont générées automatiquement en fonction des clées et des valeurs de la 
+"map".*
+
 #### Grilles
 
 ```
-$container-width        : 96rem !default;
+$container-width        : $baseline * 40 !default;
 $grid-columns           : 12 !default;
 $grid-gutter-width      : $baseline !default;
 $grid-offset-width      : $baseline !default;
@@ -204,17 +243,17 @@ Un exemple d'une grille sans gouttière se trouve dans le dossier `/src/scss/obj
 ```
 $field-height           : $baseline * 2 !default;
 $field-padding-x        : $baseline / 2 !default;
-$field-font-size        : 1.6rem !default;
-$label-font-size        : 1.6rem !default;
+$field-font-size        : $font-size-base !default;
+$label-font-size        : $font-size-base !default;
 ```
 
 Ces variables contrôlent les dimensions et les tailles de police des champs de formulaire, boutons radios, 
-cases à cocher, labels, etc.
+cases à cocher et labels.
 
 ```
 $btn-height             : $baseline * 2 !default;
 $btn-padding-x          : $baseline !default;
-$btn-font-size          : 1.6rem !default;
+$btn-font-size          : $font-size-base !default;
 ```
 
 Ces variables contrôlent les dimensions et les tailles de police des champs de validation de formulaire et des boutons.
@@ -304,8 +343,6 @@ sera compilé en :
 ```
 $enable-rhythm          : true !default;
 $enable-utilities       : true !default;
-$enable-icon-fonts      : true !default;
-$enable-symbols         : true !default;
 $enable-hyphens         : true !default;
 $enable-print-styles    : true !default;
 ```
@@ -314,8 +351,6 @@ Ces variables permettent d'activer ou de désactiver certaines options :
 
 - `$enable-rhythm` : Active la gestion du rythme vertical basé sur la variable `$baseline`.
 - `$enable-utilities` : Active la génération des classes utilitaires responsives.
-- `$enable-icon-fonts` : Active la gestion des polices d'icônes.
-- `$enable-symbols` : Active la gestion des sprites SVG.
 - `$enable-hyphens` : Active la gestion des césures sur mobiles.
 - `$enable-print-styles` : Active la génération d'une feuille de style CSS destinée à l'impression.
 
@@ -350,15 +385,15 @@ a {
 Ce fichier permet de définir les différentes polices de caractères utilisée dans le projet.
 Il est conseillé de ne pas utiliser plus de deux polices de caractères différentes pour des raisons de performance.
 
-*Astuce : Les formats des polices de caractères recommandés pour le web sont le "woff" et "woff2"*
+*Astuce : Les formats des polices de caractères `recommandés pour le web sont le "woff" et "woff2"*
 
 ## Et maintenant ?
 
 Il est vivement recommandé de parcourir les différentes fonctions et mixins disponibles dans le dossier `/src/scss/tools`, 
-notamment les mixins destinés au calcul du rythme vertical, à la génération des grilles et les fonctions de conversions 
+notamment les mixins destinés au calcul du rythme vertical `@include rhythm()`, à la génération des grilles et les fonctions de conversions 
 d'unités.
 
-Vous trouverez également un guide de style à la racine du dossier `/src` regroupant tous les composants d'Atomic Builder.
+Vous trouverez également un guide de style à la racine du dossier `/src` regroupant tous les composants par défaut d'Atomic Builder.
 
 Maintenant que le projet est correctement configuré, il est temps de créer vos nouveaux composants, à vous de jouer ! 
 
@@ -366,3 +401,4 @@ Maintenant que le projet est correctement configuré, il est temps de créer vos
 
 - [Vinci Autoroutes](https://www.vinci-autoroutes.com/fr)
 - [Happyview](https://www.happyview.fr/)
+- [Afflelou](https://www.afflelou.com/)
