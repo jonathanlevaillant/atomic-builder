@@ -10,11 +10,6 @@ $font-family-monospace  : "Courier New", Courier, monospace !default;
 $font-size-base         : 1.6rem !default;
 $line-height-base       : 1.5 !default; // auto => 1.2
 
-$font-sizes: (
-    sm                  : 1.28rem,
-    lg                  : 2rem,
-) !default;
-
 $font-weight-normal     : 400 !default;
 $font-weight-bold       : 700 !default;
 
@@ -31,6 +26,13 @@ $font-size-h3           : $font-size-h4 * $ratio !default;
 $font-size-h2           : $font-size-h3 * $ratio !default;
 $font-size-h1           : $font-size-h2 * $ratio !default;
 
+// font sizes
+$font-sizes: (
+    sm                  : $font-size-h6,
+    md                  : $font-size-h5,
+    lg                  : $font-size-h4,
+) !default;
+
 // grid containers
 $container-width        : $baseline * 40 !default;
 $grid-columns           : 12 !default;
@@ -40,13 +42,13 @@ $grid-offset-width      : $baseline !default;
 // form fields
 $field-height           : $baseline * 2 !default;
 $field-padding-x        : $baseline / 2 !default;
-$field-font-size        : 1.6rem !default;
-$label-font-size        : 1.6rem !default;
+$field-font-size        : $font-size-base !default;
+$label-font-size        : $font-size-base !default;
 
 // form buttons
 $btn-height             : $baseline * 2 !default;
 $btn-padding-x          : $baseline !default;
-$btn-font-size          : 1.6rem !default;
+$btn-font-size          : $font-size-base !default;
 
 // spacers => scale baseline
 $spacers: (
