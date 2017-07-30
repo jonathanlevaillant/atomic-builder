@@ -93,9 +93,8 @@
             @if not $line-height {
                 @return $map-custom-font-size;
             }
-            @if $line-height {
-                @return $map-custom-font-size * $map-custom-line-height;
-            }
+            @return $map-custom-font-size * $map-custom-line-height;
+
         }
         @if $line-height {
             @return null;
