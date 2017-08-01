@@ -26,7 +26,9 @@ $btn-height             : rem($btn-height);
 $btn-padding-x          : rem($btn-padding-x);
 $btn-font-size          : rem($btn-font-size);
 
-// rhythm
+/* vertical rhythm
+   ========================================================================== */
+
 @mixin rhythm($font-size: $font-size-base, $rhythm: null, $minor: false, $unit-to: "rem") {
     @if $unit-to == "em" {
         font-size: em($font-size);
@@ -42,7 +44,7 @@ $btn-font-size          : rem($btn-font-size);
         } @else {
             $custom: true;
         }
-        line-height: line-height($font-size, $rhythm, $minor, $custom);
+        line-height: _line-height($font-size, $rhythm, $minor, $custom);
     }
 }
 
@@ -50,7 +52,7 @@ $btn-font-size          : rem($btn-font-size);
 @mixin rhythm-form($font-size, $height, $padding-x, $field-fixed) {
     $font-size: rem($font-size);
     $height: rem($height);
-    $line-height: line-height($font-size);
+    $line-height: _line-height($font-size);
     $padding-x: em($padding-x, $font-size);
     $padding-y: em(($height - $font-size * $line-height) / 2, $font-size);
 
@@ -72,7 +74,7 @@ $btn-font-size          : rem($btn-font-size);
 
 // rhythm check
 @mixin rhythm-check($font-size: $label-font-size) {
-    height: $font-size * line-height($font-size);
+    height: $font-size * _line-height($font-size);
 }
 
 // rhythm label
@@ -85,20 +87,49 @@ $btn-font-size          : rem($btn-font-size);
     @include rhythm-form($font-size, $height, $padding-x, false);
 }
 
-// container
-@mixin container() {
-    .o-container {
-        max-width: $container-width + $grid-offset-width * 2;
-        margin-right: auto;
-        margin-left: auto;
+// rhythm helper
+@mixin rhythm-helper($key, $unit-to: "rem") {
+    @include rhythm(font-size($key), font-size($key, 2), $unit-to: $unit-to);
+}
 
-        @if $grid-offset-width != 0 {
-            padding-right: $grid-offset-width;
-            padding-left: $grid-offset-width;
+// rhythm rwd
+@mixin _font-size-rwd($font-size, $unit-to) {
+    @if type-of($font-size) == "list" {
+        @include rhythm(nth($font-size, 1), nth($font-size, 2), $unit-to: $unit-to);
+    } @else {
+        @include rhythm($font-size, $unit-to: $unit-to);
+    }
+}
+@mixin rhythm-rwd($key: "default", $unit-to: "rem") {
+    @if map-has-key($font-sizes-rwd, $key) {
+        $font-size: map-get($font-sizes-rwd, $key);
+
+        @if type-of($font-size) == "map" {
+            @each $font-size-name, $font-size-value in $font-size {
+                @if $font-size-name == "default" {
+                    @include _font-size-rwd($font-size-value, $unit-to);
+                } @else {
+                    @media (max-width: bp($font-size-name)) {
+                        @include _font-size-rwd($font-size-value, $unit-to);
+                    }
+                }
+            }
+        } @else {
+            @include _font-size-rwd($font-size, $unit-to);
         }
     }
-    .o-container--auto {
-        max-width: none;
+}
+
+/* layouts
+   ========================================================================== */
+
+// container
+@mixin container() {
+    max-width: $container-width + $grid-offset-width * 2;
+
+    @if $grid-offset-width != 0 {
+        padding-right: $grid-offset-width;
+        padding-left: $grid-offset-width;
     }
 }
 
@@ -117,8 +148,11 @@ $btn-font-size          : rem($btn-font-size);
     }
 }
 
+/* utilities generator
+   ========================================================================== */
+
 // sizes
-@mixin sizes($start: 1, $end: 100, $step: 25, $modifier: null) {
+@mixin _sizes($start: 1, $end: 100, $step: 25, $modifier: null) {
     @for $i from $start through $end {
         @if $i % $step == 0 {
             .u-w#{$i}#{$modifier} {
@@ -128,8 +162,8 @@ $btn-font-size          : rem($btn-font-size);
     }
 }
 
-// spacers utilities
-@mixin spacers($modifier: null) {
+// spacers
+@mixin _spacers($modifier: null) {
     @each $spacer-name, $spacer-value in $spacers {
         $spacer-value: rem($spacer-value);
 
@@ -172,17 +206,17 @@ $btn-font-size          : rem($btn-font-size);
     }
 }
 
-// font sizes utilities
-@mixin font-sizes($modifier: null) {
+// font sizes
+@mixin _font-sizes($modifier: null) {
     @each $font-size-name, $font-size-value in $font-sizes {
         .u-txt-#{$font-size-name}#{$modifier} {
-            @include rhythm(font-size($font-size-name), font-size($font-size-name, true));
+            @include rhythm(font-size($font-size-name), font-size($font-size-name, 2));
         }
     }
 }
 
-// colors utilities
-@mixin colors($modifier: null) {
+// colors
+@mixin _colors($modifier: null) {
     @each $color-name, $color-code in $colors {
         .u-color-#{$color-name}#{$modifier} {
             color: $color-code;
@@ -190,7 +224,7 @@ $btn-font-size          : rem($btn-font-size);
     }
 }
 
-// global utilities
+// utilities => global + import sizes, spacers, font sizes & colors mixins
 @mixin utilities($modifier: null) {
     @if $modifier {
         $modifier: "\\@" + $modifier;
@@ -396,14 +430,14 @@ $btn-font-size          : rem($btn-font-size);
     }
 
     // sizes
-    @include sizes($modifier: $modifier);
+    @include _sizes($modifier: $modifier);
 
     // spacers
-    @include spacers($modifier);
+    @include _spacers($modifier);
 
     // font sizes
-    @include font-sizes($modifier);
+    @include _font-sizes($modifier);
 
     // colors
-    @include colors($modifier);
+    @include _colors($modifier);
 }

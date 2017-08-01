@@ -69,7 +69,7 @@ dfn {
     font-style: italic;
 }
 small {
-    font-size: font-size(sm);
+    @include rhythm-helper(sm);
 }
 sub,
 sup {

@@ -17,14 +17,47 @@ $font-weight-bold       : 700 !default;
 $baseline               : $font-size-base * $line-height-base !default;
 
 // headings => default ratio 1.25 (major third)
-$ratio                  : 1.25 !default;
+$ratio-major-third      : 1.25 !default;
+$ratio-major-second     : 1.125 !default;
 
-$font-size-h6           : $font-size-base / $ratio !default;
+$font-size-h6           : $font-size-base / $ratio-major-third !default;
 $font-size-h5           : $font-size-base !default;
-$font-size-h4           : $font-size-base * $ratio !default;
-$font-size-h3           : $font-size-h4 * $ratio !default;
-$font-size-h2           : $font-size-h3 * $ratio !default;
-$font-size-h1           : $font-size-h2 * $ratio !default;
+$font-size-h4           : $font-size-base * $ratio-major-third !default;
+$font-size-h3           : $font-size-h4 * $ratio-major-third !default;
+$font-size-h2           : $font-size-h3 * $ratio-major-third !default;
+$font-size-h1           : $font-size-h2 * $ratio-major-third !default;
+
+// responsive font sizes
+$font-sizes-rwd: (
+    h1: (
+        default         : $font-size-h1,
+        sm              : $font-size-h1 / $ratio-major-second
+    ),
+    h2: (
+        default         : $font-size-h2,
+        sm              : $font-size-h2 / $ratio-major-second
+    ),
+    h3: (
+        default         : $font-size-h3,
+        sm              : $font-size-h3 / $ratio-major-second
+    ),
+    h4: (
+        default         : $font-size-h4,
+        sm              : $font-size-h4 / $ratio-major-second
+    ),
+    h5: (
+        default         : $font-size-h5,
+        sm              : $font-size-h5 / $ratio-major-second
+    ),
+    h6: (
+        default         : $font-size-h6,
+        sm              : $font-size-h6 / $ratio-major-second
+    ),
+    default: (
+        default         : $font-size-base,
+        sm              : $font-size-base / $ratio-major-second
+    )
+) !default;
 
 // font sizes
 $font-sizes: (

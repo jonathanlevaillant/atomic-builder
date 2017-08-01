@@ -24,7 +24,15 @@
 
 /* functions
    ========================================================================== */
+/* maps
+   ========================================================================== */
 /* mixins
+   ========================================================================== */
+/* vertical rhythm
+   ========================================================================== */
+/* layouts
+   ========================================================================== */
+/* utilities generator
    ========================================================================== */
 /* normalize
    ========================================================================== */
@@ -108,6 +116,7 @@ dfn {
 
 small {
     font-size: 1.28rem;
+    line-height: 1.875;
 }
 
 sub,
@@ -292,6 +301,13 @@ body {
     background-color: #fff;
 }
 
+@media (max-width: 40em) {
+    body {
+        font-size: 1.42222rem;
+        line-height: 1.6875;
+    }
+}
+
 a {
     color: #4876c3;
 }
@@ -321,8 +337,6 @@ blockquote,
 pre,
 details,
 figure {
-    font-size: 1.6rem;
-    line-height: 1.5;
     margin-top: 2.4rem;
     margin-bottom: 0;
 }
@@ -335,12 +349,26 @@ h1 {
     margin-bottom: 0;
 }
 
+@media (max-width: 40em) {
+    h1 {
+        font-size: 3.47222rem;
+        line-height: 1.3824;
+    }
+}
+
 h2 {
     font-family: Bitter, Georgia, serif;
     font-size: 3.125rem;
     line-height: 1.536;
     margin-top: 2.4rem;
     margin-bottom: 0;
+}
+
+@media (max-width: 40em) {
+    h2 {
+        font-size: 2.77778rem;
+        line-height: 1.728;
+    }
 }
 
 h3 {
@@ -351,12 +379,26 @@ h3 {
     margin-bottom: 0;
 }
 
+@media (max-width: 40em) {
+    h3 {
+        font-size: 2.22222rem;
+        line-height: 1.08;
+    }
+}
+
 h4 {
     font-family: Bitter, Georgia, serif;
     font-size: 2rem;
     line-height: 1.2;
     margin-top: 2.4rem;
     margin-bottom: 0;
+}
+
+@media (max-width: 40em) {
+    h4 {
+        font-size: 1.77778rem;
+        line-height: 1.35;
+    }
 }
 
 h5 {
@@ -367,12 +409,26 @@ h5 {
     margin-bottom: 0;
 }
 
+@media (max-width: 40em) {
+    h5 {
+        font-size: 1.42222rem;
+        line-height: 1.6875;
+    }
+}
+
 h6 {
     font-family: Bitter, Georgia, serif;
     font-size: 1.28rem;
     line-height: 1.875;
     margin-top: 2.4rem;
     margin-bottom: 0;
+}
+
+@media (max-width: 40em) {
+    h6 {
+        font-size: 1.13778rem;
+        line-height: 2.10938;
+    }
 }
 
 code,
@@ -1136,6 +1192,8 @@ th {
 /* icons
    ========================================================================== */
 .c-icon {
+    font-size: 1.6rem;
+    line-height: 1.5;
     position: relative;
     top: -.1em;
     display: inline-block;
@@ -1326,11 +1384,25 @@ th {
     line-height: 1.2288;
 }
 
+@media (max-width: 40em) {
+    .u-txt-h1 {
+        font-size: 3.47222rem;
+        line-height: 1.3824;
+    }
+}
+
 .u-txt-h2 {
     font-family: Bitter, Georgia, serif;
     font-size: 3.125rem;
     font-weight: 700;
     line-height: 1.536;
+}
+
+@media (max-width: 40em) {
+    .u-txt-h2 {
+        font-size: 2.77778rem;
+        line-height: 1.728;
+    }
 }
 
 .u-txt-h3 {
@@ -1340,11 +1412,25 @@ th {
     line-height: 1.92;
 }
 
+@media (max-width: 40em) {
+    .u-txt-h3 {
+        font-size: 2.22222rem;
+        line-height: 1.08;
+    }
+}
+
 .u-txt-h4 {
     font-family: Bitter, Georgia, serif;
     font-size: 2rem;
     font-weight: 700;
     line-height: 1.2;
+}
+
+@media (max-width: 40em) {
+    .u-txt-h4 {
+        font-size: 1.77778rem;
+        line-height: 1.35;
+    }
 }
 
 .u-txt-h5 {
@@ -1354,11 +1440,25 @@ th {
     line-height: 1.5;
 }
 
+@media (max-width: 40em) {
+    .u-txt-h5 {
+        font-size: 1.42222rem;
+        line-height: 1.6875;
+    }
+}
+
 .u-txt-h6 {
     font-family: Bitter, Georgia, serif;
     font-size: 1.28rem;
     font-weight: 700;
     line-height: 1.875;
+}
+
+@media (max-width: 40em) {
+    .u-txt-h6 {
+        font-size: 1.13778rem;
+        line-height: 2.10938;
+    }
 }
 
 .u-visible {

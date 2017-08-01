@@ -6,6 +6,7 @@
     top: -.1em;
     display: inline-block;
     vertical-align: middle;
+    @include rhythm($font-size-base);
 }
 .c-icon__svg {
     display: inline-block;
