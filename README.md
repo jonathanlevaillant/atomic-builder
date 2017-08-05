@@ -34,10 +34,10 @@ méthodologie **BEM** élaborée par [Yandex](https://en.bem.info/methodology/) 
 Plusieurs options s'offrent à vous :
 
 - [Télécharger la dernière version](https://github.com/jonathanlevaillant/atomic-builder/archive/master.zip).
-- Cloner le dépôt : `https://github.com/jonathanlevaillant/atomic-builder.git`.
-- Installation avec [NPM](https://www.npmjs.com/) : `npm install atomic-builder`.
-- Installation avec [Yarn](https://yarnpkg.com/lang/en/) : `yarn add atomic-builder`.
-- Installation avec [Bower](https://bower.io/) : `bower install atomic-builder`.
+- Cloner le dépôt : `https://github.com/jonathanlevaillant/atomic-builder.git`
+- Installation avec [NPM](https://www.npmjs.com/) : `npm install atomic-builder`
+- Installation avec [Yarn](https://yarnpkg.com/lang/en/) : `yarn add atomic-builder`
+- Installation avec [Bower](https://bower.io/) : `bower install atomic-builder`
 
 ## Compatibilité
 
