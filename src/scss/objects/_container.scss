@@ -1,5 +1,11 @@
 /* container
    ========================================================================== */
 
-// main container generator
-@include container();
+.o-container {
+    @include container();
+    margin-right: auto;
+    margin-left: auto;
+}
+.o-container--auto {
+    max-width: none;
+}
