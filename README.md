@@ -1,10 +1,7 @@
 <p align="center">
     <img src="http://jonathanlevaillant.fr/img/atomic-builder-logo.svg" width=72 height=72 alt="Atomic Builder" />
 </p>
-
 <h3 align="center">Atomic Builder</h3>
-
----
 
 Atomic Builder a été conçu comme point de départ d'un projet Front-End avec le juste nécessaire contrairement à la 
 plupart des framework CSS du marché comme [Bootstrap](http://getbootstrap.com/) ou
@@ -174,20 +171,86 @@ Dans ce cas, l'interligne relative servira de référence et la "baseline" ne se
 ---
 
 ```
-$ratio                  : 1.25 !default;
+$ratio-major-third      : 1.25 !default;
+$ratio-major-second     : 1.125 !default;
 
-$font-size-h6           : $font-size-base / $ratio !default;
+$font-size-h6           : $font-size-base / $ratio-major-third !default;
 $font-size-h5           : $font-size-base !default;
-$font-size-h4           : $font-size-base * $ratio !default;
-$font-size-h3           : $font-size-h4 * $ratio !default;
-$font-size-h2           : $font-size-h3 * $ratio !default;
-$font-size-h1           : $font-size-h2 * $ratio !default;
+$font-size-h4           : $font-size-base * $ratio-major-third !default;
+$font-size-h3           : $font-size-h4 * $ratio-major-third !default;
+$font-size-h2           : $font-size-h3 * $ratio-major-third !default;
+$font-size-h1           : $font-size-h2 * $ratio-major-third !default;
 ```
 
 Ces variables permettent de configurer les différentes tailles de police de titres, (six niveaux de titres).
 
-*Astuce : Il est conseillé d'utiliser un **[ratio normalisé](http://www.modularscale.com/)** comme 1.25, 1.33, 1.5 
+*Astuce : Il est conseillé d'utiliser un **[ratio normalisé](http://www.modularscale.com/)** comme 1.125, 1.25, 1.33, 1.5 
 ou 1.6125 (golden ratio).*
+
+---
+
+```
+$font-sizes-rwd: (
+    h1: (
+        default         : $font-size-h1,
+        sm              : $font-size-h1 / $ratio-major-second
+    ),
+    h2: (
+        default         : $font-size-h2,
+        sm              : $font-size-h2 / $ratio-major-second
+    ),
+    h3: (
+        default         : $font-size-h3,
+        sm              : $font-size-h3 / $ratio-major-second
+    ),
+    h4: (
+        default         : $font-size-h4,
+        sm              : $font-size-h4 / $ratio-major-second
+    ),
+    h5: (
+        default         : $font-size-h5,
+        sm              : $font-size-h5 / $ratio-major-second
+    ),
+    h6: (
+        default         : $font-size-h6,
+        sm              : $font-size-h6 / $ratio-major-second
+    ),
+    default: (
+        default         : $font-size-base,
+        sm              : $font-size-base / $ratio-major-second
+    )
+) !default;
+```
+
+Ces variables permettent de configurer les différentes tailles de police responsive. 
+La clée `default` correspond à la taille de la police de base définie précedemment.
+Les clées de second niveau correspondent aux points de rupture définies plus loin dans ce même fichier de configuration.
+
+Il est également possible de rajouter un second paramètres correspondant à la hauteur de ligne de chaque taille de police, 
+par exemple :
+
+```
+$font-sizes-rwd: (
+    h1: (
+        default         : ($font-size-h1, 1.5),
+        sm              : ($font-size-h1 / $ratio-major-second, 1.4)
+    )
+) !default;
+```
+
+Si une taille de police n'est pas responsive, vous pouvez simplement l'écrire de cette façon :
+
+```
+$font-sizes-rwd: (
+    h1: ($font-size-h1, 1.5)
+) !default;
+```
+
+Ces variables sont de types "maps", pour pouvoir y accéder un mixin `@include rhythm-rwd(key)` est disponible.
+Ce mixin génèrera la taille de police, la hauteur de ligne et les points de rupture liés à celle-ci.
+
+*Astuce : Cette map comprend généralement la taille de police des titres utilisés dans le projet. En effet, ces titres
+ont souvent des tailles différentes sur les écrans larges, les tablettes et les mobiles.*
 
 ---
 
@@ -199,7 +262,7 @@ $font-sizes: (
 ) !default;
 ```
 
-Ces variables définissent les différentes tailles de polices utilisées dans le projet.   
+Ces variables définissent les différentes tailles de polices utilitaires utilisées dans le projet.   
 Par défaut, trois valeurs sont renseignées, de la plus petite `sm` à la plus grande `lg`.   
 Il est possible d'en rajouter ou d'en supprimer selon les besoins du projet.
 
@@ -220,6 +283,16 @@ small {
     font-size: 1.28rem;
 }
 ```
+
+Il est également possible de rajouter un second paramètre, la hauteur de ligne :
+
+```
+$font-sizes: (
+    sm                  : ($font-size-h6, 1.5)
+) !default;
+```
+
+Le mixin `@include rhythm-helper(key)` permettra de générer la taille de police et sa hauteur de ligne.
 
 *Astuce : Les classes utilitaires de tailles de polices sont générées automatiquement en fonction des clées et des valeurs de la 
 "map".*
