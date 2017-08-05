@@ -88,34 +88,34 @@ $btn-font-size          : rem($btn-font-size);
 }
 
 // rhythm helper
-@mixin rhythm-helper($key, $unit-to: "rem") {
-    @include rhythm(font-size($key), font-size($key, 2), $unit-to: $unit-to);
+@mixin rhythm-helper($key, $minor: false, $unit-to: "rem") {
+    @include rhythm(font-size($key), font-size($key, 2), $minor, $unit-to);
 }
 
 // rhythm rwd
-@mixin _font-size-rwd($font-size, $unit-to) {
+@mixin _font-size-rwd($font-size, $minor, $unit-to) {
     @if type-of($font-size) == "list" {
-        @include rhythm(nth($font-size, 1), nth($font-size, 2), $unit-to: $unit-to);
+        @include rhythm(nth($font-size, 1), nth($font-size, 2), $minor: $minor, $unit-to: $unit-to);
     } @else {
-        @include rhythm($font-size, $unit-to: $unit-to);
+        @include rhythm($font-size, $minor: $minor, $unit-to: $unit-to);
     }
 }
-@mixin rhythm-rwd($key: "default", $unit-to: "rem") {
+@mixin rhythm-rwd($key: "default", $minor: false, $unit-to: "rem") {
     @if map-has-key($font-sizes-rwd, $key) {
         $font-size: map-get($font-sizes-rwd, $key);
 
         @if type-of($font-size) == "map" {
             @each $font-size-name, $font-size-value in $font-size {
                 @if $font-size-name == "default" {
-                    @include _font-size-rwd($font-size-value, $unit-to);
+                    @include _font-size-rwd($font-size-value, $minor, $unit-to);
                 } @else {
                     @media (max-width: bp($font-size-name)) {
-                        @include _font-size-rwd($font-size-value, $unit-to);
+                        @include _font-size-rwd($font-size-value, $minor, $unit-to);
                     }
                 }
             }
         } @else {
-            @include _font-size-rwd($font-size, $unit-to);
+            @include _font-size-rwd($font-size, $minor, $unit-to);
         }
     }
 }
