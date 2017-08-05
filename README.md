@@ -1,8 +1,10 @@
-<p>
+<p align="center">
     <img src="http://jonathanlevaillant.fr/img/atomic-builder-logo.svg" width=72 height=72 alt="Atomic Builder" />
 </p>
 
-# Atomic Builder
+<h3 align="center">Atomic Builder</h3>
+
+---
 
 Atomic Builder a été conçu comme point de départ d'un projet Front-End avec le juste nécessaire contrairement à la 
 plupart des framework CSS du marché comme [Bootstrap](http://getbootstrap.com/) ou
