@@ -1,0 +1,23 @@
+{
+    "extends": "airbnb-base",
+    "globals": {
+        "document": true,
+        "MutationObserver": true
+    },
+    "env": {
+        "es6": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true,
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "rules": {
+        "indent": [2, 4],
+        "func-names": [0],
+        "no-shadow": [1]
+    }
+}

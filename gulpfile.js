@@ -4,6 +4,10 @@ var gulp = require('gulp');
 // include plugins
 var plugins = require('gulp-load-plugins')();
 var run = require('run-sequence');
+var browserify = require('browserify');
+var babelify = require('babelify');
+var stream = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
 
 // paths root
 var source = './src/';
@@ -13,12 +17,13 @@ var destination = './dist/';
 var html = '**/*.html';
 var scss = 'scss/**/*.+(scss|sass|css)';
 var js = 'js/**/*.js';
+var entry = 'js/main.js';
 var images = 'img/**/*.+(png|jpg|jpeg|gif|svg)';
 var fonts = 'fonts/**/*';
 var cssmin = 'css/main.min.css';
-var jsmin = 'js/global.min.js';
+var jsmin = 'js/main.min.js';
 
-/* task "build" = ["html" + "css" + "js" + "img" + "fonts"]
+/* task "build" = ["html" + "css" + "eslint" + "js" + "img" + "fonts"]
    ========================================================================== */
 
 // task "html" = (source -> destination)
@@ -44,10 +49,29 @@ gulp.task('css', function() {
         .pipe(gulp.dest(destination + 'css/'))
 });
 
-// task "js" = changed (source -> destination)
-gulp.task('js', function() {
+// task "eslint" = eslint (source -> console)
+gulp.task('eslint', function() {
     return gulp.src(source + js)
-        .pipe(plugins.changed(destination + 'js/'))
+        .pipe(plugins.eslint({
+            configFile: '.eslintrc'
+        }))
+        .pipe(plugins.eslint.format())
+});
+
+// task "js" = babel transpiler es6 to es5 (source -> destination)
+gulp.task('js', function() {
+    var bundler = browserify({
+        entries: source + entry,
+        debug: true,
+        transform: [babelify.configure({
+            presets: ['es2015'],
+            plugins: ['transform-object-rest-spread']
+        })]
+    });
+    bundler.bundle()
+        .on('error', function (err) {})
+        .pipe(stream('main.js'))
+        .pipe(buffer())
         .pipe(gulp.dest(destination + 'js/'))
 });
 
@@ -65,7 +89,7 @@ gulp.task('fonts', function() {
 
 // task "build"
 gulp.task('build', function(callback) {
-    run(['html', 'css', 'js', 'img', 'fonts'], callback)
+    run(['html', 'css', 'eslint', 'js', 'img', 'fonts'], callback)
 });
 
 /* task "prod" = "url" + ["cssmin" + "jsmin" + "imgmin"]
@@ -88,9 +112,7 @@ gulp.task('cssmin', function() {
 // task "jsmin" = uglify (destination -> destination)
 gulp.task('jsmin', function() {
     return gulp.src(destination + jsmin)
-        .pipe(plugins.uglify({
-            output: {max_line_len: 1000000}
-        }))
+        .pipe(plugins.uglify())
         .pipe(gulp.dest(destination + 'js/'))
 });
 
@@ -122,7 +144,7 @@ gulp.task('prod', function(callback) {
 gulp.task('watch', function() {
     gulp.watch(source + html, ['html']);
     gulp.watch(source + scss, ['css']);
-    gulp.watch(source + js, ['js']);
+    gulp.watch(source + js, ['eslint', 'js']);
 });
 
 /* task "default" = "build"
