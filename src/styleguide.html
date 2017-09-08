@@ -2,15 +2,25 @@
 <html class="no-js" lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Style Guide</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Atomic Builder Style Guide</title>
         <!-- build:css css/main.min.css -->
         <link rel="stylesheet" href="css/main.css" media="all">
         <!-- endbuild -->
     </head>
-    <body class="c-demo">
+    <body class="c-page">
         <article class="o-container">
-            <h1 class="u-txt-center u-txt-uppercase">Style Guide</h1>
+            <div class="o-grid u-flex-main-center u-flex-cross-center">
+                <div class="o-grid__col">
+                    <img src="img/logo.svg" width="96" height="96" alt="Atomic Builder">
+                </div>
+                <div class="o-grid__col">
+                    <h1>
+                        <span class="u-color-deeppink">Atomic Builder</span>
+                        <br />Style Guide
+                    </h1>
+                </div>
+            </div>
             <section class="u-mt-lg">
                 <h2 class="u-color-deeppink">Headings</h2>
                 <h1>Heading Level 1</h1>
@@ -184,6 +194,7 @@
                 <h2 class="u-color-deeppink">Buttons</h2>
                 <p><button type="button" class="c-btn">Button</button></p>
                 <p><a href="#" class="c-btn">Button link</a></p>
+                <p><button type="button" class="c-btn" aria-pressed="true">Pressed button</button></p>
                 <p><button type="button" class="c-btn" disabled>Disabled button</button></p>
             </section>
             <hr class="c-separator" />
@@ -394,67 +405,6 @@
                     </div>
                 </div>
             </section>
-            <hr class="c-separator" />
-            <section class="u-p">
-                <h2 class="u-color-deeppink">JS state classes</h2>
-                <div class="o-grid o-grid--3 u-p">
-                    <div class="o-grid__col u-flex u-flex-column">
-                        <button
-                            type="button"
-                            aria-pressed="false"
-                            class="c-btn u-w100 u-flex-item-fluid js-btn-a"
-                            data-component="state"
-                            data-behaviour="toggle, toggle"
-                            data-target="js-state-box-a, js-btn-a"
-                            data-state="is-active, is-pressed">
-                            Toggle class : Box A
-                        </button>
-                    </div>
-                    <div class="o-grid__col u-flex u-flex-column">
-                        <button
-                            type="button"
-                            aria-pressed="false"
-                            class="c-btn u-w100 u-flex-item-fluid js-btn-b"
-                            data-component="state"
-                            data-behaviour="add, add, remove, add, remove"
-                            data-target="js-state-box-b, js-state-box-c, js-state-box-a, js-btn-b, js-btn-a"
-                            data-state="is-active, is-active, is-active, is-pressed, is-pressed">
-                            Add class : Box B and C<br />Remove class : Box A
-                        </button>
-                    </div>
-                    <div class="o-grid__col u-flex u-flex-column">
-                        <button
-                            type="button"
-                            class="c-btn u-w100 u-flex-item-fluid js-btn-c"
-                            data-component="state"
-                            data-behaviour="remove, remove, remove, remove, remove"
-                            data-target="js-state-box-a, js-state-box-b, js-state-box-c, js-btn-a, js-btn-b"
-                            data-state="is-active, is-active, is-active, is-pressed, is-pressed">
-                            Remove class : All boxes
-                        </button>
-                    </div>
-                </div>
-                <div class="o-grid o-grid--3 u-p">
-                    <div class="o-grid__col">
-                        <div class="c-box js-state-box-a">
-                            <p>Box A</p>
-                        </div>
-                    </div>
-                    <div class="o-grid__col">
-                        <div class="c-box js-state-box-b">
-                            <p>Box B</p>
-                        </div>
-                    </div>
-                    <div class="o-grid__col">
-                        <div class="c-box js-state-box-c">
-                            <p>Box C</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </article>
-        <!-- build:js js/main.min.js -->
-        <script src="js/main.js"></script>
-        <!-- endbuild -->
     </body>
 </html>

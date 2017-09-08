@@ -1,18 +1,24 @@
 /* buttons
    ========================================================================== */
 
+$btn-shadow-depth: em(4px, $btn-font-size);
+
 .c-btn {
     position: relative;
     z-index: 0;
     display: inline-block;
-    vertical-align: top;
+    transform: translate3d(0, -$btn-shadow-depth, 0);
     @include rhythm-btn();
     border: 0;
     border-radius: em(spacer(xs) / 2, $btn-font-size);
-    background-color: color(deeppink);
+    background-color: color(whitesmoke);
+    vertical-align: top;
     text-decoration: none;
-    color: color(white);
+    font-weight: $font-weight-bold;
+    color: color(deeppink);
     cursor: pointer;
+    transition: .2s;
+    &::before,
     &::after {
         content: "";
         position: absolute;
@@ -22,20 +28,32 @@
         bottom: 0;
         left: 0;
         border-radius: inherit;
-        box-shadow: inset 0 0 spacer(sm) rgba(color(black), .15);
-        background-color: darken(color(deeppink), 5%);
+        box-shadow: 0 $btn-shadow-depth 0 0 color(silver);
+        transition: .2s;
+    }
+    &::after {
+        box-shadow: 0 $btn-shadow-depth 0 0 darken(color(deeppink), 15%);
+        background-color: color(deeppink);
         visibility: hidden;
         opacity: 0;
-        transition: .2s;
     }
     &:focus,
     &:hover,
     &:active,
-    &.is-pressed {
+    &[aria-pressed="true"] {
         color: color(white);
         &::after {
             visibility: visible;
             opacity: 1;
         }
+    }
+}
+.c-btn[aria-pressed="true"] {
+    transform: translate3d(0, 0, 0);
+    &::before {
+        transform: translate3d(0, -$btn-shadow-depth, 0);
+    }
+    &::after {
+        box-shadow: none;
     }
 }

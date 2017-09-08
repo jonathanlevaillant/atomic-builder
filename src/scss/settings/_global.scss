@@ -2,7 +2,7 @@
    ========================================================================== */
 
 // fonts
-$font-family-base       : Verdana, Arial, sans-serif !default;
+$font-family-base       : Verdana, Geneva, sans-serif !default;
 $font-family-headings   : Bitter, Georgia, serif !default;
 $font-family-monospace  : "Courier New", Courier, monospace !default;
 
@@ -67,7 +67,7 @@ $font-sizes: (
 ) !default;
 
 // grid containers
-$container-width        : $baseline * 48 !default;
+$container-width        : $baseline * 42 !default;
 $grid-columns           : 12 !default;
 $grid-gutter-width      : $baseline !default;
 $grid-offset-width      : $baseline !default;
