@@ -1,22 +1,60 @@
 /* buttons
    ========================================================================== */
 
+$btn-shadow-depth: em(4px, $btn-font-size);
+
 .c-btn {
+    position: relative;
+    z-index: 0;
     display: inline-block;
-    vertical-align: top;
+    transform: translate3d(0, -$btn-shadow-depth, 0);
     @include rhythm-btn();
     border: 0;
-    background-color: color(steel-blue);
-    border-radius: em(2px, $btn-font-size);
-    box-shadow: em(1px, $btn-font-size) em(1px, $btn-font-size) em(1px, $btn-font-size) rgba(color(black), .25);
+    border-radius: em(spacer(xs) / 2, $btn-font-size);
+    background-color: color(whitesmoke);
+    vertical-align: top;
     text-decoration: none;
     font-weight: $font-weight-bold;
-    color: color(white);
+    color: color(deeppink);
     cursor: pointer;
+    transition: .2s;
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: inherit;
+        box-shadow: 0 $btn-shadow-depth 0 0 color(silver);
+        transition: .2s;
+    }
+    &::after {
+        box-shadow: 0 $btn-shadow-depth 0 0 darken(color(deeppink), 15%);
+        background-color: color(deeppink);
+        visibility: hidden;
+        opacity: 0;
+    }
     &:focus,
     &:hover,
-    &:active {
-        opacity: .9;
+    &:active,
+    &[aria-pressed="true"] {
         color: color(white);
+        &::after {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+    &:active,
+    &[aria-pressed="true"] {
+        transform: translate3d(0, 0, 0);
+        &::before {
+            transform: translate3d(0, -$btn-shadow-depth, 0);
+        }
+        &::after {
+            box-shadow: none;
+        }
     }
 }

@@ -1,15 +1,18 @@
 /* separators
    ========================================================================== */
 
+$separator-height: .4rem;
+
 .c-separator {
     display: block;
     clear: both;
-    height: 2px;
+    height: $separator-height;
     margin-right: 0;
-    margin-bottom: -2px;
+    margin-bottom: -$separator-height;
     margin-left: 0;
     padding: 0;
     border: 0;
+    border-radius: $separator-height / 2;
     background-color: color(silver);
     color: color(silver);
 }

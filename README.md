@@ -125,7 +125,7 @@ les options à activer pour le projet.
 ##### Polices de caractères
 
 ```
-$font-family-base       : "Trebuchet MS", Helvetica, sans-serif !default;
+$font-family-base       : Verdana, Geneva, sans-serif !default;
 $font-family-headings   : Bitter, Georgia, serif !default;
 $font-family-monospace  : "Courier New", Courier, monospace !default;
 ```
@@ -331,7 +331,7 @@ du rythme vertical ou de sa valeur personnalisée renseignée).
 #### Grilles
 
 ```
-$container-width        : $baseline * 40 !default;
+$container-width        : $baseline * 42 !default;
 $grid-columns           : 12 !default;
 $grid-gutter-width      : $baseline !default;
 $grid-offset-width      : $baseline !default;
@@ -481,10 +481,11 @@ Ces variables permettent d'activer ou de désactiver certaines options :
 ```
 $colors: (
     black               : #000,
-    grey                : #333,
+    dimgrey             : #333,
     silver              : #ccc,
+    whitesmoke          : #f0f0f0,
     white               : #fff,
-    steel-blue          : #4876C3
+    deeppink            : #fe4365
 ) !default;
 ```
 
@@ -498,7 +499,7 @@ Ces variables étant de types "maps", vous pourrez y accéder via une fonction `
 
 ```
 a {
-    color: color(steel-blue);
+    color: color(deeppink);
 }
 ```
 
@@ -506,12 +507,12 @@ a {
 
 ```
 a {
-    color: #4876C3;
+    color: #fe4365;
 }
 ```
 
 *Astuce : Ces classes utilitaires sont générées automatiquement en CSS, leurs noms correspondront aux clés de la "map"
-, `.u-color-steel-blue`, `.u-color-silver`, etc.*
+, `.u-color-deeppink`, `.u-color-silver`, etc.*
 
 ### 3) `_fonts.scss`
 
@@ -554,3 +555,4 @@ Maintenant que le projet est correctement configuré, il est temps de créer vos
 - [Vinci Autoroutes](https://www.vinci-autoroutes.com/fr)
 - [Happyview](https://www.happyview.fr/)
 - [Afflelou](https://www.afflelou.com/)
+- [Ouibus](https://fr.ouibus.com/)
