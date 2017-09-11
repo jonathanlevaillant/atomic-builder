@@ -47,13 +47,14 @@ $btn-shadow-depth: em(4px, $btn-font-size);
             opacity: 1;
         }
     }
-}
-.c-btn[aria-pressed="true"] {
-    transform: translate3d(0, 0, 0);
-    &::before {
-        transform: translate3d(0, -$btn-shadow-depth, 0);
-    }
-    &::after {
-        box-shadow: none;
+    &:active,
+    &[aria-pressed="true"] {
+        transform: translate3d(0, 0, 0);
+        &::before {
+            transform: translate3d(0, -$btn-shadow-depth, 0);
+        }
+        &::after {
+            box-shadow: none;
+        }
     }
 }
