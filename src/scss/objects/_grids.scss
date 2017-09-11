@@ -36,21 +36,16 @@
    ========================================================================== */
 
 // desktops
-@media (min-width: bp(lg-plus)) {
+@media (min-width: bp(md-plus)) {
     @include grid-columns("lg");
 }
 
 // tablets
-@media (min-width: bp(md-plus)) and (max-width: bp(lg)) {
+@media (min-width: bp(sm-plus)) and (max-width: bp(md)) {
     @include grid-columns("md");
 }
 
-// landscape phones
-@media (min-width: bp(sm-plus)) and (max-width: bp(md)) {
-    @include grid-columns("sm");
-}
-
-// portrait phones
+// phones
 @media (max-width: bp(sm)) {
-    @include grid-columns("xs");
+    @include grid-columns("sm");
 }

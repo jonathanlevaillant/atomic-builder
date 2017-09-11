@@ -63,7 +63,7 @@ $font-sizes-rwd: (
 $font-sizes: (
     sm                  : $font-size-h6,
     md                  : $font-size-h5,
-    lg                  : $font-size-h4,
+    lg                  : $font-size-h4
 ) !default;
 
 // grid containers
@@ -95,9 +95,8 @@ $spacers: (
 
 // breakpoints
 $breakpoints: (
-    sm                  : 40em, // 640px => phones
-    md                  : 48em, // 768px => tablets
-    lg                  : 64em  // 1024px => desktops
+    sm                  : 47.9375em, // 767px => phones
+    md                  : 64em // 1024px => tablets
 ) !default;
 
 // options
