@@ -405,6 +405,64 @@
                     </div>
                 </div>
             </section>
+            <hr class="c-separator" />
+            <section class="u-p">
+                <h2 class="u-color-deeppink">JS state classes</h2>
+                <div class="o-grid o-grid--3 o-grid--1@xs u-p">
+                    <div class="o-grid__col u-flex u-flex-column">
+                        <button
+                            type="button"
+                            aria-pressed="false"
+                            aria-controls="box-a"
+                            class="c-btn u-w100 u-flex-item-fluid js-btn-a"
+                            data-component="state"
+                            data-behaviour="toggle, toggle"
+                            data-target="js-state-box-a, js-btn-a"
+                            data-state="is-highlighted, false">
+                            Toggle class : Box A
+                        </button>
+                    </div>
+                    <div class="o-grid__col u-flex u-flex-column">
+                        <button
+                            type="button"
+                            class="c-btn u-w100 u-flex-item-fluid js-btn-b"
+                            data-component="state"
+                            data-behaviour="add, add, remove, remove, add"
+                            data-target="js-state-box-b, js-state-box-c, js-state-box-a, js-btn-a, js-btn-b"
+                            data-state="is-highlighted, is-highlighted, is-highlighted, false, is-pressed">
+                            Add class : Box B and C<br />Remove class : Box A
+                        </button>
+                    </div>
+                    <div class="o-grid__col u-flex u-flex-column">
+                        <button
+                            type="button"
+                            class="c-btn u-w100 u-flex-item-fluid js-btn-c"
+                            data-component="state"
+                            data-behaviour="remove, remove, remove, remove, remove"
+                            data-target="js-state-box-a, js-state-box-b, js-state-box-c, js-btn-a, js-btn-b"
+                            data-state="is-highlighted, is-highlighted, is-highlighted, false, is-pressed">
+                            Remove class : All boxes
+                        </button>
+                    </div>
+                </div>
+                <div class="o-grid o-grid--3 o-grid--1@xs u-p">
+                    <div class="o-grid__col">
+                        <div id="box-a" class="c-box js-state-box-a">
+                            <p>Box A</p>
+                        </div>
+                    </div>
+                    <div class="o-grid__col">
+                        <div id="box-b" class="c-box js-state-box-b">
+                            <p>Box B</p>
+                        </div>
+                    </div>
+                    <div class="o-grid__col">
+                        <div id="box-c" class="c-box js-state-box-c">
+                            <p>Box C</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </article>
         <!-- build:js js/main.min.js -->
         <script src="js/main.js"></script>
