@@ -96,8 +96,8 @@ de comprendre facilement le rôle de tel ou tel composant grâce à un système 
 La classe sera effective pour le média ciblé `class@media` :
 
 - `u-hidden@print` : Classe utilitaire permettant de cacher un élément lors de l'impression.
-- `u-txt-center@sm` : Classe utilitaire permettant de centrer un élément textuel pour les résolutions d'écran inférieures
-ou égales à 768px et supérieures à 640px. (Configuration par défaut.)
+- `u-txt-center@sm` : Classe utilitaire permettant de centrer un élément textuel pour les résolutions d'écran inférieures 
+à 768px. (Configuration par défaut.)
 
 ### Méthodologie BEM
 
@@ -418,15 +418,14 @@ Ces variables étant de types "maps", vous pourrez y accéder via une fonction `
 
 ```
 $breakpoints: (
-    sm                  : 40em, // 640px => phones
-    md                  : 48em, // 768px => tablets
-    lg                  : 64em  // 1024px => desktops
+    sm                  : 47.9375em, // 767px => phones
+    md                  : 64em // 1024px => tablets
 ) !default;
 ```
 
 Ces variables définissent les points de rupture utilisés dans le projet.  
    
-Par défaut, trois valeurs sont renseignées, elles correspondent aux résolutions pour mobiles, tablettes et écrans larges.  
+Par défaut, deux valeurs sont renseignées, elles correspondent aux résolutions pour mobiles et tablettes.  
 
 Il est possible d'en rajouter ou d'en supprimer selon les besoins du projet.
 
@@ -441,7 +440,7 @@ pour accéder à ces nouvelles clés, la syntaxe est la suivante : `<key-plus>`.
 **Par exemple :**
 
 ```
-@media (min-width: bp(md-plus)) and (max-width: bp(lg)) {
+@media (min-width: bp(sm-plus)) and (max-width: bp(md)) {
     .u-txt-center\@md {
         text-align: center;
     }
@@ -451,7 +450,7 @@ pour accéder à ces nouvelles clés, la syntaxe est la suivante : `<key-plus>`.
 **sera compilé en :**
 
 ```
-@media (min-width: 48.0625em) and (max-width: 64em) {
+@media (min-width: 48em) and (max-width: 64em) {
     .u-txt-center\@md {
         text-align: center;
     }
