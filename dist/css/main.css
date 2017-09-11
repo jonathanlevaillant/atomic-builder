@@ -1242,32 +1242,37 @@ th {
 .c-btn:focus,
 .c-btn:hover,
 .c-btn:active,
-.c-btn[aria-pressed='true'] {
+.c-btn[aria-pressed='true'],
+.c-btn.is-pressed {
     color: #fff;
 }
 
 .c-btn:focus::after,
 .c-btn:hover::after,
 .c-btn:active::after,
-.c-btn[aria-pressed='true']::after {
+.c-btn[aria-pressed='true']::after,
+.c-btn.is-pressed::after {
     visibility: visible;
     opacity: 1;
 }
 
 .c-btn:active,
-.c-btn[aria-pressed='true'] {
+.c-btn[aria-pressed='true'],
+.c-btn.is-pressed {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
 
 .c-btn:active::before,
-.c-btn[aria-pressed='true']::before {
+.c-btn[aria-pressed='true']::before,
+.c-btn.is-pressed::before {
     -webkit-transform: translate3d(0, -.25em, 0);
     transform: translate3d(0, -.25em, 0);
 }
 
 .c-btn:active::after,
-.c-btn[aria-pressed='true']::after {
+.c-btn[aria-pressed='true']::after,
+.c-btn.is-pressed::after {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
