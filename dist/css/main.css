@@ -1352,16 +1352,19 @@ th {
     opacity: 1;
 }
 
+.c-btn:active,
 .c-btn[aria-pressed='true'] {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
 
+.c-btn:active::before,
 .c-btn[aria-pressed='true']::before {
     -webkit-transform: translate3d(0, -.25em, 0);
     transform: translate3d(0, -.25em, 0);
 }
 
+.c-btn:active::after,
 .c-btn[aria-pressed='true']::after {
     -webkit-box-shadow: none;
     box-shadow: none;
