@@ -2,19 +2,19 @@
    ========================================================================== */
 
 @if $enable-hyphens {
-    @media (max-width: bp(sm)) {
+  @media (max-width: bp(sm)) {
 
-        // hyphens
-        div,
-        textarea,
-        table,
-        td,
-        th,
-        code,
-        pre,
-        samp {
-            hyphens: auto;
-            word-wrap: break-word;
-        }
+    // hyphens
+    div,
+    textarea,
+    table,
+    td,
+    th,
+    code,
+    pre,
+    samp {
+      hyphens: auto;
+      word-wrap: break-word;
     }
+  }
 }

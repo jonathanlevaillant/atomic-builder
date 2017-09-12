@@ -2,21 +2,24 @@
    ========================================================================== */
 
 .o-media {
-    display: flex;
-    align-items: flex-start;
+  display: flex;
+  align-items: flex-start;
 }
+
 .o-media__body {
-    flex: 1;
+  flex: 1;
 }
+
 .o-media__img {
-    margin-right: spacer(md);
+  margin-right: spacer(md);
 }
 
 // reverse
 .o-media--reverse {
-    flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
+
 .o-media--reverse > .o-media__img {
-    margin-right: 0;
-    margin-left: spacer(md);
+  margin-right: 0;
+  margin-left: spacer(md);
 }

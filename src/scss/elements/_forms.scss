@@ -7,32 +7,37 @@ input,
 optgroup,
 select,
 textarea {
-    color: color(dimgrey);
+  color: color(dimgrey);
 }
+
 label {
-    vertical-align: middle;
-    cursor: pointer;
+  vertical-align: middle;
+  cursor: pointer;
 }
+
 textarea {
-    min-height: 3 * em($field-height, $field-font-size);
-    vertical-align: top;
-    resize: vertical;
+  min-height: 3 * em($field-height, $field-font-size);
+  vertical-align: top;
+  resize: vertical;
 }
+
 select {
-    -webkit-appearance: menulist-button;
+  -webkit-appearance: menulist-button;
 }
+
 [type="search"] {
-    &::-webkit-search-decoration,
-    &::-webkit-search-cancel-button,
-    &::-webkit-search-results-button,
-    &::-webkit-search-results-decoration {
-        display: none;
-    }
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    display: none;
+  }
 }
+
 [type="button"],
 button {
-    &:focus {
-        -webkit-tap-highlight-color: transparent;
-        user-select: none;
-    }
+  &:focus {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
 }

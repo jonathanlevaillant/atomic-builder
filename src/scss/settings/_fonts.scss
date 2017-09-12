@@ -3,18 +3,20 @@
 
 // bitter 400
 @font-face {
-    font-family: Bitter;
-    src: url("../fonts/bitter/bitter-400.woff2") format("woff2"),
-         url("../fonts/bitter/bitter-400.woff") format("woff");
-    font-weight: $font-weight-normal;
-    font-style: normal;
+  font-family: Bitter;
+  src:
+    url("../fonts/bitter/bitter-400.woff2") format("woff2"),
+    url("../fonts/bitter/bitter-400.woff") format("woff");
+  font-weight: $font-weight-normal;
+  font-style: normal;
 }
 
 // bitter 700
 @font-face {
-    font-family: Bitter;
-    src: url("../fonts/bitter/bitter-700.woff2") format("woff2"),
-         url("../fonts/bitter/bitter-700.woff") format("woff");
-    font-weight: $font-weight-bold;
-    font-style: normal;
+  font-family: Bitter;
+  src:
+    url("../fonts/bitter/bitter-700.woff2") format("woff2"),
+    url("../fonts/bitter/bitter-700.woff") format("woff");
+  font-weight: $font-weight-bold;
+  font-style: normal;
 }
