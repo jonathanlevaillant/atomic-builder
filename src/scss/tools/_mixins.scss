@@ -126,7 +126,9 @@ $btn-font-size          : rem($btn-font-size);
    ========================================================================== */
 
 // container
-@mixin container() {
+@mixin container($container-width: $container-width) {
+  $container-width: rem($container-width);
+
   max-width: $container-width + $grid-offset-width * 2;
 
   @if $grid-offset-width != 0 {
@@ -408,6 +410,7 @@ $btn-font-size          : rem($btn-font-size);
 
   .u-flex-item-fluid#{$modifier} {
     flex: 1;
+    min-width: 0;
   }
 
   .u-flex-item-auto#{$modifier} {
