@@ -1044,6 +1044,7 @@ th {
   max-width: 105.6rem;
   padding-right: 2.4rem;
   padding-left: 2.4rem;
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
 }
@@ -1628,6 +1629,7 @@ th {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  min-width: 0;
 }
 
 .u-flex-item-auto {
@@ -2286,6 +2288,7 @@ th {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
+    min-width: 0;
   }
 
   .u-flex-item-auto\@lg {
@@ -2943,6 +2946,7 @@ th {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
+    min-width: 0;
   }
 
   .u-flex-item-auto\@md {
@@ -3600,6 +3604,7 @@ th {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
+    min-width: 0;
   }
 
   .u-flex-item-auto\@sm {
@@ -4258,6 +4263,7 @@ th {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  min-width: 0;
 }
 
 .u-flex-item-auto\@print {
