@@ -3,14 +3,15 @@
 
 // table layout
 table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-    vertical-align: top;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  vertical-align: top;
 }
+
 td,
 th {
-    padding: 0;
-    vertical-align: top;
-    cursor: default;
+  padding: 0;
+  vertical-align: top;
+  cursor: default;
 }

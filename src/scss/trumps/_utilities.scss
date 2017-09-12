@@ -3,86 +3,92 @@
 
 @if $enable-utilities {
 
-    // invisible content
-    .is-disabled,
-    [disabled] {
-        opacity: .5;
-        pointer-events: none;
-        cursor: not-allowed;
-    }
-    .u-visually-hidden {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        border: 0;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-    }
+  // invisible content
+  .is-disabled,
+  [disabled] {
+    opacity: .5;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
 
-    // unstyled list
-    .u-list-unstyled {
-        padding-left: 0;
-        list-style: none;
-    }
+  .u-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
 
-    // headings
-    .u-txt-h1 {
-        font-family: $font-family-headings;
-        font-weight: $font-weight-bold;
-        @include rhythm-rwd(h1);
-    }
-    .u-txt-h2 {
-        font-family: $font-family-headings;
-        font-weight: $font-weight-bold;
-        @include rhythm-rwd(h2);
-    }
-    .u-txt-h3 {
-        font-family: $font-family-headings;
-        font-weight: $font-weight-bold;
-        @include rhythm-rwd(h3);
-    }
-    .u-txt-h4 {
-        font-family: $font-family-headings;
-        font-weight: $font-weight-bold;
-        @include rhythm-rwd(h4);
-    }
-    .u-txt-h5 {
-        font-family: $font-family-headings;
-        font-weight: $font-weight-bold;
-        @include rhythm-rwd(h5);
-    }
-    .u-txt-h6 {
-        font-family: $font-family-headings;
-        font-weight: $font-weight-bold;
-        @include rhythm-rwd(h6);
-    }
+  // unstyled list
+  .u-list-unstyled {
+    padding-left: 0;
+    list-style: none;
+  }
 
-    // utilities generator
-    @include utilities();
+  // headings
+  .u-txt-h1 {
+    font-family: $font-family-headings;
+    font-weight: $font-weight-bold;
+    @include rhythm-rwd(h1);
+  }
 
-    /* responsive
-       ========================================================================== */
+  .u-txt-h2 {
+    font-family: $font-family-headings;
+    font-weight: $font-weight-bold;
+    @include rhythm-rwd(h2);
+  }
 
-    // desktops
-    @media (min-width: bp(md-plus)) {
-        @include utilities("lg");
-    }
+  .u-txt-h3 {
+    font-family: $font-family-headings;
+    font-weight: $font-weight-bold;
+    @include rhythm-rwd(h3);
+  }
 
-    // tablets
-    @media (min-width: bp(sm-plus)) and (max-width: bp(md)) {
-        @include utilities("md");
-    }
+  .u-txt-h4 {
+    font-family: $font-family-headings;
+    font-weight: $font-weight-bold;
+    @include rhythm-rwd(h4);
+  }
 
-    // phones
-    @media (max-width: bp(sm)) {
-        @include utilities("sm");
-    }
+  .u-txt-h5 {
+    font-family: $font-family-headings;
+    font-weight: $font-weight-bold;
+    @include rhythm-rwd(h5);
+  }
 
-    /* print
-       ========================================================================== */
+  .u-txt-h6 {
+    font-family: $font-family-headings;
+    font-weight: $font-weight-bold;
+    @include rhythm-rwd(h6);
+  }
 
-    @if $enable-print-styles {
-        @include utilities("print");
-    }
+  // utilities generator
+  @include utilities();
+
+  /* responsive
+     ========================================================================== */
+
+  // desktops
+  @media (min-width: bp(md-plus)) {
+    @include utilities("lg");
+  }
+
+  // tablets
+  @media (min-width: bp(sm-plus)) and (max-width: bp(md)) {
+    @include utilities("md");
+  }
+
+  // phones
+  @media (max-width: bp(sm)) {
+    @include utilities("sm");
+  }
+
+  /* print
+     ========================================================================== */
+
+  @if $enable-print-styles {
+    @include utilities("print");
+  }
 }

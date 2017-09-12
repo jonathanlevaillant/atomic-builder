@@ -2,16 +2,16 @@
    ========================================================================== */
 
 .c-label {
-    display: inline-block;
-    margin-right: spacer(sm);
-    @include rhythm-label();
-    vertical-align: top;
+  display: inline-block;
+  margin-right: spacer(sm);
+  @include rhythm-label();
+  vertical-align: top;
 }
 
 // label for checkboxes and radio buttons
 .c-label--check {
-    margin-right: 0;
-    margin-left: spacer(xs);
-    padding-top: 0;
-    padding-bottom: 0;
+  margin-right: 0;
+  margin-left: spacer(xs);
+  padding-top: 0;
+  padding-bottom: 0;
 }

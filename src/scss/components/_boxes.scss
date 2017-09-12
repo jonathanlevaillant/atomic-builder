@@ -2,35 +2,38 @@
    ========================================================================== */
 
 .c-box {
-    position: relative;
-    z-index: 0;
-    padding: spacer(md);
-    background-color: color(whitesmoke);
-    color: color(dimgrey);
+  position: relative;
+  z-index: 0;
+  padding: spacer(md);
+  background-color: color(whitesmoke);
+  color: color(dimgrey);
+  transition: .2s;
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    background-color: color(deeppink);
     transition: .2s;
-    &::after {
-        content: "";
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        visibility: hidden;
-        opacity: 0;
-        background-color: color(deeppink);
-        transition: .2s;
-    }
+  }
 }
+
 .c-box--secondary {
-    box-shadow: inset 0 0 0 1px color(silver);
+  box-shadow: inset 0 0 0 1px color(silver);
 }
 
 // highlighted
 .c-box.is-highlighted {
-    color: color(white);
-    &::after {
-        visibility: visible;
-        opacity: 1;
-    }
+  color: color(white);
+
+  &::after {
+    visibility: visible;
+    opacity: 1;
+  }
 }

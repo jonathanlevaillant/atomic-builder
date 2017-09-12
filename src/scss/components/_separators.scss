@@ -4,15 +4,15 @@
 $separator-height: .4rem;
 
 .c-separator {
-    display: block;
-    clear: both;
-    height: $separator-height;
-    margin-right: 0;
-    margin-bottom: -$separator-height;
-    margin-left: 0;
-    padding: 0;
-    border: 0;
-    border-radius: $separator-height / 2;
-    background-color: color(silver);
-    color: color(silver);
+  display: block;
+  clear: both;
+  height: $separator-height;
+  margin-right: 0;
+  margin-bottom: -$separator-height;
+  margin-left: 0;
+  padding: 0;
+  border: 0;
+  border-radius: $separator-height / 2;
+  background-color: color(silver);
+  color: color(silver);
 }

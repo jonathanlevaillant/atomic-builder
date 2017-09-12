@@ -30,94 +30,96 @@ $btn-font-size          : rem($btn-font-size);
    ========================================================================== */
 
 @mixin rhythm($font-size: $font-size-base, $rhythm: null, $minor: false, $unit-to: "rem") {
-    @if $unit-to == "em" {
-        font-size: em($font-size);
+  @if $unit-to == "em" {
+    font-size: em($font-size);
+  } @else {
+    font-size: rem($font-size);
+  }
+
+  @if $enable-rhythm or $rhythm {
+    $custom: false;
+
+    @if not $rhythm {
+      $rhythm: $baseline;
     } @else {
-        font-size: rem($font-size);
+      $custom: true;
     }
-
-    @if $enable-rhythm or $rhythm {
-        $custom: false;
-
-        @if not $rhythm {
-            $rhythm: $baseline;
-        } @else {
-            $custom: true;
-        }
-        line-height: _line-height($font-size, $rhythm, $minor, $custom);
-    }
+    line-height: _line-height($font-size, $rhythm, $minor, $custom);
+  }
 }
 
 // rhythm form
 @mixin rhythm-form($font-size, $height, $padding-x, $field-fixed) {
-    $font-size: rem($font-size);
-    $height: rem($height);
-    $line-height: _line-height($font-size);
-    $padding-x: em($padding-x, $font-size);
-    $padding-y: em(($height - $font-size * $line-height) / 2, $font-size);
+  $font-size: rem($font-size);
+  $height: rem($height);
+  $line-height: _line-height($font-size);
+  $padding-x: em($padding-x, $font-size);
+  $padding-y: em(($height - $font-size * $line-height) / 2, $font-size);
 
-    @if $padding-y < 0 {
-        $padding-y: 0;
-    }
-    @if $field-fixed {
-        height: em($height, $font-size);
-    }
-    padding: $padding-y $padding-x;
-    font-size: $font-size;
-    line-height: $line-height;
+  @if $padding-y < 0 {
+    $padding-y: 0;
+  }
+
+  @if $field-fixed {
+    height: em($height, $font-size);
+  }
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  line-height: $line-height;
 }
 
 // rhythm field
 @mixin rhythm-field($font-size: $field-font-size, $height: $field-height, $padding-x: $field-padding-x) {
-    @include rhythm-form($font-size, $height, $padding-x, true);
+  @include rhythm-form($font-size, $height, $padding-x, true);
 }
 
 // rhythm check
 @mixin rhythm-check($font-size: $label-font-size) {
-    height: $font-size * _line-height($font-size);
+  height: $font-size * _line-height($font-size);
 }
 
 // rhythm label
 @mixin rhythm-label($font-size: $label-font-size, $height: $field-height, $padding-x: 0) {
-    @include rhythm-form($font-size, $height, $padding-x, false);
+  @include rhythm-form($font-size, $height, $padding-x, false);
 }
 
 // rhythm btn
 @mixin rhythm-btn($font-size: $btn-font-size, $height: $btn-height, $padding-x: $btn-padding-x) {
-    @include rhythm-form($font-size, $height, $padding-x, false);
+  @include rhythm-form($font-size, $height, $padding-x, false);
 }
 
 // rhythm helper
 @mixin rhythm-helper($key, $minor: false, $unit-to: "rem") {
-    @include rhythm(font-size($key), font-size($key, 2), $minor, $unit-to);
+  @include rhythm(font-size($key), font-size($key, 2), $minor, $unit-to);
 }
 
 // rhythm rwd
 @mixin _font-size-rwd($font-size, $minor, $unit-to) {
-    @if type-of($font-size) == "list" {
-        @include rhythm(nth($font-size, 1), nth($font-size, 2), $minor: $minor, $unit-to: $unit-to);
-    } @else {
-        @include rhythm($font-size, $minor: $minor, $unit-to: $unit-to);
-    }
+  @if type-of($font-size) == "list" {
+    @include rhythm(nth($font-size, 1), nth($font-size, 2), $minor: $minor, $unit-to: $unit-to);
+  } @else {
+    @include rhythm($font-size, $minor: $minor, $unit-to: $unit-to);
+  }
 }
-@mixin rhythm-rwd($key: "default", $minor: false, $unit-to: "rem") {
-    @if map-has-key($font-sizes-rwd, $key) {
-        $font-size: map-get($font-sizes-rwd, $key);
 
-        @if type-of($font-size) == "map" {
-            @each $font-size-name, $font-size-value in $font-size {
-                @if $font-size-name == "default" {
-                    @include _font-size-rwd($font-size-value, $minor, $unit-to);
-                } @else {
-                    @media (max-width: bp($font-size-name)) {
-                        @include _font-size-rwd($font-size-value, $minor, $unit-to);
-                    }
-                }
-            }
+@mixin rhythm-rwd($key: "default", $minor: false, $unit-to: "rem") {
+  @if map-has-key($font-sizes-rwd, $key) {
+    $font-size: map-get($font-sizes-rwd, $key);
+
+    @if type-of($font-size) == "map" {
+      @each $font-size-name, $font-size-value in $font-size {
+        @if $font-size-name == "default" {
+          @include _font-size-rwd($font-size-value, $minor, $unit-to);
         } @else {
-            @include _font-size-rwd($font-size, $minor, $unit-to);
+          @media (max-width: bp($font-size-name)) {
+            @include _font-size-rwd($font-size-value, $minor, $unit-to);
+          }
         }
+      }
+    } @else {
+      @include _font-size-rwd($font-size, $minor, $unit-to);
     }
+  }
 }
 
 /* layouts
@@ -125,27 +127,29 @@ $btn-font-size          : rem($btn-font-size);
 
 // container
 @mixin container() {
-    max-width: $container-width + $grid-offset-width * 2;
+  max-width: $container-width + $grid-offset-width * 2;
 
-    @if $grid-offset-width != 0 {
-        padding-right: $grid-offset-width;
-        padding-left: $grid-offset-width;
-    }
+  @if $grid-offset-width != 0 {
+    padding-right: $grid-offset-width;
+    padding-left: $grid-offset-width;
+  }
 }
 
 // grid columns
 @mixin grid-columns($modifier: null) {
-    @if $modifier {
-        $modifier: "\\@" + $modifier;
+  @if $modifier {
+    $modifier: "\\@" + $modifier;
+  }
+
+  @for $i from 1 through $grid-columns {
+    .o-grid--#{$i}#{$modifier} > .o-grid__col {
+      width: calc(100% / #{$i});
     }
-    @for $i from 1 through $grid-columns {
-        .o-grid--#{$i}#{$modifier} > .o-grid__col {
-            width: calc(100% / #{$i});
-        }
-        .o-grid__col--#{$i}#{$modifier} {
-            width: calc(#{$i} * 100% / #{$grid-columns});
-        }
+
+    .o-grid__col--#{$i}#{$modifier} {
+      width: calc(#{$i} * 100% / #{$grid-columns});
     }
+  }
 }
 
 /* utilities generator
@@ -153,291 +157,352 @@ $btn-font-size          : rem($btn-font-size);
 
 // sizes
 @mixin _sizes($start: 1, $end: 100, $step: 25, $modifier: null) {
-    @for $i from $start through $end {
-        @if $i % $step == 0 {
-            .u-w#{$i}#{$modifier} {
-                width: $i * 1%;
-            }
-        }
+  @for $i from $start through $end {
+    @if $i % $step == 0 {
+      .u-w#{$i}#{$modifier} {
+        width: $i * 1%;
+      }
     }
+  }
 }
 
 // spacers
 @mixin _spacers($modifier: null) {
-    @each $spacer-name, $spacer-value in $spacers {
-        $spacer-value: rem($spacer-value);
+  @each $spacer-name, $spacer-value in $spacers {
+    $spacer-value: rem($spacer-value);
 
-        .u-m-#{$spacer-name}#{$modifier}{
-            margin: $spacer-value;
-        }
-        .u-mt-#{$spacer-name}#{$modifier} {
-            margin-top: $spacer-value;
-        }
-        .u-mr-#{$spacer-name}#{$modifier} {
-            margin-right: $spacer-value;
-        }
-        .u-mb-#{$spacer-name}#{$modifier} {
-            margin-bottom: $spacer-value;
-        }
-        .u-ml-#{$spacer-name}#{$modifier} {
-            margin-left: $spacer-value;
-        }
-        .u-p-#{$spacer-name}#{$modifier}{
-            padding: $spacer-value;
-        }
-        .u-pt-#{$spacer-name}#{$modifier} {
-            padding-top: $spacer-value;
-        }
-        .u-pr-#{$spacer-name}#{$modifier} {
-            padding-right: $spacer-value;
-        }
-        .u-pb-#{$spacer-name}#{$modifier} {
-            padding-bottom: $spacer-value;
-        }
-        .u-pl-#{$spacer-name}#{$modifier} {
-            padding-left: $spacer-value;
-        }
+    .u-m-#{$spacer-name}#{$modifier} {
+      margin: $spacer-value;
     }
-    .u-p#{$modifier} {
-        margin-top: spacer(md);
-        &:first-child {
-            margin-top: 0;
-        }
+
+    .u-mt-#{$spacer-name}#{$modifier} {
+      margin-top: $spacer-value;
     }
+
+    .u-mr-#{$spacer-name}#{$modifier} {
+      margin-right: $spacer-value;
+    }
+
+    .u-mb-#{$spacer-name}#{$modifier} {
+      margin-bottom: $spacer-value;
+    }
+
+    .u-ml-#{$spacer-name}#{$modifier} {
+      margin-left: $spacer-value;
+    }
+
+    .u-p-#{$spacer-name}#{$modifier} {
+      padding: $spacer-value;
+    }
+
+    .u-pt-#{$spacer-name}#{$modifier} {
+      padding-top: $spacer-value;
+    }
+
+    .u-pr-#{$spacer-name}#{$modifier} {
+      padding-right: $spacer-value;
+    }
+
+    .u-pb-#{$spacer-name}#{$modifier} {
+      padding-bottom: $spacer-value;
+    }
+
+    .u-pl-#{$spacer-name}#{$modifier} {
+      padding-left: $spacer-value;
+    }
+  }
+
+  .u-p#{$modifier} {
+    margin-top: spacer(md);
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
 }
 
 // font sizes
 @mixin _font-sizes($modifier: null) {
-    @each $font-size-name, $font-size-value in $font-sizes {
-        .u-txt-#{$font-size-name}#{$modifier} {
-            @include rhythm(font-size($font-size-name), font-size($font-size-name, 2));
-        }
+  @each $font-size-name, $font-size-value in $font-sizes {
+    .u-txt-#{$font-size-name}#{$modifier} {
+      @include rhythm(font-size($font-size-name), font-size($font-size-name, 2));
     }
+  }
 }
 
 // colors
 @mixin _colors($modifier: null) {
-    @each $color-name, $color-code in $colors {
-        .u-color-#{$color-name}#{$modifier} {
-            color: $color-code;
-        }
+  @each $color-name, $color-code in $colors {
+    .u-color-#{$color-name}#{$modifier} {
+      color: $color-code;
     }
+  }
 }
 
 // utilities => global + import sizes, spacers, font sizes & colors mixins
 @mixin utilities($modifier: null) {
-    @if $modifier {
-        $modifier: "\\@" + $modifier;
-    }
+  @if $modifier {
+    $modifier: "\\@" + $modifier;
+  }
 
-    // display
-    .u-visible#{$modifier} {
-        display: block;
-    }
-    .u-hidden#{$modifier} {
-        display: none;
-    }
-    .u-inline#{$modifier} {
-        display: inline;
-    }
-    .u-inline-block#{$modifier} {
-        display: inline-block;
-        vertical-align: top;
-    }
+  // display
+  .u-visible#{$modifier} {
+    display: block;
+  }
 
-    // blocks alignment
-    .u-right#{$modifier} {
-        margin-left: auto;
-    }
-    .u-left#{$modifier} {
-        margin-right: auto;
-    }
-    .u-center#{$modifier} {
-        margin-right: auto;
-        margin-left: auto;
-    }
+  .u-hidden#{$modifier} {
+    display: none;
+  }
 
-    // floating elements
-    .u-float-right#{$modifier} {
-        float: right;
-    }
-    .u-float-left#{$modifier} {
-        float: left;
-    }
-    .u-no-float#{$modifier} {
-        float: none;
-    }
+  .u-inline#{$modifier} {
+    display: inline;
+  }
 
-    // clearfix
-    .u-clear#{$modifier} {
-        clear: both;
-    }
-    .u-clearfix#{$modifier} {
-        &::after {
-            content: "";
-            display: table;
-            clear: both;
-            border-collapse: collapse;
-        }
-    }
+  .u-inline-block#{$modifier} {
+    display: inline-block;
+    vertical-align: top;
+  }
 
-    // bfc
-    .u-mod#{$modifier} {
-        overflow: hidden;
-    }
+  // blocks alignment
+  .u-right#{$modifier} {
+    margin-left: auto;
+  }
 
-    // flexbox
-    .u-flex#{$modifier} {
-        display: flex;
-    }
-    .u-inline-flex#{$modifier} {
-        display: inline-flex;
-    }
-    .u-flex-nowrap#{$modifier} {
-        flex-wrap: nowrap;
-    }
-    .u-flex-wrap#{$modifier} {
-        flex-wrap: wrap;
-    }
-    .u-flex-wrap-reverse#{$modifier} {
-        flex-wrap: wrap-reverse;
-    }
-    .u-flex-row#{$modifier} {
-        flex-direction: row;
-    }
-    .u-flex-row-reverse#{$modifier} {
-        flex-direction: row-reverse;
-    }
-    .u-flex-column#{$modifier} {
-        flex-direction: column;
-    }
-    .u-flex-column-reverse#{$modifier} {
-        flex-direction: column-reverse;
-    }
-    .u-flex-main-start#{$modifier} {
-        justify-content: flex-start;
-    }
-    .u-flex-main-end#{$modifier} {
-        justify-content: flex-end;
-    }
-    .u-flex-main-center#{$modifier} {
-        justify-content: center;
-    }
-    .u-flex-main-between#{$modifier} {
-        justify-content: space-between;
-    }
-    .u-flex-main-around#{$modifier} {
-        justify-content: space-around;
-    }
-    .u-flex-cross-start#{$modifier} {
-        align-items: flex-start;
-    }
-    .u-flex-cross-end#{$modifier} {
-        align-items: flex-end;
-    }
-    .u-flex-cross-center#{$modifier} {
-        align-items: center;
-    }
-    .u-flex-cross-baseline#{$modifier} {
-        align-items: baseline;
-    }
-    .u-flex-cross-stretch#{$modifier} {
-        align-items: stretch;
-    }
-    .u-flex-self-start#{$modifier} {
-        align-self: flex-start;
-    }
-    .u-flex-self-end#{$modifier} {
-        align-self: flex-end;
-    }
-    .u-flex-self-center#{$modifier} {
-        align-self: center;
-    }
-    .u-flex-self-baseline#{$modifier} {
-        align-self: baseline;
-    }
-    .u-flex-self-stretch#{$modifier} {
-        align-self: stretch;
-    }
-    .u-flex-item-fluid#{$modifier} {
-        flex: 1;
-    }
-    .u-flex-item-auto#{$modifier} {
-        flex: auto;
-    }
-    .u-flex-item-initial#{$modifier} {
-        flex: initial;
-    }
-    .u-flex-item-none#{$modifier} {
-        flex: none;
-    }
-    .u-flex-item-first#{$modifier} {
-        order: -1;
-    }
-    .u-flex-item-medium#{$modifier} {
-        order : 0;
-    }
-    .u-flex-item-last#{$modifier} {
-        order : 1;
-    }
-    .u-flex-item-top#{$modifier} {
-        margin-bottom: auto;
-    }
-    .u-flex-item-bottom#{$modifier} {
-        margin-top: auto;
-    }
-    .u-flex-item-center#{$modifier} {
-        margin: auto;
-    }
+  .u-left#{$modifier} {
+    margin-right: auto;
+  }
 
-    // columns
-    .u-col#{$modifier} {
-        column-gap: $grid-gutter-width;
-    }
-    @for $i from 1 through $grid-columns {
-        .u-col-#{$i}#{$modifier} {
-            column-count: $i;
-        }
-    }
-    .u-col-item#{$modifier} {
-        break-inside: avoid;
-    }
+  .u-center#{$modifier} {
+    margin-right: auto;
+    margin-left: auto;
+  }
 
-    // typography
-    .u-txt-right#{$modifier} {
-        text-align: right;
-    }
-    .u-txt-center#{$modifier} {
-        text-align: center;
-    }
-    .u-txt-left#{$modifier} {
-        text-align: left;
-    }
-    .u-txt-lowercase#{$modifier} {
-        text-transform: lowercase;
-    }
-    .u-txt-uppercase#{$modifier} {
-        text-transform: uppercase;
-    }
-    .u-txt-capitalize#{$modifier} {
-        text-transform: capitalize;
-    }
-    .u-txt-normal#{$modifier} {
-        font-weight: $font-weight-normal;
-    }
-    .u-txt-bold#{$modifier} {
-        font-weight: $font-weight-bold;
-    }
+  // floating elements
+  .u-float-right#{$modifier} {
+    float: right;
+  }
 
-    // sizes
-    @include _sizes($modifier: $modifier);
+  .u-float-left#{$modifier} {
+    float: left;
+  }
 
-    // spacers
-    @include _spacers($modifier);
+  .u-no-float#{$modifier} {
+    float: none;
+  }
 
-    // font sizes
-    @include _font-sizes($modifier);
+  // clearfix
+  .u-clear#{$modifier} {
+    clear: both;
+  }
 
-    // colors
-    @include _colors($modifier);
+  .u-clearfix#{$modifier} {
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+      border-collapse: collapse;
+    }
+  }
+
+  // bfc
+  .u-mod#{$modifier} {
+    overflow: hidden;
+  }
+
+  // flexbox
+  .u-flex#{$modifier} {
+    display: flex;
+  }
+
+  .u-inline-flex#{$modifier} {
+    display: inline-flex;
+  }
+
+  .u-flex-nowrap#{$modifier} {
+    flex-wrap: nowrap;
+  }
+
+  .u-flex-wrap#{$modifier} {
+    flex-wrap: wrap;
+  }
+
+  .u-flex-wrap-reverse#{$modifier} {
+    flex-wrap: wrap-reverse;
+  }
+
+  .u-flex-row#{$modifier} {
+    flex-direction: row;
+  }
+
+  .u-flex-row-reverse#{$modifier} {
+    flex-direction: row-reverse;
+  }
+
+  .u-flex-column#{$modifier} {
+    flex-direction: column;
+  }
+
+  .u-flex-column-reverse#{$modifier} {
+    flex-direction: column-reverse;
+  }
+
+  .u-flex-main-start#{$modifier} {
+    justify-content: flex-start;
+  }
+
+  .u-flex-main-end#{$modifier} {
+    justify-content: flex-end;
+  }
+
+  .u-flex-main-center#{$modifier} {
+    justify-content: center;
+  }
+
+  .u-flex-main-between#{$modifier} {
+    justify-content: space-between;
+  }
+
+  .u-flex-main-around#{$modifier} {
+    justify-content: space-around;
+  }
+
+  .u-flex-cross-start#{$modifier} {
+    align-items: flex-start;
+  }
+
+  .u-flex-cross-end#{$modifier} {
+    align-items: flex-end;
+  }
+
+  .u-flex-cross-center#{$modifier} {
+    align-items: center;
+  }
+
+  .u-flex-cross-baseline#{$modifier} {
+    align-items: baseline;
+  }
+
+  .u-flex-cross-stretch#{$modifier} {
+    align-items: stretch;
+  }
+
+  .u-flex-self-start#{$modifier} {
+    align-self: flex-start;
+  }
+
+  .u-flex-self-end#{$modifier} {
+    align-self: flex-end;
+  }
+
+  .u-flex-self-center#{$modifier} {
+    align-self: center;
+  }
+
+  .u-flex-self-baseline#{$modifier} {
+    align-self: baseline;
+  }
+
+  .u-flex-self-stretch#{$modifier} {
+    align-self: stretch;
+  }
+
+  .u-flex-item-fluid#{$modifier} {
+    flex: 1;
+  }
+
+  .u-flex-item-auto#{$modifier} {
+    flex: auto;
+  }
+
+  .u-flex-item-initial#{$modifier} {
+    flex: initial;
+  }
+
+  .u-flex-item-none#{$modifier} {
+    flex: none;
+  }
+
+  .u-flex-item-first#{$modifier} {
+    order: -1;
+  }
+
+  .u-flex-item-medium#{$modifier} {
+    order: 0;
+  }
+
+  .u-flex-item-last#{$modifier} {
+    order: 1;
+  }
+
+  .u-flex-item-top#{$modifier} {
+    margin-bottom: auto;
+  }
+
+  .u-flex-item-bottom#{$modifier} {
+    margin-top: auto;
+  }
+
+  .u-flex-item-center#{$modifier} {
+    margin: auto;
+  }
+
+  // columns
+  .u-col#{$modifier} {
+    column-gap: $grid-gutter-width;
+  }
+
+  @for $i from 1 through $grid-columns {
+    .u-col-#{$i}#{$modifier} {
+      column-count: $i;
+    }
+  }
+
+  .u-col-item#{$modifier} {
+    break-inside: avoid;
+  }
+
+  // typography
+  .u-txt-right#{$modifier} {
+    text-align: right;
+  }
+
+  .u-txt-center#{$modifier} {
+    text-align: center;
+  }
+
+  .u-txt-left#{$modifier} {
+    text-align: left;
+  }
+
+  .u-txt-lowercase#{$modifier} {
+    text-transform: lowercase;
+  }
+
+  .u-txt-uppercase#{$modifier} {
+    text-transform: uppercase;
+  }
+
+  .u-txt-capitalize#{$modifier} {
+    text-transform: capitalize;
+  }
+
+  .u-txt-normal#{$modifier} {
+    font-weight: $font-weight-normal;
+  }
+
+  .u-txt-bold#{$modifier} {
+    font-weight: $font-weight-bold;
+  }
+
+  // sizes
+  @include _sizes($modifier: $modifier);
+
+  // spacers
+  @include _spacers($modifier);
+
+  // font sizes
+  @include _font-sizes($modifier);
+
+  // colors
+  @include _colors($modifier);
 }

@@ -3,41 +3,47 @@
 
 // switching to border-box model for all elements
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 *,
 ::before,
 ::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 // elements
 html {
-    font-size: 62.5%;
-    font-size: calc(1em * .625);
-    line-height: $line-height-base;
+  font-size: 62.5%;
+  font-size: calc(1em * .625);
+  line-height: $line-height-base;
 }
+
 body {
-    background-color: color(white);
-    font-family: $font-family-base;
-    @include rhythm-rwd();
-    color: color(dimgrey);
+  background-color: color(white);
+  font-family: $font-family-base;
+  @include rhythm-rwd();
+  color: color(dimgrey);
 }
+
 a {
-    color: color(deeppink);
+  color: color(deeppink);
 }
+
 ul,
 ol {
-    padding-left: spacer(md);
+  padding-left: spacer(md);
 }
+
 img {
-    height: auto;
-    vertical-align: middle;
+  height: auto;
+  vertical-align: middle;
 }
+
 blockquote,
 figure {
-    margin-right: 0;
-    margin-left: 0;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 // font-sizing for content
@@ -50,61 +56,69 @@ blockquote,
 pre,
 details,
 figure {
-    margin-top: spacer(md);
-    margin-bottom: 0;
+  margin-top: spacer(md);
+  margin-bottom: 0;
 }
+
 h1 {
-    margin-top: spacer(md);
-    margin-bottom: 0;
-    font-family: $font-family-headings;
-    @include rhythm-rwd(h1);
+  margin-top: spacer(md);
+  margin-bottom: 0;
+  font-family: $font-family-headings;
+  @include rhythm-rwd(h1);
 }
+
 h2 {
-    margin-top: spacer(md);
-    margin-bottom: 0;
-    font-family: $font-family-headings;
-    @include rhythm-rwd(h2);
+  margin-top: spacer(md);
+  margin-bottom: 0;
+  font-family: $font-family-headings;
+  @include rhythm-rwd(h2);
 }
+
 h3 {
-    margin-top: spacer(md);
-    margin-bottom: 0;
-    font-family: $font-family-headings;
-    @include rhythm-rwd(h3);
+  margin-top: spacer(md);
+  margin-bottom: 0;
+  font-family: $font-family-headings;
+  @include rhythm-rwd(h3);
 }
+
 h4 {
-    margin-top: spacer(md);
-    margin-bottom: 0;
-    font-family: $font-family-headings;
-    @include rhythm-rwd(h4);
+  margin-top: spacer(md);
+  margin-bottom: 0;
+  font-family: $font-family-headings;
+  @include rhythm-rwd(h4);
 }
+
 h5 {
-    margin-top: spacer(md);
-    margin-bottom: 0;
-    font-family: $font-family-headings;
-    @include rhythm-rwd(h5);
+  margin-top: spacer(md);
+  margin-bottom: 0;
+  font-family: $font-family-headings;
+  @include rhythm-rwd(h5);
 }
+
 h6 {
-    margin-top: spacer(md);
-    margin-bottom: 0;
-    font-family: $font-family-headings;
-    @include rhythm-rwd(h6);
+  margin-top: spacer(md);
+  margin-bottom: 0;
+  font-family: $font-family-headings;
+  @include rhythm-rwd(h6);
 }
+
 code,
 pre,
 samp,
 kbd {
-    vertical-align: top;
-    font-family: $font-family-monospace;
-    line-height: inherit;
-    white-space: pre-line;
-    white-space: pre-wrap;
+  vertical-align: top;
+  font-family: $font-family-monospace;
+  line-height: inherit;
+  white-space: pre-line;
+  white-space: pre-wrap;
 }
+
 em,
 address,
 cite,
 i,
 var {
-    font-style: italic;
+  font-style: italic;
 }
 
 // avoid top margins on first content element
@@ -123,9 +137,9 @@ h3,
 h4,
 h5,
 h6 {
-    &:first-child {
-        margin-top: 0;
-    }
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 // max values
@@ -139,5 +153,5 @@ textarea,
 input,
 video,
 svg {
-    max-width: 100%;
+  max-width: 100%;
 }

@@ -1,49 +1,50 @@
 {
-    "name": "atomic-builder",
-    "description": "An atomic front-end BEMIT framework",
-    "version": "6.1.4",
-    "keywords": [
-        "framework",
-        "sass",
-        "css",
-        "atomic design",
-        "oocss",
-        "bem",
-        "bemit",
-        "itcss",
-        "vertical rhythm",
-        "responsive"
-    ],
-    "author": "Jonathan Levaillant <jonathan.levaillant@outlook.com> (http://jonathanlevaillant.fr)",
-    "scripts": {
-        "watch": "rm -rf ./dist/fonts ./dist/icons ./dist/img && gulp && gulp watch",
-        "build": "rm -rf ./dist/fonts ./dist/icons ./dist/img && gulp",
-        "prod": "rm -rf ./dist/fonts ./dist/icons ./dist/img && gulp && gulp prod"
-    },
-    "main": "dist/guide.html",
-    "style": "dist/css/main.css",
-    "sass": "src/scss/main.scss",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/jonathanlevaillant/atomic-builder.git"
-    },
-    "bugs": {
-        "url": "https://github.com/jonathanlevaillant/atomic-builder/issues",
-        "email": "jonathan.levaillant@outlook.com"
-    },
-    "license": "MIT",
-    "devDependencies": {
-        "gulp": "^3.9.1",
-        "gulp-autoprefixer": "^4.0.0",
-        "gulp-changed": "^3.1.0",
-        "gulp-cssbeautify": "^0.1.3",
-        "gulp-csscomb": "^3.0.8",
-        "gulp-cssnano": "^2.1.2",
-        "gulp-imagemin": "^3.3.0",
-        "gulp-load-plugins": "^1.5.0",
-        "gulp-sass": "^3.1.0",
-        "gulp-uglify": "^3.0.0",
-        "gulp-useref": "^3.1.2",
-        "run-sequence": "^2.1.0"
-    }
+  "name": "atomic-builder",
+  "description": "An atomic front-end BEMIT framework",
+  "version": "6.1.5",
+  "keywords": [
+    "framework",
+    "sass",
+    "css",
+    "atomic design",
+    "oocss",
+    "bem",
+    "bemit",
+    "itcss",
+    "vertical rhythm",
+    "responsive"
+  ],
+  "author": "Jonathan Levaillant <jonathan.levaillant@outlook.com> (http://jonathanlevaillant.fr)",
+  "scripts": {
+    "watch": "rm -rf ./dist/fonts ./dist/icons ./dist/img && gulp && gulp watch",
+    "build": "rm -rf ./dist/fonts ./dist/icons ./dist/img && gulp",
+    "prod": "rm -rf ./dist/fonts ./dist/icons ./dist/img && gulp && gulp prod"
+  },
+  "main": "dist/styleguide.html",
+  "style": "dist/css/main.css",
+  "sass": "src/scss/main.scss",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonathanlevaillant/atomic-builder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonathanlevaillant/atomic-builder/issues",
+    "email": "jonathan.levaillant@outlook.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-changed": "^3.1.0",
+    "gulp-cssbeautify": "^0.1.3",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-stylelint": "^5.0.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-useref": "^3.1.2",
+    "run-sequence": "^2.1.0",
+    "stylelint-config-sass-guidelines": "^3.1.0"
+  }
 }

@@ -2,10 +2,11 @@
    ========================================================================== */
 
 .o-container {
-    @include container();
-    margin-right: auto;
-    margin-left: auto;
+  @include container();
+  margin-right: auto;
+  margin-left: auto;
 }
+
 .o-container--auto {
-    max-width: none;
+  max-width: none;
 }
