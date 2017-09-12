@@ -18,114 +18,129 @@ var fonts = 'fonts/**/*';
 var cssmin = 'css/main.min.css';
 var jsmin = 'js/global.min.js';
 
-/* task "build" = ["html" + "css" + "js" + "img" + "fonts"]
+/* linters
+ ========================================================================== */
+
+// task 'lintcss' = stylelint (source -> console)
+gulp.task('lintcss', function() {
+  return gulp.src(source + scss)
+    .pipe(plugins.stylelint({
+      reporters: [{
+        formatter: 'string',
+        console: true
+      }]
+    }))
+});
+
+/* task 'build' = ['html' + 'css' + 'js' + 'img' + 'fonts']
    ========================================================================== */
 
-// task "html" = (source -> destination)
+// task 'html' = copy paste (source -> destination)
 gulp.task('html', function() {
-    return gulp.src(source + html)
-        .pipe(gulp.dest(destination))
+  return gulp.src(source + html)
+    .pipe(gulp.dest(destination))
 });
 
-// task "css" = sass + csscomb + autoprefixer + cssbeautify (source -> destination)
-gulp.task('css', function() {
-    return gulp.src(source + scss)
-        .pipe(plugins.sass({
-            errLogToConsole: true,
-            outputStyle: 'expanded'
-        })
-        .on('error', plugins.sass.logError))
-        .pipe(plugins.csscomb())
-        .pipe(plugins.autoprefixer({
-            browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'],
-            cascade: false
-        }))
-        .pipe(plugins.cssbeautify())
-        .pipe(gulp.dest(destination + 'css/'))
+// task 'css' = lintcss + sass + autoprefixer + cssbeautify (source -> destination)
+gulp.task('css', ['lintcss'], function() {
+  return gulp.src(source + scss)
+    .pipe(plugins.sass({
+      errLogToConsole: true,
+      outputStyle: 'expanded'
+    })
+    .on('error', plugins.sass.logError))
+    .pipe(plugins.autoprefixer({
+      browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'],
+      cascade: false
+    }))
+    .pipe(plugins.cssbeautify({
+      indent: '  ',
+    }))
+    .pipe(gulp.dest(destination + 'css/'))
 });
 
-// task "js" = changed (source -> destination)
+// task 'js' = changed (source -> destination)
 gulp.task('js', function() {
-    return gulp.src(source + js)
-        .pipe(plugins.changed(destination + 'js/'))
-        .pipe(gulp.dest(destination + 'js/'))
+  return gulp.src(source + js)
+    .pipe(plugins.changed(destination + 'js/'))
+    .pipe(gulp.dest(destination + 'js/'))
 });
 
-// task "img" = (source -> destination)
+// task 'img' = copy paste (source -> destination)
 gulp.task('img', function() {
-    return gulp.src(source + images)
-        .pipe(gulp.dest(destination + 'img/'))
+  return gulp.src(source + images)
+    .pipe(gulp.dest(destination + 'img/'))
 });
 
-// task "fonts" = (source -> destination)
+// task 'fonts' = copy paste (source -> destination)
 gulp.task('fonts', function() {
-    return gulp.src(source + fonts)
-        .pipe(gulp.dest(destination + 'fonts/'))
+  return gulp.src(source + fonts)
+    .pipe(gulp.dest(destination + 'fonts/'))
 });
 
-// task "build"
+// task 'build'
 gulp.task('build', function(callback) {
-    run(['html', 'css', 'js', 'img', 'fonts'], callback)
+  run(['html', 'css', 'js', 'img', 'fonts'], callback)
 });
 
-/* task "prod" = "url" + ["cssmin" + "jsmin" + "imgmin"]
+/* task 'prod' = 'url' + ['cssmin' + 'jsmin' + 'imgmin']
    ========================================================================== */
 
-// task "url" = useref (destination -> destination)
+// task 'url' = useref (destination -> destination)
 gulp.task('url', function() {
-    return gulp.src(destination + html)
-        .pipe(plugins.useref())
-        .pipe(gulp.dest(destination))
+  return gulp.src(destination + html)
+    .pipe(plugins.useref())
+    .pipe(gulp.dest(destination))
 });
 
-// task "cssmin" = cssnano (destination -> destination)
+// task 'cssmin' = cssnano (destination -> destination)
 gulp.task('cssmin', function() {
-    return gulp.src(destination + cssmin)
-        .pipe(plugins.cssnano())
-        .pipe(gulp.dest(destination + 'css/'))
+  return gulp.src(destination + cssmin)
+    .pipe(plugins.cssnano())
+    .pipe(gulp.dest(destination + 'css/'))
 });
 
-// task "jsmin" = uglify (destination -> destination)
+// task 'jsmin' = uglify (destination -> destination)
 gulp.task('jsmin', function() {
-    return gulp.src(destination + jsmin)
-        .pipe(plugins.uglify({
-            output: {max_line_len: 1000000}
-        }))
-        .pipe(gulp.dest(destination + 'js/'))
+  return gulp.src(destination + jsmin)
+    .pipe(plugins.uglify({
+      output: {max_line_len: 1000000}
+    }))
+    .pipe(gulp.dest(destination + 'js/'))
 });
 
-// task "imgmin" = imagemin (destination -> destination)
+// task 'imgmin' = imagemin (destination -> destination)
 gulp.task('imgmin', function() {
-    return gulp.src(destination + images)
-        .pipe(plugins.imagemin([
-            plugins.imagemin.gifsicle({
-                interlaced: true
-            }),
-            plugins.imagemin.jpegtran({
-                progressive: true
-            }),
-            plugins.imagemin.svgo({plugins: [{
-                removeUnknownsAndDefaults: false
-            }]})
-        ]))
-        .pipe(gulp.dest(destination + 'img/'))
+  return gulp.src(destination + images)
+    .pipe(plugins.imagemin([
+      plugins.imagemin.gifsicle({
+        interlaced: true
+      }),
+      plugins.imagemin.jpegtran({
+        progressive: true
+      }),
+      plugins.imagemin.svgo({plugins: [{
+        removeUnknownsAndDefaults: false
+      }]})
+    ]))
+    .pipe(gulp.dest(destination + 'img/'))
 });
 
-// task "prod"
+// task 'prod'
 gulp.task('prod', function(callback) {
-    run('url', ['cssmin', 'jsmin', 'imgmin'], callback)
+  run('url', ['cssmin', 'jsmin', 'imgmin'], callback)
 });
 
-/* task "watch" = "css" + "html" + "js"
+/* task 'watch' = 'css' + 'html' + 'js'
    ========================================================================== */
 
 gulp.task('watch', function() {
-    gulp.watch(source + html, ['html']);
-    gulp.watch(source + scss, ['css']);
-    gulp.watch(source + js, ['js']);
+  gulp.watch(source + html, ['html']);
+  gulp.watch(source + scss, ['css']);
+  gulp.watch(source + js, ['js']);
 });
 
-/* task "default" = "build"
+/* task 'default' = 'build'
    ========================================================================== */
 
 gulp.task('default', ['build']);
