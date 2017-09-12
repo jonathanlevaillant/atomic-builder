@@ -35,7 +35,6 @@ Plusieurs options s'offrent à vous :
 - Cloner le dépôt : `https://github.com/jonathanlevaillant/atomic-builder.git`
 - Installation avec [NPM](https://www.npmjs.com/) : `npm install atomic-builder`
 - Installation avec [Yarn](https://yarnpkg.com/lang/en/) : `yarn add atomic-builder`
-- Installation avec [Bower](https://bower.io/) : `bower install atomic-builder`
 
 ## Compatibilité
 
@@ -199,34 +198,34 @@ Vous pouvez néanmoins, si vous le souhaitez, utiliser des valeurs personnalisé
 
 ```
 $font-sizes-rwd: (
-    h1: (
-        default         : $font-size-h1,
-        sm              : $font-size-h1 / $ratio-major-second
-    ),
-    h2: (
-        default         : $font-size-h2,
-        sm              : $font-size-h2 / $ratio-major-second
-    ),
-    h3: (
-        default         : $font-size-h3,
-        sm              : $font-size-h3 / $ratio-major-second
-    ),
-    h4: (
-        default         : $font-size-h4,
-        sm              : $font-size-h4 / $ratio-major-second
-    ),
-    h5: (
-        default         : $font-size-h5,
-        sm              : $font-size-h5 / $ratio-major-second
-    ),
-    h6: (
-        default         : $font-size-h6,
-        sm              : $font-size-h6 / $ratio-major-second
-    ),
-    default: (
-        default         : $font-size-base,
-        sm              : $font-size-base / $ratio-major-second
-    )
+  h1: (
+    default             : $font-size-h1,
+    sm                  : $font-size-h1 / $ratio-major-second
+  ),
+  h2: (
+    default             : $font-size-h2,
+    sm                  : $font-size-h2 / $ratio-major-second
+  ),
+  h3: (
+    default             : $font-size-h3,
+    sm                  : $font-size-h3 / $ratio-major-second
+  ),
+  h4: (
+    default             : $font-size-h4,
+    sm                  : $font-size-h4 / $ratio-major-second
+  ),
+  h5: (
+    default             : $font-size-h5,
+    sm                  : $font-size-h5 / $ratio-major-second
+  ),
+  h6: (
+    default             : $font-size-h6,
+    sm                  : $font-size-h6 / $ratio-major-second
+  ),
+  default: (
+    default             : $font-size-base,
+    sm                  : $font-size-base / $ratio-major-second
+  )
 ) !default;
 ```
 
@@ -241,10 +240,10 @@ Il est également possible de rajouter un paramètre correspondant à la hauteur
 
 ```
 $font-sizes-rwd: (
-    h1: (
-        default         : ($font-size-h1, 1.5),
-        sm              : ($font-size-h1 / $ratio-major-second, 1.4)
-    )
+  h1: (
+    default             : ($font-size-h1, 1.5),
+    sm                  : ($font-size-h1 / $ratio-major-second, 1.4)
+  )
 ) !default;
 ```
 
@@ -252,8 +251,8 @@ Si une taille de police reste fixe, vous pouvez aussi l'écrire de cette façon 
 
 ```
 $font-sizes-rwd: (
-    h1                  : ($font-size-h1, 1.5),
-    h2                  : $font-size-h2
+  h1                    : ($font-size-h1, 1.5),
+  h2                    : $font-size-h2
 ) !default;
 ```
 
@@ -265,9 +264,9 @@ Ce mixin générera la taille de police correspondante, sa hauteur de ligne et l
 
 ```
 $font-sizes: (
-    sm                  : $font-size-h6,
-    md                  : $font-size-h5,
-    lg                  : $font-size-h4,
+  sm                    : $font-size-h6,
+  md                    : $font-size-h5,
+  lg                    : $font-size-h4
 ) !default;
 ```
 
@@ -281,7 +280,7 @@ Il est également possible de rajouter un paramètre correspondant à la hauteur
 
 ```
 $font-sizes: (
-    sm                  : ($font-size-h6, 1.5),
+  sm                    : ($font-size-h6, 1.5),
 ) !default;
 ```
 
@@ -291,7 +290,7 @@ Ces variables étant de types "maps", vous pourrez y accéder de deux façons, v
 
 ```
 small {
-    font-size: font-size(sm);
+  font-size: font-size(sm);
 }
 ```
 
@@ -299,7 +298,7 @@ small {
 
 ```
 small {
-    font-size: 1.28rem;
+  font-size: 1.28rem;
 }
 ```
 
@@ -307,7 +306,7 @@ small {
 
 ```
 small {
-    @include rhythm-helper(sm)
+  @include rhythm-helper(sm)
 }
 ```
 
@@ -315,8 +314,8 @@ small {
 
 ```
 small {
-    font-size: 1.28rem;
-    line-height: 1.875;
+  font-size: 1.28rem;
+  line-height: 1.875;
 }
 ```
 
@@ -376,12 +375,12 @@ Ces variables contrôlent les dimensions et les tailles de polices des champs de
 
 ```
 $spacers: (
-    n                   : 0,
-    xs                  : $baseline / 3,
-    sm                  : $baseline / 2,
-    md                  : $baseline,
-    lg                  : $baseline * 2,
-    xl                  : $baseline * 3
+  n                     : 0,
+  xs                    : $baseline / 3,
+  sm                    : $baseline / 2,
+  md                    : $baseline,
+  lg                    : $baseline * 2,
+  xl                    : $baseline * 3
 ) !default;
 ```
 
@@ -396,16 +395,16 @@ Ces variables étant de types "maps", vous pourrez y accéder via une fonction `
 **Par exemple :**
 
 ```
-.c-demo__box {
-    padding: calc(#{spacer(sm)} - 1px);
+.c-box {
+  padding: spacer(md);
 }
 ```
 
 **sera compilé en :**
 
 ```
-.c-demo__box {
-    padding: calc(1.2rem - 1px);
+.c-box {
+  padding: calc(2.4rem);
 }
 ```
 
@@ -418,8 +417,8 @@ Ces variables étant de types "maps", vous pourrez y accéder via une fonction `
 
 ```
 $breakpoints: (
-    sm                  : 47.9375em, // 767px => phones
-    md                  : 64em // 1024px => tablets
+  sm                    : 47.9375em, // 767px => phones
+  md                    : 64em // 1024px => tablets
 ) !default;
 ```
 
@@ -441,9 +440,9 @@ pour accéder à ces nouvelles clés, la syntaxe est la suivante : `<key-plus>`.
 
 ```
 @media (min-width: bp(sm-plus)) and (max-width: bp(md)) {
-    .u-txt-center\@md {
-        text-align: center;
-    }
+  .u-txt-center\@md {
+    text-align: center;
+  }
 }
 ```
 
@@ -451,9 +450,9 @@ pour accéder à ces nouvelles clés, la syntaxe est la suivante : `<key-plus>`.
 
 ```
 @media (min-width: 48em) and (max-width: 64em) {
-    .u-txt-center\@md {
-        text-align: center;
-    }
+  .u-txt-center\@md {
+    text-align: center;
+  }
 }
 ```
 
@@ -479,12 +478,12 @@ Ces variables permettent d'activer ou de désactiver certaines options :
 
 ```
 $colors: (
-    black               : #000,
-    dimgrey             : #333,
-    silver              : #ccc,
-    whitesmoke          : #f0f0f0,
-    white               : #fff,
-    deeppink            : #fe4365
+  black                 : #000,
+  dimgrey               : #333,
+  silver                : #ccc,
+  whitesmoke            : #f0f0f0,
+  white                 : #fff,
+  deeppink              : #fe4365
 ) !default;
 ```
 
@@ -498,7 +497,7 @@ Ces variables étant de types "maps", vous pourrez y accéder via une fonction `
 
 ```
 a {
-    color: color(deeppink);
+  color: color(deeppink);
 }
 ```
 
@@ -506,7 +505,7 @@ a {
 
 ```
 a {
-    color: #fe4365;
+  color: #fe4365;
 }
 ```
 
@@ -517,19 +516,21 @@ a {
 
 ```
 @font-face {
-    font-family: Bitter;
-    src: url("../fonts/bitter/bitter-400.woff2") format("woff2"),
-         url("../fonts/bitter/bitter-400.woff") format("woff");
-    font-weight: $font-weight-normal;
-    font-style: normal;
+  font-family: Bitter;
+  src:
+    url("../fonts/bitter/bitter-400.woff2") format("woff2"),
+    url("../fonts/bitter/bitter-400.woff") format("woff");
+  font-weight: $font-weight-normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: Bitter;
-    src: url("../fonts/bitter/bitter-700.woff2") format("woff2"),
-         url("../fonts/bitter/bitter-700.woff") format("woff");
-    font-weight: $font-weight-bold;
-    font-style: normal;
+  font-family: Bitter;
+  src:
+    url("../fonts/bitter/bitter-700.woff2") format("woff2"),
+    url("../fonts/bitter/bitter-700.woff") format("woff");
+  font-weight: $font-weight-bold;
+  font-style: normal;
 }
 ```
 
