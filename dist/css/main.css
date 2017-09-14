@@ -306,7 +306,7 @@ body {
 }
 
 a {
-  color: #fe4365;
+  color: #e91e63;
 }
 
 ul,
@@ -1204,7 +1204,7 @@ th {
   vertical-align: top;
   text-decoration: none;
   font-weight: 700;
-  color: #fe4365;
+  color: #e91e63;
   cursor: pointer;
   -webkit-transition: .2s;
   transition: .2s;
@@ -1226,9 +1226,9 @@ th {
 }
 
 .c-btn::after {
-  -webkit-box-shadow: 0 0.25em 0 0 #f3012d;
-  box-shadow: 0 0.25em 0 0 #f3012d;
-  background-color: #fe4365;
+  -webkit-box-shadow: 0 0.25em 0 0 #aa1145;
+  box-shadow: 0 0.25em 0 0 #aa1145;
+  background-color: #e91e63;
   visibility: hidden;
   opacity: 0;
 }
@@ -1295,7 +1295,7 @@ th {
   left: 0;
   visibility: hidden;
   opacity: 0;
-  background-color: #fe4365;
+  background-color: #e91e63;
   -webkit-transition: .2s;
   transition: .2s;
 }
@@ -2065,7 +2065,7 @@ th {
   color: #000;
 }
 
-.u-color-dimgrey {
+.u-color-grey {
   color: #333;
 }
 
@@ -2081,8 +2081,8 @@ th {
   color: #fff;
 }
 
-.u-color-deeppink {
-  color: #fe4365;
+.u-color-pink {
+  color: #e91e63;
 }
 
 /* responsive
@@ -2724,7 +2724,7 @@ th {
     color: #000;
   }
 
-  .u-color-dimgrey\@lg {
+  .u-color-grey\@lg {
     color: #333;
   }
 
@@ -2740,8 +2740,8 @@ th {
     color: #fff;
   }
 
-  .u-color-deeppink\@lg {
-    color: #fe4365;
+  .u-color-pink\@lg {
+    color: #e91e63;
   }
 }
 
@@ -3382,7 +3382,7 @@ th {
     color: #000;
   }
 
-  .u-color-dimgrey\@md {
+  .u-color-grey\@md {
     color: #333;
   }
 
@@ -3398,8 +3398,8 @@ th {
     color: #fff;
   }
 
-  .u-color-deeppink\@md {
-    color: #fe4365;
+  .u-color-pink\@md {
+    color: #e91e63;
   }
 }
 
@@ -4040,7 +4040,7 @@ th {
     color: #000;
   }
 
-  .u-color-dimgrey\@sm {
+  .u-color-grey\@sm {
     color: #333;
   }
 
@@ -4056,8 +4056,8 @@ th {
     color: #fff;
   }
 
-  .u-color-deeppink\@sm {
-    color: #fe4365;
+  .u-color-pink\@sm {
+    color: #e91e63;
   }
 }
 
@@ -4699,7 +4699,7 @@ th {
   color: #000;
 }
 
-.u-color-dimgrey\@print {
+.u-color-grey\@print {
   color: #333;
 }
 
@@ -4715,6 +4715,6 @@ th {
   color: #fff;
 }
 
-.u-color-deeppink\@print {
-  color: #fe4365;
+.u-color-pink\@print {
+  color: #e91e63;
 }
