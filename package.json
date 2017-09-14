@@ -16,9 +16,9 @@
   ],
   "author": "Jonathan Levaillant <jonathan.levaillant@outlook.com> (http://jonathanlevaillant.fr)",
   "scripts": {
-    "watch": "rm -rf ./dist/fonts ./dist/icons ./dist/img && gulp && gulp watch",
-    "build": "rm -rf ./dist/fonts ./dist/icons ./dist/img && gulp",
-    "prod": "rm -rf ./dist/fonts ./dist/icons ./dist/img && gulp && gulp prod"
+    "watch": "rm -rf ./dist/fonts ./dist/img && gulp && gulp watch",
+    "build": "rm -rf ./dist/fonts ./dist/img && gulp",
+    "prod": "rm -rf ./dist/fonts ./dist/img && gulp && gulp prod"
   },
   "main": "dist/styleguide.html",
   "style": "dist/css/main.css",
