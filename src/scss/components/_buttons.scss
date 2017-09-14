@@ -15,7 +15,7 @@ $btn-shadow-depth: em(4px, $btn-font-size);
   vertical-align: top;
   text-decoration: none;
   font-weight: $font-weight-bold;
-  color: color(deeppink);
+  color: color(pink);
   cursor: pointer;
   transition: .2s;
 
@@ -34,8 +34,8 @@ $btn-shadow-depth: em(4px, $btn-font-size);
   }
 
   &::after {
-    box-shadow: 0 $btn-shadow-depth 0 0 darken(color(deeppink), 15%);
-    background-color: color(deeppink);
+    box-shadow: 0 $btn-shadow-depth 0 0 darken(color(pink), 15%);
+    background-color: color(pink);
     visibility: hidden;
     opacity: 0;
   }

@@ -6,7 +6,7 @@
   z-index: 0;
   padding: spacer(md);
   background-color: color(whitesmoke);
-  color: color(dimgrey);
+  color: color(grey);
   transition: .2s;
 
   &::after {
@@ -19,7 +19,7 @@
     left: 0;
     visibility: hidden;
     opacity: 0;
-    background-color: color(deeppink);
+    background-color: color(pink);
     transition: .2s;
   }
 }
