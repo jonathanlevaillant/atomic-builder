@@ -479,11 +479,11 @@ Ces variables permettent d'activer ou de désactiver certaines options :
 ```
 $colors: (
   black                 : #000,
-  dimgrey               : #333,
+  grey                  : #333,
   silver                : #ccc,
   whitesmoke            : #f0f0f0,
   white                 : #fff,
-  deeppink              : #fe4365
+  pink                  : #fe4365
 ) !default;
 ```
 
@@ -497,7 +497,7 @@ Ces variables étant de types "maps", vous pourrez y accéder via une fonction `
 
 ```
 a {
-  color: color(deeppink);
+  color: color(pink);
 }
 ```
 
@@ -505,12 +505,12 @@ a {
 
 ```
 a {
-  color: #fe4365;
+  color: #e91e63;
 }
 ```
 
 *Astuce : Ces classes utilitaires sont générées automatiquement en CSS, leurs noms correspondront aux clés de la "map"
-, `.u-color-deeppink`, `.u-color-silver`, etc.*
+, `.u-color-pink`, `.u-color-silver`, etc.*
 
 ### 3) `_fonts.scss`
 
