@@ -4,6 +4,10 @@ var gulp = require('gulp');
 // include plugins
 var plugins = require('gulp-load-plugins')();
 var run = require('run-sequence');
+var browserify = require('browserify');
+var babelify = require('babelify');
+var stream = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
 
 // paths root
 var source = './src/';
@@ -13,16 +17,17 @@ var destination = './dist/';
 var html = '**/*.html';
 var scss = 'scss/**/*.+(scss|sass|css)';
 var js = 'js/**/*.js';
+var app = 'js/app.js';
 var images = 'img/**/*.+(png|jpg|jpeg|gif|svg)';
 var fonts = 'fonts/**/*';
 var cssmin = 'css/main.min.css';
-var jsmin = 'js/global.min.js';
+var jsmin = 'js/app.min.js';
 
-/* linters
+/* linters = 'stylelint' + 'eslint'
  ========================================================================== */
 
-// task 'lintcss' = stylelint (source -> console)
-gulp.task('lintcss', function() {
+// task 'stylelint' = stylelint (source -> console)
+gulp.task('stylelint', function() {
   return gulp.src(source + scss)
     .pipe(plugins.stylelint({
       reporters: [{
@@ -30,6 +35,15 @@ gulp.task('lintcss', function() {
         console: true
       }]
     }))
+});
+
+// task 'eslint' = eslint (source -> console)
+gulp.task('eslint', function() {
+  return gulp.src(source + js)
+    .pipe(plugins.eslint({
+      configFile: '.eslintrc.json'
+    }))
+    .pipe(plugins.eslint.format())
 });
 
 /* task 'build' = ['html' + 'css' + 'js' + 'img' + 'fonts']
@@ -41,8 +55,8 @@ gulp.task('html', function() {
     .pipe(gulp.dest(destination))
 });
 
-// task 'css' = lintcss + sass + autoprefixer + cssbeautify (source -> destination)
-gulp.task('css', ['lintcss'], function() {
+// task 'css' = stylelint + sass + autoprefixer + cssbeautify (source -> destination)
+gulp.task('css', ['stylelint'], function() {
   return gulp.src(source + scss)
     .pipe(plugins.sass({
       errLogToConsole: true,
@@ -59,10 +73,20 @@ gulp.task('css', ['lintcss'], function() {
     .pipe(gulp.dest(destination + 'css/'))
 });
 
-// task 'js' = changed (source -> destination)
-gulp.task('js', function() {
-  return gulp.src(source + js)
-    .pipe(plugins.changed(destination + 'js/'))
+// task 'js' = eslint + babel transpiler es6 to es5 (source -> destination)
+gulp.task('js', ['eslint'], function() {
+  var bundler = browserify({
+    entries: source + app,
+    debug: true,
+    transform: [babelify.configure({
+      presets: ['es2015'],
+      plugins: ['transform-object-rest-spread']
+    })]
+  });
+  bundler.bundle()
+    .on('error', function (err) {})
+    .pipe(stream('app.js'))
+    .pipe(buffer())
     .pipe(gulp.dest(destination + 'js/'))
 });
 
@@ -103,9 +127,7 @@ gulp.task('cssmin', function() {
 // task 'jsmin' = uglify (destination -> destination)
 gulp.task('jsmin', function() {
   return gulp.src(destination + jsmin)
-    .pipe(plugins.uglify({
-      output: {max_line_len: 1000000}
-    }))
+    .pipe(plugins.uglify())
     .pipe(gulp.dest(destination + 'js/'))
 });
 
