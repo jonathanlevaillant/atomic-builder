@@ -43,7 +43,8 @@ $btn-shadow-depth: em(4px, $btn-font-size);
   &:focus,
   &:hover,
   &:active,
-  &[aria-pressed="true"] {
+  &[aria-pressed="true"],
+  &.is-pressed {
     color: color(white);
 
     &::after {
@@ -53,7 +54,8 @@ $btn-shadow-depth: em(4px, $btn-font-size);
   }
 
   &:active,
-  &[aria-pressed="true"] {
+  &[aria-pressed="true"],
+  &.is-pressed {
     transform: translate3d(0, 0, 0);
 
     &::before {
