@@ -14,32 +14,27 @@ const showDialog = function (elem) {
     focusableElems.forEach((focusableElem) => {
       if (focusableElem.addEventListener) {
         focusableElem.addEventListener('keydown', (event) => {
-          if (event.which === 9) {
-            if (event.target === lastFocusableElem) {
+          const isTabPressed = event.which === 9;
+
+          if (!isTabPressed) {
+            return;
+          }
+          if (event.shiftKey) {
+            if (event.target === firstFocusableElem) { // shift + tab
               event.preventDefault();
               event.stopPropagation();
 
-              firstFocusableElem.focus();
+              lastFocusableElem.focus();
             }
-            /*if (event.shiftKey) {
-              if (event.target === firstFocusableElem) {
-                lastFocusableElem.focus();
-              }
-            }*/
+          } else if (event.target === lastFocusableElem) { // tab
+            event.preventDefault();
+            event.stopPropagation();
+
+            firstFocusableElem.focus();
           }
         });
       }
     });
-    /*if (lastFocusableElem.addEventListener) {
-      lastFocusableElem.addEventListener('keydown', (event) => {
-        if (event.which === 9) {
-          event.preventDefault();
-          event.stopPropagation();
-
-          firstFocusableElem.focus();
-        }
-      });
-    }*/
   }, 100);
 };
 
