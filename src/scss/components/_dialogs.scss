@@ -1,0 +1,42 @@
+/* dialogs
+   ========================================================================== */
+
+$modal-max-width: 44.8rem;
+$modal-max-width-lg: 64rem;
+
+.c-dialog {
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  background-color: rgba(color(black), .95);
+  transition: .2s;
+}
+
+.c-dialog__box {
+  align-self: flex-start; // ie fix
+  transform: translate3d(0, - spacer(lg), 0);
+  width: 100%;
+  max-width: $modal-max-width;
+  margin: auto;
+  padding: spacer(md) + spacer(xs);
+  background-color: color(white);
+  transition: .4s;
+}
+
+// visible
+.c-dialog[aria-hidden="false"] {
+  visibility: visible;
+  opacity: 1;
+}
+
+.c-dialog[aria-hidden="false"] .c-dialog__box {
+  transform: translate3d(0, 0, 0);
+}

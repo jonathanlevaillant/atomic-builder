@@ -2,12 +2,16 @@
  ========================================================================== */
 
 import state from './components/states';
+import dialog from './components/dialogs';
 
 const isComponent = function (component) {
   const dataComponent = component.dataset.component;
 
   if (dataComponent === 'state') {
     state(component);
+  }
+  if (dataComponent === 'dialog') {
+    dialog(component);
   }
 };
 

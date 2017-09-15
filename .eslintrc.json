@@ -2,6 +2,7 @@
   "extends": "airbnb-base",
   "globals": {
     "document": true,
+    "window": true,
     "MutationObserver": true
   },
   "env": {

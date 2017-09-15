@@ -436,6 +436,44 @@
       </section>
       <hr class="c-separator" />
       <section class="u-p">
+        <button
+          type="button"
+          class="c-btn"
+          data-component="dialog"
+          data-target="js-dialog">
+          Modal
+        </button>
+        <div
+          role="dialog"
+          aria-hidden="true"
+          aria-labelledby="dialog-title"
+          aria-describedby="dialog-description"
+          tabindex="-1"
+          class="c-dialog js-dialog">
+          <form class="c-dialog__box">
+            <header>
+              <h2 id="dialog-title">Dialog</h2>
+              <p id="dialog-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </header>
+            <div class="o-grid o-grid--2">
+              <div class="o-grid__col">
+                <label for="dialog-label" class="c-label">Label</label>
+              </div>
+              <div class="o-grid__col">
+                <input type="text" id="dialog-label" class="c-field u-w100" />
+              </div>
+              <div class="o-grid__col">
+                <button type="button" class="c-btn u-w100" data-dismiss="js-dialog">Close</button>
+              </div>
+              <div class="o-grid__col">
+                <button type="button" class="c-btn u-w100">Save</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+      <hr class="c-separator" />
+      <section class="u-p">
         <h2 class="u-color-pink">JS state classes</h2>
         <div class="o-grid o-grid--3 o-grid--1@sm u-p">
           <div class="o-grid__col u-flex u-flex-column">

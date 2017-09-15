@@ -1314,6 +1314,51 @@ th {
   opacity: 1;
 }
 
+/* dialogs
+   ========================================================================== */
+.c-dialog {
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  background-color: rgba(0, 0, 0, 0.95);
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.c-dialog__box {
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  -webkit-transform: translate3d(0, -4.8rem, 0);
+  transform: translate3d(0, -4.8rem, 0);
+  width: 100%;
+  max-width: 44.8rem;
+  margin: auto;
+  padding: 3.2rem;
+  background-color: #fff;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.c-dialog[aria-hidden="false"] {
+  visibility: visible;
+  opacity: 1;
+}
+
+.c-dialog[aria-hidden="false"] .c-dialog__box {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
 /* pages
    ========================================================================== */
 .c-page {

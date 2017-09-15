@@ -104,21 +104,21 @@ const setState = function (parameters) {
   });
 };
 
-export default function state(component) {
+export default function state(elem) {
   const parameters = {
-    behaviours: component.dataset.behaviour.split(', '),
-    states: component.dataset.state.split(', '),
-    tabindexes: component.dataset.tabindex ? component.dataset.tabindex.split(', ') : null,
-    targets: component.dataset.target.split(', '),
+    behaviours: elem.dataset.behaviour.split(', '),
+    states: elem.dataset.state.split(', '),
+    tabindexes: elem.dataset.tabindex ? elem.dataset.tabindex.split(', ') : null,
+    targets: elem.dataset.target.split(', '),
   };
 
-  component.addEventListener('click', (event) => {
+  elem.addEventListener('click', (event) => {
     event.preventDefault();
     event.stopPropagation();
 
     setState(parameters);
   });
-  component.addEventListener('keypress', (event) => {
+  elem.addEventListener('keydown', (event) => {
     if (event.which === 13) {
       event.preventDefault();
       event.stopPropagation();
