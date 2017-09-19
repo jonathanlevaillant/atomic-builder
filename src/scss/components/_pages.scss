@@ -19,3 +19,8 @@
     background-size: 100% $baseline * 2;
   }
 }
+
+// inactive
+.c-page.is-inactive {
+  overflow: hidden;
+}

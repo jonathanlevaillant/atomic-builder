@@ -1153,6 +1153,7 @@ th {
   padding: 0.75em 0;
   font-size: 1.6rem;
   line-height: 1.5;
+  font-weight: 700;
   vertical-align: top;
 }
 
@@ -1257,6 +1258,28 @@ th {
   box-shadow: none;
 }
 
+.c-btn--unstyled {
+  position: static;
+  -webkit-transform: none;
+  transform: none;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.c-btn--unstyled::before, .c-btn--unstyled::after {
+  content: none;
+}
+
+.c-btn--unstyled:focus, .c-btn--unstyled:hover, .c-btn--unstyled:active {
+  -webkit-transform: none;
+  transform: none;
+  color: inherit;
+}
+
 /* separators
    ========================================================================== */
 .c-separator {
@@ -1314,11 +1337,62 @@ th {
   opacity: 1;
 }
 
+/* dialogs
+   ========================================================================== */
+.c-dialog {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 2.4rem;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  background-color: rgba(0, 0, 0, 0.75);
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.c-dialog__box {
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  -webkit-transform: translate3d(0, -4.8rem, 0);
+  transform: translate3d(0, -4.8rem, 0);
+  width: 100%;
+  max-width: 48rem;
+  margin: auto;
+  padding: 2.4rem;
+  border-radius: 0.4rem;
+  background-color: #fff;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.c-dialog[aria-hidden="false"] {
+  visibility: visible;
+  opacity: 1;
+}
+
+.c-dialog[aria-hidden="false"] .c-dialog__box {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
 /* pages
    ========================================================================== */
 .c-page {
   background: linear-gradient(to bottom, #f0f0f0, #f0f0f0 1px, #fff 1px, #fff 50%, #f0f0f0 50%, #f0f0f0 calc(50% + 1px), #fff calc(50% + 1px), #fff);
   background-size: 100% 4.8rem;
+}
+
+.c-page.is-inactive {
+  overflow: hidden;
 }
 
 /* utilities

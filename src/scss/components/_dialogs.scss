@@ -1,12 +1,11 @@
 /* dialogs
    ========================================================================== */
 
-$modal-max-width: 44.8rem;
-$modal-max-width-lg: 64rem;
+$dialog-max-width: 48rem;
 
 .c-dialog {
   position: fixed;
-  z-index: 200;
+  z-index: 100;
   top: 0;
   right: 0;
   bottom: 0;
@@ -14,9 +13,10 @@ $modal-max-width-lg: 64rem;
   visibility: hidden;
   opacity: 0;
   display: flex;
+  padding: spacer(md);
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  background-color: rgba(color(black), .95);
+  background-color: rgba(color(black), .75);
   transition: .2s;
 }
 
@@ -24,9 +24,10 @@ $modal-max-width-lg: 64rem;
   align-self: flex-start; // ie fix
   transform: translate3d(0, - spacer(lg), 0);
   width: 100%;
-  max-width: $modal-max-width;
+  max-width: $dialog-max-width;
   margin: auto;
-  padding: spacer(md) + spacer(xs);
+  padding: spacer(md);
+  border-radius: spacer(xs) / 2;
   background-color: color(white);
   transition: .4s;
 }
