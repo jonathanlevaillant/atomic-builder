@@ -2,7 +2,7 @@
  ========================================================================== */
 
 const page = document.querySelector('.js-page');
-const article = document.querySelector('.js-article');
+const doc = document.querySelector('.js-document');
 
 const keyCodes = {
   enter: 13,
@@ -17,7 +17,7 @@ const showDialog = function (elem) {
   const lastFocusableElem = focusableElems[focusableElems.length - 1];
 
   elem.setAttribute('aria-hidden', false);
-  article.setAttribute('aria-hidden', true);
+  doc.setAttribute('aria-hidden', true);
   page.classList.add('is-inactive');
 
   if (!firstFocusableElem) {
@@ -60,7 +60,7 @@ const hideDialog = function (elem, sourceElem) {
   const { inception } = sourceElem.dataset;
 
   if (!inception || inception === 'false') {
-    article.setAttribute('aria-hidden', false);
+    doc.setAttribute('aria-hidden', false);
     page.classList.remove('is-inactive');
   }
 
@@ -96,16 +96,18 @@ export default function dialog(elem) {
   });
 
   closes.forEach((close) => {
+    const dismiss = document.querySelector(`.${close.dataset.dismiss}`);
+
     close.addEventListener('click', (event) => {
       event.preventDefault();
 
-      hideDialog(target, elem);
+      hideDialog(dismiss, elem);
     });
     close.addEventListener('keydown', (event) => {
       if (event.which === keyCodes.enter) {
         event.preventDefault();
 
-        hideDialog(target, elem);
+        hideDialog(dismiss, elem);
       }
     });
   });
