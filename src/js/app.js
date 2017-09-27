@@ -4,14 +4,20 @@
 import state from './components/states';
 import dialog from './components/dialogs';
 
-const isComponent = function (component) {
+const keyCodes = {
+  enter: 13,
+  escape: 27,
+  tab: 9,
+};
+
+const testComponentType = function (component) {
   const dataComponent = component.dataset.component;
 
   if (dataComponent === 'state') {
-    state(component);
+    state(component, keyCodes);
   }
   if (dataComponent === 'dialog') {
-    dialog(component);
+    dialog(component, keyCodes);
   }
 };
 
@@ -19,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const components = document.querySelectorAll('[data-component]');
 
   components.forEach((component) => {
-    isComponent(component);
+    testComponentType(component);
   });
 
   const observer = new MutationObserver((mutations) => {
@@ -27,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       mutation.addedNodes.forEach((component) => {
         if (typeof component.getAttribute === 'function') {
           if (component.getAttribute('data-component')) {
-            isComponent(component);
+            testComponentType(component);
           }
         }
       });

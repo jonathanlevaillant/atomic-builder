@@ -4,30 +4,30 @@
 const add = 'add';
 const remove = 'remove';
 const toggle = 'toggle';
-const arias = [
+const ariaAttributes = [
   {
     type: 'aria-hidden',
-    init: false,
+    init: true,
   },
   {
     type: 'aria-disabled',
-    init: false,
+    init: true,
   },
   {
     type: 'aria-selected',
-    init: true,
+    init: false,
   },
   {
     type: 'aria-expanded',
-    init: true,
+    init: false,
   },
   {
     type: 'aria-pressed',
-    init: true,
+    init: false,
   },
   {
     type: 'aria-checked',
-    init: true,
+    init: false,
   },
 ];
 
@@ -44,23 +44,15 @@ const setClass = function (elem, stateClass, behaviour) {
 };
 
 const setAria = function (elem, behaviour) {
-  arias.forEach((aria) => {
-    const { type } = aria;
-    const { init } = aria;
+  ariaAttributes.forEach((ariaAttribute) => {
+    const { type } = ariaAttribute;
+    const { init } = ariaAttribute;
 
     if (elem.hasAttribute(type)) {
       if (behaviour === add) {
-        if (!init) {
-          elem.setAttribute(type, false);
-        } else {
-          elem.setAttribute(type, true);
-        }
+        elem.setAttribute(type, !init);
       } else if (behaviour === remove) {
-        if (!init) {
-          elem.setAttribute(type, true);
-        } else {
-          elem.setAttribute(type, false);
-        }
+        elem.setAttribute(type, init);
       } else {
         elem.setAttribute(type, elem.getAttribute(type) !== 'true');
       }
@@ -104,7 +96,7 @@ const setState = function (parameters) {
   });
 };
 
-export default function state(elem) {
+export default function state(elem, keyCodes) {
   const parameters = {
     behaviours: elem.dataset.behaviour.split(', '),
     states: elem.dataset.state.split(', '),
@@ -114,14 +106,12 @@ export default function state(elem) {
 
   elem.addEventListener('click', (event) => {
     event.preventDefault();
-    event.stopPropagation();
 
     setState(parameters);
   });
   elem.addEventListener('keydown', (event) => {
-    if (event.which === 13) {
+    if (event.which === keyCodes.enter) {
       event.preventDefault();
-      event.stopPropagation();
 
       setState(parameters);
     }

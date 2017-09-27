@@ -4,23 +4,17 @@
 const page = document.querySelector('.js-page');
 const doc = document.querySelector('.js-document');
 
-const keyCodes = {
-  enter: 13,
-  escape: 27,
-  tab: 9,
-};
-
-const showDialog = function (elem) {
-  const focusableElems = elem.querySelectorAll('[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"]');
+const openDialog = function (dialogWidget, keyCodes) {
+  const focusableElems = dialogWidget.querySelectorAll('[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"]');
   const firstFocusableElem = focusableElems[0];
   const secondFocusableElem = focusableElems[1];
   const lastFocusableElem = focusableElems[focusableElems.length - 1];
 
-  elem.setAttribute('aria-hidden', false);
+  dialogWidget.setAttribute('aria-hidden', false);
   doc.setAttribute('aria-hidden', true);
   page.classList.add('is-inactive');
 
-  // return if no focusable elements
+  // return if no focusable element
   if (!firstFocusableElem) {
     return;
   }
@@ -58,8 +52,8 @@ const showDialog = function (elem) {
   }, 100);
 };
 
-const hideDialog = function (elem, sourceElem) {
-  const { inception } = sourceElem.dataset;
+const closeDialog = function (dialogWidget, dialogSrc) {
+  const { inception } = dialogSrc.dataset;
 
   // check if dialog is inside another dialog
   if (!inception || inception === 'false') {
@@ -67,58 +61,58 @@ const hideDialog = function (elem, sourceElem) {
     page.classList.remove('is-inactive');
   }
 
-  elem.setAttribute('aria-hidden', true);
+  dialogWidget.setAttribute('aria-hidden', true);
 
   // restoring focus
-  sourceElem.focus();
+  dialogSrc.focus();
 };
 
-export default function dialog(elem) {
-  const target = document.querySelector(`.${elem.dataset.target}`);
-  const closes = target.querySelectorAll('[data-dismiss]');
+export default function dialog(dialogSrc, keyCodes) {
+  const dialogWidget = document.querySelector(`.${dialogSrc.dataset.target}`);
+  const dialogsToDismiss = dialogWidget.querySelectorAll('[data-dismiss]');
 
-  // show dialog
-  elem.addEventListener('click', (event) => {
+  // open dialog
+  dialogSrc.addEventListener('click', (event) => {
     event.preventDefault();
 
-    showDialog(target);
+    openDialog(dialogWidget, keyCodes);
   });
 
-  elem.addEventListener('keydown', (event) => {
+  dialogSrc.addEventListener('keydown', (event) => {
     if (event.which === keyCodes.enter) {
       event.preventDefault();
 
-      showDialog(target);
+      openDialog(dialogWidget, keyCodes);
     }
   });
 
-  // hide dialog
-  target.addEventListener('keydown', (event) => {
+  // close dialog
+  dialogWidget.addEventListener('keydown', (event) => {
     if (event.which === keyCodes.escape) {
-      hideDialog(target, elem);
+      closeDialog(dialogWidget, dialogSrc);
     }
   });
 
-  closes.forEach((close) => {
-    const dismiss = document.querySelector(`.${close.dataset.dismiss}`);
+  dialogsToDismiss.forEach((dialogToDismiss) => {
+    const dialogWidgetToDismiss = document.querySelector(`.${dialogToDismiss.dataset.dismiss}`);
 
-    close.addEventListener('click', (event) => {
+    dialogToDismiss.addEventListener('click', (event) => {
       event.preventDefault();
 
-      hideDialog(dismiss, elem);
+      closeDialog(dialogWidgetToDismiss, dialogSrc);
     });
-    close.addEventListener('keydown', (event) => {
+    dialogToDismiss.addEventListener('keydown', (event) => {
       if (event.which === keyCodes.enter) {
         event.preventDefault();
 
-        hideDialog(dismiss, elem);
+        closeDialog(dialogWidgetToDismiss, dialogSrc);
       }
     });
   });
 
   window.addEventListener('click', (event) => {
-    if (event.target === target) {
-      hideDialog(target, elem);
+    if (event.target === dialogWidget) {
+      closeDialog(dialogWidget, dialogSrc);
     }
   });
 }
