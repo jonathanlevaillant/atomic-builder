@@ -20,6 +20,7 @@ const showDialog = function (elem) {
   doc.setAttribute('aria-hidden', true);
   page.classList.add('is-inactive');
 
+  // return if no focusable elements
   if (!firstFocusableElem) {
     return;
   }
@@ -31,6 +32,7 @@ const showDialog = function (elem) {
       firstFocusableElem.focus();
     }
 
+    // trapping focus inside the dialog
     focusableElems.forEach((focusableElem) => {
       if (focusableElem.addEventListener) {
         focusableElem.addEventListener('keydown', (event) => {
@@ -59,6 +61,7 @@ const showDialog = function (elem) {
 const hideDialog = function (elem, sourceElem) {
   const { inception } = sourceElem.dataset;
 
+  // check if dialog is inside another dialog
   if (!inception || inception === 'false') {
     doc.setAttribute('aria-hidden', false);
     page.classList.remove('is-inactive');
@@ -66,6 +69,7 @@ const hideDialog = function (elem, sourceElem) {
 
   elem.setAttribute('aria-hidden', true);
 
+  // restoring focus
   sourceElem.focus();
 };
 
