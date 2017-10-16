@@ -70,6 +70,8 @@ const closeDialog = function (dialogWidget, dialogSrc) {
 export default function dialog(dialogSrc, keyCodes) {
   const dialogWidget = document.querySelector(`.${dialogSrc.dataset.target}`);
   const dialogsToDismiss = dialogWidget.querySelectorAll('[data-dismiss]');
+  const { overlay } = dialogSrc.dataset;
+  const overlayIsEnabled = !overlay || overlay === 'true';
 
   // open dialog
   dialogSrc.addEventListener('click', (event) => {
@@ -111,7 +113,7 @@ export default function dialog(dialogSrc, keyCodes) {
   });
 
   window.addEventListener('click', (event) => {
-    if (event.target === dialogWidget) {
+    if (event.target === dialogWidget && overlayIsEnabled) {
       closeDialog(dialogWidget, dialogSrc);
     }
   });
