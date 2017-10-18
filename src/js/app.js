@@ -3,11 +3,18 @@
 
 import state from './components/states';
 import dialog from './components/dialogs';
+import tabs from './components/tabs';
 
 const keyCodes = {
+  tab: 9,
   enter: 13,
   escape: 27,
-  tab: 9,
+  end: 35,
+  home: 36,
+  left: 37,
+  up: 38,
+  right: 39,
+  down: 40,
 };
 
 const testComponentType = function (component) {
@@ -18,6 +25,9 @@ const testComponentType = function (component) {
   }
   if (dataComponent === 'dialog') {
     dialog(component, keyCodes);
+  }
+  if (dataComponent === 'tabs') {
+    tabs(component, keyCodes);
   }
 };
 

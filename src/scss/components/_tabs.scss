@@ -1,0 +1,69 @@
+/* tabs
+   ========================================================================== */
+
+// tabs
+.c-tabs__list {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+}
+
+.c-tabs__item {
+  overflow: hidden;
+
+  &:first-child {
+    border-top-left-radius: spacer(xs);
+  }
+
+  &:last-child {
+    border-top-right-radius: spacer(xs);
+  }
+}
+
+.c-tabs__link {
+  display: block;
+  padding: spacer(sm) spacer(md);
+  background-color: color(silver);
+  font-weight: $font-weight-bold;
+  text-decoration: none;
+  color: color(grey);
+}
+
+// panel
+.c-tabs__panel {
+  display: none;
+  padding: spacer(md);
+  background-color: color(whitesmoke);
+}
+
+// selected
+.c-tabs__link[aria-selected="true"] {
+  background-color: color(pink);
+  color: color(white);
+}
+
+.c-tabs__panel[aria-hidden="false"] {
+  display: block;
+}
+
+/* responsive
+   ========================================================================== */
+
+// phones
+@media (max-width: bp(sm)) {
+
+  // tabs
+  .c-tabs__list {
+    flex-direction: column;
+  }
+
+  .c-tabs__item {
+    &:first-child {
+      border-top-right-radius: spacer(xs);
+    }
+
+    &:last-child {
+      border-top-right-radius: 0;
+    }
+  }
+}

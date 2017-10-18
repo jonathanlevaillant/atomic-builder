@@ -447,26 +447,47 @@
       </section>
       <hr class="c-separator" />
       <section class="u-p">
-        <h2 class="u-color-pink">Tabbed interfaces</h2>
-        <div class="c-tab u-p">
-          <ul role="tablist">
-            <li role="presentation">
-              <a href="#section-1" id="label-1" role="tab" aria-controls="section-1" aria-selected="true" tabindex="0">
+        <h2 class="u-color-pink">Tabs</h2>
+        <div class="c-tabs u-p" data-component="tabs">
+          <ul role="tablist" class="c-tabs__list">
+            <li role="presentation" class="c-tabs__item">
+              <a
+                href="#tab-panel-1"
+                id="tab-item-1"
+                role="tab"
+                aria-controls="tab-panel-1"
+                aria-selected="true"
+                tabindex="0"
+                class="c-tabs__link">
                 Section 1
               </a>
             </li>
-            <li role="presentation">
-              <a href="#section-2" id="label-2" role="tab" aria-controls="section-2" aria-selected="false" tabindex="-1">
+            <li role="presentation" class="c-tabs__item">
+              <a
+                href="#tab-panel-2"
+                id="tab-item-2"
+                role="tab"
+                aria-controls="tab-panel-2"
+                aria-selected="false"
+                tabindex="-1"
+                class="c-tabs__link">
                 Section 2
               </a>
             </li>
-            <li role="presentation">
-              <a href="#section-3" id="label-3" role="tab" aria-controls="section-3" aria-selected="false" tabindex="-1">
+            <li role="presentation" class="c-tabs__item">
+              <a
+                href="#tab-panel-3"
+                id="tab-item-3"
+                role="tab"
+                aria-controls="tab-panel-3"
+                aria-selected="false"
+                tabindex="-1"
+                class="c-tabs__link">
                 Section 3
               </a>
             </li>
           </ul>
-          <section id="section-1" role="tabpanel" aria-hidden="false" aria-labelledby="label-1">
+          <section id="tab-panel-1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-item-1" class="c-tabs__panel">
             <h3>Section 1</h3>
             <p>
               A paragraph (from the Greek paragraphos, "to write beside" or "written beside") is a self-contained unit of a
@@ -474,8 +495,9 @@
               Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing,
               used to organize longer prose.
             </p>
+            <p><a href="#">This is a text link</a></p>
           </section>
-          <section id="section-2" role="tabpanel" aria-hidden="true" aria-labelledby="label-2">
+          <section id="tab-panel-2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-item-2" class="c-tabs__panel">
             <h3>Section 2</h3>
             <p>
               A paragraph (from the Greek paragraphos, "to write beside" or "written beside") is a self-contained unit of a
@@ -483,8 +505,9 @@
               Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing,
               used to organize longer prose.
             </p>
+            <p><a href="#">This is a text link</a></p>
           </section>
-          <section id="section-3" role="tabpanel" aria-hidden="true" aria-labelledby="label-3">
+          <section id="tab-panel-3" role="tabpanel" aria-hidden="true" aria-labelledby="tab-item-3" class="c-tabs__panel">
             <h3>Section 3</h3>
             <p>
               A paragraph (from the Greek paragraphos, "to write beside" or "written beside") is a self-contained unit of a
@@ -492,6 +515,7 @@
               Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing,
               used to organize longer prose.
             </p>
+            <p><a href="#">This is a text link</a></p>
           </section>
         </div>
       </section>
