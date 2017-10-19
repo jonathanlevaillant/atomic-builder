@@ -1,6 +1,8 @@
 /* accordions
  ========================================================================== */
 
+import preventNested from './../tools/preventNested';
+
 const closeTab = function (tab, panel) {
   tab.setAttribute('tabindex', -1);
   tab.setAttribute('aria-expanded', false);
@@ -31,6 +33,7 @@ const toggleTab = function (tab, panel, { tabs, panels }, { multiselectable }) {
     closeTabs(tab, tabs, panels);
   }
 
+  tab.focus();
   tab.setAttribute('tabindex', 0);
   tab.setAttribute('aria-selected', true);
   tab.setAttribute('aria-expanded', tab.getAttribute('aria-expanded') !== 'true');
@@ -48,8 +51,8 @@ const selectTab = function (tab, tabs) {
 };
 
 export default function accordion(component, keyCodes) {
-  const tabs = component.querySelectorAll('[role="tab"');
-  const panels = component.querySelectorAll('[role="tabpanel"');
+  const tabs = preventNested(component.querySelectorAll('[role="tab"]'), component);
+  const panels = preventNested(component.querySelectorAll('[role="tabpanel"]'), component);
   const tabPanels = { tabs, panels };
   const firstTab = tabs[0];
   const lastTab = tabs[tabs.length - 1];

@@ -1,6 +1,8 @@
 /* tab panels
  ========================================================================== */
 
+import preventNested from './../tools/preventNested';
+
 const closeTab = function (tab, panel) {
   tab.setAttribute('tabindex', -1);
   tab.setAttribute('aria-selected', false);
@@ -26,8 +28,8 @@ const openTab = function (tab, panel, { tabs, panels }, { focus = false } = {}) 
 };
 
 export default function tabPanel(component, keyCodes) {
-  const tabs = component.querySelectorAll('[role="tab"');
-  const panels = component.querySelectorAll('[role="tabpanel"');
+  const tabs = preventNested(component.querySelectorAll('[role="tab"]'), component);
+  const panels = preventNested(component.querySelectorAll('[role="tabpanel"]'), component);
   const tabPanels = { tabs, panels };
   const firstTab = tabs[0];
   const lastTab = tabs[tabs.length - 1];

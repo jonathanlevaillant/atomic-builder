@@ -53,10 +53,10 @@ const openDialog = function (component, keyCodes) {
 };
 
 const closeDialog = function (component, src) {
-  const inception = (src.dataset.inception || 'false') === 'true';
+  const nested = (src.dataset.nested || 'false') === 'true';
 
   // check if dialog is inside another dialog
-  if (!inception) {
+  if (!nested) {
     doc.setAttribute('aria-hidden', false);
     page.classList.remove('is-inactive');
   }
