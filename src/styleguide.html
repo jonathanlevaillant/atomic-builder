@@ -447,47 +447,47 @@
       </section>
       <hr class="c-separator" />
       <section class="u-p">
-        <h2 class="u-color-pink">Tabs</h2>
-        <div class="c-tabs u-p" data-component="tabs">
-          <ul role="tablist" class="c-tabs__list">
-            <li role="presentation" class="c-tabs__item">
+        <h2 class="u-color-pink">Tab Panel</h2>
+        <div class="c-tab u-p" data-component="tab">
+          <ul role="tablist" class="c-tab__list">
+            <li role="presentation" class="c-tab__item">
               <a
                 href="#tab-panel-1"
-                id="tab-item-1"
+                id="tab-link-1"
                 role="tab"
                 aria-controls="tab-panel-1"
                 aria-selected="true"
                 tabindex="0"
-                class="c-tabs__link">
+                class="c-tab__link">
                 Section 1
               </a>
             </li>
-            <li role="presentation" class="c-tabs__item">
+            <li role="presentation" class="c-tab__item">
               <a
                 href="#tab-panel-2"
-                id="tab-item-2"
+                id="tab-link-2"
                 role="tab"
                 aria-controls="tab-panel-2"
                 aria-selected="false"
                 tabindex="-1"
-                class="c-tabs__link">
+                class="c-tab__link">
                 Section 2
               </a>
             </li>
-            <li role="presentation" class="c-tabs__item">
+            <li role="presentation" class="c-tab__item">
               <a
                 href="#tab-panel-3"
-                id="tab-item-3"
+                id="tab-link-3"
                 role="tab"
                 aria-controls="tab-panel-3"
                 aria-selected="false"
                 tabindex="-1"
-                class="c-tabs__link">
+                class="c-tab__link">
                 Section 3
               </a>
             </li>
           </ul>
-          <section id="tab-panel-1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-item-1" class="c-tabs__panel">
+          <section id="tab-panel-1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-link-1" class="c-tab__panel">
             <h3>Section 1</h3>
             <p>
               A paragraph (from the Greek paragraphos, "to write beside" or "written beside") is a self-contained unit of a
@@ -497,7 +497,7 @@
             </p>
             <p><a href="#">This is a text link</a></p>
           </section>
-          <section id="tab-panel-2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-item-2" class="c-tabs__panel">
+          <section id="tab-panel-2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-link-2" class="c-tab__panel">
             <h3>Section 2</h3>
             <p>
               A paragraph (from the Greek paragraphos, "to write beside" or "written beside") is a self-contained unit of a
@@ -507,7 +507,76 @@
             </p>
             <p><a href="#">This is a text link</a></p>
           </section>
-          <section id="tab-panel-3" role="tabpanel" aria-hidden="true" aria-labelledby="tab-item-3" class="c-tabs__panel">
+          <section id="tab-panel-3" role="tabpanel" aria-hidden="true" aria-labelledby="tab-link-3" class="c-tab__panel">
+            <h3>Section 3</h3>
+            <p>
+              A paragraph (from the Greek paragraphos, "to write beside" or "written beside") is a self-contained unit of a
+              discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences.
+              Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing,
+              used to organize longer prose.
+            </p>
+            <p><a href="#">This is a text link</a></p>
+          </section>
+        </div>
+      </section>
+      <hr class="c-separator" />
+      <section class="u-p">
+        <h2 class="u-color-pink">Accordion</h2>
+        <div role="tablist" aria-multiselectable="false" class="c-accordion u-p" data-component="accordion">
+          <button
+            type="button"
+            id="accordion-item-1"
+            role="tab"
+            aria-controls="accordion-panel-1"
+            aria-selected="false"
+            aria-expanded="true"
+            tabindex="0"
+            class="c-accordion__btn">
+            Section 1
+          </button>
+          <section id="accordion-panel-1" role="tabpanel" aria-hidden="false" aria-labelledby="accordion-item-1" class="c-accordion__panel">
+            <h3>Section 1</h3>
+            <p>
+              A paragraph (from the Greek paragraphos, "to write beside" or "written beside") is a self-contained unit of a
+              discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences.
+              Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing,
+              used to organize longer prose.
+            </p>
+            <p><a href="#">This is a text link</a></p>
+          </section>
+          <button
+            type="button"
+            id="accordion-item-2"
+            role="tab"
+            aria-controls="accordion-panel-2"
+            aria-selected="false"
+            aria-expanded="false"
+            tabindex="-1"
+            class="c-accordion__btn">
+            Section 2
+          </button>
+          <section id="accordion-panel-2" role="tabpanel" aria-hidden="true" aria-labelledby="accordion-item-2" class="c-accordion__panel">
+            <h3>Section 2</h3>
+            <p>
+              A paragraph (from the Greek paragraphos, "to write beside" or "written beside") is a self-contained unit of a
+              discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences.
+              Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing,
+              used to organize longer prose.
+            </p>
+            <p><a href="#">This is a text link</a></p>
+          </section>
+          <button
+            type="button"
+            id="accordion-item-3"
+            role="tab"
+            aria-controls="accordion-panel-3"
+            aria-selected="false"
+            aria-expanded="false"
+            tabindex="-1"
+            class="c-accordion__btn">
+            Section 3
+          </button>
+          <section id="accordion-panel-3" role="tabpanel" aria-hidden="true" aria-labelledby="accordion-item-3" class="c-accordion__panel">
             <h3>Section 3</h3>
             <p>
               A paragraph (from the Greek paragraphos, "to write beside" or "written beside") is a self-contained unit of a

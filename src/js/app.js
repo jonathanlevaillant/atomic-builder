@@ -3,7 +3,8 @@
 
 import state from './components/states';
 import dialog from './components/dialogs';
-import tabs from './components/tabs';
+import tabPanel from './components/tabPanels';
+import accordion from './components/accordions';
 
 const keyCodes = {
   tab: 9,
@@ -26,8 +27,11 @@ const testComponentType = function (component) {
   if (dataComponent === 'dialog') {
     dialog(component, keyCodes);
   }
-  if (dataComponent === 'tabs') {
-    tabs(component, keyCodes);
+  if (dataComponent === 'tab') {
+    tabPanel(component, keyCodes);
+  }
+  if (dataComponent === 'accordion') {
+    accordion(component, keyCodes);
   }
 };
 

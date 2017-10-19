@@ -1,0 +1,29 @@
+/* accordions
+   ========================================================================== */
+
+// header
+.c-accordion__btn {
+  display: block;
+  width: 100%;
+  padding: spacer(sm) spacer(md);
+  border: 0;
+  background-color: color(silver);
+  font-weight: $font-weight-bold;
+}
+
+// panels
+.c-accordion__panel {
+  display: none;
+  padding: spacer(md);
+  background-color: color(whitesmoke);
+}
+
+// selected
+.c-accordion__btn[aria-expanded="true"] {
+  background-color: color(pink);
+  color: color(white);
+}
+
+.c-accordion__panel[aria-hidden="false"] {
+  display: block;
+}

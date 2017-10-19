@@ -4,13 +4,13 @@
 const page = document.querySelector('.js-page');
 const doc = document.querySelector('.js-document');
 
-const openDialog = function (dialogWidget, keyCodes) {
-  const focusableElems = dialogWidget.querySelectorAll('[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"]');
+const openDialog = function (component, keyCodes) {
+  const focusableElems = component.querySelectorAll('[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"]');
   const firstFocusableElem = focusableElems[0];
   const secondFocusableElem = focusableElems[1];
   const lastFocusableElem = focusableElems[focusableElems.length - 1];
 
-  dialogWidget.setAttribute('aria-hidden', false);
+  component.setAttribute('aria-hidden', false);
   doc.setAttribute('aria-hidden', true);
   page.classList.add('is-inactive');
 
@@ -30,9 +30,9 @@ const openDialog = function (dialogWidget, keyCodes) {
     focusableElems.forEach((focusableElem) => {
       if (focusableElem.addEventListener) {
         focusableElem.addEventListener('keydown', (event) => {
-          const isTabPressed = event.which === keyCodes.tab;
+          const tab = event.which === keyCodes.tab;
 
-          if (!isTabPressed) {
+          if (!tab) {
             return;
           }
           if (event.shiftKey) {
@@ -52,69 +52,68 @@ const openDialog = function (dialogWidget, keyCodes) {
   }, 100);
 };
 
-const closeDialog = function (dialogWidget, dialogSrc) {
-  const { inception } = dialogSrc.dataset;
+const closeDialog = function (component, src) {
+  const inception = (src.dataset.inception || 'false') === 'true';
 
   // check if dialog is inside another dialog
-  if (!inception || inception === 'false') {
+  if (!inception) {
     doc.setAttribute('aria-hidden', false);
     page.classList.remove('is-inactive');
   }
 
-  dialogWidget.setAttribute('aria-hidden', true);
+  component.setAttribute('aria-hidden', true);
 
   // restoring focus
-  dialogSrc.focus();
+  src.focus();
 };
 
-export default function dialog(dialogSrc, keyCodes) {
-  const dialogWidget = document.querySelector(`.${dialogSrc.dataset.target}`);
-  const dialogsToDismiss = dialogWidget.querySelectorAll('[data-dismiss]');
-  const { overlay } = dialogSrc.dataset;
-  const overlayIsEnabled = !overlay || overlay === 'true';
+export default function dialog(src, keyCodes) {
+  const component = document.querySelector(`.${src.dataset.target}`);
+  const dismissTargets = component.querySelectorAll('[data-dismiss]');
+  const { overlay } = src.dataset;
 
   // open dialog
-  dialogSrc.addEventListener('click', (event) => {
+  src.addEventListener('click', (event) => {
     event.preventDefault();
 
-    openDialog(dialogWidget, keyCodes);
+    openDialog(component, keyCodes);
   });
 
-  dialogSrc.addEventListener('keydown', (event) => {
+  src.addEventListener('keydown', (event) => {
     if (event.which === keyCodes.enter) {
       event.preventDefault();
 
-      openDialog(dialogWidget, keyCodes);
+      openDialog(component, keyCodes);
     }
   });
 
   // close dialog
-  dialogWidget.addEventListener('keydown', (event) => {
+  component.addEventListener('keydown', (event) => {
     if (event.which === keyCodes.escape) {
-      closeDialog(dialogWidget, dialogSrc);
+      closeDialog(component, src);
     }
   });
 
-  dialogsToDismiss.forEach((dialogToDismiss) => {
-    const dialogWidgetToDismiss = document.querySelector(`.${dialogToDismiss.dataset.dismiss}`);
+  dismissTargets.forEach((dismissTarget) => {
+    const target = document.querySelector(`.${dismissTarget.dataset.dismiss}`);
 
-    dialogToDismiss.addEventListener('click', (event) => {
+    dismissTarget.addEventListener('click', (event) => {
       event.preventDefault();
 
-      closeDialog(dialogWidgetToDismiss, dialogSrc);
+      closeDialog(target, src);
     });
-    dialogToDismiss.addEventListener('keydown', (event) => {
+    dismissTarget.addEventListener('keydown', (event) => {
       if (event.which === keyCodes.enter) {
         event.preventDefault();
 
-        closeDialog(dialogWidgetToDismiss, dialogSrc);
+        closeDialog(target, src);
       }
     });
   });
 
   window.addEventListener('click', (event) => {
-    if (event.target === dialogWidget && overlayIsEnabled) {
-      closeDialog(dialogWidget, dialogSrc);
+    if (event.target === component && (!overlay || overlay === 'true')) {
+      closeDialog(component, src);
     }
   });
 }

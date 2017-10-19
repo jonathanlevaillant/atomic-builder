@@ -45,8 +45,7 @@ const setClass = function (elem, stateClass, behaviour) {
 
 const setAria = function (elem, behaviour) {
   ariaAttributes.forEach((ariaAttribute) => {
-    const { type } = ariaAttribute;
-    const { init } = ariaAttribute;
+    const { type, init } = ariaAttribute;
 
     if (elem.hasAttribute(type)) {
       if (behaviour === add) {
