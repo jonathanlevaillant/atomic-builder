@@ -15,13 +15,10 @@ const closeTabs = function (tabs, panels) {
   });
 };
 
-const openTab = function (tab, panel, { tabs, panels }, { focus = false } = {}) {
+const openTab = function (tab, panel, { tabs, panels }) {
   closeTabs(tabs, panels);
 
-  if (focus) {
-    tab.focus();
-  }
-
+  tab.focus();
   tab.setAttribute('tabindex', 0);
   tab.setAttribute('aria-selected', true);
   panel.setAttribute('aria-hidden', false);
@@ -55,7 +52,7 @@ export default function tabPanel(component, keyCodes) {
       if (event.which === keyCodes.left || event.which === keyCodes.up) {
         event.preventDefault();
 
-        openTab(prevTab, prevPanel, tabPanels, { focus: true });
+        openTab(prevTab, prevPanel, tabPanels);
       }
     });
 
@@ -64,7 +61,7 @@ export default function tabPanel(component, keyCodes) {
       if (event.which === keyCodes.right || event.which === keyCodes.down) {
         event.preventDefault();
 
-        openTab(nextTab, nextPanel, tabPanels, { focus: true });
+        openTab(nextTab, nextPanel, tabPanels);
       }
     });
 
@@ -73,7 +70,7 @@ export default function tabPanel(component, keyCodes) {
       if (event.which === keyCodes.home) {
         event.preventDefault();
 
-        openTab(firstTab, firstPanel, tabPanels, { focus: true });
+        openTab(firstTab, firstPanel, tabPanels);
       }
     });
 
@@ -82,7 +79,7 @@ export default function tabPanel(component, keyCodes) {
       if (event.which === keyCodes.end) {
         event.preventDefault();
 
-        openTab(lastTab, lastPanel, tabPanels, { focus: true });
+        openTab(lastTab, lastPanel, tabPanels);
       }
     });
   });
