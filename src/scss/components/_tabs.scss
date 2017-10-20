@@ -9,14 +9,16 @@
 }
 
 .c-tab__item {
-  overflow: hidden;
-
   &:first-child {
-    border-top-left-radius: spacer(xs);
+    .c-tab__link {
+      border-top-left-radius: spacer(xs);
+    }
   }
 
   &:last-child {
-    border-top-right-radius: spacer(xs);
+    .c-tab__link {
+      border-top-right-radius: spacer(xs);
+    }
   }
 }
 
@@ -59,11 +61,15 @@
 
   .c-tab__item {
     &:first-child {
-      border-top-right-radius: spacer(xs);
+      .c-tab__link {
+        border-top-right-radius: spacer(xs);
+      }
     }
 
     &:last-child {
-      border-top-right-radius: 0;
+      .c-tab__link {
+        border-top-right-radius: 0;
+      }
     }
   }
 }

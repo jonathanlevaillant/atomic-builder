@@ -1390,15 +1390,11 @@ th {
   list-style: none;
 }
 
-.c-tab__item {
-  overflow: hidden;
-}
-
-.c-tab__item:first-child {
+.c-tab__item:first-child .c-tab__link {
   border-top-left-radius: 0.8rem;
 }
 
-.c-tab__item:last-child {
+.c-tab__item:last-child .c-tab__link {
   border-top-right-radius: 0.8rem;
 }
 
@@ -1436,11 +1432,11 @@ th {
     flex-direction: column;
   }
 
-  .c-tab__item:first-child {
+  .c-tab__item:first-child .c-tab__link {
     border-top-right-radius: 0.8rem;
   }
 
-  .c-tab__item:last-child {
+  .c-tab__item:last-child .c-tab__link {
     border-top-right-radius: 0;
   }
 }
