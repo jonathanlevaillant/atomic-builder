@@ -117,7 +117,7 @@ gulp.task('fonts', () =>
     .pipe(gulp.dest(paths.output + 'fonts/'))
 );
 
-// build
+// task 'build'
 gulp.task('build', ['css', 'js', 'images', 'fonts']);
 
 /* watch (css, js)
