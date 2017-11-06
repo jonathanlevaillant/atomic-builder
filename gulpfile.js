@@ -12,6 +12,7 @@ const stylelint = require('gulp-stylelint');
 const eslint = require('gulp-eslint');
 const sourcemaps = require('gulp-sourcemaps');
 const imagemin = require('gulp-imagemin');
+const pngquant = require('imagemin-pngquant');
 
 /* config
  ========================================================================== */
@@ -97,7 +98,8 @@ gulp.task('images', () =>
   gulp.src(paths.entry + paths.images)
     .pipe(production ? imagemin([
       imagemin.gifsicle({
-        interlaced: true
+        interlaced: true,
+        optimizationLevel: 3
       }),
       imagemin.jpegtran({
         progressive: true
@@ -106,6 +108,10 @@ gulp.task('images', () =>
         plugins: [{
           removeUnknownsAndDefaults: false
         }]
+      }),
+      pngquant({
+        speed: 1,
+        quality: 98
       })
     ]) : util.noop())
     .pipe(gulp.dest(paths.output + 'images/'))
