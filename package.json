@@ -20,9 +20,9 @@
     "watch": "rm -rf ./dist && gulp && gulp watch",
     "build": "rm -rf ./dist && gulp --env production"
   },
-  "main": "dist/styleguide.html",
   "style": "dist/css/main.css",
-  "sass": "src/scss/main.scss",
+  "sass": "src/assets/styles/main.scss",
+  "main": "src/index.html",
   "repository": {
     "type": "git",
     "url": "https://github.com/jonathanlevaillant/atomic-builder.git"
