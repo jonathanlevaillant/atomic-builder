@@ -23,7 +23,7 @@
   },
   "style": "dist/css/main.css",
   "sass": "src/assets/styles/main.scss",
-  "main": "src/index.html",
+  "main": "index.html",
   "repository": {
     "type": "git",
     "url": "https://github.com/jonathanlevaillant/atomic-builder.git"
