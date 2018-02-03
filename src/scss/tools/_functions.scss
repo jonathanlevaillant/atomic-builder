@@ -85,7 +85,7 @@
 /* maps
    ========================================================================== */
 
-// get spacer
+// spacer
 @each $spacer-name, $spacer-value in $spacers {
   $spacers: map-merge($spacers, ($spacer-name: rem($spacer-value)));
 }
@@ -98,7 +98,7 @@
   @warn "Unfortunately, no value could be retrieved from #{$spacers}";
 }
 
-// get font size
+// font size
 @function font-size($font-size, $key: 1) {
   @if map-has-key($font-sizes, $font-size) {
     $font-size: map-get($font-sizes, $font-size);
@@ -117,7 +117,7 @@
   @warn "Unfortunately, no value could be retrieved from #{$font-sizes}";
 }
 
-// get color
+// color
 @function color($color) {
   @if map-has-key($colors, $color) {
     @return map-get($colors, $color);
@@ -126,7 +126,7 @@
   @warn "Unfortunately, no value could be retrieved from #{$colors}";
 }
 
-// get breakpoint
+// breakpoint
 $breakpoint-context: 16px;
 $breakpoints-plus: ();
 
