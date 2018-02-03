@@ -43,7 +43,8 @@ $btn-shadow-depth: em(4px, $btn-font-size);
   &:focus,
   &:hover,
   &:active,
-  &[aria-pressed="true"] {
+  &[aria-pressed="true"],
+  &.is-pressed {
     color: color(white);
 
     &::after {
@@ -53,7 +54,8 @@ $btn-shadow-depth: em(4px, $btn-font-size);
   }
 
   &:active,
-  &[aria-pressed="true"] {
+  &[aria-pressed="true"],
+  &.is-pressed {
     transform: translate3d(0, 0, 0);
 
     &::before {
@@ -63,5 +65,29 @@ $btn-shadow-depth: em(4px, $btn-font-size);
     &::after {
       box-shadow: none;
     }
+  }
+}
+
+// unstyled
+.c-btn--unstyled {
+  position: static;
+  transform: none;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  line-height: inherit;
+  color: inherit;
+
+  &::before,
+  &::after {
+    content: none;
+  }
+
+  &:focus,
+  &:hover,
+  &:active {
+    transform: none;
+    color: inherit;
   }
 }
