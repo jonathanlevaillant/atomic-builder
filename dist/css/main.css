@@ -79,10 +79,6 @@ a {
   -webkit-text-decoration-skip: objects;
 }
 
-a:hover, a:active {
-  outline-width: 0;
-}
-
 abbr[title] {
   border-bottom: 0;
   text-decoration: underline;
@@ -1153,6 +1149,7 @@ th {
   padding: 0.75em 0;
   font-size: 1.6rem;
   line-height: 1.5;
+  font-weight: 700;
   vertical-align: top;
 }
 
@@ -1233,28 +1230,50 @@ th {
   opacity: 0;
 }
 
-.c-btn:focus, .c-btn:hover, .c-btn:active, .c-btn[aria-pressed="true"] {
+.c-btn:focus, .c-btn:hover, .c-btn:active, .c-btn[aria-pressed="true"], .c-btn.is-pressed {
   color: #fff;
 }
 
-.c-btn:focus::after, .c-btn:hover::after, .c-btn:active::after, .c-btn[aria-pressed="true"]::after {
+.c-btn:focus::after, .c-btn:hover::after, .c-btn:active::after, .c-btn[aria-pressed="true"]::after, .c-btn.is-pressed::after {
   visibility: visible;
   opacity: 1;
 }
 
-.c-btn:active, .c-btn[aria-pressed="true"] {
+.c-btn:active, .c-btn[aria-pressed="true"], .c-btn.is-pressed {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
 
-.c-btn:active::before, .c-btn[aria-pressed="true"]::before {
+.c-btn:active::before, .c-btn[aria-pressed="true"]::before, .c-btn.is-pressed::before {
   -webkit-transform: translate3d(0, -0.25em, 0);
   transform: translate3d(0, -0.25em, 0);
 }
 
-.c-btn:active::after, .c-btn[aria-pressed="true"]::after {
+.c-btn:active::after, .c-btn[aria-pressed="true"]::after, .c-btn.is-pressed::after {
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+
+.c-btn--unstyled {
+  position: static;
+  -webkit-transform: none;
+  transform: none;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.c-btn--unstyled::before, .c-btn--unstyled::after {
+  content: none;
+}
+
+.c-btn--unstyled:focus, .c-btn--unstyled:hover, .c-btn--unstyled:active {
+  -webkit-transform: none;
+  transform: none;
+  color: inherit;
 }
 
 /* separators
