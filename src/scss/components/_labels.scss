@@ -5,6 +5,7 @@
   display: inline-block;
   margin-right: spacer(sm);
   @include rhythm-label();
+  font-weight: $font-weight-bold;
   vertical-align: top;
 }
 
