@@ -151,6 +151,10 @@ $btn-font-size          : rem($btn-font-size);
     .o-grid__col--#{$i}#{$modifier} {
       width: calc(#{$i} * 100% / #{$grid-columns});
     }
+
+    .o-grid__col--offset-#{$i}#{$modifier} {
+      margin-left: 100% * $i / $grid-columns;
+    }
   }
 }
 
