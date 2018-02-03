@@ -10,8 +10,6 @@ $dialog-max-width: 48rem;
   right: 0;
   bottom: 0;
   left: 0;
-  visibility: hidden;
-  opacity: 0;
   display: flex;
   padding: spacer(md);
   overflow-y: scroll;
@@ -22,7 +20,6 @@ $dialog-max-width: 48rem;
 
 .c-dialog__box {
   align-self: flex-start; // ie fix
-  transform: translate3d(0, - spacer(lg), 0);
   width: 100%;
   max-width: $dialog-max-width;
   margin: auto;
@@ -32,12 +29,12 @@ $dialog-max-width: 48rem;
   transition: .4s;
 }
 
-// visible
-.c-dialog[aria-hidden="false"] {
-  visibility: visible;
-  opacity: 1;
+// hidden
+.c-dialog[aria-hidden="true"] {
+  visibility: hidden;
+  opacity: 0;
 }
 
-.c-dialog[aria-hidden="false"] .c-dialog__box {
-  transform: translate3d(0, 0, 0);
+.c-dialog[aria-hidden="true"] .c-dialog__box {
+  transform: translate3d(0, - spacer(lg), 0);
 }
