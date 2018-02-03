@@ -2,9 +2,8 @@
  ========================================================================== */
 
 import state from './components/states';
-import dialog from './components/dialogs';
 import tabPanel from './components/tabPanels';
-import accordion from './components/accordions';
+import Accordions from './components/accordions';
 
 const keyCodes = {
   tab: 9,
@@ -24,19 +23,16 @@ const testComponentType = function (component) {
   if (dataComponent === 'state') {
     state(component, keyCodes);
   }
-  if (dataComponent === 'dialog') {
-    dialog(component, keyCodes);
-  }
   if (dataComponent === 'tab') {
     tabPanel(component, keyCodes);
-  }
-  if (dataComponent === 'accordion') {
-    accordion(component, keyCodes);
   }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
   const components = document.querySelectorAll('[data-component]');
+
+  const toto = Accordions;
+  console.log(toto);
 
   components.forEach((component) => {
     testComponentType(component);

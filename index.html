@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./dist/css/main.css" media="all">
   </head>
   <body class="c-page js-page">
-    <article class="o-container js-document">
+    <article class="o-container js-inert-layer">
       <div class="o-grid u-flex-main-center u-flex-cross-center">
         <div class="o-grid__col">
           <img src="./dist/images/logo.svg" width="96" height="96" alt="Atomic Builder">
@@ -437,9 +437,18 @@
         <h2 class="u-color-pink">Dialog</h2>
         <button
           type="button"
-          class="c-btn u-p"
+          aria-haspopup="dialog"
           data-component="dialog"
-          data-target="js-dialog">
+          data-target="dialog"
+          class="c-btn u-p">
+          Open dialog
+        </button>
+        <button
+          type="button"
+          aria-haspopup="dialog"
+          data-component="dialog"
+          data-target="dialog"
+          class="c-btn u-p">
           Open dialog
         </button>
       </section>
@@ -646,17 +655,18 @@
       </section>
     </article>
     <div
+      id="dialog"
       role="dialog"
-      aria-hidden="true"
-      aria-modal="true"
       aria-labelledby="dialog-title"
       aria-describedby="dialog-description"
+      aria-modal="true"
+      aria-hidden="true"
       tabindex="-1"
-      class="c-dialog js-dialog">
+      class="c-dialog">
       <div role="document" class="c-dialog__box">
         <header class="u-flex u-flex-main-between">
           <h2 id="dialog-title">Dialog</h2>
-          <button type="button" title="Close this window" class="c-btn c-btn--unstyled" data-dismiss="js-dialog">
+          <button type="button" title="Close this window" class="c-btn c-btn--unstyled" data-dismiss>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 65.6 65.6"
@@ -672,6 +682,15 @@
           </button>
         </header>
         <p id="dialog-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis velit non.</p>
+        <button
+          type="button"
+          aria-haspopup="dialog"
+          data-component="dialog"
+          data-target="dialog-2"
+          data-nested="true"
+          class="c-btn u-p">
+          Open dialog
+        </button>
         <form class="u-p">
           <p>
             <label for="dialog-email" class="c-label">Email</label>
@@ -679,13 +698,42 @@
           </p>
           <div class="o-grid o-grid--2 o-grid--1@sm u-p">
             <div class="o-grid__col">
-              <button type="button" class="c-btn u-w100" data-dismiss="js-dialog">Close</button>
+              <button type="button" class="c-btn u-w100" data-dismiss>Close</button>
             </div>
             <div class="o-grid__col">
               <button type="button" class="c-btn u-w100">Save</button>
             </div>
           </div>
         </form>
+      </div>
+    </div>
+    <div
+      id="dialog-2"
+      role="dialog"
+      aria-labelledby="dialog-title"
+      aria-describedby="dialog-description"
+      aria-modal="true"
+      aria-hidden="true"
+      tabindex="-1"
+      class="c-dialog">
+      <div role="document" class="c-dialog__box">
+        <header class="u-flex u-flex-main-between">
+          <h2 id="dialog-title">Dialog</h2>
+          <button type="button" title="Close this window" class="c-btn c-btn--unstyled" data-dismiss>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 65.6 65.6"
+              width="24"
+              height="24"
+              class="c-icon__svg u-color-pink"
+              aria-hidden="true"
+              style="width: 1.5em">
+              <line x1="4" y1="4" x2="61.6" y2="61.6" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10"></line>
+              <line x1="61.6" y1="4" x2="4" y2="61.6" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10"></line>
+            </svg>
+            <span class="u-visually-hidden">Close</span>
+          </button>
+        </header>
       </div>
     </div>
     <script src="./dist/js/main.js"></script>
