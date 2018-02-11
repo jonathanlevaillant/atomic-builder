@@ -32,6 +32,5 @@
 /* responsive
    ========================================================================== */
 
-@if $enable-grid-rwd {
-  @include rwd("grid-columns");
-}
+// responsive columns generator
+@include responsive("grid-columns");

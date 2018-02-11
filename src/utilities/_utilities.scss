@@ -1,7 +1,7 @@
 /* utilities
    ========================================================================== */
 
-@if $enable-utilities {
+@if $enable-utils {
 
   // utilities generator
   @include utilities;
@@ -55,14 +55,16 @@
   /* responsive
      ========================================================================== */
 
-  @if $enable-utilities-rwd {
-    @include rwd("utilities");
+  // responsive utilities generator
+  @if $enable-utils-rwd {
+    @include responsive("utilities");
   }
 
   /* print
      ========================================================================== */
 
-  @if $enable-print-styles {
+  // print utilities generator
+  @if $enable-print-utils {
     @include utilities("print");
   }
 }
