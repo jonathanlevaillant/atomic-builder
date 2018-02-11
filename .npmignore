@@ -43,7 +43,8 @@ docs/.jekyll-metadata
 twbsconfig.yml
 
 # Folders to ignore
-src
+demo
+dist
 
 # Files to ignore
 .editorconfig
