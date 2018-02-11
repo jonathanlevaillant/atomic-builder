@@ -17,7 +17,7 @@
   "author": "Jonathan Levaillant <jonathan.levaillant@outlook.com> (http://jonathanlevaillant.fr)",
   "scripts": {
     "start": "yarn",
-    "dev": "gulp && gulp watch",
+    "dev": "gulp && gulp demo && gulp watch",
     "build": "rm -rf ./dist && gulp && gulp --env production",
     "prepare": "yarn run build"
   },
