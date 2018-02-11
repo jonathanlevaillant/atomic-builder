@@ -17,6 +17,13 @@ const paths = {
   styles: '**/*.+(scss|sass|css)',
 };
 
+// demo paths
+const demoPaths = {
+  entry: 'demo/src/',
+  output: 'demo/dist/',
+  styles: '**/*.+(scss|sass|css)',
+};
+
 // environments
 const production = !!util.env.env;
 
@@ -32,6 +39,25 @@ gulp.task('stylelint', () =>
         console: true,
       }],
     }))
+);
+
+/* demo
+ ========================================================================== */
+
+// task 'demo'
+gulp.task('demo', ['stylelint'], () =>
+  gulp.src(demoPaths.entry + demoPaths.styles)
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+      importer: tildeImporter,
+      outputStyle: 'expanded',
+    }).on('error', sass.logError))
+    .pipe(autoprefixer({
+      cascade: false,
+    }))
+    .pipe(production ? cssnano() : util.noop())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(demoPaths.output))
 );
 
 /* build (css)
@@ -56,11 +82,12 @@ gulp.task('css', ['stylelint'], () =>
 // task 'build'
 gulp.task('build', ['css']);
 
-/* watch (css)
+/* watch (css, demo)
  ========================================================================== */
 
 gulp.task('watch', () => {
-  gulp.watch(paths.entry + paths.styles, ['css']);
+  gulp.watch(paths.entry + paths.styles, ['css', 'demo']);
+  gulp.watch(demoPaths.entry + demoPaths.styles, ['demo']);
 });
 
 /* default (build)
