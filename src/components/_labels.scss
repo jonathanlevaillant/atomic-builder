@@ -3,14 +3,12 @@
 
 .c-label {
   @include rhythm-label;
-  margin-right: spacer(sm);
   font-weight: font-weight(bold);
   vertical-align: top;
 }
 
 // label for checkboxes and radio buttons
 .c-label--check {
-  margin-right: 0;
   margin-left: spacer(xs);
   padding-top: 0;
   padding-bottom: 0;
