@@ -11,7 +11,6 @@ $line-height-base               : 1.5 !default; // auto => 1.2
 
 $font-weights: () !default;
 $font-weights: map-merge((
-  light                         : 300,
   normal                        : 400,
   bold                          : 700
 ), $font-weights);
@@ -20,26 +19,20 @@ $font-weights: map-merge((
 $baseline                       : $font-size-base * $line-height-base !default;
 
 // headings => ratio 1.25 (major third)
-$ratio-major-third              : 1.25 !default;
+$headings-ratio                 : 1.25 !default;
 
-$font-size-h6                   : $font-size-base / $ratio-major-third !default;
+$font-size-h1                   : $font-size-base * $headings-ratio * $headings-ratio * $headings-ratio * $headings-ratio !default;
+$font-size-h2                   : $font-size-base * $headings-ratio * $headings-ratio * $headings-ratio !default;
+$font-size-h3                   : $font-size-base * $headings-ratio * $headings-ratio !default;
+$font-size-h4                   : $font-size-base * $headings-ratio !default;
 $font-size-h5                   : $font-size-base !default;
-$font-size-h4                   : $font-size-base * $ratio-major-third !default;
-$font-size-h3                   : $font-size-h4 * $ratio-major-third !default;
-$font-size-h2                   : $font-size-h3 * $ratio-major-third !default;
-$font-size-h1                   : $font-size-h2 * $ratio-major-third !default;
+$font-size-h6                   : $font-size-base / $headings-ratio !default;
 
 // responsive font sizes
 $font-sizes-rwd: () !default;
 $font-sizes-rwd: map-merge((
-  h1: (
-    default                     : $font-size-h1,
-    sm                          : $font-size-h2
-  ),
-  h2: (
-    default                     : $font-size-h2,
-    sm                          : $font-size-h3
-  ),
+  h1                            : $font-size-h1,
+  h2                            : $font-size-h2,
   h3                            : $font-size-h3,
   h4                            : $font-size-h4,
   h5                            : $font-size-h5,
@@ -107,7 +100,7 @@ $enable-print-styles            : false !default;
 $enable-print-utils             : false !default;
 
 // responsive options
-$enable-utils-rwd               : false !default;
+$enable-utils-rwd               : true !default;
 
 $enable-colors-utils-rwd        : false !default;
 $enable-font-weights-utils-rwd  : false !default;
