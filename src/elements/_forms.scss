@@ -1,0 +1,70 @@
+/* forms
+   ========================================================================== */
+
+form,
+fieldset,
+legend {
+  border: 0;
+}
+
+fieldset {
+  margin-right: 0;
+  margin-left: 0;
+  padding: 0;
+}
+
+label {
+  display: inline-block;
+  cursor: pointer;
+}
+
+[type="color"],
+[type="date"],
+[type="datetime-local"],
+[type="email"],
+[type="month"],
+[type="number"],
+[type="password"],
+[type="search"],
+[type="submit"],
+[type="tel"],
+[type="text"],
+[type="time"],
+[type="url"],
+[type="week"],
+select,
+textarea {
+  white-space: nowrap;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+textarea {
+  min-height: 3 * em($field-height, $field-font-size);
+  vertical-align: top;
+  resize: vertical;
+  white-space: normal;
+}
+
+[type="search"] {
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    display: none;
+  }
+}
+
+[type="button"],
+button {
+  &:focus {
+    -webkit-tap-highlight-color: transparent;
+  }
+}

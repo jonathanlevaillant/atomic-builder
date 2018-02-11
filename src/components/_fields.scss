@@ -1,0 +1,22 @@
+/* fields
+   ========================================================================== */
+
+.c-field {
+  @include rhythm-field;
+  border: 1px solid color("gray-600");
+  background-color: color("white");
+  vertical-align: top;
+}
+
+// checkboxes and radio buttons
+.c-field--check {
+  @include rhythm-check;
+  position: relative;
+  top: 1px;
+}
+
+// fix selects paddings
+.c-field--select {
+  padding-top: 0;
+  padding-bottom: 0;
+}

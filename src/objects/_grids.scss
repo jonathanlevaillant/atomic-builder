@@ -1,0 +1,37 @@
+/* grids
+   ========================================================================== */
+
+.o-grid {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: -$grid-gutter-width;
+  margin-left: -$grid-gutter-width;
+}
+
+.o-grid__col {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  padding-bottom: $grid-gutter-width;
+  padding-left: $grid-gutter-width;
+}
+
+// no gutters
+.o-grid--no-gutters {
+  margin-bottom: 0;
+  margin-left: 0;
+}
+
+.o-grid--no-gutters > .o-grid__col {
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
+// columns generator
+@include grid-columns;
+
+/* responsive
+   ========================================================================== */
+
+@if $enable-grid-rwd {
+  @include rwd("grid-columns");
+}

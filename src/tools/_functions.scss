@@ -1,0 +1,159 @@
+/* functions
+   ========================================================================== */
+
+// parse int
+@function parse-int($number) {
+  @if type-of($number) == "number" {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @warn "Unfortunately, #{$number} is not a valid number";
+
+  @return $number;
+}
+
+// units to rem
+@function rem($value) {
+  @if type-of($value) == "number" {
+    $number: parse-int($value);
+    $unit: unit($value);
+
+    @if $number == 0 or $unit == "rem" {
+      @return $value;
+    }
+
+    @return $number / 10 * 1rem;
+  }
+
+  @warn "Unfortunately, #{$value} is not a valid number";
+
+  @return $value;
+}
+
+// units to em
+@function em($value, $context: $font-size-base) {
+  @if type-of($value) == "number" and type-of($context) == "number" {
+    $number: parse-int($value);
+    $unit: unit($value);
+    $context: parse-int(rem($context)) * 10;
+
+    @if $number == 0 or $unit == "em" {
+      @return $value;
+    }
+
+    @if $unit == "rem" {
+      $number: $number * 10;
+    }
+
+    @return $number / $context * 1em;
+  }
+
+  @warn "Unfortunately, #{$value} is not a valid number";
+
+  @return $value;
+}
+
+// line height
+@function line-height($font-size, $rhythm: $baseline, $minor: false, $custom: false) {
+  @if type-of($font-size) == "number" and type-of($rhythm) == "number" and type-of($minor) == "bool" and type-of($custom) == "bool" {
+    @if unitless($rhythm) {
+      @return $rhythm;
+    }
+    $font-size: rem($font-size);
+    $rhythm: rem($rhythm);
+    $line-height: $rhythm / $font-size;
+    $scale: 1;
+
+    @if $custom {
+      @return $line-height;
+    }
+
+    @if $enable-rhythm {
+      @while $line-height < 1 {
+        $scale: $scale + 1;
+        $line-height: $rhythm * $scale / $font-size;
+      }
+
+      @if $minor {
+        @while $line-height >= 2 {
+          $scale: $scale + 1;
+          $line-height: $rhythm / $scale / $font-size;
+        }
+      }
+
+      @return $line-height;
+    }
+  }
+
+  @warn "Unfortunately, #{$font-size} is not a valid number";
+
+  @return $line-height-base;
+}
+
+/* maps
+   ========================================================================== */
+
+// spacer
+@function spacer($spacer) {
+  @if map-has-key($spacers, $spacer) {
+    @return rem(map-get($spacers, $spacer));
+  }
+
+  @warn "Unfortunately, no value could be retrieved from #{$spacers}";
+}
+
+// font size
+@function font-size($font-size, $key: 1) {
+  @if map-has-key($font-sizes, $font-size) {
+    $font-size: map-get($font-sizes, $font-size);
+
+    @if type-of($font-size) == "list" {
+      @return rem(nth($font-size, $key));
+    }
+
+    @if $key == 2 {
+      @return null;
+    }
+
+    @return rem($font-size);
+  }
+
+  @warn "Unfortunately, no value could be retrieved from #{$font-sizes}";
+}
+
+// font weight
+@function font-weight($font-weight) {
+  @if map-has-key($font-weights, $font-weight) {
+    @return map-get($font-weights, $font-weight);
+  }
+
+  @warn "Unfortunately, no value could be retrieved from #{$font-weights}";
+}
+
+// color
+@function color($color) {
+  @if map-has-key($colors, $color) {
+    @return map-get($colors, $color);
+  }
+
+  @warn "Unfortunately, no value could be retrieved from #{$colors}";
+}
+
+// breakpoint
+$bp-context: 16px;
+$bp-plus: ();
+
+@each $bp-name, $bp-value in $breakpoints {
+  $breakpoints: map-merge($breakpoints, ($bp-name: em($bp-value, $bp-context)));
+  $bp-plus: map-merge($bp-plus, ("#{$bp-name}-plus": em($bp-value, $bp-context) + em(1px, $bp-context)));
+}
+
+$bp-plus: map-merge($breakpoints, $bp-plus);
+
+@function bp($bp) {
+  @if map-has-key($bp-plus, $bp) {
+    @return map-get($bp-plus, $bp);
+  }
+
+  @warn "Unfortunately, no value could be retrieved from #{$bp-plus}";
+}

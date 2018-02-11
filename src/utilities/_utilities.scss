@@ -1,0 +1,68 @@
+/* utilities
+   ========================================================================== */
+
+@if $enable-utilities {
+
+  // utilities generator
+  @include utilities;
+
+  // invisible content
+  .is-disabled,
+  [disabled] {
+    opacity: .5;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  .u-visually-hidden {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  // headings
+  .u-txt-h1 {
+    @extend %txt-h1;
+  }
+
+  .u-txt-h2 {
+    @extend %txt-h2;
+  }
+
+  .u-txt-h3 {
+    @extend %txt-h3;
+  }
+
+  .u-txt-h4 {
+    @extend %txt-h4;
+  }
+
+  .u-txt-h5 {
+    @extend %txt-h5;
+  }
+
+  .u-txt-h6 {
+    @extend %txt-h6;
+  }
+
+  /* responsive
+     ========================================================================== */
+
+  @if $enable-utilities-rwd {
+    @include rwd("utilities");
+  }
+
+  /* print
+     ========================================================================== */
+
+  @if $enable-print-styles {
+    @include utilities("print");
+  }
+}

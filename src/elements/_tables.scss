@@ -1,0 +1,18 @@
+/* tables
+   ========================================================================== */
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  vertical-align: top;
+}
+
+td,
+th {
+  padding: 0;
+  vertical-align: top;
+  text-align: left;
+  cursor: default;
+}

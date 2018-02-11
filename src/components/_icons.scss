@@ -1,0 +1,47 @@
+/* icons
+   ========================================================================== */
+
+.c-icon {
+  position: relative;
+  top: -.1em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.c-icon__svg {
+  display: inline-block;
+  vertical-align: top;
+  width: auto;
+  height: em($baseline);
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+// close
+.c-icon--close {
+  position: static;
+  vertical-align: top;
+}
+
+// rotate
+.c-icon--rotate-90 {
+  transform: rotate(90deg);
+}
+
+.c-icon--rotate-180 {
+  transform: rotate(180deg);
+}
+
+.c-icon--rotate-270 {
+  transform: rotate(270deg);
+}
+
+// flip
+.c-icon--flip-horizontal {
+  transform: scaleX(-1);
+}
+
+.c-icon--flip-vertical {
+  transform: scaleY(-1);
+}
