@@ -4,16 +4,16 @@
 @if $enable-print-styles {
   @media print {
     * {
+      text-shadow: none;
       background: transparent;
       box-shadow: none;
-      text-shadow: none;
     }
 
     body {
       width: auto;
       margin: auto;
-      font-family: serif;
       font-size: 12pt;
+      font-family: serif;
     }
 
     p,

@@ -42,15 +42,15 @@ input,
 optgroup,
 select,
 textarea {
-  font: inherit;
   color: inherit;
+  font: inherit;
 }
 
 textarea {
   min-height: 3 * em($field-height, $field-font-size);
+  white-space: normal;
   vertical-align: top;
   resize: vertical;
-  white-space: normal;
 }
 
 [type="search"] {

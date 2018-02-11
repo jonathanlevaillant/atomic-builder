@@ -9,8 +9,8 @@
 }
 
 .o-grid__col {
-  box-sizing: border-box;
   flex: 0 0 auto;
+  box-sizing: border-box;
   padding-bottom: $grid-gutter-width;
   padding-left: $grid-gutter-width;
 }
