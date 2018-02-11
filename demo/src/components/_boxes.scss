@@ -1,0 +1,12 @@
+/* boxes
+   ========================================================================== */
+
+.c-box {
+  padding: spacer(md);
+  background-color: color("gray-100");
+  color: color("black");
+}
+
+.c-box--secondary {
+  box-shadow: inset 0 0 0 1px color("gray-500");
+}

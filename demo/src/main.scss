@@ -1,0 +1,13 @@
+/* imports
+   ========================================================================== */
+
+// custom variables
+@import "settings/custom";
+
+// atomic builder
+@import "../../src/main";
+
+// components
+@import "components/buttons";
+@import "components/separators";
+@import "components/boxes";
