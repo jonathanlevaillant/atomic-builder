@@ -1,0 +1,70 @@
+/* utilities
+   ========================================================================== */
+
+@if $enable-utils {
+
+  // utilities generator
+  @include utilities;
+
+  // invisible content
+  .is-disabled,
+  [disabled] {
+    cursor: not-allowed;
+    opacity: .5;
+    pointer-events: none;
+  }
+
+  .u-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+  }
+
+  // headings
+  .u-txt-h1 {
+    @extend %txt-h1 !optional;
+  }
+
+  .u-txt-h2 {
+    @extend %txt-h2 !optional;
+  }
+
+  .u-txt-h3 {
+    @extend %txt-h3 !optional;
+  }
+
+  .u-txt-h4 {
+    @extend %txt-h4 !optional;
+  }
+
+  .u-txt-h5 {
+    @extend %txt-h5 !optional;
+  }
+
+  .u-txt-h6 {
+    @extend %txt-h6 !optional;
+  }
+
+  /* responsive
+     ========================================================================== */
+
+  // responsive utilities generator
+  @if $enable-utils-rwd {
+    @include responsive("utilities");
+  }
+
+  /* print
+     ========================================================================== */
+
+  // print utilities generator
+  @if $enable-print-utils {
+    @include utilities("print");
+  }
+}

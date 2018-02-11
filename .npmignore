@@ -43,5 +43,12 @@ docs/.jekyll-metadata
 twbsconfig.yml
 
 # Folders to ignore
-node_modules
+demo
 dist
+
+# Files to ignore
+.editorconfig
+.browserslistrc
+.stylelintrc.json
+gulpfile.js
+yarn.lock

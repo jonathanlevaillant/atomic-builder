@@ -1,0 +1,41 @@
+/* buttons
+   ========================================================================== */
+
+.c-btn {
+  @include rhythm-btn;
+  display: inline-block;
+  color: color("black");
+  font-weight: font-weight(bold);
+  text-decoration: none;
+  vertical-align: top;
+  background-color: color("gray-100");
+  border: 0;
+  cursor: pointer;
+
+  &:focus,
+  &:hover,
+  &:active,
+  &[aria-pressed="true"],
+  &.is-pressed {
+    color: color("white");
+    background-color: color("black");
+  }
+}
+
+// unstyled
+.c-btn--unstyled {
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  background: none;
+  cursor: auto;
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: inherit;
+    background: none;
+    outline: none;
+  }
+}

@@ -1,0 +1,40 @@
+/* global
+   ========================================================================== */
+
+// colors
+$colors: (
+  "pink"                        : #e91e63
+);
+
+// fonts
+$font-weights: (
+  light                         : 300
+);
+
+// headings
+$headings-ratio                 : 1.333;
+
+$font-sizes-rwd: (
+  h1                            : (4rem, 5rem),
+  h2: (
+    default                     : 3.4rem,
+    sm                          : 3rem
+  )
+);
+
+// sizes
+$sizes: (
+  33                            : 33.3334%,
+  auto                          : null
+);
+
+// grids
+$container-width                : 120rem;
+
+// options
+$enable-hyphens                 : true;
+$enable-print-styles            : true;
+
+// responsive options
+$enable-colors-utils-rwd        : true;
+$enable-flex-utils-rwd          : true;

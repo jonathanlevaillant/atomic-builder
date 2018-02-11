@@ -1,0 +1,15 @@
+/* separators
+   ========================================================================== */
+
+.c-separator {
+  display: block;
+  clear: both;
+  height: 1px;
+  margin-right: 0;
+  margin-bottom: -1px;
+  margin-left: 0;
+  padding: 0;
+  color: color("gray-600");
+  background-color: color("gray-600");
+  border: 0;
+}

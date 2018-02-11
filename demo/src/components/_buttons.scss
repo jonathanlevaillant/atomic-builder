@@ -1,0 +1,15 @@
+/* buttons
+   ========================================================================== */
+
+.c-btn {
+  border-radius: em(6px);
+  color: color("pink");
+
+  &:focus,
+  &:hover,
+  &:active,
+  &[aria-pressed="true"],
+  &.is-pressed {
+    background-color: color("pink");
+  }
+}

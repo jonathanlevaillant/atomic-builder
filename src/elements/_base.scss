@@ -1,0 +1,163 @@
+/* base
+   ========================================================================== */
+
+// switching to border-box model for all elements
+html {
+  box-sizing: border-box;
+}
+
+*,
+::before,
+::after {
+  box-sizing: inherit;
+  min-width: 0;
+  min-height: 0;
+}
+
+// vertical rhythm
+html {
+  font-size: 62.5%;
+  line-height: $line-height-base;
+}
+
+body {
+  @include rhythm-rwd();
+  color: color("black");
+  font-family: $font-family-base;
+  background-color: color("white");
+}
+
+p,
+address,
+ul,
+ol,
+dl,
+dd,
+blockquote,
+pre,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: spacer(md);
+  margin-bottom: 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+%txt-h1 {
+  @include rhythm-rwd(h1);
+  font-weight: font-weight(bold);
+  font-family: $font-family-headings;
+}
+
+%txt-h2 {
+  @include rhythm-rwd(h2);
+  font-weight: font-weight(bold);
+  font-family: $font-family-headings;
+}
+
+%txt-h3 {
+  @include rhythm-rwd(h3);
+  font-weight: font-weight(bold);
+  font-family: $font-family-headings;
+}
+
+%txt-h4 {
+  @include rhythm-rwd(h4);
+  font-weight: font-weight(bold);
+  font-family: $font-family-headings;
+}
+
+%txt-h5 {
+  @include rhythm-rwd(h5);
+  font-weight: font-weight(bold);
+  font-family: $font-family-headings;
+}
+
+%txt-h6 {
+  @include rhythm-rwd(h6);
+  font-weight: font-weight(bold);
+  font-family: $font-family-headings;
+}
+
+h1 {
+  @extend %txt-h1;
+}
+
+h2 {
+  @extend %txt-h2;
+}
+
+h3 {
+  @extend %txt-h3;
+}
+
+h4 {
+  @extend %txt-h4;
+}
+
+h5 {
+  @extend %txt-h5;
+}
+
+h6 {
+  @extend %txt-h6;
+}
+
+// max values
+img,
+table,
+td,
+blockquote,
+code,
+pre,
+textarea,
+input,
+video,
+svg {
+  max-width: 100%;
+}
+
+// styling elements
+a {
+  color: color("gray-700");
+}
+
+img {
+  height: auto;
+  vertical-align: middle;
+}
+
+ul,
+ol {
+  padding-left: spacer(md);
+}
+
+em,
+address,
+cite,
+i,
+var {
+  font-style: italic;
+}
+
+blockquote,
+figure {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+code,
+pre,
+samp,
+kbd {
+  font-family: $font-family-monospace;
+  line-height: inherit;
+  white-space: pre-wrap;
+}

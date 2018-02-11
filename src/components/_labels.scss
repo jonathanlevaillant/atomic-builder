@@ -1,0 +1,15 @@
+/* labels
+   ========================================================================== */
+
+.c-label {
+  @include rhythm-label;
+  font-weight: font-weight(bold);
+  vertical-align: top;
+}
+
+// label for checkboxes and radio buttons
+.c-label--check {
+  margin-left: spacer(xs);
+  padding-top: 0;
+  padding-bottom: 0;
+}
