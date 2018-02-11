@@ -3,7 +3,10 @@
     "stylelint-scss",
     "stylelint-order"
   ],
-  "extends": "stylelint-config-sass-guidelines",
+  "extends": [
+    "stylelint-config-sass-guidelines",
+    "stylelint-config-rational-order"
+  ],
   "defaultSeverity": "warning",
   "rules": {
     "scss/dollar-variable-colon-space-before": null,
