@@ -19,6 +19,9 @@ $font-weights: map-merge((
 $page-bg                        : map-get($colors, "white") !default;
 $page-color                     : map-get($colors, "black") !default;
 
+// links
+$link-color                     : map-get($colors, "gray-700") !default;
+
 // baseline
 $baseline                       : $font-size-base * $line-height-base !default;
 
