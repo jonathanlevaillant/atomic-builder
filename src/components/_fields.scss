@@ -4,8 +4,6 @@
 .c-field {
   @include rhythm-field;
   vertical-align: top;
-  background-color: color("white");
-  border: 1px solid color("gray-600");
 }
 
 // checkboxes and radio buttons
