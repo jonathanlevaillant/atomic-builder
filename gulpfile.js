@@ -1,8 +1,6 @@
 const gulp = require('gulp');
-const util = require('gulp-util');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
-const cssnano = require('gulp-cssnano');
 const stylelint = require('gulp-stylelint');
 const sourcemaps = require('gulp-sourcemaps');
 const tildeImporter = require('node-sass-tilde-importer');
@@ -23,9 +21,6 @@ const demoPaths = {
   output: 'demo/dist/',
   styles: '**/*.+(scss|sass|css)',
 };
-
-// environments
-const production = !!util.env.env;
 
 /* linters (stylelint)
  ========================================================================== */
@@ -55,7 +50,6 @@ gulp.task('demo', ['stylelint'], () =>
     .pipe(autoprefixer({
       cascade: false,
     }))
-    .pipe(production ? cssnano() : util.noop())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(demoPaths.output))
 );
@@ -74,7 +68,6 @@ gulp.task('css', ['stylelint'], () =>
     .pipe(autoprefixer({
       cascade: false,
     }))
-    .pipe(production ? cssnano() : util.noop())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(paths.output))
 );
