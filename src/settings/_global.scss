@@ -110,9 +110,10 @@ $breakpoints: (
 // options
 $enable-rhythm                  : true !default;
 $enable-utils                   : true !default;
-$enable-hyphens                 : false !default;
 $enable-print-styles            : false !default;
 $enable-print-utils             : false !default;
+$enable-hyphens                 : false !default;
+$enable-media-object            : false !default;
 
 // responsive utilities options
 $enable-utils-rwd               : true !default;
