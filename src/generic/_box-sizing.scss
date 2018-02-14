@@ -1,0 +1,14 @@
+/* box sizing
+   ========================================================================== */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+::before,
+::after {
+  box-sizing: inherit;
+  min-width: 0;
+  min-height: 0;
+}
