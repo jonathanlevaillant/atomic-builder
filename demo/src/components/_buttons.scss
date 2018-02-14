@@ -4,12 +4,16 @@
 .c-btn {
   border-radius: em(6px);
   color: color("pink");
+  font-weight: font-weight(bold);
+  background-color: color("gray-100");
+  border: 0;
 
   &:focus,
   &:hover,
   &:active,
   &[aria-pressed="true"],
   &.is-pressed {
+    color: color("white");
     background-color: color("pink");
   }
 }
