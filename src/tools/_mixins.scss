@@ -412,7 +412,6 @@ $separator-size         : rem($separator-size);
 
     .u-flex-item-fluid#{$modifier} {
       flex: 1;
-      min-width: 0;
     }
 
     .u-flex-item-auto#{$modifier} {
