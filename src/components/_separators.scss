@@ -2,14 +2,10 @@
    ========================================================================== */
 
 .c-separator {
-  display: block;
-  clear: both;
-  height: 1px;
+  height: $separator-size;
   margin-right: 0;
-  margin-bottom: -1px;
+  margin-bottom: -$separator-size;
   margin-left: 0;
-  padding: 0;
-  color: color("gray-600");
-  background-color: color("gray-600");
+  background-color: $separator-color;
   border: 0;
 }
