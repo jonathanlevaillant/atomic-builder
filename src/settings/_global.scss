@@ -15,6 +15,10 @@ $font-weights: map-merge((
   bold                          : 700
 ), $font-weights);
 
+// page
+$page-bg                        : map-get($colors, "white") !default;
+$page-color                     : map-get($colors, "black") !default;
+
 // baseline
 $baseline                       : $font-size-base * $line-height-base !default;
 
