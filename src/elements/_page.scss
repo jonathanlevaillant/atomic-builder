@@ -1,0 +1,15 @@
+/* page
+   ========================================================================== */
+
+html {
+  overflow-x: hidden;
+  font-size: 62.5%;
+  line-height: $line-height-base;
+}
+
+body {
+  @include rhythm-rwd();
+  color: $page-color;
+  font-family: $font-family-base;
+  background-color: $page-bg;
+}
