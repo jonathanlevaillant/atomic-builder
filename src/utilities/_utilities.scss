@@ -27,31 +27,6 @@
     clip-path: inset(50%);
   }
 
-  // headings
-  .u-txt-h1 {
-    @extend %txt-h1 !optional;
-  }
-
-  .u-txt-h2 {
-    @extend %txt-h2 !optional;
-  }
-
-  .u-txt-h3 {
-    @extend %txt-h3 !optional;
-  }
-
-  .u-txt-h4 {
-    @extend %txt-h4 !optional;
-  }
-
-  .u-txt-h5 {
-    @extend %txt-h5 !optional;
-  }
-
-  .u-txt-h6 {
-    @extend %txt-h6 !optional;
-  }
-
   /* responsive
      ========================================================================== */
 

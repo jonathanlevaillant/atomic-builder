@@ -1,56 +1,38 @@
 /* headings
    ========================================================================== */
 
-%txt-h1 {
+h1,
+.u-txt-h1 {
   @include rhythm-rwd(h1);
   font-family: $font-family-headings;
 }
 
-%txt-h2 {
+h2,
+.u-txt-h2 {
   @include rhythm-rwd(h2);
   font-family: $font-family-headings;
 }
 
-%txt-h3 {
+h3,
+.u-txt-h3 {
   @include rhythm-rwd(h3);
   font-family: $font-family-headings;
 }
 
-%txt-h4 {
+h4,
+.u-txt-h4 {
   @include rhythm-rwd(h4);
   font-family: $font-family-headings;
 }
 
-%txt-h5 {
+h5,
+.u-txt-h5 {
   @include rhythm-rwd(h5);
   font-family: $font-family-headings;
 }
 
-%txt-h6 {
+h6,
+.u-txt-h6 {
   @include rhythm-rwd(h6);
   font-family: $font-family-headings;
-}
-
-h1 {
-  @extend %txt-h1;
-}
-
-h2 {
-  @extend %txt-h2;
-}
-
-h3 {
-  @extend %txt-h3;
-}
-
-h4 {
-  @extend %txt-h4;
-}
-
-h5 {
-  @extend %txt-h5;
-}
-
-h6 {
-  @extend %txt-h6;
 }
