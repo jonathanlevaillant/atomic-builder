@@ -18,7 +18,7 @@
   "scripts": {
     "start": "yarn",
     "dev": "gulp && gulp demo && gulp watch",
-    "build": "rm -rf ./dist && gulp && gulp --env production",
+    "build": "rm -rf ./dist && gulp",
     "prepare": "yarn run build"
   },
   "main": "src/main.scss",
@@ -34,7 +34,6 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.1.0",
-    "gulp-cssnano": "^2.1.2",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-stylelint": "^6.0.0",
