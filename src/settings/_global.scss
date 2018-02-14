@@ -48,22 +48,30 @@ $font-sizes: map-merge((
   lg                            : $font-size-h4
 ), $font-sizes);
 
-// grids
+// container
 $container-width                : $baseline * 42 !default;
+
+// grids
 $grid-columns                   : 12 !default;
 $grid-gutter-width              : $baseline !default;
 $grid-offset-width              : $baseline !default;
+
+// labels
+$label-font-size                : $font-size-base !default;
 
 // form fields
 $field-height                   : $baseline * 2 !default;
 $field-padding-x                : $baseline / 2 !default;
 $field-font-size                : $font-size-base !default;
-$label-font-size                : $font-size-base !default;
 
 // buttons
 $btn-height                     : $baseline * 2 !default;
 $btn-padding-x                  : $baseline !default;
 $btn-font-size                  : $font-size-base !default;
+
+// separators
+$separator-size                 : .1rem !default;
+$separator-color                : map-get($colors, "gray-600") !default;
 
 // sizes
 $sizes: () !default;
