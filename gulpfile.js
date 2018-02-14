@@ -27,7 +27,7 @@ const demoPaths = {
 
 // task 'stylelint'
 gulp.task('stylelint', () =>
-  gulp.src(paths.entry + paths.styles)
+  gulp.src(`${paths.entry}${paths.styles}`)
     .pipe(stylelint({
       reporters: [{
         formatter: 'string',
@@ -41,7 +41,7 @@ gulp.task('stylelint', () =>
 
 // task 'demo'
 gulp.task('demo', ['stylelint'], () =>
-  gulp.src(demoPaths.entry + demoPaths.styles)
+  gulp.src(`${demoPaths.entry}${demoPaths.styles}`)
     .pipe(sourcemaps.init())
     .pipe(sass({
       importer: tildeImporter,
@@ -59,7 +59,7 @@ gulp.task('demo', ['stylelint'], () =>
 
 // task 'css'
 gulp.task('css', ['stylelint'], () =>
-  gulp.src(paths.entry + paths.styles)
+  gulp.src(`${paths.entry}${paths.styles}`)
     .pipe(sourcemaps.init())
     .pipe(sass({
       importer: tildeImporter,
@@ -79,8 +79,8 @@ gulp.task('build', ['css']);
  ========================================================================== */
 
 gulp.task('watch', () => {
-  gulp.watch(paths.entry + paths.styles, ['css', 'demo']);
-  gulp.watch(demoPaths.entry + demoPaths.styles, ['demo']);
+  gulp.watch(`${paths.entry}${paths.styles}`, ['css', 'demo']);
+  gulp.watch(`${demoPaths.entry}${demoPaths.styles}`, ['demo']);
 });
 
 /* default (build)
