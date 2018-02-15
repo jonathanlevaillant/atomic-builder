@@ -1,45 +1,18 @@
 /* utilities
    ========================================================================== */
 
-@if $enable-utils {
+@include utilities;
 
-  // utilities generator
-  @include utilities;
+/* responsive
+   ========================================================================== */
 
-  // invisible content
-  .is-disabled,
-  [disabled] {
-    cursor: not-allowed;
-    opacity: .5;
-    pointer-events: none;
-  }
+@if $enable-utils-rwd {
+  @include responsive("utilities");
+}
 
-  .u-visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    border: 0;
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-  }
+/* print
+   ========================================================================== */
 
-  /* responsive
-     ========================================================================== */
-
-  // responsive utilities generator
-  @if $enable-utils-rwd {
-    @include responsive("utilities");
-  }
-
-  /* print
-     ========================================================================== */
-
-  // print utilities generator
-  @if $enable-print-utils {
-    @include utilities("print");
-  }
+@if $enable-print-utils {
+  @include utilities("print");
 }
