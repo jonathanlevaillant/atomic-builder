@@ -69,3 +69,8 @@ button {
     -webkit-tap-highlight-color: transparent;
   }
 }
+
+[disabled] {
+  cursor: not-allowed;
+  pointer-events: none;
+}
