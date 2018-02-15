@@ -506,6 +506,22 @@ $separator-size         : rem($separator-size);
     }
   }
 
+  // a11y
+  @if $enable-a11y-utils-rwd or not $modifier {
+    .u-visually-hidden#{$modifier} {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      border: 0;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+    }
+  }
+
   // blocks alignment
   @if $enable-blocks-align-utils-rwd or not $modifier {
     .u-right#{$modifier} {
