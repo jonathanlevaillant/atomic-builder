@@ -6,16 +6,16 @@ $colors: (
   "pink"                         : #e91e63
 );
 
-// fonts
+// font weights
 $font-weights: (
   light                          : 300
 );
 
 // headings
-$headings-ratio                  : 1.333;
+$modular-scale                   : 1.333;
 
 // responsive font sizes
-$font-sizes-rwd: (
+$responsive-font-sizes: (
   h1                             : (4rem, 5rem),
   h2: (
     default                      : 3.4rem,
@@ -23,22 +23,8 @@ $font-sizes-rwd: (
   )
 );
 
-// grids
+// container
 $container-width                 : 120rem;
 
-// separators
-$separator-size                 : .4rem;
-
-// sizes
-$sizes: (
-  33                             : 33.3334%,
-  auto                           : null
-);
-
-// options
-$enable-hyphens                  : true;
-$enable-print-styles             : true;
-
-// responsive utilities options
-$enable-colors-utils-rwd         : true;
-$enable-flex-utils-rwd           : true;
+// responsive utilities
+$enable-responsive-flex          : true;
