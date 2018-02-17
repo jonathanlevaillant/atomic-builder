@@ -11,6 +11,11 @@
 @import "components/buttons";
 @import "components/separators";
 @import "components/boxes";
+@import "components/page";
 
-// atomic builder utilities
-@import "../../src/utilities/utilities";
+// utilities
+@import "../../src/utilities/colors";
+@import "../../src/utilities/spacers";
+@import "../../src/utilities/flex";
+@import "../../src/utilities/lists";
+@import "../../src/utilities/a11y";
