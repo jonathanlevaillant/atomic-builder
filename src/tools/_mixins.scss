@@ -28,8 +28,6 @@ $btn-height             : rem($btn-height);
 $btn-padding-x          : rem($btn-padding-x);
 $btn-font-size          : rem($btn-font-size);
 
-$separator-size         : rem($separator-size);
-
 /* vertical rhythm
    ========================================================================== */
 
@@ -92,13 +90,15 @@ $separator-size         : rem($separator-size);
   @include rhythm-form($font-size, $height, $padding-x, false);
 }
 
-// rhythm helper
-@mixin rhythm-helper($key, $minor: false, $unit-to: "rem") {
+/* fonts
+   ========================================================================== */
+
+@mixin font($key, $minor: false, $unit-to: "rem") {
   @include rhythm(font-size($key), font-size($key, 2), $minor, $unit-to);
 }
 
-// rhythm rwd
-@mixin font-size-rwd($font-size, $minor, $unit-to) {
+// responsive font
+@mixin font-map($font-size, $minor, $unit-to) {
   @if type-of($font-size) == "list" {
     @include rhythm(nth($font-size, 1), nth($font-size, 2), $minor: $minor, $unit-to: $unit-to);
   } @else {
@@ -106,22 +106,22 @@ $separator-size         : rem($separator-size);
   }
 }
 
-@mixin rhythm-rwd($key: "default", $minor: false, $unit-to: "rem") {
-  @if map-has-key($font-sizes-rwd, $key) {
-    $font-size: map-get($font-sizes-rwd, $key);
+@mixin font-responsive($key, $minor: false, $unit-to: "rem") {
+  @if map-has-key($responsive-font-sizes, $key) {
+    $font-size: map-get($responsive-font-sizes, $key);
 
     @if type-of($font-size) == "map" {
       @each $font-size-name, $font-size-value in $font-size {
         @if $font-size-name == "default" {
-          @include font-size-rwd($font-size-value, $minor, $unit-to);
+          @include font-map($font-size-value, $minor, $unit-to);
         } @else {
           @media (max-width: bp($font-size-name)) {
-            @include font-size-rwd($font-size-value, $minor, $unit-to);
+            @include font-map($font-size-value, $minor, $unit-to);
           }
         }
       }
     } @else {
-      @include font-size-rwd($font-size, $minor, $unit-to);
+      @include font-map($font-size, $minor, $unit-to);
     }
   }
 }
@@ -165,8 +165,51 @@ $separator-size         : rem($separator-size);
 /* utilities generator
    ========================================================================== */
 
+// colors
+@mixin colors($modifier: null) {
+  @if $modifier {
+    $modifier: "\\@#{$modifier}";
+  }
+
+  @each $color-name, $color-value in $colors {
+    .u-color-#{$color-name}#{$modifier} {
+      color: $color-value;
+    }
+  }
+}
+
+// font sizes
+@mixin font-sizes($modifier: null) {
+  @if $modifier {
+    $modifier: "\\@#{$modifier}";
+  }
+
+  @each $font-size-name, $font-size-value in $font-sizes {
+    .u-text-#{$font-size-name}#{$modifier} {
+      @include rhythm(font-size($font-size-name), font-size($font-size-name, 2));
+    }
+  }
+}
+
+// font weights
+@mixin font-weights($modifier: null) {
+  @if $modifier {
+    $modifier: "\\@#{$modifier}";
+  }
+
+  @each $font-weight-name, $font-weight-value in $font-weights {
+    .u-text-#{$font-weight-name}#{$modifier} {
+      font-weight: $font-weight-value;
+    }
+  }
+}
+
 // sizes
 @mixin sizes($modifier: null) {
+  @if $modifier {
+    $modifier: "\\@#{$modifier}";
+  }
+
   @each $size-name, $size-value in $sizes {
     .u-w-#{$size-name}#{$modifier} {
       width: $size-value;
@@ -176,6 +219,10 @@ $separator-size         : rem($separator-size);
 
 // spacers
 @mixin spacers($modifier: null) {
+  @if $modifier {
+    $modifier: "\\@#{$modifier}";
+  }
+
   @each $spacer-name, $spacer-value in $spacers {
     $spacer-value: rem($spacer-value);
 
@@ -227,346 +274,323 @@ $separator-size         : rem($separator-size);
       margin-top: 0;
     }
   }
-}
 
-// font sizes
-@mixin font-sizes($modifier: null) {
-  @each $font-size-name, $font-size-value in $font-sizes {
-    .u-txt-#{$font-size-name}#{$modifier} {
-      @include rhythm(font-size($font-size-name), font-size($font-size-name, 2));
-    }
+  .u-m-auto {
+    margin: auto;
+  }
+
+  .u-mt-auto#{$modifier} {
+    margin-top: auto;
+  }
+
+  .u-mr-auto#{$modifier} {
+    margin-right: auto;
+  }
+
+  .u-mb-auto#{$modifier} {
+    margin-bottom: auto;
+  }
+
+  .u-ml-auto#{$modifier} {
+    margin-left: auto;
+  }
+
+  .u-mx-auto#{$modifier} {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .u-my-auto#{$modifier} {
+    margin-top: auto;
+    margin-bottom: auto;
   }
 }
 
-// font weights
-@mixin font-weights($modifier: null) {
-  @each $font-weight-name, $font-weight-value in $font-weights {
-    .u-txt-#{$font-weight-name}#{$modifier} {
-      font-weight: $font-weight-value;
-    }
-  }
-}
-
-// colors
-@mixin colors($modifier: null) {
-  @each $color-name, $color-value in $colors {
-    .u-color-#{$color-name}#{$modifier} {
-      color: $color-value;
-    }
-  }
-}
-
-// utilities
-@mixin utilities($modifier: null) {
+// display
+@mixin display($modifier: null) {
   @if $modifier {
     $modifier: "\\@#{$modifier}";
   }
 
-  // colors
-  @if $enable-colors-utils-rwd or not $modifier {
-    @include colors($modifier);
+  .u-block#{$modifier} {
+    display: block;
   }
 
-  // font weights
-  @if $enable-font-weights-utils-rwd or not $modifier {
-    @include font-weights($modifier);
+  .u-none#{$modifier} {
+    display: none;
   }
 
-  // font sizes
-  @if $enable-font-sizes-utils-rwd or not $modifier {
-    @include font-sizes($modifier);
+  .u-inline#{$modifier} {
+    display: inline;
   }
 
-  // sizes
-  @if $enable-sizes-utils-rwd or not $modifier {
-    @include sizes($modifier);
-  }
-
-  // spacers
-  @if $enable-spacers-utils-rwd or not $modifier {
-    @include spacers($modifier);
-  }
-
-  // display
-  @if $enable-display-utils-rwd or not $modifier {
-    .u-visible#{$modifier} {
-      display: block;
-    }
-
-    .u-hidden#{$modifier} {
-      display: none;
-    }
-
-    .u-inline#{$modifier} {
-      display: inline;
-    }
-
-    .u-inline-block#{$modifier} {
-      display: inline-block;
-      vertical-align: top;
-    }
-
-    .u-list-unstyled#{$modifier} {
-      padding-left: 0;
-      list-style: none;
-    }
-  }
-
-  // flex
-  @if $enable-flex-utils-rwd or not $modifier {
-    .u-flex#{$modifier} {
-      display: flex;
-    }
-
-    .u-inline-flex#{$modifier} {
-      display: inline-flex;
-    }
-
-    .u-flex-nowrap#{$modifier} {
-      flex-wrap: nowrap;
-    }
-
-    .u-flex-wrap#{$modifier} {
-      flex-wrap: wrap;
-    }
-
-    .u-flex-wrap-reverse#{$modifier} {
-      flex-wrap: wrap-reverse;
-    }
-
-    .u-flex-row#{$modifier} {
-      flex-direction: row;
-    }
-
-    .u-flex-row-reverse#{$modifier} {
-      flex-direction: row-reverse;
-    }
-
-    .u-flex-column#{$modifier} {
-      flex-direction: column;
-    }
-
-    .u-flex-column-reverse#{$modifier} {
-      flex-direction: column-reverse;
-    }
-
-    .u-flex-main-start#{$modifier} {
-      justify-content: flex-start;
-    }
-
-    .u-flex-main-end#{$modifier} {
-      justify-content: flex-end;
-    }
-
-    .u-flex-main-center#{$modifier} {
-      justify-content: center;
-    }
-
-    .u-flex-main-between#{$modifier} {
-      justify-content: space-between;
-    }
-
-    .u-flex-main-around#{$modifier} {
-      justify-content: space-around;
-    }
-
-    .u-flex-cross-start#{$modifier} {
-      align-items: flex-start;
-    }
-
-    .u-flex-cross-end#{$modifier} {
-      align-items: flex-end;
-    }
-
-    .u-flex-cross-center#{$modifier} {
-      align-items: center;
-    }
-
-    .u-flex-cross-baseline#{$modifier} {
-      align-items: baseline;
-    }
-
-    .u-flex-cross-stretch#{$modifier} {
-      align-items: stretch;
-    }
-
-    .u-flex-self-start#{$modifier} {
-      align-self: flex-start;
-    }
-
-    .u-flex-self-end#{$modifier} {
-      align-self: flex-end;
-    }
-
-    .u-flex-self-center#{$modifier} {
-      align-self: center;
-    }
-
-    .u-flex-self-baseline#{$modifier} {
-      align-self: baseline;
-    }
-
-    .u-flex-self-stretch#{$modifier} {
-      align-self: stretch;
-    }
-
-    .u-flex-item-fluid#{$modifier} {
-      flex: 1;
-    }
-
-    .u-flex-item-auto#{$modifier} {
-      flex: auto;
-    }
-
-    .u-flex-item-initial#{$modifier} {
-      flex: initial;
-    }
-
-    .u-flex-item-none#{$modifier} {
-      flex: none;
-    }
-
-    .u-flex-item-first#{$modifier} {
-      order: -1;
-    }
-
-    .u-flex-item-medium#{$modifier} {
-      order: 0;
-    }
-
-    .u-flex-item-last#{$modifier} {
-      order: 1;
-    }
-
-    .u-flex-item-top#{$modifier} {
-      margin-bottom: auto;
-    }
-
-    .u-flex-item-bottom#{$modifier} {
-      margin-top: auto;
-    }
-
-    .u-flex-item-center#{$modifier} {
-      margin: auto;
-    }
-  }
-
-  // columns
-  @if $enable-columns-utils-rwd or not $modifier {
-    .u-col#{$modifier} {
-      column-gap: $grid-gutter-width;
-    }
-
-    @for $i from 1 through $grid-columns {
-      .u-col-#{$i}#{$modifier} {
-        column-count: $i;
-      }
-    }
-
-    .u-col-item#{$modifier} {
-      break-inside: avoid;
-    }
-  }
-
-  // floating elements
-  @if $enable-float-utils-rwd or not $modifier {
-    .u-float-right#{$modifier} {
-      float: right;
-    }
-
-    .u-float-left#{$modifier} {
-      float: left;
-    }
-
-    .u-no-float#{$modifier} {
-      float: none;
-    }
-  }
-
-  // clearfix
-  @if $enable-clearfix-utils-rwd or not $modifier {
-    .u-clear#{$modifier} {
-      clear: both;
-    }
-
-    .u-clearfix#{$modifier} {
-      &::after {
-        content: "";
-        display: table;
-        clear: both;
-        border-collapse: collapse;
-      }
-    }
-  }
-
-  // bfc
-  @if $enable-bfc-utils-rwd or not $modifier {
-    .u-mod#{$modifier} {
-      overflow: hidden;
-    }
-  }
-
-  // a11y
-  @if $enable-a11y-utils-rwd or not $modifier {
-    .u-visually-hidden#{$modifier} {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      margin: -1px;
-      padding: 0;
-      overflow: hidden;
-      white-space: nowrap;
-      border: 0;
-      clip: rect(0 0 0 0);
-      clip-path: inset(50%);
-    }
-  }
-
-  // blocks alignment
-  @if $enable-blocks-align-utils-rwd or not $modifier {
-    .u-right#{$modifier} {
-      margin-left: auto;
-    }
-
-    .u-left#{$modifier} {
-      margin-right: auto;
-    }
-
-    .u-center#{$modifier} {
-      margin-right: auto;
-      margin-left: auto;
-    }
-  }
-
-  // text
-  @if $enable-text-utils-rwd or not $modifier {
-    .u-txt-right#{$modifier} {
-      text-align: right;
-    }
-
-    .u-txt-center#{$modifier} {
-      text-align: center;
-    }
-
-    .u-txt-left#{$modifier} {
-      text-align: left;
-    }
-
-    .u-txt-lowercase#{$modifier} {
-      text-transform: lowercase;
-    }
-
-    .u-txt-uppercase#{$modifier} {
-      text-transform: uppercase;
-    }
-
-    .u-txt-capitalize#{$modifier} {
-      text-transform: capitalize;
-    }
+  .u-inline-block#{$modifier} {
+    display: inline-block;
+    vertical-align: top;
   }
 }
 
-// responsive components
+// flex
+@mixin flex($modifier: null) {
+  @if $modifier {
+    $modifier: "\\@#{$modifier}";
+  }
+
+  .u-flex#{$modifier} {
+    display: flex;
+  }
+
+  .u-inline-flex#{$modifier} {
+    display: inline-flex;
+  }
+
+  .u-flex-nowrap#{$modifier} {
+    flex-wrap: nowrap;
+  }
+
+  .u-flex-wrap#{$modifier} {
+    flex-wrap: wrap;
+  }
+
+  .u-flex-wrap-reverse#{$modifier} {
+    flex-wrap: wrap-reverse;
+  }
+
+  .u-flex-row#{$modifier} {
+    flex-direction: row;
+  }
+
+  .u-flex-row-reverse#{$modifier} {
+    flex-direction: row-reverse;
+  }
+
+  .u-flex-column#{$modifier} {
+    flex-direction: column;
+  }
+
+  .u-flex-column-reverse#{$modifier} {
+    flex-direction: column-reverse;
+  }
+
+  .u-flex-main-start#{$modifier} {
+    justify-content: flex-start;
+  }
+
+  .u-flex-main-end#{$modifier} {
+    justify-content: flex-end;
+  }
+
+  .u-flex-main-center#{$modifier} {
+    justify-content: center;
+  }
+
+  .u-flex-main-between#{$modifier} {
+    justify-content: space-between;
+  }
+
+  .u-flex-main-around#{$modifier} {
+    justify-content: space-around;
+  }
+
+  .u-flex-cross-start#{$modifier} {
+    align-items: flex-start;
+  }
+
+  .u-flex-cross-end#{$modifier} {
+    align-items: flex-end;
+  }
+
+  .u-flex-cross-center#{$modifier} {
+    align-items: center;
+  }
+
+  .u-flex-cross-baseline#{$modifier} {
+    align-items: baseline;
+  }
+
+  .u-flex-cross-stretch#{$modifier} {
+    align-items: stretch;
+  }
+
+  .u-flex-self-start#{$modifier} {
+    align-self: flex-start;
+  }
+
+  .u-flex-self-end#{$modifier} {
+    align-self: flex-end;
+  }
+
+  .u-flex-self-center#{$modifier} {
+    align-self: center;
+  }
+
+  .u-flex-self-baseline#{$modifier} {
+    align-self: baseline;
+  }
+
+  .u-flex-self-stretch#{$modifier} {
+    align-self: stretch;
+  }
+
+  .u-flex-item-fluid#{$modifier} {
+    flex: 1;
+  }
+
+  .u-flex-item-auto#{$modifier} {
+    flex: auto;
+  }
+
+  .u-flex-item-initial#{$modifier} {
+    flex: initial;
+  }
+
+  .u-flex-item-none#{$modifier} {
+    flex: none;
+  }
+
+  .u-flex-item-first#{$modifier} {
+    order: -1;
+  }
+
+  .u-flex-item-medium#{$modifier} {
+    order: 0;
+  }
+
+  .u-flex-item-last#{$modifier} {
+    order: 1;
+  }
+}
+
+// columns
+@mixin columns($modifier: null) {
+  @if $modifier {
+    $modifier: "\\@#{$modifier}";
+  }
+
+  .u-col#{$modifier} {
+    column-gap: $grid-gutter-width;
+  }
+
+  @for $i from 1 through $grid-columns {
+    .u-col-#{$i}#{$modifier} {
+      column-count: $i;
+    }
+  }
+
+  .u-col-item#{$modifier} {
+    break-inside: avoid;
+  }
+}
+
+// float
+@mixin float($modifier: null) {
+  @if $modifier {
+    $modifier: "\\@#{$modifier}";
+  }
+
+  .u-float-right#{$modifier} {
+    float: right;
+  }
+
+  .u-float-left#{$modifier} {
+    float: left;
+  }
+
+  .u-float-none#{$modifier} {
+    float: none;
+  }
+}
+
+// lists
+@mixin lists($modifier: null) {
+  @if $modifier {
+    $modifier: "\\@#{$modifier}";
+  }
+
+  .u-list-unstyled#{$modifier} {
+    padding-left: 0;
+    list-style: none;
+  }
+}
+
+// clearfix
+@mixin clearfix($modifier: null) {
+  @if $modifier {
+    $modifier: "\\@#{$modifier}";
+  }
+
+  .u-clear#{$modifier} {
+    clear: both;
+  }
+
+  .u-clearfix#{$modifier} {
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+      border-collapse: collapse;
+    }
+  }
+
+  .u-mod#{$modifier} {
+    overflow: hidden;
+  }
+}
+
+// text
+@mixin text($modifier: null) {
+  @if $modifier {
+    $modifier: "\\@#{$modifier}";
+  }
+
+  .u-text-right#{$modifier} {
+    text-align: right;
+  }
+
+  .u-text-center#{$modifier} {
+    text-align: center;
+  }
+
+  .u-text-left#{$modifier} {
+    text-align: left;
+  }
+
+  .u-text-lowercase#{$modifier} {
+    text-transform: lowercase;
+  }
+
+  .u-text-uppercase#{$modifier} {
+    text-transform: uppercase;
+  }
+
+  .u-text-capitalize#{$modifier} {
+    text-transform: capitalize;
+  }
+}
+
+// a11y
+@mixin a11y($modifier: null) {
+  @if $modifier {
+    $modifier: "\\@#{$modifier}";
+  }
+
+  .u-visually-hidden#{$modifier} {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+  }
+}
+
+/* responsive component generator
+   ========================================================================== */
+
 @mixin responsive($component) {
   $bp-name-sup: null;
   $bp-value-sup: null;
@@ -575,36 +599,180 @@ $separator-size         : rem($separator-size);
   @each $bp-name, $bp-value in $breakpoints {
     @if index($breakpoints, ($bp-name $bp-value)) == 1 {
       @media (min-width: $bp-value + em(1px, $bp-context)) {
-        @if $component == "utilities" {
-          @include utilities("#{$bp-name}-plus");
-        }
-
         @if $component == "grid-columns" {
           @include grid-columns("#{$bp-name}-plus");
+        }
+
+        @if $component == "colors" {
+          @include colors("#{$bp-name}-plus");
+        }
+
+        @if $component == "font-sizes" {
+          @include font-sizes("#{$bp-name}-plus");
+        }
+
+        @if $component == "font-weights" {
+          @include font-weights("#{$bp-name}-plus");
+        }
+
+        @if $component == "sizes" {
+          @include sizes("#{$bp-name}-plus");
+        }
+
+        @if $component == "spacers" {
+          @include spacers("#{$bp-name}-plus");
+        }
+
+        @if $component == "display" {
+          @include display("#{$bp-name}-plus");
+        }
+
+        @if $component == "flex" {
+          @include flex("#{$bp-name}-plus");
+        }
+
+        @if $component == "columns" {
+          @include columns("#{$bp-name}-plus");
+        }
+
+        @if $component == "lists" {
+          @include lists("#{$bp-name}-plus");
+        }
+
+        @if $component == "float" {
+          @include float("#{$bp-name}-plus");
+        }
+
+        @if $component == "clearfix" {
+          @include clearfix("#{$bp-name}-plus");
+        }
+
+        @if $component == "text" {
+          @include text("#{$bp-name}-plus");
+        }
+
+        @if $component == "a11y" {
+          @include a11y("#{$bp-name}-plus");
         }
       }
     }
 
     @if index($breakpoints, ($bp-name $bp-value)) != 1 {
       @media (min-width: $bp-value + em(1px, $bp-context)) and (max-width: $bp-value-sup) {
-        @if $component == "utilities" {
-          @include utilities($bp-name-sup);
-        }
-
         @if $component == "grid-columns" {
           @include grid-columns($bp-name-sup);
+        }
+
+        @if $component == "colors" {
+          @include colors($bp-name-sup);
+        }
+
+        @if $component == "font-sizes" {
+          @include font-sizes($bp-name-sup);
+        }
+
+        @if $component == "font-weights" {
+          @include font-weights($bp-name-sup);
+        }
+
+        @if $component == "sizes" {
+          @include sizes($bp-name-sup);
+        }
+
+        @if $component == "spacers" {
+          @include spacers($bp-name-sup);
+        }
+
+        @if $component == "display" {
+          @include display($bp-name-sup);
+        }
+
+        @if $component == "flex" {
+          @include flex($bp-name-sup);
+        }
+
+        @if $component == "columns" {
+          @include columns($bp-name-sup);
+        }
+
+        @if $component == "lists" {
+          @include lists($bp-name-sup);
+        }
+
+        @if $component == "float" {
+          @include float($bp-name-sup);
+        }
+
+        @if $component == "clearfix" {
+          @include clearfix($bp-name-sup);
+        }
+
+        @if $component == "text" {
+          @include text($bp-name-sup);
+        }
+
+        @if $component == "a11y" {
+          @include a11y($bp-name-sup);
         }
       }
     }
 
     @if index($breakpoints, ($bp-name $bp-value)) == length($breakpoints) {
       @media (max-width: $bp-value) {
-        @if $component == "utilities" {
-          @include utilities($bp-name);
-        }
-
         @if $component == "grid-columns" {
           @include grid-columns($bp-name);
+        }
+
+        @if $component == "colors" {
+          @include colors($bp-name);
+        }
+
+        @if $component == "font-sizes" {
+          @include font-sizes($bp-name);
+        }
+
+        @if $component == "font-weights" {
+          @include font-weights($bp-name);
+        }
+
+        @if $component == "sizes" {
+          @include sizes($bp-name);
+        }
+
+        @if $component == "spacers" {
+          @include spacers($bp-name);
+        }
+
+        @if $component == "display" {
+          @include display($bp-name);
+        }
+
+        @if $component == "flex" {
+          @include flex($bp-name);
+        }
+
+        @if $component == "columns" {
+          @include columns($bp-name);
+        }
+
+        @if $component == "lists" {
+          @include lists($bp-name);
+        }
+
+        @if $component == "float" {
+          @include float($bp-name);
+        }
+
+        @if $component == "clearfix" {
+          @include clearfix($bp-name);
+        }
+
+        @if $component == "text" {
+          @include text($bp-name);
+        }
+
+        @if $component == "a11y" {
+          @include a11y($bp-name);
         }
       }
     }
