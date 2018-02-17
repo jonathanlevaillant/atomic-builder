@@ -93,13 +93,13 @@
 /* maps
    ========================================================================== */
 
-// spacer
-@function spacer($spacer) {
-  @if map-has-key($spacers, $spacer) {
-    @return rem(map-get($spacers, $spacer));
+// color
+@function color($color) {
+  @if map-has-key($colors, $color) {
+    @return map-get($colors, $color);
   }
 
-  @warn "Unfortunately, no value could be retrieved from #{$spacers}";
+  @warn "Unfortunately, no value could be retrieved from #{$colors}";
 }
 
 // font size
@@ -130,13 +130,13 @@
   @warn "Unfortunately, no value could be retrieved from #{$font-weights}";
 }
 
-// color
-@function color($color) {
-  @if map-has-key($colors, $color) {
-    @return map-get($colors, $color);
+// spacer
+@function spacer($spacer) {
+  @if map-has-key($spacers, $spacer) {
+    @return rem(map-get($spacers, $spacer));
   }
 
-  @warn "Unfortunately, no value could be retrieved from #{$colors}";
+  @warn "Unfortunately, no value could be retrieved from #{$spacers}";
 }
 
 // breakpoint
