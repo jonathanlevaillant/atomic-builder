@@ -2,14 +2,15 @@
    ========================================================================== */
 
 html {
+  height: 100%;
   overflow-x: hidden;
+  overflow-y: scroll;
   font-size: 62.5%;
   line-height: $line-height-base;
 }
 
 body {
-  @include rhythm-rwd();
-  color: $page-color;
+  @include font-responsive(base);
+  min-height: 100%;
   font-family: $font-family-base;
-  background-color: $page-bg;
 }
