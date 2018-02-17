@@ -2,37 +2,37 @@
    ========================================================================== */
 
 h1,
-.u-txt-h1 {
-  @include rhythm-rwd(h1);
+.u-text-h1 {
+  @include font-responsive(h1);
   font-family: $font-family-headings;
 }
 
 h2,
-.u-txt-h2 {
-  @include rhythm-rwd(h2);
+.u-text-h2 {
+  @include font-responsive(h2);
   font-family: $font-family-headings;
 }
 
 h3,
-.u-txt-h3 {
-  @include rhythm-rwd(h3);
+.u-text-h3 {
+  @include font-responsive(h3);
   font-family: $font-family-headings;
 }
 
 h4,
-.u-txt-h4 {
-  @include rhythm-rwd(h4);
+.u-text-h4 {
+  @include font-responsive(h4);
   font-family: $font-family-headings;
 }
 
 h5,
-.u-txt-h5 {
-  @include rhythm-rwd(h5);
+.u-text-h5 {
+  @include font-responsive(h5);
   font-family: $font-family-headings;
 }
 
 h6,
-.u-txt-h6 {
-  @include rhythm-rwd(h6);
+.u-text-h6 {
+  @include font-responsive(h6);
   font-family: $font-family-headings;
 }
