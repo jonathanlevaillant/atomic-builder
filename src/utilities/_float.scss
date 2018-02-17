@@ -1,0 +1,8 @@
+/* float
+   ========================================================================== */
+
+@include float;
+
+@if $enable-responsive-float {
+  @include responsive("float");
+}

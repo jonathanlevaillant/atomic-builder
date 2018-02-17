@@ -1,18 +1,18 @@
 /* utilities
    ========================================================================== */
 
-@include utilities;
-
-/* responsive
-   ========================================================================== */
-
-@if $enable-utils-rwd {
-  @include responsive("utilities");
-}
-
-/* print
-   ========================================================================== */
-
-@if $enable-print-utils {
-  @include utilities("print");
-}
+@import "colors";
+@import "font-sizes";
+@import "font-weights";
+@import "sizes";
+@import "spacers";
+@import "display";
+@import "flex";
+@import "columns";
+@import "lists";
+@import "float";
+@import "clearfix";
+@import "text";
+@import "a11y";
+@import "responsive";
+@import "print";

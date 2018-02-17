@@ -1,0 +1,8 @@
+/* display
+   ========================================================================== */
+
+@include display;
+
+@if $enable-responsive-display {
+  @include responsive("display");
+}

@@ -1,0 +1,8 @@
+/* flex
+   ========================================================================== */
+
+@include flex;
+
+@if $enable-responsive-flex {
+  @include responsive("flex");
+}

@@ -1,0 +1,8 @@
+/* text
+   ========================================================================== */
+
+@include text;
+
+@if $enable-responsive-text {
+  @include responsive("text");
+}

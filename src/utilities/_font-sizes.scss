@@ -1,0 +1,8 @@
+/* font sizes
+   ========================================================================== */
+
+@include font-sizes;
+
+@if $enable-responsive-font-sizes {
+  @include responsive("font-sizes");
+}

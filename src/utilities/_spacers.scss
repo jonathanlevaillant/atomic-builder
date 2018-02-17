@@ -1,0 +1,8 @@
+/* spacers
+   ========================================================================== */
+
+@include spacers;
+
+@if $enable-responsive-spacers {
+  @include responsive("spacers");
+}

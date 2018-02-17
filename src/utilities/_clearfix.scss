@@ -1,0 +1,8 @@
+/* clearfix
+   ========================================================================== */
+
+@include clearfix;
+
+@if $enable-responsive-clearfix {
+  @include responsive("clearfix");
+}
