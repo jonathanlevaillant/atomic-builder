@@ -15,7 +15,6 @@ $font-size-h6           : rem($font-size-h6);
 
 $container-width        : rem($container-width);
 
-$grid-gutter-width      : rem($grid-gutter-width);
 $grid-offset-width      : rem($grid-offset-width);
 
 $label-font-size        : rem($label-font-size);
@@ -111,11 +110,11 @@ $btn-font-size          : rem($btn-font-size);
     $font-size: map-get($responsive-font-sizes, $key);
 
     @if type-of($font-size) == "map" {
-      @each $font-size-name, $font-size-value in $font-size {
-        @if $font-size-name == "default" {
+      @each $font-size-key, $font-size-value in $font-size {
+        @if $font-size-key == "default" {
           @include font-map($font-size-value, $minor, $unit-to);
         } @else {
-          @media (max-width: bp($font-size-name)) {
+          @media (max-width: bp($font-size-key)) {
             @include font-map($font-size-value, $minor, $unit-to);
           }
         }
@@ -138,6 +137,35 @@ $btn-font-size          : rem($btn-font-size);
   @if $grid-offset-width != 0 {
     padding-right: $grid-offset-width;
     padding-left: $grid-offset-width;
+  }
+}
+
+// grid gutter width
+@mixin grid-gutter($grid-gutter-width) {
+  .o-grid {
+    margin-bottom: rem(-$grid-gutter-width);
+    margin-left: rem(-$grid-gutter-width);
+  }
+
+  .o-grid__col {
+    padding-bottom: rem($grid-gutter-width);
+    padding-left: rem($grid-gutter-width);
+  }
+}
+
+@mixin grid-gutter-width {
+  @if type-of($grid-gutter-width) == "map" {
+    @each $grid-gutter-width-key, $grid-gutter-width-value in $grid-gutter-width {
+      @if $grid-gutter-width-key == "default" {
+        @include grid-gutter($grid-gutter-width-value);
+      } @else {
+        @media (max-width: bp($grid-gutter-width-key)) {
+          @include grid-gutter($grid-gutter-width-value);
+        }
+      }
+    }
+  } @else {
+    @include grid-gutter($grid-gutter-width);
   }
 }
 
@@ -591,6 +619,64 @@ $btn-font-size          : rem($btn-font-size);
 /* responsive component generator
    ========================================================================== */
 
+@mixin components($component, $bp-name) {
+  @if $component == "grid-columns" {
+    @include grid-columns($bp-name);
+  }
+
+  @if $component == "colors" {
+    @include colors($bp-name);
+  }
+
+  @if $component == "font-sizes" {
+    @include font-sizes($bp-name);
+  }
+
+  @if $component == "font-weights" {
+    @include font-weights($bp-name);
+  }
+
+  @if $component == "sizes" {
+    @include sizes($bp-name);
+  }
+
+  @if $component == "spacers" {
+    @include spacers($bp-name);
+  }
+
+  @if $component == "display" {
+    @include display($bp-name);
+  }
+
+  @if $component == "flex" {
+    @include flex($bp-name);
+  }
+
+  @if $component == "columns" {
+    @include columns($bp-name);
+  }
+
+  @if $component == "lists" {
+    @include lists($bp-name);
+  }
+
+  @if $component == "float" {
+    @include float($bp-name);
+  }
+
+  @if $component == "clearfix" {
+    @include clearfix($bp-name);
+  }
+
+  @if $component == "text" {
+    @include text($bp-name);
+  }
+
+  @if $component == "a11y" {
+    @include a11y($bp-name);
+  }
+}
+
 @mixin responsive($component) {
   $bp-name-sup: null;
   $bp-value-sup: null;
@@ -599,181 +685,19 @@ $btn-font-size          : rem($btn-font-size);
   @each $bp-name, $bp-value in $breakpoints {
     @if index($breakpoints, ($bp-name $bp-value)) == 1 {
       @media (min-width: $bp-value + em(1px, $bp-context)) {
-        @if $component == "grid-columns" {
-          @include grid-columns("#{$bp-name}-plus");
-        }
-
-        @if $component == "colors" {
-          @include colors("#{$bp-name}-plus");
-        }
-
-        @if $component == "font-sizes" {
-          @include font-sizes("#{$bp-name}-plus");
-        }
-
-        @if $component == "font-weights" {
-          @include font-weights("#{$bp-name}-plus");
-        }
-
-        @if $component == "sizes" {
-          @include sizes("#{$bp-name}-plus");
-        }
-
-        @if $component == "spacers" {
-          @include spacers("#{$bp-name}-plus");
-        }
-
-        @if $component == "display" {
-          @include display("#{$bp-name}-plus");
-        }
-
-        @if $component == "flex" {
-          @include flex("#{$bp-name}-plus");
-        }
-
-        @if $component == "columns" {
-          @include columns("#{$bp-name}-plus");
-        }
-
-        @if $component == "lists" {
-          @include lists("#{$bp-name}-plus");
-        }
-
-        @if $component == "float" {
-          @include float("#{$bp-name}-plus");
-        }
-
-        @if $component == "clearfix" {
-          @include clearfix("#{$bp-name}-plus");
-        }
-
-        @if $component == "text" {
-          @include text("#{$bp-name}-plus");
-        }
-
-        @if $component == "a11y" {
-          @include a11y("#{$bp-name}-plus");
-        }
+        @include components($component, "#{$bp-name}-plus");
       }
     }
 
     @if index($breakpoints, ($bp-name $bp-value)) != 1 {
       @media (min-width: $bp-value + em(1px, $bp-context)) and (max-width: $bp-value-sup) {
-        @if $component == "grid-columns" {
-          @include grid-columns($bp-name-sup);
-        }
-
-        @if $component == "colors" {
-          @include colors($bp-name-sup);
-        }
-
-        @if $component == "font-sizes" {
-          @include font-sizes($bp-name-sup);
-        }
-
-        @if $component == "font-weights" {
-          @include font-weights($bp-name-sup);
-        }
-
-        @if $component == "sizes" {
-          @include sizes($bp-name-sup);
-        }
-
-        @if $component == "spacers" {
-          @include spacers($bp-name-sup);
-        }
-
-        @if $component == "display" {
-          @include display($bp-name-sup);
-        }
-
-        @if $component == "flex" {
-          @include flex($bp-name-sup);
-        }
-
-        @if $component == "columns" {
-          @include columns($bp-name-sup);
-        }
-
-        @if $component == "lists" {
-          @include lists($bp-name-sup);
-        }
-
-        @if $component == "float" {
-          @include float($bp-name-sup);
-        }
-
-        @if $component == "clearfix" {
-          @include clearfix($bp-name-sup);
-        }
-
-        @if $component == "text" {
-          @include text($bp-name-sup);
-        }
-
-        @if $component == "a11y" {
-          @include a11y($bp-name-sup);
-        }
+        @include components($component, $bp-name-sup);
       }
     }
 
     @if index($breakpoints, ($bp-name $bp-value)) == length($breakpoints) {
       @media (max-width: $bp-value) {
-        @if $component == "grid-columns" {
-          @include grid-columns($bp-name);
-        }
-
-        @if $component == "colors" {
-          @include colors($bp-name);
-        }
-
-        @if $component == "font-sizes" {
-          @include font-sizes($bp-name);
-        }
-
-        @if $component == "font-weights" {
-          @include font-weights($bp-name);
-        }
-
-        @if $component == "sizes" {
-          @include sizes($bp-name);
-        }
-
-        @if $component == "spacers" {
-          @include spacers($bp-name);
-        }
-
-        @if $component == "display" {
-          @include display($bp-name);
-        }
-
-        @if $component == "flex" {
-          @include flex($bp-name);
-        }
-
-        @if $component == "columns" {
-          @include columns($bp-name);
-        }
-
-        @if $component == "lists" {
-          @include lists($bp-name);
-        }
-
-        @if $component == "float" {
-          @include float($bp-name);
-        }
-
-        @if $component == "clearfix" {
-          @include clearfix($bp-name);
-        }
-
-        @if $component == "text" {
-          @include text($bp-name);
-        }
-
-        @if $component == "a11y" {
-          @include a11y($bp-name);
-        }
+        @include components($component, $bp-name);
       }
     }
 
