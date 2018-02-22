@@ -32,5 +32,10 @@ $grid-gutter-width: (
   sm                             : 1.2rem
 );
 
+$grid-offset-width: (
+  default                        : 2.4rem,
+  sm                             : 1.2rem
+);
+
 // responsive utilities
 $enable-responsive-flex          : true;
