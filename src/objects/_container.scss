@@ -2,12 +2,10 @@
    ========================================================================== */
 
 .o-container {
-  @include container;
   width: 100%;
   margin-right: auto;
   margin-left: auto;
 }
 
-.o-container--auto {
-  max-width: none;
-}
+// container width generator
+@include container-width;
