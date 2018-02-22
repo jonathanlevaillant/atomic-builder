@@ -2,11 +2,11 @@
    ========================================================================== */
 
 .c-btn {
+  border: 0;
   border-radius: em(6px);
   color: color("pink");
   font-weight: font-weight(bold);
   background-color: color("gray-100");
-  border: 0;
 
   &:focus,
   &:hover,
