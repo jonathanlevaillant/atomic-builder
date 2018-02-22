@@ -4,27 +4,15 @@
 .o-grid {
   display: flex;
   flex-flow: row wrap;
-  margin-bottom: -$grid-gutter-width;
-  margin-left: -$grid-gutter-width;
 }
 
 .o-grid__col {
   flex: 0 0 auto;
   box-sizing: border-box;
-  padding-bottom: $grid-gutter-width;
-  padding-left: $grid-gutter-width;
 }
 
-// no gutters
-.o-grid--gutter-none {
-  margin-bottom: 0;
-  margin-left: 0;
-}
-
-.o-grid--gutter-none > .o-grid__col {
-  padding-bottom: 0;
-  padding-left: 0;
-}
+// gutter width generator
+@include grid-gutter-width;
 
 // columns generator
 @include grid-columns;
