@@ -15,8 +15,6 @@ $font-size-h6           : rem($font-size-h6);
 
 $container-width        : rem($container-width);
 
-$grid-offset-width      : rem($grid-offset-width);
-
 $label-font-size        : rem($label-font-size);
 
 $field-height           : rem($field-height);
@@ -128,28 +126,45 @@ $btn-font-size          : rem($btn-font-size);
 /* layouts
    ========================================================================== */
 
-// container
-@mixin container($container-width: $container-width) {
-  $container-width: rem($container-width);
+// container generator
+@mixin container-generator($grid-offset-width) {
+  $grid-offset-width: rem($grid-offset-width);
 
-  max-width: $container-width + $grid-offset-width * 2;
-
-  @if $grid-offset-width != 0 {
+  .o-container {
+    max-width: $container-width + $grid-offset-width * 2;
     padding-right: $grid-offset-width;
     padding-left: $grid-offset-width;
   }
 }
 
-// grid gutter width
-@mixin grid-gutter($grid-gutter-width) {
+@mixin container-width {
+  @if type-of($grid-offset-width) == "map" {
+    @each $grid-offset-width-key, $grid-offset-width-value in $grid-offset-width {
+      @if $grid-offset-width-key == "default" {
+        @include container-generator($grid-offset-width-value);
+      } @else {
+        @media (max-width: bp($grid-offset-width-key)) {
+          @include container-generator($grid-offset-width-value);
+        }
+      }
+    }
+  } @else {
+    @include container-generator($grid-offset-width);
+  }
+}
+
+// grid gutter generator
+@mixin grid-gutter-generator($grid-gutter-width) {
+  $grid-gutter-width: rem($grid-gutter-width);
+
   .o-grid {
-    margin-bottom: rem(-$grid-gutter-width);
-    margin-left: rem(-$grid-gutter-width);
+    margin-bottom: -$grid-gutter-width;
+    margin-left: -$grid-gutter-width;
   }
 
   .o-grid__col {
-    padding-bottom: rem($grid-gutter-width);
-    padding-left: rem($grid-gutter-width);
+    padding-bottom: $grid-gutter-width;
+    padding-left: $grid-gutter-width;
   }
 }
 
@@ -157,19 +172,19 @@ $btn-font-size          : rem($btn-font-size);
   @if type-of($grid-gutter-width) == "map" {
     @each $grid-gutter-width-key, $grid-gutter-width-value in $grid-gutter-width {
       @if $grid-gutter-width-key == "default" {
-        @include grid-gutter($grid-gutter-width-value);
+        @include grid-gutter-generator($grid-gutter-width-value);
       } @else {
         @media (max-width: bp($grid-gutter-width-key)) {
-          @include grid-gutter($grid-gutter-width-value);
+          @include grid-gutter-generator($grid-gutter-width-value);
         }
       }
     }
   } @else {
-    @include grid-gutter($grid-gutter-width);
+    @include grid-gutter-generator($grid-gutter-width);
   }
 }
 
-// grid columns
+// grid columns generator
 @mixin grid-columns($modifier: null) {
   @if $modifier {
     $modifier: "\\@#{$modifier}";
