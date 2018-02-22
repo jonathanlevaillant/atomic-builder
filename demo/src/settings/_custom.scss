@@ -26,5 +26,11 @@ $responsive-font-sizes: (
 // container
 $container-width                 : 120rem;
 
+// grids
+$grid-gutter-width: (
+  default                        : 2.4rem,
+  sm                             : 1.2rem
+);
+
 // responsive utilities
 $enable-responsive-flex          : true;
