@@ -1,7 +1,7 @@
 {
   "name": "atomic-builder",
   "description": "An atomic front-end BEMIT framework",
-  "version": "7.3.0",
+  "version": "7.3.1",
   "keywords": [
     "framework",
     "sass",
