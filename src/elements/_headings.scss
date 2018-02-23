@@ -2,37 +2,37 @@
    ========================================================================== */
 
 h1,
-.u-text-h1 {
+.u-h1 {
   @include font-responsive(h1);
   font-family: $font-family-headings;
 }
 
 h2,
-.u-text-h2 {
+.u-h2 {
   @include font-responsive(h2);
   font-family: $font-family-headings;
 }
 
 h3,
-.u-text-h3 {
+.u-h3 {
   @include font-responsive(h3);
   font-family: $font-family-headings;
 }
 
 h4,
-.u-text-h4 {
+.u-h4 {
   @include font-responsive(h4);
   font-family: $font-family-headings;
 }
 
 h5,
-.u-text-h5 {
+.u-h5 {
   @include font-responsive(h5);
   font-family: $font-family-headings;
 }
 
 h6,
-.u-text-h6 {
+.u-h6 {
   @include font-responsive(h6);
   font-family: $font-family-headings;
 }
