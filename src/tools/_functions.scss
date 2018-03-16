@@ -83,9 +83,9 @@
 
       @return $line-height;
     }
+  } @else {
+    @warn "Unfortunately, #{$font-size} is not a valid number";
   }
-
-  @warn "Unfortunately, #{$font-size} is not a valid number";
 
   @return $line-height-base;
 }
