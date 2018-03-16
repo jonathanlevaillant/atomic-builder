@@ -3,7 +3,6 @@
 
 html {
   height: 100%;
-  overflow-x: hidden;
   overflow-y: scroll;
   font-size: 62.5%;
   line-height: $line-height-base;
@@ -14,5 +13,6 @@ html {
 body {
   @include font-responsive(base);
   min-height: 100%;
+  overflow: hidden;
   font-family: $font-family-base;
 }
