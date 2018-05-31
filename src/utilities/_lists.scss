@@ -1,8 +1,0 @@
-/* lists
-   ========================================================================== */
-
-@include lists;
-
-@if $enable-responsive-lists {
-  @include responsive("lists");
-}

@@ -544,18 +544,6 @@ $btn-font-size          : rem($btn-font-size);
   }
 }
 
-// lists
-@mixin lists($modifier: null) {
-  @if $modifier {
-    $modifier: "\\@#{$modifier}";
-  }
-
-  .u-list-unstyled#{$modifier} {
-    padding-left: 0;
-    list-style: none;
-  }
-}
-
 // clearfix
 @mixin clearfix($modifier: null) {
   @if $modifier {
@@ -631,6 +619,36 @@ $btn-font-size          : rem($btn-font-size);
   }
 }
 
+// unstyled
+@mixin unstyled($modifier: null) {
+  @if $modifier {
+    $modifier: "\\@#{$modifier}";
+  }
+
+  .u-list-unstyled#{$modifier} {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .u-link-unstyled#{$modifier} {
+    color: inherit;
+    text-decoration: none;
+
+    &:focus,
+    &:hover,
+    &:active {
+      text-decoration: none;
+    }
+  }
+
+  .u-btn-unstyled#{$modifier} {
+    padding: 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+}
+
 /* responsive component generator
    ========================================================================== */
 
@@ -671,10 +689,6 @@ $btn-font-size          : rem($btn-font-size);
     @include columns($bp-name);
   }
 
-  @if $component == "lists" {
-    @include lists($bp-name);
-  }
-
   @if $component == "float" {
     @include float($bp-name);
   }
@@ -689,6 +703,10 @@ $btn-font-size          : rem($btn-font-size);
 
   @if $component == "a11y" {
     @include a11y($bp-name);
+  }
+
+  @if $component == "unstyled" {
+    @include unstyled($bp-name);
   }
 }
 
