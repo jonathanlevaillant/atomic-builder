@@ -318,7 +318,7 @@ $btn-font-size          : rem($btn-font-size);
     }
   }
 
-  .u-m-auto {
+  .u-m-auto#{$modifier} {
     margin: auto;
   }
 
