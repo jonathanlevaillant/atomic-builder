@@ -6,40 +6,40 @@
 
     // colors
     @each $color-name, $color-value in $colors {
-      --color-#{$color-name}: $color-value;
+      --color-#{$color-name}: #{$color-value};
     }
 
     // container
-    --container-width: $container-width;
+    --container-width: #{$container-width};
 
     // grid gutters
     @if type-of($grid-gutter-width) == "map" {
       @each $grid-gutter-width-key, $grid-gutter-width-value in $grid-gutter-width {
         @if $grid-gutter-width-key == "default" {
-          --grid-gutter-width: rem($grid-gutter-width-value);
+          --grid-gutter-width: #{rem($grid-gutter-width-value)};
         } @else {
           @media (max-width: bp($grid-gutter-width-key)) {
-            --grid-gutter-width: rem($grid-gutter-width-value);
+            --grid-gutter-width: #{rem($grid-gutter-width-value)};
           }
         }
       }
     } @else {
-      --grid-gutter-width: rem($grid-gutter-width);
+      --grid-gutter-width: #{rem($grid-gutter-width)};
     }
 
     // grid offsets
     @if type-of($grid-offset-width) == "map" {
       @each $grid-offset-width-key, $grid-offset-width-value in $grid-offset-width {
         @if $grid-offset-width-key == "default" {
-          --grid-offset-width: rem($grid-offset-width-value);
+          --grid-offset-width: #{rem($grid-offset-width-value)};
         } @else {
           @media (max-width: bp($grid-offset-width-key)) {
-            --grid-offset-width: rem($grid-offset-width-value);
+            --grid-offset-width: #{rem($grid-offset-width-value)};
           }
         }
       }
     } @else {
-      --grid-offset-width: rem($grid-offset-width);
+      --grid-offset-width: #{rem($grid-offset-width)};
     }
   }
 }
