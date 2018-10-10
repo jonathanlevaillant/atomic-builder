@@ -138,18 +138,26 @@ $btn-font-size          : rem($btn-font-size);
 }
 
 @mixin container-width {
-  @if type-of($grid-offset-width) == "map" {
-    @each $grid-offset-width-key, $grid-offset-width-value in $grid-offset-width {
-      @if $grid-offset-width-key == "default" {
-        @include container-generator($grid-offset-width-value);
-      } @else {
-        @media (max-width: bp($grid-offset-width-key)) {
-          @include container-generator($grid-offset-width-value);
-        }
-      }
+  @if $enable-custom-properties {
+    .o-container {
+      max-width: calc(var(--container-width) + var(--grid-offset-width) * 2);
+      padding-right: var(--grid-offset-width);
+      padding-left: var(--grid-offset-width);
     }
   } @else {
-    @include container-generator($grid-offset-width);
+    @if type-of($grid-offset-width) == "map" {
+      @each $grid-offset-width-key, $grid-offset-width-value in $grid-offset-width {
+        @if $grid-offset-width-key == "default" {
+          @include container-generator($grid-offset-width-value);
+        } @else {
+          @media (max-width: bp($grid-offset-width-key)) {
+            @include container-generator($grid-offset-width-value);
+          }
+        }
+      }
+    } @else {
+      @include container-generator($grid-offset-width);
+    }
   }
 }
 
@@ -169,18 +177,33 @@ $btn-font-size          : rem($btn-font-size);
 }
 
 @mixin grid-gutter-width {
-  @if type-of($grid-gutter-width) == "map" {
-    @each $grid-gutter-width-key, $grid-gutter-width-value in $grid-gutter-width {
-      @if $grid-gutter-width-key == "default" {
-        @include grid-gutter-generator($grid-gutter-width-value);
-      } @else {
-        @media (max-width: bp($grid-gutter-width-key)) {
-          @include grid-gutter-generator($grid-gutter-width-value);
-        }
-      }
+  @if $enable-custom-properties {
+    .o-grid {
+      --grid-gutter-x: var(--grid-gutter-width);
+      --grid-gutter-y: var(--grid-gutter-width);
+
+      margin-bottom: calc(var(--grid-gutter-y) * -1);
+      margin-left: calc(var(--grid-gutter-x) * -1);
+    }
+
+    .o-grid__col {
+      padding-bottom: var(--grid-gutter-y);
+      padding-left: var(--grid-gutter-x);
     }
   } @else {
-    @include grid-gutter-generator($grid-gutter-width);
+    @if type-of($grid-gutter-width) == "map" {
+      @each $grid-gutter-width-key, $grid-gutter-width-value in $grid-gutter-width {
+        @if $grid-gutter-width-key == "default" {
+          @include grid-gutter-generator($grid-gutter-width-value);
+        } @else {
+          @media (max-width: bp($grid-gutter-width-key)) {
+            @include grid-gutter-generator($grid-gutter-width-value);
+          }
+        }
+      }
+    } @else {
+      @include grid-gutter-generator($grid-gutter-width);
+    }
   }
 }
 
@@ -216,6 +239,9 @@ $btn-font-size          : rem($btn-font-size);
 
   @each $color-name, $color-value in $colors {
     .u-color-#{$color-name}#{$modifier} {
+      @if $enable-custom-properties {
+        $color-value: var(--color-#{$color-name});
+      }
       color: $color-value;
     }
   }
