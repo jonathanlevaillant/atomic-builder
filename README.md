@@ -550,6 +550,14 @@ Vous trouverez également un guide de style à la racine du dossier `/src` regro
 
 Maintenant que le projet est correctement configuré, il est temps de créer vos nouveaux composants, à vous de jouer ! 
 
+## Sponsors
+
+Ce projet est sponsorisé par JoliCode
+
+<p align="center">
+    <a href="https://jolicode.com"><img src="https://jolicode.com/images/logo.svg" width=247 height=57 alt="JoliCode" /></a>
+</p>
+
 ## Ils nous font confiance
 
 - [Vinci Autoroutes](https://www.vinci-autoroutes.com/fr)
