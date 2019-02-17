@@ -1,0 +1,8 @@
+/* root.scss
+   ========================================================================== */
+
+:root {
+  @include color-vars;
+  @include font-size-vars;
+  @include font-family-vars;
+}

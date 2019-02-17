@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "stylelint-config-sass-guidelines",
+    "stylelint-config-rational-order"
+  ],
+  "defaultSeverity": "warning",
+  "rules": {
+    "order/properties-alphabetical-order": null,
+    "string-quotes": "double",
+    "number-leading-zero": "never"
+  }
+}

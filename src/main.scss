@@ -1,33 +1,13 @@
-/* imports
+/* main.scss
    ========================================================================== */
 
-// settings
+// Settings : Used with preprocessors and contain colors definitions, fonts and global configuration
 @import "settings/colors";
 @import "settings/global";
 
-// tools
+// Tools : Globally used mixins and functions
 @import "tools/functions";
 @import "tools/mixins";
 
-// generic
-@import "generic/normalize";
-@import "generic/box-sizing";
-
-// elements
-@import "elements/base";
-@import "elements/page";
-@import "elements/headings";
-@import "elements/forms";
-@import "elements/tables";
-
-// objects
-@import "objects/grid";
-@import "objects/container";
-@import "objects/media";
-
-// components
-@import "components/icons";
-@import "components/labels";
-@import "components/fields";
-@import "components/buttons";
-@import "components/separators";
+// Elements : Styling for bare HTML elements
+@import "elements/root";

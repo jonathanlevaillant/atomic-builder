@@ -1,7 +1,17 @@
 {
   "name": "atomic-builder",
+  "version": "8.0.0",
   "description": "An atomic front-end BEMIT framework",
-  "version": "7.4.2",
+  "author": "Jonathan Levaillant <jonathan.levaillant@outlook.com> (http://jonathanlevaillant.fr)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonathanlevaillant/atomic-builder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonathanlevaillant/atomic-builder/issues",
+    "email": "jonathan.levaillant@outlook.com"
+  },
   "keywords": [
     "framework",
     "sass",
@@ -14,37 +24,27 @@
     "vertical rhythm",
     "responsive"
   ],
-  "author": "Jonathan Levaillant <jonathan.levaillant@outlook.com> (http://jonathanlevaillant.fr)",
   "scripts": {
-    "start": "yarn",
-    "dev": "gulp && gulp demo && gulp watch",
-    "build": "rm -rf ./dist && gulp",
-    "prepare": "yarn run build"
+    "clean": "rimraf dist",
+    "scss": "node-sass --output-style expanded --source-map true --source-map-contents true src/main.scss dist/main.css",
+    "lint": "stylelint src/**/*.scss",
+    "prefix": "postcss -u autoprefixer -r dist/main.css",
+    "minify": "cleancss --source-map --source-map-inline-sources -o dist/main.min.css dist/main.css",
+    "compile": "npm-run-all lint scss prefix",
+    "dev": "onchange 'src/**/*.scss' -- npm run compile --silent",
+    "build": "npm-run-all clean compile minify",
+    "prepare": "npm run build"
   },
-  "main": "src/main.scss",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jonathanlevaillant/atomic-builder.git"
-  },
-  "bugs": {
-    "url": "https://github.com/jonathanlevaillant/atomic-builder/issues",
-    "email": "jonathan.levaillant@outlook.com"
-  },
-  "license": "MIT",
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.1.0",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-stylelint": "^6.0.0",
-    "node-sass-tilde-importer": "^1.0.1",
-    "stylelint": "^8.4.0",
-    "stylelint-config-rational-order": "^0.0.2",
-    "stylelint-config-sass-guidelines": "^4.1.0",
-    "stylelint-order": "^0.8.0",
-    "stylelint-scss": "^2.3.0"
-  },
-  "dependencies": {
-    "normalize.css": "^8.0.0"
+    "autoprefixer": "^9.4.7",
+    "clean-css-cli": "^4.2.1",
+    "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^5.2.0",
+    "postcss-cli": "^6.1.1",
+    "rimraf": "^2.6.3",
+    "stylelint": "^9.10.1",
+    "stylelint-config-rational-order": "0.0.4",
+    "stylelint-config-sass-guidelines": "^5.3.0"
   }
 }
