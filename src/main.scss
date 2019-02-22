@@ -1,13 +1,14 @@
-/* main.scss
-   ========================================================================== */
+///* ========================================================================
+//   main.scss
+//   ======================================================================== */
 
 // Settings : Used with preprocessors and contain colors definitions, fonts and global configuration
-@import "settings/colors";
-@import "settings/global";
+@import 'settings/colors';
+@import 'settings/global';
 
 // Tools : Globally used mixins and functions
-@import "tools/functions";
-@import "tools/mixins";
+@import 'tools/functions';
+@import 'tools/mixins';
 
 // Elements : Styling for bare HTML elements
-@import "elements/root";
+@import 'elements/root';
