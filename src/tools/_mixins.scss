@@ -116,26 +116,49 @@
   }
 }
 
-/// Mixin to output grid column gap variables associated with the $grid-column-gap map
+/// Mixin to output column gap variables associated with the $grid-column-gap map
 /// @access private
 /// @requires {mixin} media-breakpoint-values
 /// @requires {variable} grid-column-gap
 @mixin grid-column-gap-vars {
   @each $key, $value in $grid-column-gap {
     @include media-breakpoint-values($key) {
-      --grid-column-gap: #{$value};
+      --column-gap: #{$value};
     }
   }
 }
 
-/// Mixin to output grid row gap variables associated with the $grid-row-gap map
+/// Mixin to output row gap variables associated with the $grid-row-gap map
 /// @access private
 /// @requires {mixin} media-breakpoint-values
 /// @requires {variable} grid-row-gap
 @mixin grid-row-gap-vars {
   @each $key, $value in $grid-row-gap {
     @include media-breakpoint-values($key) {
-      --grid-row-gap: #{$value};
+      --row-gap: #{$value};
+    }
+  }
+}
+
+/// Mixin to output grid columns associated with the $grid-columns variable
+/// @access private
+/// @requires {variable} grid-columns
+@mixin grid-columns {
+  @for $i from 1 through $grid-columns {
+    .o-grid--#{$i} {
+      --grid-column-width: calc(100% / #{$i});
+    }
+
+    .o-grid__col--#{$i} {
+      --grid-column-width: calc(100% * #{$i} / #{$grid-columns});
+    }
+
+    .o-grid__col--push-#{$i} {
+      --grid-column-offset-width: calc(100% * #{$i} / #{$grid-columns});
+    }
+
+    .o-grid__col--pull-#{$i} {
+      --grid-column-offset-width: calc(-100% * #{$i} / #{$grid-columns});
     }
   }
 }
