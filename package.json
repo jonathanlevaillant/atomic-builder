@@ -27,7 +27,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "scss": "node-sass --output-style expanded --source-map true --source-map-contents true src/main.scss dist/main.css",
-    "lint": "stylelint src/**/*.scss",
+    "lint": "stylelint 'src/**/*.scss'",
     "prefix": "postcss -u autoprefixer -r dist/main.css",
     "minify": "cleancss --source-map --source-map-inline-sources -o dist/main.min.css dist/main.css",
     "compile": "npm-run-all lint scss prefix",
