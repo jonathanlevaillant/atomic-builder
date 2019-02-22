@@ -5,8 +5,9 @@
   ],
   "defaultSeverity": "warning",
   "rules": {
+    "scss/dollar-variable-colon-space-after": null,
+    "scss/dollar-variable-pattern": null,
     "order/properties-alphabetical-order": null,
-    "string-quotes": "double",
-    "number-leading-zero": "never"
+    "max-nesting-depth": 4
   }
 }
