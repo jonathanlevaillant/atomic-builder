@@ -1,8 +1,18 @@
-/* root.scss
+/* ==========================================================================
+   _root.scss
    ========================================================================== */
 
 :root {
+  /* Custom property builder for colors */
   @include color-vars;
+
+  /* Custom property builder for typography */
+  @include font-weight-vars;
   @include font-size-vars;
   @include font-family-vars;
+
+  /* Custom property builder for layout */
+  @include container-side-margin-vars;
+  @include grid-column-gap-vars;
+  @include grid-row-gap-vars;
 }
