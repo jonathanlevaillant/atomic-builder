@@ -1,16 +1,74 @@
-/* mixins.scss
-   ========================================================================== */
+///* ========================================================================
+//   _mixins.scss
+//   ======================================================================== */
 
-// Generates color variables associated with the $colors map
+//*  Private mixins
+//   ======================================================================== */
+
+/// Mixin to output media queries associated with a breakpoint key
+/// @access private
+/// @requires {function} breakpoint-get
+/// @requires {function} breakpoint-is-up
+/// @requires {function} breakpoint-is-down
+/// @requires {function} breakpoint-get-down
+/// @requires {variable} BREAKPOINT_DEFAULT_LABEL
+/// @param {String} $key - Breakpoint key
+@mixin media-breakpoint-values($key) {
+  @if $key == $BREAKPOINT_DEFAULT_LABEL {
+    @content;
+  } @else {
+    $breakpoint-value: breakpoint-get($key);
+
+    @if $breakpoint-value {
+      @if breakpoint-is-up($key) {
+        @media (min-width: #{$breakpoint-value}) {
+          @content;
+        }
+      } @else if breakpoint-is-down($key) {
+        @media (max-width: #{$breakpoint-value}) {
+          @content;
+        }
+      } @else {
+        $breakpoint-lower-value: breakpoint-get-down($key);
+
+        @if $breakpoint-lower-value {
+          @media (max-width: #{$breakpoint-value}) and (min-width: #{$breakpoint-lower-value}) {
+            @content;
+          }
+        } @else {
+          @media (max-width: #{$breakpoint-value}) {
+            @content;
+          }
+        }
+      }
+    }
+  }
+}
+
+/// Mixin to output color variables associated with the $colors map
+/// @access private
+/// @requires {variable} colors
 @mixin color-vars {
   @each $key, $value in $colors {
     --color-#{$key}: #{$value};
   }
 }
 
-// Generates font size variables associated with the $font-sizes map
-@mixin font-vars($key, $value) {
-  @if type-of($value) == "list" {
+/// Mixin to output font weight variables associated with the $font-weights map
+/// @access private
+/// @requires {variable} font-weights
+@mixin font-weight-vars {
+  @each $key, $value in $font-weights {
+    --font-weight-#{$key}: #{$value};
+  }
+}
+
+/// Mixin to output font size and line height variables associated with a given key and value
+/// @access private
+/// @param {String} $key          - Font size key
+/// @param {List | Number} $value - Font size value
+@mixin rhythm-vars($key, $value) {
+  @if type-of($value) == 'list' {
     --font-size-#{$key}: #{nth($value, 1)};
     --line-height-#{$key}: #{nth($value, 2)};
   } @else {
@@ -18,43 +76,87 @@
   }
 }
 
+/// Mixin to output font size and line height variables associated with the $font-sizes map
+/// @access private
+/// @requires {mixin} media-breakpoint-values
+/// @requires {mixin} rhythm-vars
+/// @requires {variable} font-sizes
 @mixin font-size-vars {
   @each $key, $value in $font-sizes {
-    @if type-of($value) == "map" {
+    @if type-of($value) == 'map' {
       @each $map-key, $map-value in $value {
-        $breakpoint-value: breakpoint-get($map-key);
-
-        @if breakpoint-is-up($map-key) {
-          @media (min-width: #{$breakpoint-value}) {
-            @include font-vars($key, $map-value);
-          }
-        } @else if breakpoint-is-down($map-key) {
-          @media (max-width: #{$breakpoint-value}) {
-            @include font-vars($key, $map-value);
-          }
-        } @else {
-          $breakpoint-lower-value: breakpoint-get-down($map-key);
-
-          @if $breakpoint-lower-value {
-            @media (max-width: #{$breakpoint-value}) and (min-width: #{$breakpoint-lower-value}) {
-              @include font-vars($key, $map-value);
-            }
-          } @else {
-            @media (max-width: #{$breakpoint-value}) {
-              @include font-vars($key, $map-value);
-            }
-          }
+        @include media-breakpoint-values($map-key) {
+          @include rhythm-vars($key, $map-value);
         }
       }
     } @else {
-      @include font-vars($key, $value);
+      @include rhythm-vars($key, $value);
     }
   }
 }
 
-// Generates font family variables associated with the $font-families map
+/// Mixin to output font family variables associated with the $font-families map
+/// @access private
+/// @requires {variable} font-families
 @mixin font-family-vars {
   @each $key, $value in $font-families {
     --font-family-#{$key}: #{$value};
+  }
+}
+
+/// Mixin to output container side margin variables associated with the $container-side-margins map
+/// @access private
+/// @requires {mixin} media-breakpoint-values
+/// @requires {variable} container-side-margins
+@mixin container-side-margin-vars {
+  @each $key, $value in $container-side-margins {
+    @include media-breakpoint-values($key) {
+      --container-side-margins: #{$value};
+    }
+  }
+}
+
+/// Mixin to output grid column gap variables associated with the $grid-column-gap map
+/// @access private
+/// @requires {mixin} media-breakpoint-values
+/// @requires {variable} grid-column-gap
+@mixin grid-column-gap-vars {
+  @each $key, $value in $grid-column-gap {
+    @include media-breakpoint-values($key) {
+      --grid-column-gap: #{$value};
+    }
+  }
+}
+
+/// Mixin to output grid row gap variables associated with the $grid-row-gap map
+/// @access private
+/// @requires {mixin} media-breakpoint-values
+/// @requires {variable} grid-row-gap
+@mixin grid-row-gap-vars {
+  @each $key, $value in $grid-row-gap {
+    @include media-breakpoint-values($key) {
+      --grid-row-gap: #{$value};
+    }
+  }
+}
+
+//*  Public mixins
+//   ======================================================================== */
+
+/// Mixin to output media queries associated with a breakpoint key
+/// @access public
+/// @requires {mixin} media-breakpoint-values
+/// @param {String | Map} $key - Breakpoint(s)
+@mixin media-breakpoint($key) {
+  @if type-of($key) == 'string' {
+    @include media-breakpoint-values($key) {
+      @content;
+    }
+  } @else {
+    @each $value in $key {
+      @include media-breakpoint-values($value) {
+        @content;
+      }
+    }
   }
 }
