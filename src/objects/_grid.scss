@@ -1,18 +1,28 @@
 /* ==========================================================================
-   _grids.scss
+   _grid.scss
    ========================================================================== */
 
 /* Variables & Custom properties
    ========================================================================== */
 
 .o-grid {
-  --grid-column-width: auto; /* Required to reset column widths of nested grids */
-  --grid-column-gap: var(--column-gap); /* Required to reset column gap of nested grids */
-  --grid-row-gap: 0; /* Required to reset row gap of nested grids */
+  --grid-column-width: auto;
+  --grid-column-gap: var(--column-gap);
+  --grid-row-gap: 0;
 }
 
 .o-grid--multiple-rows {
   --grid-row-gap: var(--row-gap);
+}
+
+// Grid columns builder
+@include grid-columns;
+
+/* Responsive
+   ========================================================================== */
+
+@if $enable-responsive-grid {
+  @include responsive-grid-columns;
 }
 
 /* Declarative rules
@@ -32,6 +42,3 @@
   padding-bottom: var(--grid-row-gap);
   padding-left: var(--grid-column-gap);
 }
-
-// Grid column builder
-@include grid-columns;
