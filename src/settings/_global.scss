@@ -31,10 +31,10 @@ $font-families: map-merge((
 // Container
 $container-max-width:     126rem !default;
 
-$container-side-margins: () !default;
-$container-side-margins: map-merge((
+$container-side-margin: () !default;
+$container-side-margin: map-merge((
   'base':                 2.4rem,
-), $container-side-margins);
+), $container-side-margin);
 
 // Grid
 $grid-columns:            12 !default;
@@ -49,9 +49,18 @@ $grid-row-gap: map-merge((
   'base':                 2.4rem,
 ), $grid-row-gap);
 
+// Spacing
+$spacers: () !default;
+$spacers: map-merge((
+  'md':                   2.4rem,
+), $spacers);
+
 // Breakpoints
 $breakpoints: () !default;
 $breakpoints: map-merge((
-  'md':                   64em,
   'sm':                   47.9375em,
+  'md':                   64em,
 ), $breakpoints);
+
+// Responsive components
+$enable-responsive-grid:  true !default;
