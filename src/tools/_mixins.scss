@@ -13,7 +13,7 @@
 /// @requires {function} breakpoint-get-down
 /// @requires {variable} BREAKPOINT_DEFAULT_LABEL
 /// @param {String} $key - Breakpoint key
-@mixin media-breakpoint-values($key) {
+@mixin breakpoint-core($key) {
   @if $key == $BREAKPOINT_DEFAULT_LABEL {
     @content;
   } @else {
@@ -45,19 +45,19 @@
   }
 }
 
-/// Mixin to output color variables associated with the $colors map
+/// Mixin to output color variables associated with the `$colors` map
 /// @access private
 /// @requires {variable} colors
-@mixin color-vars {
+@mixin var-colors {
   @each $key, $value in $colors {
     --color-#{$key}: #{$value};
   }
 }
 
-/// Mixin to output font weight variables associated with the $font-weights map
+/// Mixin to output font weight variables associated with the `$font-weights` map
 /// @access private
 /// @requires {variable} font-weights
-@mixin font-weight-vars {
+@mixin var-font-weights {
   @each $key, $value in $font-weights {
     --font-weight-#{$key}: #{$value};
   }
@@ -67,7 +67,7 @@
 /// @access private
 /// @param {String} $key          - Font size key
 /// @param {List | Number} $value - Font size value
-@mixin rhythm-vars($key, $value) {
+@mixin var-rhythm($key, $value) {
   @if type-of($value) == 'list' {
     --font-size-#{$key}: #{nth($value, 1)};
     --line-height-#{$key}: #{nth($value, 2)};
@@ -76,89 +76,120 @@
   }
 }
 
-/// Mixin to output font size and line height variables associated with the $font-sizes map
+/// Mixin to output font size and line height variables associated with the `$font-sizes` map
 /// @access private
-/// @requires {mixin} media-breakpoint-values
-/// @requires {mixin} rhythm-vars
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} var-rhythm
 /// @requires {variable} font-sizes
-@mixin font-size-vars {
+@mixin var-font-sizes {
   @each $key, $value in $font-sizes {
     @if type-of($value) == 'map' {
       @each $map-key, $map-value in $value {
-        @include media-breakpoint-values($map-key) {
-          @include rhythm-vars($key, $map-value);
+        @include breakpoint-core($map-key) {
+          @include var-rhythm($key, $map-value);
         }
       }
     } @else {
-      @include rhythm-vars($key, $value);
+      @include var-rhythm($key, $value);
     }
   }
 }
 
-/// Mixin to output font family variables associated with the $font-families map
+/// Mixin to output font family variables associated with the `$font-families` map
 /// @access private
 /// @requires {variable} font-families
-@mixin font-family-vars {
+@mixin var-font-families {
   @each $key, $value in $font-families {
     --font-family-#{$key}: #{$value};
   }
 }
 
-/// Mixin to output container side margin variables associated with the $container-side-margins map
+/// Mixin to output container side margin variables associated with the `$container-side-margin` map
 /// @access private
-/// @requires {mixin} media-breakpoint-values
-/// @requires {variable} container-side-margins
-@mixin container-side-margin-vars {
-  @each $key, $value in $container-side-margins {
-    @include media-breakpoint-values($key) {
-      --container-side-margins: #{$value};
+/// @requires {mixin} breakpoint-core
+/// @requires {variable} container-side-margin
+@mixin var-container-side-margin {
+  @each $key, $value in $container-side-margin {
+    @include breakpoint-core($key) {
+      --container-side-margin: #{$value};
     }
   }
 }
 
-/// Mixin to output column gap variables associated with the $grid-column-gap map
+/// Mixin to output container max width variable associated with the `$container-max-width` variable
 /// @access private
-/// @requires {mixin} media-breakpoint-values
+/// @requires {variable} container-max-width
+@mixin var-container-max-width {
+  --container-max-width: #{$container-max-width};
+}
+
+/// Mixin to output column gap variables associated with the `$grid-column-gap` map
+/// @access private
+/// @requires {mixin} breakpoint-core
 /// @requires {variable} grid-column-gap
-@mixin grid-column-gap-vars {
+@mixin var-grid-column-gap {
   @each $key, $value in $grid-column-gap {
-    @include media-breakpoint-values($key) {
+    @include breakpoint-core($key) {
       --column-gap: #{$value};
     }
   }
 }
 
-/// Mixin to output row gap variables associated with the $grid-row-gap map
+/// Mixin to output row gap variables associated with the `$grid-row-gap` map
 /// @access private
-/// @requires {mixin} media-breakpoint-values
+/// @requires {mixin} breakpoint-core
 /// @requires {variable} grid-row-gap
-@mixin grid-row-gap-vars {
+@mixin var-grid-row-gap {
   @each $key, $value in $grid-row-gap {
-    @include media-breakpoint-values($key) {
+    @include breakpoint-core($key) {
       --row-gap: #{$value};
     }
   }
 }
 
-/// Mixin to output grid columns associated with the $grid-columns variable
+/// Mixin to output spacing variables associated with the `$spacer` map
+/// @access private
+/// @requires {variable} spacers
+@mixin var-spacers {
+  @each $key, $value in $spacers {
+    --spacer-#{$key}: #{$value};
+  }
+}
+
+/// Mixin to output grid columns associated with the `$grid-columns` variable
 /// @access private
 /// @requires {variable} grid-columns
-@mixin grid-columns {
+@mixin grid-columns($modifier: null) {
   @for $i from 1 through $grid-columns {
-    .o-grid--#{$i} {
+    .o-grid--#{$i}#{$modifier} {
       --grid-column-width: calc(100% / #{$i});
     }
 
-    .o-grid__col--#{$i} {
+    .o-grid__col--#{$i}#{$modifier} {
       --grid-column-width: calc(100% * #{$i} / #{$grid-columns});
     }
 
-    .o-grid__col--push-#{$i} {
+    .o-grid__col--push-#{$i}#{$modifier} {
       --grid-column-offset-width: calc(100% * #{$i} / #{$grid-columns});
     }
 
-    .o-grid__col--pull-#{$i} {
+    .o-grid__col--pull-#{$i}#{$modifier} {
       --grid-column-offset-width: calc(-100% * #{$i} / #{$grid-columns});
+    }
+  }
+}
+
+/// Mixin to output responsive grid columns associated with the `$grid-columns` variable
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} grid-columns
+/// @requires {variable} breakpoints
+@mixin responsive-grid-columns {
+  $media-separator: '\\@';
+
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include grid-columns(#{$media-separator}#{$key});
     }
   }
 }
@@ -168,16 +199,16 @@
 
 /// Mixin to output media queries associated with a breakpoint key
 /// @access public
-/// @requires {mixin} media-breakpoint-values
+/// @requires {mixin} breakpoint-core
 /// @param {String | Map} $key - Breakpoint(s)
-@mixin media-breakpoint($key) {
+@mixin breakpoint($key) {
   @if type-of($key) == 'string' {
-    @include media-breakpoint-values($key) {
+    @include breakpoint-core($key) {
       @content;
     }
   } @else {
     @each $value in $key {
-      @include media-breakpoint-values($value) {
+      @include breakpoint-core($value) {
         @content;
       }
     }
