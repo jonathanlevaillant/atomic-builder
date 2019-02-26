@@ -2,7 +2,7 @@
 //   main.scss
 //   ======================================================================== */
 
-// Settings : Used with preprocessors and contain colors definitions, fonts and global configuration
+// Settings : Used with preprocessors and contain font, colors definitions, etc.
 @import 'settings/colors';
 @import 'settings/global';
 
@@ -10,8 +10,12 @@
 @import 'tools/functions';
 @import 'tools/mixins';
 
-// Elements : Styling for bare HTML elements
+// Generic : Reset and/or normalize styles, box-sizing definition, etc.
+
+
+// Elements : Styling for bare HTML elements (like h1, a, etc.)
 @import 'elements/root';
 
 // Objects : Class-based selectors which define undecorated design patterns
-@import 'objects/grids';
+@import 'objects/grid';
+@import 'objects/container';
