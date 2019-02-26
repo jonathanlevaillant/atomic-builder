@@ -1,0 +1,15 @@
+/* ==========================================================================
+   _container.scss
+   ========================================================================== */
+
+/* Declarative rules
+   ========================================================================== */
+
+.o-container {
+  width: 100%;
+  max-width: calc(var(--container-max-width) + var(--container-side-margin) * 2);
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--container-side-margin);
+  padding-left: var(--container-side-margin);
+}
