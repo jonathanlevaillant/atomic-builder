@@ -11,7 +11,8 @@
 @import 'tools/mixins';
 
 // Generic : Reset and/or normalize styles, box-sizing definition, etc.
-
+@import '../node_modules/normalize.css/normalize';
+@import 'generic/box-sizing';
 
 // Elements : Styling for bare HTML elements (like h1, a, etc.)
 @import 'elements/root';
