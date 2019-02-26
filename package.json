@@ -46,5 +46,8 @@
     "stylelint": "^9.10.1",
     "stylelint-config-rational-order": "0.0.4",
     "stylelint-config-sass-guidelines": "^5.3.0"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
   }
 }
