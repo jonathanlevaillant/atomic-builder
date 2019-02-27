@@ -1,5 +1,5 @@
 /* ==========================================================================
-   _grid.scss
+   #GRID
    ========================================================================== */
 
 /* Variables & Custom properties
@@ -15,12 +15,13 @@
   --grid-row-gap: var(--row-gap);
 }
 
-// Grid columns builder
+// Grid columns builder.
 @include grid-columns;
 
 /* Responsive
    ========================================================================== */
 
+// Responsive grid columns builder.
 @if $enable-responsive-grid {
   @include responsive-grid-columns;
 }
