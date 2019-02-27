@@ -1,11 +1,11 @@
 ///* ========================================================================
-//   _mixins.scss
+//   #MIXINS
 //   ======================================================================== */
 
 //*  Private mixins
 //   ======================================================================== */
 
-/// Mixin to output media queries associated with a breakpoint key
+/// Mixin to output media queries associated with a breakpoint key.
 /// @access private
 /// @requires {function} breakpoint-get
 /// @requires {function} breakpoint-is-up
@@ -45,7 +45,7 @@
   }
 }
 
-/// Mixin to output color variables associated with the `$colors` map
+/// Mixin to output color variables associated with the `$colors` map.
 /// @access private
 /// @requires {variable} colors
 @mixin var-colors {
@@ -54,7 +54,7 @@
   }
 }
 
-/// Mixin to output font weight variables associated with the `$font-weights` map
+/// Mixin to output font weight variables associated with the `$font-weights` map.
 /// @access private
 /// @requires {variable} font-weights
 @mixin var-font-weights {
@@ -63,7 +63,7 @@
   }
 }
 
-/// Mixin to output font size and line height variables associated with a given key and value
+/// Mixin to output font size and line height variables associated with a given key and value.
 /// @access private
 /// @param {String} $key          - Font size key
 /// @param {List | Number} $value - Font size value
@@ -76,7 +76,7 @@
   }
 }
 
-/// Mixin to output font size and line height variables associated with the `$font-sizes` map
+/// Mixin to output font size and line height variables associated with the `$font-sizes` map.
 /// @access private
 /// @requires {mixin} breakpoint-core
 /// @requires {mixin} var-rhythm
@@ -95,7 +95,7 @@
   }
 }
 
-/// Mixin to output font family variables associated with the `$font-families` map
+/// Mixin to output font family variables associated with the `$font-families` map.
 /// @access private
 /// @requires {variable} font-families
 @mixin var-font-families {
@@ -104,7 +104,23 @@
   }
 }
 
-/// Mixin to output container side margin variables associated with the `$container-side-margin` map
+/// Mixin to output spacing variables associated with the `$spacer` map.
+/// @access private
+/// @requires {variable} spacers
+@mixin var-spacers {
+  @each $key, $value in $spacers {
+    --spacer-#{$key}: #{$value};
+  }
+}
+
+/// Mixin to output container max width variable associated with the `$container-max-width` variable.
+/// @access private
+/// @requires {variable} container-max-width
+@mixin var-container-max-width {
+  --container-max-width: #{$container-max-width};
+}
+
+/// Mixin to output container side margins variables associated with the `$container-side-margin` map.
 /// @access private
 /// @requires {mixin} breakpoint-core
 /// @requires {variable} container-side-margin
@@ -116,14 +132,7 @@
   }
 }
 
-/// Mixin to output container max width variable associated with the `$container-max-width` variable
-/// @access private
-/// @requires {variable} container-max-width
-@mixin var-container-max-width {
-  --container-max-width: #{$container-max-width};
-}
-
-/// Mixin to output column gap variables associated with the `$grid-column-gap` map
+/// Mixin to output column gap variables associated with the `$grid-column-gap` map.
 /// @access private
 /// @requires {mixin} breakpoint-core
 /// @requires {variable} grid-column-gap
@@ -135,7 +144,7 @@
   }
 }
 
-/// Mixin to output row gap variables associated with the `$grid-row-gap` map
+/// Mixin to output row gap variables associated with the `$grid-row-gap` map.
 /// @access private
 /// @requires {mixin} breakpoint-core
 /// @requires {variable} grid-row-gap
@@ -147,16 +156,7 @@
   }
 }
 
-/// Mixin to output spacing variables associated with the `$spacer` map
-/// @access private
-/// @requires {variable} spacers
-@mixin var-spacers {
-  @each $key, $value in $spacers {
-    --spacer-#{$key}: #{$value};
-  }
-}
-
-/// Mixin to output grid columns associated with the `$grid-columns` variable
+/// Mixin to output grid columns associated with the `$grid-columns` variable.
 /// @access private
 /// @requires {variable} grid-columns
 @mixin grid-columns($modifier: null) {
@@ -179,7 +179,7 @@
   }
 }
 
-/// Mixin to output responsive grid columns associated with the `$grid-columns` variable
+/// Mixin to output responsive grid columns associated with the `$grid-columns` variable.
 /// @access private
 /// @requires {mixin} breakpoint-core
 /// @requires {mixin} grid-columns
@@ -197,7 +197,7 @@
 //*  Public mixins
 //   ======================================================================== */
 
-/// Mixin to output media queries associated with a breakpoint key
+/// Mixin to output media queries associated with a breakpoint key.
 /// @access public
 /// @requires {mixin} breakpoint-core
 /// @param {String | Map} $key - Breakpoint(s)
