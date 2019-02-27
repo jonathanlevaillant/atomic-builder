@@ -1,15 +1,14 @@
 ///* ========================================================================
-//   _global.scss
+//   #GLOBAL
 //   ======================================================================== */
 
-// Font weights
+// Map of font weights.
 $font-weights: () !default;
 $font-weights: map-merge((
-  'normal':               400,
-  'bold':                 700,
+  'base':                 400,
 ), $font-weights);
 
-// Font sizes
+// Map of font sizes.
 $font-sizes: () !default;
 $font-sizes: map-merge((
   'base':                 (1.6rem, 1.5),
@@ -21,46 +20,46 @@ $font-sizes: map-merge((
   'h6':                   1.6rem,
 ), $font-sizes);
 
-// Font families
+// Map of font families.
 $font-families: () !default;
 $font-families: map-merge((
   'base':                 sans-serif,
-  'headings':             serif,
 ), $font-families);
 
-// Container
+// Map of spacing values.
+$spacers: () !default;
+$spacers: map-merge((
+  'base':                 2.4rem,
+), $spacers);
+
+// Container global settings (max width and side margins).
 $container-max-width:     126rem !default;
 
 $container-side-margin: () !default;
 $container-side-margin: map-merge((
-  'base':                 2.4rem,
+  'default':              2.4rem,
 ), $container-side-margin);
 
-// Grid
+// Grid global settings (columns, gap, etc.).
 $grid-columns:            12 !default;
 
 $grid-column-gap: () !default;
 $grid-column-gap: map-merge((
-  'base':                 2.4rem,
+  'default':              2.4rem,
 ), $grid-column-gap);
 
 $grid-row-gap: () !default;
 $grid-row-gap: map-merge((
-  'base':                 2.4rem,
+  'default':              2.4rem,
 ), $grid-row-gap);
 
-// Spacing
-$spacers: () !default;
-$spacers: map-merge((
-  'md':                   2.4rem,
-), $spacers);
-
-// Breakpoints
+// Map of breakpoint values.
+// It is recommended to keep `em` units.
 $breakpoints: () !default;
 $breakpoints: map-merge((
-  'sm':                   47.9375em,
-  'md':                   64em,
+  'sm':                   47.9375em, // 767px
+  'md':                   64em,      // 1024px
 ), $breakpoints);
 
-// Responsive components
+// Parameters to enable or disable the responsive utility classes builders.
 $enable-responsive-grid:  true !default;
