@@ -1,0 +1,45 @@
+/* ==========================================================================
+   #SHARED
+   ========================================================================== */
+
+/* Declarative rules
+   ========================================================================== */
+
+/**
+ * Always declare margins in the same direction.
+ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+address,
+dl,
+ol,
+ul,
+fieldset,
+figure,
+table,
+hr {
+  margin-top: var(--spacer-base);
+  margin-bottom: 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+/**
+ * Consistent indentation for lists.
+ */
+
+dd,
+ol,
+ul {
+  margin-left: var(--spacer-base);
+}
