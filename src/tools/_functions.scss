@@ -1,16 +1,16 @@
 ///* ========================================================================
-//   _functions.scss
+//   #FUNCTIONS
 //   ======================================================================== */
 
-// Constants
-$UPPER_SUFFIX_LABEL: '-up';
-$LOWER_SUFFIX_LABEL: '-down';
-$BREAKPOINT_DEFAULT_LABEL: 'base';
+// Labels values for breakpoints.
+$BREAKPOINT_UPPER_LABEL: '-up';
+$BREAKPOINT_LOWER_LABEL: '-down';
+$BREAKPOINT_DEFAULT_LABEL: 'default';
 
 //*  Private functions
 //   ======================================================================== */
 
-/// Function to sort map by values
+/// Function to sort map by values.
 /// @author Andrew Luca
 /// @link https://gist.github.com/iamandrewluca
 /// @access private
@@ -58,36 +58,36 @@ $BREAKPOINT_DEFAULT_LABEL: 'base';
   @return $sorted-map;
 }
 
-/// Function to merge breakpoints from the global settings with their upper and lower values
+/// Function to merge breakpoints from the global settings with their upper and lower values.
 /// @access private
-/// @requires {variable} UPPER_SUFFIX_LABEL
-/// @requires {variable} LOWER_SUFFIX_LABEL
+/// @requires {variable} BREAKPOINT_UPPER_LABEL
+/// @requires {variable} BREAKPOINT_LOWER_LABEL
 /// @param {Map} $breakpoints - Breakpoints from global settings
 /// @return {Map}
 @function breakpoint-merge($breakpoints) {
   @each $key, $value in $breakpoints {
-    $breakpoints: map-merge($breakpoints, (#{$key}#{$UPPER_SUFFIX_LABEL}: $value + 0.0625));
-    $breakpoints: map-merge($breakpoints, (#{$key}#{$LOWER_SUFFIX_LABEL}: $value));
+    $breakpoints: map-merge($breakpoints, (#{$key}#{$BREAKPOINT_UPPER_LABEL}: $value + 0.0625));
+    $breakpoints: map-merge($breakpoints, (#{$key}#{$BREAKPOINT_LOWER_LABEL}: $value));
   }
 
   @return $breakpoints;
 }
 
-/// Function to clean breakpoint keys by removing the smallest breakpoint with a lower value
-/// Be careful, breakpoints should be sorted with their upper and lower values
+/// Function to clean breakpoint keys by removing the smallest breakpoint with a lower value.
+/// Be careful, breakpoints should be sorted with their upper and lower values.
 /// @access private
-/// @requires {variable} LOWER_SUFFIX_LABEL
+/// @requires {variable} BREAKPOINT_LOWER_LABEL
 /// @param {Map} $breakpoints - Breakpoints from global settings
 /// @return {Map}
 @function breakpoint-clean-keys($breakpoints) {
-  @return map-remove($breakpoints, #{nth(nth($breakpoints, 1), 1)}#{$LOWER_SUFFIX_LABEL});
+  @return map-remove($breakpoints, #{nth(nth($breakpoints, 1), 1)}#{$BREAKPOINT_LOWER_LABEL});
 }
 
-// Merges breakpoints, sorts by values and clean the duplicate keys
+// Merges breakpoints, sorts by values and clean the duplicate keys.
 $breakpoints: breakpoint-clean-keys(map-sort-by-values(breakpoint-merge($breakpoints)));
 
-/// Function to fetch the breakpoint value in `$breakpoints` map
-/// If found, returns it, else return `null`
+/// Function to fetch the breakpoint value in `$breakpoints` map.
+/// If found, returns it, else return `null`.
 /// @access private
 /// @requires {variable} breakpoints
 /// @param {String} $key - Breakpoint key
@@ -102,8 +102,8 @@ $breakpoints: breakpoint-clean-keys(map-sort-by-values(breakpoint-merge($breakpo
   @return null;
 }
 
-/// Function to fetch the lower breakpoint value in `$breakpoints` map
-/// If found, returns it, else return `null`
+/// Function to fetch the lower breakpoint value in `$breakpoints` map.
+/// If found, returns it, else return `null`.
 /// @access private
 /// @requires {function} breakpoint-get
 /// @requires {variable} breakpoints
@@ -119,26 +119,26 @@ $breakpoints: breakpoint-clean-keys(map-sort-by-values(breakpoint-merge($breakpo
   @return null;
 }
 
-/// Function to return whether the breakpoint value in `$breakpoints` map is up
+/// Function to return whether the breakpoint value in `$breakpoints` map is up.
 /// @access private
-/// @requires {variable} UPPER_SUFFIX_LABEL
+/// @requires {variable} BREAKPOINT_UPPER_LABEL
 /// @param {String} $key - Breakpoint key
 /// @return {Bool}
 @function breakpoint-is-up($key) {
-  @if str-index($key, $UPPER_SUFFIX_LABEL) {
+  @if str-index($key, $BREAKPOINT_UPPER_LABEL) {
     @return true;
   }
 
   @return false;
 }
 
-/// Function to return whether the breakpoint value in `$breakpoints` map is down
+/// Function to return whether the breakpoint value in `$breakpoints` map is down.
 /// @access private
-/// @requires {variable} LOWER_SUFFIX_LABEL
+/// @requires {variable} BREAKPOINT_LOWER_LABEL
 /// @param {String} $key - Breakpoint key
 /// @return {Bool}
 @function breakpoint-is-down($key) {
-  @if str-index($key, $LOWER_SUFFIX_LABEL) {
+  @if str-index($key, $BREAKPOINT_LOWER_LABEL) {
     @return true;
   }
 
