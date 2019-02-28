@@ -19,15 +19,14 @@ p,
 blockquote,
 pre,
 address,
-dl,
-ol,
 ul,
-fieldset,
+ol,
+dl,
+hr,
 figure,
-table,
-hr {
+fieldset,
+table {
   margin-top: var(--spacer-base);
-  margin-bottom: 0;
 
   &:first-child {
     margin-top: 0;
@@ -38,8 +37,8 @@ hr {
  * Consistent indentation for lists.
  */
 
-dd,
+ul,
 ol,
-ul {
+dd {
   margin-left: var(--spacer-base);
 }
