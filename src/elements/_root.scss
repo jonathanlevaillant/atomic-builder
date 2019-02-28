@@ -18,10 +18,16 @@
   @include var-font-families;
 
   /**
+   * Custom properties for sizing values.
+   */
+
+  @include var-sizing;
+
+  /**
    * Custom properties for spacing values.
    */
 
-  @include var-spacers;
+  @include var-spacing;
 
   /**
    * Custom properties for layout.
