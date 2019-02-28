@@ -31,3 +31,7 @@
 // Objects : Class-based selectors which define undecorated design patterns.
 @import 'objects/grid';
 @import 'objects/container';
+
+// Utilities : Helper classes with ability to override all previous styles.
+@import 'utilities/sizing';
+@import 'utilities/spacing';
