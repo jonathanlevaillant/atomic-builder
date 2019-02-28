@@ -1,0 +1,14 @@
+/* ==========================================================================
+   #SPACING
+   ========================================================================== */
+
+/* Declarative rules
+   ========================================================================== */
+
+// Spacing utilities builder.
+@include spacing;
+
+// Responsive spacing utilities builder.
+@if $enable-responsive-spacing {
+  @include responsive-spacing;
+}
