@@ -2,7 +2,6 @@
 //   #FUNCTIONS
 //   ======================================================================== */
 
-// Labels values for breakpoints.
 $BREAKPOINT_UPPER_LABEL: '-up';
 $BREAKPOINT_LOWER_LABEL: '-down';
 $BREAKPOINT_DEFAULT_LABEL: 'default';
@@ -58,7 +57,7 @@ $BREAKPOINT_DEFAULT_LABEL: 'default';
   @return $sorted-map;
 }
 
-/// Function to merge breakpoints from the global settings with their upper and lower values.
+/// Function to merge breakpoints with their upper and lower values.
 /// @access private
 /// @requires {variable} BREAKPOINT_UPPER_LABEL
 /// @requires {variable} BREAKPOINT_LOWER_LABEL
@@ -73,18 +72,17 @@ $BREAKPOINT_DEFAULT_LABEL: 'default';
   @return $breakpoints;
 }
 
-/// Function to clean breakpoint keys by removing the smallest breakpoint with a lower value.
+/// Function to remove the smallest breakpoint value which is duplicate.
 /// Be careful, breakpoints should be sorted with their upper and lower values.
 /// @access private
 /// @requires {variable} BREAKPOINT_LOWER_LABEL
 /// @param {Map} $breakpoints - Breakpoints from global settings
 /// @return {Map}
-@function breakpoint-clean-keys($breakpoints) {
+@function breakpoint-clean($breakpoints) {
   @return map-remove($breakpoints, #{nth(nth($breakpoints, 1), 1)}#{$BREAKPOINT_LOWER_LABEL});
 }
 
-// Merges breakpoints, sorts by values and clean the duplicate keys.
-$breakpoints: breakpoint-clean-keys(map-sort-by-values(breakpoint-merge($breakpoints)));
+$breakpoints: breakpoint-clean(map-sort-by-values(breakpoint-merge($breakpoints)));
 
 /// Function to fetch the breakpoint value in `$breakpoints` map.
 /// If found, returns it, else return `null`.
