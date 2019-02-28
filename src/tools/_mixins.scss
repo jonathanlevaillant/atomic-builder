@@ -2,6 +2,8 @@
 //   #MIXINS
 //   ======================================================================== */
 
+$MEDIA_RULE_SEPARATOR: '\\@';
+
 //*  Private mixins
 //   ======================================================================== */
 
@@ -63,7 +65,7 @@
   }
 }
 
-/// Mixin to output font size and line height variables associated with a given key and value.
+/// Mixin to output font size variables (and line height, if it exists) associated with a given key and value.
 /// @access private
 /// @param {String} $key          - Font size key
 /// @param {List | Number} $value - Font size value
@@ -76,7 +78,7 @@
   }
 }
 
-/// Mixin to output font size and line height variables associated with the `$font-sizes` map.
+/// Mixin to output font size variables (and line height, if it exists) associated with the `$font-sizes` map.
 /// @access private
 /// @requires {mixin} breakpoint-core
 /// @requires {mixin} var-rhythm
@@ -104,10 +106,19 @@
   }
 }
 
-/// Mixin to output spacing variables associated with the `$spacer` map.
+/// Mixin to output sizing variables associated with the `$sizes` map.
+/// @access private
+/// @requires {variable} sizes
+@mixin var-sizing {
+  @each $key, $value in $sizes {
+    --size-#{$key}: #{$value};
+  }
+}
+
+/// Mixin to output spacing variables associated with the `$spacers` map.
 /// @access private
 /// @requires {variable} spacers
-@mixin var-spacers {
+@mixin var-spacing {
   @each $key, $value in $spacers {
     --spacer-#{$key}: #{$value};
   }
@@ -120,7 +131,7 @@
   --container-max-width: #{$container-max-width};
 }
 
-/// Mixin to output container side margins variables associated with the `$container-side-margin` map.
+/// Mixin to output container side margin variables associated with the `$container-side-margin` map.
 /// @access private
 /// @requires {mixin} breakpoint-core
 /// @requires {variable} container-side-margin
@@ -159,37 +170,126 @@
 /// Mixin to output grid columns associated with the `$grid-columns` variable.
 /// @access private
 /// @requires {variable} grid-columns
-@mixin grid-columns($modifier: null) {
+/// @param {String} $suffix [null] - Responsive suffix
+@mixin grid-columns($suffix: null) {
   @for $i from 1 through $grid-columns {
-    .o-grid--#{$i}#{$modifier} {
+    .o-grid--#{$i}#{$suffix} {
       --grid-column-width: calc(100% / #{$i});
     }
 
-    .o-grid__col--#{$i}#{$modifier} {
+    .o-grid__col--#{$i}#{$suffix} {
       --grid-column-width: calc(100% * #{$i} / #{$grid-columns});
     }
 
-    .o-grid__col--push-#{$i}#{$modifier} {
+    .o-grid__col--push-#{$i}#{$suffix} {
       --grid-column-offset-width: calc(100% * #{$i} / #{$grid-columns});
     }
 
-    .o-grid__col--pull-#{$i}#{$modifier} {
+    .o-grid__col--pull-#{$i}#{$suffix} {
       --grid-column-offset-width: calc(-100% * #{$i} / #{$grid-columns});
     }
   }
 }
 
-/// Mixin to output responsive grid columns associated with the `$grid-columns` variable.
+/// Mixin to output responsive grid columns associated with the `grid-columns` mixin.
 /// @access private
 /// @requires {mixin} breakpoint-core
 /// @requires {mixin} grid-columns
 /// @requires {variable} breakpoints
 @mixin responsive-grid-columns {
-  $media-separator: '\\@';
-
   @each $key, $value in $breakpoints {
     @include breakpoint-core($key) {
-      @include grid-columns(#{$media-separator}#{$key});
+      @include grid-columns(#{$MEDIA_RULE_SEPARATOR}#{$key});
+    }
+  }
+}
+
+/// Mixin to output sizing utilities associated with the `$sizes` map.
+/// @access private
+/// @requires {variable} sizes
+@mixin sizing($suffix: null) {
+  @each $key, $value in $sizes {
+    @if type-of($value) == 'number' or $value == 'auto' {
+      .u-w-#{$key}#{$suffix} {
+        width: var(--size-#{$key});
+      }
+    }
+  }
+}
+
+/// Mixin to output responsive sizing utilities associated with the `sizing` mixin.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} sizing
+/// @requires {variable} breakpoints
+@mixin responsive-sizing {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include sizing(#{$MEDIA_RULE_SEPARATOR}#{$key});
+    }
+  }
+}
+
+/// Mixin to output spacing utilities associated with the `$spacers` map.
+/// @access private
+/// @requires {variable} spacers
+@mixin spacing($suffix: null) {
+  @each $key, $value in $spacers {
+    @if type-of($value) == 'number' or $value == 'auto' {
+      .u-m-#{$key}#{$suffix} {
+        margin: var(--spacer-#{$key});
+      }
+
+      .u-mt-#{$key}#{$suffix} {
+        margin-top: var(--spacer-#{$key});
+      }
+
+      .u-mr-#{$key}#{$suffix} {
+        margin-right: var(--spacer-#{$key});
+      }
+
+      .u-mb-#{$key}#{$suffix} {
+        margin-bottom: var(--spacer-#{$key});
+      }
+
+      .u-ml-#{$key}#{$suffix} {
+        margin-left: var(--spacer-#{$key});
+      }
+
+      @if type-of($value) == 'number' {
+        .u-p-#{$key}#{$suffix} {
+          padding: var(--spacer-#{$key});
+        }
+
+        .u-pt-#{$key}#{$suffix} {
+          padding-top: var(--spacer-#{$key});
+        }
+
+        .u-pr-#{$key}#{$suffix} {
+          padding-right: var(--spacer-#{$key});
+        }
+
+        .u-pb-#{$key}#{$suffix} {
+          padding-bottom: var(--spacer-#{$key});
+        }
+
+        .u-pl-#{$key}#{$suffix} {
+          padding-left: var(--spacer-#{$key});
+        }
+      }
+    }
+  }
+}
+
+/// Mixin to output responsive spacing utilities associated with the `spacing` mixin.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} spacing
+/// @requires {variable} breakpoints
+@mixin responsive-spacing {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include spacing(#{$MEDIA_RULE_SEPARATOR}#{$key});
     }
   }
 }
