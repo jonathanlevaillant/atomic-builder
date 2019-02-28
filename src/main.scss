@@ -18,14 +18,15 @@
 
 // Generic : Reset and/or normalize styles, box-sizing definition, etc.
 @import '../node_modules/normalize.css/normalize';
-@import 'generic/reset';
 @import 'generic/box-sizing';
+@import 'generic/reset';
 @import 'generic/shared';
 
 // Elements : Styling for bare HTML elements (like h1, a, etc.).
 @import 'elements/root';
-@import 'elements/headings';
 @import 'elements/page';
+@import 'elements/headings';
+@import 'elements/tables';
 
 // Objects : Class-based selectors which define undecorated design patterns.
 @import 'objects/grid';
