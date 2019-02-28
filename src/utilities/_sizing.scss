@@ -1,0 +1,14 @@
+/* ==========================================================================
+   #SIZING
+   ========================================================================== */
+
+/* Declarative rules
+   ========================================================================== */
+
+// Sizing utilities builder.
+@include sizing;
+
+// Responsive sizing utilities builder.
+@if $enable-responsive-sizing {
+  @include responsive-sizing;
+}
