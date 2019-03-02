@@ -1,0 +1,14 @@
+/* ==========================================================================
+   #FONT-WEIGHTS
+   ========================================================================== */
+
+/* Declarative rules
+   ========================================================================== */
+
+// Font weight utilities builder.
+@include font-weights;
+
+// Responsive font weight utilities builder.
+@if $enable-responsive-font-weights {
+  @include responsive-font-weights;
+}
