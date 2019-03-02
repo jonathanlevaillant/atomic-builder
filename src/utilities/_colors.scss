@@ -1,0 +1,14 @@
+/* ==========================================================================
+   #COLORS
+   ========================================================================== */
+
+/* Declarative rules
+   ========================================================================== */
+
+// Color utilities builder.
+@include colors;
+
+// Responsive color utilities builder.
+@if $enable-responsive-colors {
+  @include responsive-colors;
+}
