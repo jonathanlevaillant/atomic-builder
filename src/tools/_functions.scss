@@ -57,29 +57,44 @@ $BREAKPOINT_DEFAULT_LABEL: 'default';
   @return $sorted-map;
 }
 
-/// Function to merge breakpoints with their upper and lower values.
+/// Function to create new breakpoints by merging them with their upper and lower values.
 /// @access private
 /// @requires {variable} BREAKPOINT_UPPER_LABEL
 /// @requires {variable} BREAKPOINT_LOWER_LABEL
 /// @param {Map} $breakpoints - Breakpoints from global settings
+/// @throws Make sure that `#{$value}` is a number in `$breakpoint: #{$breakpoints}` map.
 /// @return {Map}
 @function breakpoint-merge($breakpoints) {
+  $new-breakpoints: ();
+
   @each $key, $value in $breakpoints {
-    $breakpoints: map-merge($breakpoints, (#{$key}#{$BREAKPOINT_UPPER_LABEL}: $value + 0.0625));
-    $breakpoints: map-merge($breakpoints, (#{$key}#{$BREAKPOINT_LOWER_LABEL}: $value));
+    @if type-of($value) == 'number' {
+      $new-breakpoints: map-merge($new-breakpoints, ($key: $value));
+      $new-breakpoints: map-merge($new-breakpoints, (#{$key}#{$BREAKPOINT_UPPER_LABEL}: $value + 0.0625));
+      $new-breakpoints: map-merge($new-breakpoints, (#{$key}#{$BREAKPOINT_LOWER_LABEL}: $value));
+    } @else {
+      @warn 'Make sure that `#{$value}` is a number in `$breakpoint: #{$breakpoints}` map.';
+    }
   }
 
-  @return $breakpoints;
+  @return $new-breakpoints;
 }
 
 /// Function to remove the smallest breakpoint value which is duplicate.
+/// If found, removes it, else return `$breakpoints`.
 /// Be careful, breakpoints should be sorted with their upper and lower values.
 /// @access private
 /// @requires {variable} BREAKPOINT_LOWER_LABEL
 /// @param {Map} $breakpoints - Breakpoints from global settings
+/// @throws Make sure that `$breakpoints` is not an empty map.
 /// @return {Map}
 @function breakpoint-clean($breakpoints) {
-  @return map-remove($breakpoints, #{nth(nth($breakpoints, 1), 1)}#{$BREAKPOINT_LOWER_LABEL});
+  @if length($breakpoints) > 1 {
+    @return map-remove($breakpoints, #{nth(nth($breakpoints, 1), 1)}#{$BREAKPOINT_LOWER_LABEL});
+  }
+
+  @warn 'Make sure that `$breakpoints` is not an empty map.';
+  @return $breakpoints;
 }
 
 $breakpoints: breakpoint-clean(map-sort-by-values(breakpoint-merge($breakpoints)));
@@ -89,14 +104,14 @@ $breakpoints: breakpoint-clean(map-sort-by-values(breakpoint-merge($breakpoints)
 /// @access private
 /// @requires {variable} breakpoints
 /// @param {String} $key - Breakpoint key
-/// @throws No value found for `$key`. Please make sure it is defined in `$breakpoints` map.
+/// @throws `#{$key}` is not a valid key in `$breakpoints` map.
 /// @return {Number | Null}
 @function breakpoint-get($key) {
   @if map-has-key($breakpoints, $key) {
     @return map-get($breakpoints, $key);
   }
 
-  @warn 'No value found for `#{$key}`. Please make sure it is defined in `#{$breakpoints}` map.';
+  @warn '`#{$key}` is not a valid key in `$breakpoints` map.';
   @return null;
 }
 
