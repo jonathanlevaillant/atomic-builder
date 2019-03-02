@@ -1,0 +1,14 @@
+/* ==========================================================================
+   #FONT-SIZES
+   ========================================================================== */
+
+/* Declarative rules
+   ========================================================================== */
+
+// Font size utilities builder.
+@include font-sizes;
+
+// Responsive font size utilities builder.
+@if $enable-responsive-font-sizes {
+  @include responsive-font-sizes;
+}
