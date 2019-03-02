@@ -1,0 +1,14 @@
+/* ==========================================================================
+   #FONT-FAMILIES
+   ========================================================================== */
+
+/* Declarative rules
+   ========================================================================== */
+
+// Font family utilities builder.
+@include font-families;
+
+// Responsive font family utilities builder.
+@if $enable-responsive-font-families {
+  @include responsive-font-families;
+}
