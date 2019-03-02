@@ -7,7 +7,7 @@ $MEDIA_RULE_SEPARATOR: '\\@';
 //*  Private mixins
 //   ======================================================================== */
 
-/// Mixin to output media queries associated with a breakpoint key.
+/// Mixin to output media queries.
 /// @access private
 /// @requires {function} breakpoint-get
 /// @requires {function} breakpoint-is-up
@@ -47,151 +47,232 @@ $MEDIA_RULE_SEPARATOR: '\\@';
   }
 }
 
-/// Mixin to output color variables associated with the `$colors` map.
+//*  Private mixins to output CSS variables (Custom Properties)
+//   ======================================================================== */
+
+/// Mixin to output color variables.
 /// @access private
 /// @requires {variable} colors
+/// @throws Make sure that `#{$value}` is a color in `$colors: #{$colors}` map.
 @mixin var-colors {
   @each $key, $value in $colors {
-    --color-#{$key}: #{$value};
+    @if type-of($value) == 'color' {
+      --color-#{$key}: #{$value};
+    } @else {
+      @warn 'Make sure that `#{$value}` is a color in `$colors: #{$colors}` map.';
+    }
   }
 }
 
-/// Mixin to output font weight variables associated with the `$font-weights` map.
+/// Mixin to output font weight variables.
 /// @access private
 /// @requires {variable} font-weights
+/// @throws Make sure that `#{$value}` is a number in `$font-weights: #{$font-weights}` map.
 @mixin var-font-weights {
   @each $key, $value in $font-weights {
-    --font-weight-#{$key}: #{$value};
+    @if type-of($value) == 'number' {
+      --font-weight-#{$key}: #{$value};
+    } @else {
+      @warn 'Make sure that `#{$value}` is a number in `$font-weights: #{$font-weights}` map.';
+    }
   }
 }
 
-/// Mixin to output font size variables (and line height, if it exists) associated with a given key and value.
+/// Mixin to output font size variables (and line height, if it exists).
 /// @access private
+/// @requires {variable} font-sizes
 /// @param {String} $key          - Font size key
 /// @param {List | Number} $value - Font size value
+/// @throws Make sure that `#{$value}` is a number or a list in `$font-sizes: #{$font-sizes}` map.
+/// @throws Make sure that `#{$font-size-value}` is a number in `$font-sizes: #{$font-sizes}` map.
+/// @throws Make sure that `#{$line-height-value}` is a number in `$font-sizes: #{$font-sizes}` map.
 @mixin var-rhythm($key, $value) {
-  @if type-of($value) == 'list' {
-    --font-size-#{$key}: #{nth($value, 1)};
-    --line-height-#{$key}: #{nth($value, 2)};
+  @if type-of($value) == 'number' or type-of($value) == 'list' {
+    @if type-of($value) == 'list' {
+      $font-size-value: nth($value, 1);
+      $line-height-value: nth($value, 2);
+
+      @if type-of($font-size-value) == 'number' {
+        --font-size-#{$key}: #{$font-size-value};
+      } @else {
+        @warn 'Make sure that `#{$font-size-value}` is a number in `$font-sizes: #{$font-sizes}` map.';
+      }
+
+      @if type-of($line-height-value) == 'number' {
+        --line-height-#{$key}: #{$line-height-value};
+      } @else {
+        @warn 'Make sure that `#{$line-height-value}` is a number in `$font-sizes: #{$font-sizes}` map.';
+      }
+    } @else {
+      --font-size-#{$key}: #{$value};
+    }
   } @else {
-    --font-size-#{$key}: #{$value};
+    @warn 'Make sure that `#{$value}` is a number or a list in `$font-sizes: #{$font-sizes}` map.';
   }
 }
 
-/// Mixin to output font size variables (and line height, if it exists) associated with the `$font-sizes` map.
+/// Mixin to output font size variables (and line height, if it exists).
 /// @access private
 /// @requires {mixin} breakpoint-core
 /// @requires {mixin} var-rhythm
 /// @requires {variable} font-sizes
+/// @throws Make sure that `#{$value}` is a number, a list or a map in `$font-sizes: #{$font-sizes}` map.
 @mixin var-font-sizes {
   @each $key, $value in $font-sizes {
-    @if type-of($value) == 'map' {
-      @each $map-key, $map-value in $value {
-        @include breakpoint-core($map-key) {
-          @include var-rhythm($key, $map-value);
+    @if type-of($value) == 'number' or type-of($value) == 'list' or type-of($value) == 'map' {
+      @if type-of($value) == 'map' {
+        @each $map-key, $map-value in $value {
+          @include breakpoint-core($map-key) {
+            @include var-rhythm($key, $map-value);
+          }
         }
+      } @else {
+        @include var-rhythm($key, $value);
       }
     } @else {
-      @include var-rhythm($key, $value);
+      @warn 'Make sure that `#{$value}` is a number, a list or a map in `$font-sizes: #{$font-sizes}` map.';
     }
   }
 }
 
-/// Mixin to output font family variables associated with the `$font-families` map.
+/// Mixin to output font family variables.
 /// @access private
 /// @requires {variable} font-families
+/// @throws Make sure that `#{$value}` is a string in `$font-families: #{$font-families}` map.
 @mixin var-font-families {
   @each $key, $value in $font-families {
-    --font-family-#{$key}: #{$value};
+    @if type-of($value) == 'string' {
+      --font-family-#{$key}: #{$value};
+    } @else {
+      @warn 'Make sure that `#{$value}` is a string in `$font-families: #{$font-families}` map.';
+    }
   }
 }
 
-/// Mixin to output sizing variables associated with the `$sizes` map.
+/// Mixin to output sizing variables.
 /// @access private
 /// @requires {variable} sizes
+/// @throws Make sure that `#{$value}` is a number in `$sizes: #{$sizes}` map.
 @mixin var-sizing {
   @each $key, $value in $sizes {
-    --size-#{$key}: #{$value};
+    @if type-of($value) == 'number' {
+      --size-#{$key}: #{$value};
+    } @else {
+      @warn 'Make sure that `#{$value}` is a number in `$sizes: #{$sizes}` map.';
+    }
   }
 }
 
-/// Mixin to output spacing variables associated with the `$spacers` map.
+/// Mixin to output spacing variables.
 /// @access private
 /// @requires {variable} spacers
+/// @throws Make sure that `#{$value}` is a number or equals `auto` in `$spacers: #{$spacers}` map.
 @mixin var-spacing {
   @each $key, $value in $spacers {
-    --spacer-#{$key}: #{$value};
+    @if type-of($value) == 'number' or $value == 'auto' {
+      --spacer-#{$key}: #{$value};
+    } @else {
+      @warn 'Make sure that `#{$value}` is a number or equals `auto` in `$spacers: #{$spacers}` map.';
+    }
   }
 }
 
-/// Mixin to output container max width variable associated with the `$container-max-width` variable.
+/// Mixin to output container max width variable.
 /// @access private
 /// @requires {variable} container-max-width
+/// @throws Make sure that `#{$container-max-width}` is a number in `$container-max-width: #{$container-max-width}` variable.
 @mixin var-container-max-width {
-  --container-max-width: #{$container-max-width};
+  @if type-of($container-max-width) == 'number' {
+    --container-max-width: #{$container-max-width};
+  } @else {
+    @warn 'Make sure that `#{$container-max-width}` is a number in `$container-max-width: #{$container-max-width}` variable.';
+  }
 }
 
-/// Mixin to output container side margin variables associated with the `$container-side-margin` map.
+/// Mixin to output container side margin variables.
 /// @access private
 /// @requires {mixin} breakpoint-core
 /// @requires {variable} container-side-margin
+/// @throws Make sure that `#{$value}` is a number in `$container-side-margin: #{$container-side-margin}` map.
 @mixin var-container-side-margin {
   @each $key, $value in $container-side-margin {
-    @include breakpoint-core($key) {
-      --container-side-margin: #{$value};
+    @if type-of($value) == 'number' {
+      @include breakpoint-core($key) {
+        --container-side-margin: #{$value};
+      }
+    } @else {
+      @warn 'Make sure that `#{$value}` is a number in `$container-side-margin: #{$container-side-margin}` map.';
     }
   }
 }
 
-/// Mixin to output column gap variables associated with the `$grid-column-gap` map.
+/// Mixin to output column gap variables.
 /// @access private
 /// @requires {mixin} breakpoint-core
 /// @requires {variable} grid-column-gap
+/// @throws Make sure that `#{$value}` is a number in `$grid-column-gap: #{$grid-column-gap}` map.
 @mixin var-grid-column-gap {
   @each $key, $value in $grid-column-gap {
-    @include breakpoint-core($key) {
-      --column-gap: #{$value};
+    @if type-of($value) == 'number' {
+      @include breakpoint-core($key) {
+        --column-gap: #{$value};
+      }
+    } @else {
+      @warn 'Make sure that `#{$value}` is a number in `$grid-column-gap: #{$grid-column-gap}` map.';
     }
   }
 }
 
-/// Mixin to output row gap variables associated with the `$grid-row-gap` map.
+/// Mixin to output row gap variables.
 /// @access private
 /// @requires {mixin} breakpoint-core
 /// @requires {variable} grid-row-gap
+/// @throws Make sure that `#{$value}` is a number in `$grid-row-gap: #{$grid-row-gap}` map.
 @mixin var-grid-row-gap {
   @each $key, $value in $grid-row-gap {
-    @include breakpoint-core($key) {
-      --row-gap: #{$value};
+    @if type-of($value) == 'number' {
+      @include breakpoint-core($key) {
+        --row-gap: #{$value};
+      }
+    } @else {
+      @warn 'Make sure that `#{$value}` is a number in `$grid-row-gap: #{$grid-row-gap}` map.';
     }
   }
 }
 
-/// Mixin to output grid columns associated with the `$grid-columns` variable.
+//*  Private mixins to output grid columns
+//   ======================================================================== */
+
+/// Mixin to output grid columns.
 /// @access private
 /// @requires {variable} grid-columns
 /// @param {String} $suffix [null] - Responsive suffix
+/// @throws Make sure that `#{$grid-columns}` is an unitless number in `$grid-columns: #{$grid-columns}` variable.
 @mixin grid-columns($suffix: null) {
-  @for $i from 1 through $grid-columns {
-    .o-grid--#{$i}#{$suffix} {
-      --grid-column-width: calc(100% / #{$i});
-    }
+  @if type-of($grid-columns) == 'number' and unitless($grid-columns) {
+    @for $i from 1 through $grid-columns {
+      .o-grid--#{$i}#{$suffix} {
+        --grid-column-width: calc(100% / #{$i});
+      }
 
-    .o-grid__col--#{$i}#{$suffix} {
-      --grid-column-width: calc(100% * #{$i} / #{$grid-columns});
-    }
+      .o-grid__col--#{$i}#{$suffix} {
+        --grid-column-width: calc(100% * #{$i} / #{$grid-columns});
+      }
 
-    .o-grid__col--push-#{$i}#{$suffix} {
-      --grid-column-offset-width: calc(100% * #{$i} / #{$grid-columns});
-    }
+      .o-grid__col--push-#{$i}#{$suffix} {
+        --grid-column-offset-width: calc(100% * #{$i} / #{$grid-columns});
+      }
 
-    .o-grid__col--pull-#{$i}#{$suffix} {
-      --grid-column-offset-width: calc(-100% * #{$i} / #{$grid-columns});
+      .o-grid__col--pull-#{$i}#{$suffix} {
+        --grid-column-offset-width: calc(-100% * #{$i} / #{$grid-columns});
+      }
     }
+  } @else if not $suffix {
+    @warn 'Make sure that `#{$grid-columns}` is an unitless number in `$grid-columns: #{$grid-columns}` variable.';
   }
 }
 
-/// Mixin to output responsive grid columns associated with the `grid-columns` mixin.
+/// Mixin to output responsive grid columns.
 /// @access private
 /// @requires {mixin} breakpoint-core
 /// @requires {mixin} grid-columns
@@ -204,7 +285,115 @@ $MEDIA_RULE_SEPARATOR: '\\@';
   }
 }
 
-/// Mixin to output sizing utilities associated with the `$sizes` map.
+//*  Private mixins to output utility classes (Helpers)
+//   ======================================================================== */
+
+/// Mixin to output color utilities.
+/// @access private
+/// @requires {variable} colors
+@mixin colors($suffix: null) {
+  @each $key, $value in $colors {
+    @if type-of($value) == 'color' {
+      .u-color-#{$key}#{$suffix} {
+        color: var(--color-#{$key});
+      }
+    }
+  }
+}
+
+/// Mixin to output responsive color utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} colors
+/// @requires {variable} breakpoints
+@mixin responsive-colors {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include colors(#{$MEDIA_RULE_SEPARATOR}#{$key});
+    }
+  }
+}
+
+/// Mixin to output font weight utilities.
+/// @access private
+/// @requires {variable} font-weights
+@mixin font-weights($suffix: null) {
+  @each $key, $value in $font-weights {
+    @if type-of($value) == 'number' {
+      .u-font-weight-#{$key}#{$suffix} {
+        font-weight: var(--font-weight-#{$key});
+      }
+    }
+  }
+}
+
+/// Mixin to output responsive font weight utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} font-weights
+/// @requires {variable} breakpoints
+@mixin responsive-font-weights {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include font-weights(#{$MEDIA_RULE_SEPARATOR}#{$key});
+    }
+  }
+}
+
+/// Mixin to output font size utilities.
+/// @access private
+/// @requires {variable} font-sizes
+@mixin font-sizes($suffix: null) {
+  @each $key, $value in $font-sizes {
+    @if type-of($value) == 'number' or type-of($value) == 'list' or type-of($value) == 'map' {
+      .u-font-size-#{$key}#{$suffix} {
+        font-size: var(--font-size-#{$key});
+        line-height: var(--line-height-#{$key});
+      }
+    }
+  }
+}
+
+/// Mixin to output responsive font size utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} font-sizes
+/// @requires {variable} breakpoints
+@mixin responsive-font-sizes {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include font-sizes(#{$MEDIA_RULE_SEPARATOR}#{$key});
+    }
+  }
+}
+
+/// Mixin to output font family utilities.
+/// @access private
+/// @requires {variable} font-families
+@mixin font-families($suffix: null) {
+  @each $key, $value in $font-families {
+    @if type-of($value) == 'string' {
+      .u-font-family-#{$key}#{$suffix} {
+        font-family: var(--font-family-#{$key});
+      }
+    }
+  }
+}
+
+/// Mixin to output responsive font family utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} font-families
+/// @requires {variable} breakpoints
+@mixin responsive-font-families {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include font-families(#{$MEDIA_RULE_SEPARATOR}#{$key});
+    }
+  }
+}
+
+/// Mixin to output sizing utilities.
 /// @access private
 /// @requires {variable} sizes
 @mixin sizing($suffix: null) {
@@ -217,7 +406,7 @@ $MEDIA_RULE_SEPARATOR: '\\@';
   }
 }
 
-/// Mixin to output responsive sizing utilities associated with the `sizing` mixin.
+/// Mixin to output responsive sizing utilities.
 /// @access private
 /// @requires {mixin} breakpoint-core
 /// @requires {mixin} sizing
@@ -230,7 +419,7 @@ $MEDIA_RULE_SEPARATOR: '\\@';
   }
 }
 
-/// Mixin to output spacing utilities associated with the `$spacers` map.
+/// Mixin to output spacing utilities.
 /// @access private
 /// @requires {variable} spacers
 @mixin spacing($suffix: null) {
@@ -281,7 +470,7 @@ $MEDIA_RULE_SEPARATOR: '\\@';
   }
 }
 
-/// Mixin to output responsive spacing utilities associated with the `spacing` mixin.
+/// Mixin to output responsive spacing utilities.
 /// @access private
 /// @requires {mixin} breakpoint-core
 /// @requires {mixin} spacing
