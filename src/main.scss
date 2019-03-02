@@ -33,5 +33,9 @@
 @import 'objects/container';
 
 // Utilities : Helper classes with ability to override all previous styles.
+@import 'utilities/colors';
+@import 'utilities/font-weights';
+@import 'utilities/font-sizes';
+@import 'utilities/font-families';
 @import 'utilities/sizing';
 @import 'utilities/spacing';
