@@ -62,7 +62,7 @@ $BREAKPOINT_DEFAULT_LABEL: 'default';
 /// @requires {variable} BREAKPOINT_UPPER_LABEL
 /// @requires {variable} BREAKPOINT_LOWER_LABEL
 /// @param {Map} $breakpoints - Breakpoints from global settings
-/// @throws Make sure that `#{$value}` is a number in `$breakpoint: #{$breakpoints}` map.
+/// @throws Make sure that `#{$value}` is a number in `$breakpoints: #{$breakpoints}` map.
 /// @return {Map}
 @function breakpoint-merge($breakpoints) {
   $new-breakpoints: ();
@@ -73,7 +73,7 @@ $BREAKPOINT_DEFAULT_LABEL: 'default';
       $new-breakpoints: map-merge($new-breakpoints, (#{$key}#{$BREAKPOINT_UPPER_LABEL}: $value + 0.0625));
       $new-breakpoints: map-merge($new-breakpoints, (#{$key}#{$BREAKPOINT_LOWER_LABEL}: $value));
     } @else {
-      @warn 'Make sure that `#{$value}` is a number in `$breakpoint: #{$breakpoints}` map.';
+      @warn 'Make sure that `#{$value}` is a number in `$breakpoints: #{$breakpoints}` map.';
     }
   }
 
@@ -111,7 +111,7 @@ $breakpoints: breakpoint-clean(map-sort-by-values(breakpoint-merge($breakpoints)
     @return map-get($breakpoints, $key);
   }
 
-  @warn '`#{$key}` is not a valid key in `$breakpoints` map.';
+  @warn '`#{$key}` is not a valid key in `$breakpoints: #{$breakpoints}` map.';
   @return null;
 }
 
