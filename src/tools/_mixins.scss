@@ -2,7 +2,8 @@
 //   #MIXINS
 //   ======================================================================== */
 
-$MEDIA_RULE_SEPARATOR: '\\@';
+$SEPARATOR_MEDIA: '\\@';
+$SEPARATOR_VALUE: '\\:';
 
 //*  Private mixins
 //   ======================================================================== */
@@ -277,24 +278,27 @@ $MEDIA_RULE_SEPARATOR: '\\@';
 /// @requires {mixin} breakpoint-core
 /// @requires {mixin} grid-columns
 /// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-grid-columns {
   @each $key, $value in $breakpoints {
     @include breakpoint-core($key) {
-      @include grid-columns(#{$MEDIA_RULE_SEPARATOR}#{$key});
+      @include grid-columns(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
 }
 
 //*  Private mixins to output utility classes (Helpers)
+//   Naming convention based on Atomic CSS : https://acss.io/reference
 //   ======================================================================== */
 
 /// Mixin to output color utilities.
 /// @access private
 /// @requires {variable} colors
+/// @requires {variable} SEPARATOR_VALUE
 @mixin colors($suffix: null) {
   @each $key, $value in $colors {
     @if type-of($value) == 'color' {
-      .u-color-#{$key}#{$suffix} {
+      .u-c#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
         color: var(--color-#{$key});
       }
     }
@@ -306,10 +310,74 @@ $MEDIA_RULE_SEPARATOR: '\\@';
 /// @requires {mixin} breakpoint-core
 /// @requires {mixin} colors
 /// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-colors {
   @each $key, $value in $breakpoints {
     @include breakpoint-core($key) {
-      @include colors(#{$MEDIA_RULE_SEPARATOR}#{$key});
+      @include colors(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
+/// Mixin to output background color utilities.
+/// @access private
+/// @requires {variable} colors
+/// @requires {variable} SEPARATOR_VALUE
+@mixin background-colors($suffix: null) {
+  @each $key, $value in $colors {
+    @if type-of($value) == 'color' {
+      .u-bgc#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+        background-color: var(--color-#{$key});
+      }
+    }
+  }
+}
+
+/// Mixin to output responsive background color utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} background-colors
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-background-colors {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include background-colors(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
+/// Mixin to output text alignment utilities.
+/// @access private
+/// @requires {variable} SEPARATOR_VALUE
+@mixin text-alignment($suffix: null) {
+  .u-ta#{$SEPARATOR_VALUE}center#{$suffix} {
+    text-align: center;
+  }
+
+  .u-ta#{$SEPARATOR_VALUE}left#{$suffix} {
+    text-align: left;
+  }
+
+  .u-ta#{$SEPARATOR_VALUE}right#{$suffix} {
+    text-align: right;
+  }
+
+  .u-ta#{$SEPARATOR_VALUE}justify#{$suffix} {
+    text-align: justify;
+  }
+}
+
+/// Mixin to output responsive text alignment utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} text-alignment
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-text-alignment {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include text-alignment(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
 }
@@ -317,10 +385,11 @@ $MEDIA_RULE_SEPARATOR: '\\@';
 /// Mixin to output font weight utilities.
 /// @access private
 /// @requires {variable} font-weights
+/// @requires {variable} SEPARATOR_VALUE
 @mixin font-weights($suffix: null) {
   @each $key, $value in $font-weights {
     @if type-of($value) == 'number' {
-      .u-font-weight-#{$key}#{$suffix} {
+      .u-fw#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
         font-weight: var(--font-weight-#{$key});
       }
     }
@@ -332,10 +401,11 @@ $MEDIA_RULE_SEPARATOR: '\\@';
 /// @requires {mixin} breakpoint-core
 /// @requires {mixin} font-weights
 /// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-font-weights {
   @each $key, $value in $breakpoints {
     @include breakpoint-core($key) {
-      @include font-weights(#{$MEDIA_RULE_SEPARATOR}#{$key});
+      @include font-weights(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
 }
@@ -343,10 +413,11 @@ $MEDIA_RULE_SEPARATOR: '\\@';
 /// Mixin to output font size utilities.
 /// @access private
 /// @requires {variable} font-sizes
+/// @requires {variable} SEPARATOR_VALUE
 @mixin font-sizes($suffix: null) {
   @each $key, $value in $font-sizes {
     @if type-of($value) == 'number' or type-of($value) == 'list' or type-of($value) == 'map' {
-      .u-font-size-#{$key}#{$suffix} {
+      .u-fz#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
         font-size: var(--font-size-#{$key});
         line-height: var(--line-height-#{$key});
       }
@@ -359,10 +430,11 @@ $MEDIA_RULE_SEPARATOR: '\\@';
 /// @requires {mixin} breakpoint-core
 /// @requires {mixin} font-sizes
 /// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-font-sizes {
   @each $key, $value in $breakpoints {
     @include breakpoint-core($key) {
-      @include font-sizes(#{$MEDIA_RULE_SEPARATOR}#{$key});
+      @include font-sizes(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
 }
@@ -370,10 +442,11 @@ $MEDIA_RULE_SEPARATOR: '\\@';
 /// Mixin to output font family utilities.
 /// @access private
 /// @requires {variable} font-families
+/// @requires {variable} SEPARATOR_VALUE
 @mixin font-families($suffix: null) {
   @each $key, $value in $font-families {
     @if type-of($value) == 'string' {
-      .u-font-family-#{$key}#{$suffix} {
+      .u-ff#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
         font-family: var(--font-family-#{$key});
       }
     }
@@ -385,10 +458,144 @@ $MEDIA_RULE_SEPARATOR: '\\@';
 /// @requires {mixin} breakpoint-core
 /// @requires {mixin} font-families
 /// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-font-families {
   @each $key, $value in $breakpoints {
     @include breakpoint-core($key) {
-      @include font-families(#{$MEDIA_RULE_SEPARATOR}#{$key});
+      @include font-families(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
+/// Mixin to output display utilities.
+/// @access private
+/// @requires {variable} SEPARATOR_VALUE
+@mixin display($suffix: null) {
+  .u-d#{$SEPARATOR_VALUE}block#{$suffix} {
+    display: block;
+  }
+
+  .u-d#{$SEPARATOR_VALUE}inline#{$suffix} {
+    display: inline;
+  }
+
+  .u-d#{$SEPARATOR_VALUE}inline-block#{$suffix} {
+    display: inline-block;
+  }
+
+  .u-d#{$SEPARATOR_VALUE}flex#{$suffix} {
+    display: flex;
+  }
+
+  .u-d#{$SEPARATOR_VALUE}inline-flex#{$suffix} {
+    display: inline-flex;
+  }
+
+  .u-d#{$SEPARATOR_VALUE}table#{$suffix} {
+    display: table;
+  }
+
+  .u-d#{$SEPARATOR_VALUE}table-row#{$suffix} {
+    display: table-row;
+  }
+
+  .u-d#{$SEPARATOR_VALUE}table-cell#{$suffix} {
+    display: table-cell;
+  }
+
+  .u-d#{$SEPARATOR_VALUE}inline-table#{$suffix} {
+    display: inline-table;
+  }
+
+  .u-d#{$SEPARATOR_VALUE}none#{$suffix} {
+    display: none;
+  }
+}
+
+/// Mixin to output responsive display utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} display
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-display {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include display(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
+/// Mixin to output float utilities.
+/// @access private
+/// @requires {variable} SEPARATOR_VALUE
+@mixin float($suffix: null) {
+  .u-fl#{$SEPARATOR_VALUE}left#{$suffix} {
+    float: left;
+  }
+
+  .u-fl#{$SEPARATOR_VALUE}right#{$suffix} {
+    float: right;
+  }
+
+  .u-fl#{$SEPARATOR_VALUE}none#{$suffix} {
+    float: none;
+  }
+}
+
+/// Mixin to output responsive float utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} float
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-float {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include float(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
+/// Mixin to output clear utilities.
+/// @access private
+/// @requires {variable} SEPARATOR_VALUE
+@mixin clear($suffix: null) {
+  .u-cl#{$SEPARATOR_VALUE}left#{$suffix} {
+    clear: left;
+  }
+
+  .u-cl#{$SEPARATOR_VALUE}right#{$suffix} {
+    clear: right;
+  }
+
+  .u-cl#{$SEPARATOR_VALUE}both#{$suffix} {
+    clear: both;
+  }
+
+  .u-cl#{$SEPARATOR_VALUE}none#{$suffix} {
+    clear: none;
+  }
+
+  .u-cl#{$SEPARATOR_VALUE}fix#{$suffix} {
+    &::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+}
+
+/// Mixin to output responsive clear utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} clear
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-clear {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include clear(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
 }
@@ -396,10 +603,11 @@ $MEDIA_RULE_SEPARATOR: '\\@';
 /// Mixin to output sizing utilities.
 /// @access private
 /// @requires {variable} sizes
+/// @requires {variable} SEPARATOR_VALUE
 @mixin sizing($suffix: null) {
   @each $key, $value in $sizes {
     @if type-of($value) == 'number' or $value == 'auto' {
-      .u-w-#{$key}#{$suffix} {
+      .u-w#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
         width: var(--size-#{$key});
       }
     }
@@ -411,10 +619,11 @@ $MEDIA_RULE_SEPARATOR: '\\@';
 /// @requires {mixin} breakpoint-core
 /// @requires {mixin} sizing
 /// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-sizing {
   @each $key, $value in $breakpoints {
     @include breakpoint-core($key) {
-      @include sizing(#{$MEDIA_RULE_SEPARATOR}#{$key});
+      @include sizing(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
 }
@@ -422,47 +631,48 @@ $MEDIA_RULE_SEPARATOR: '\\@';
 /// Mixin to output spacing utilities.
 /// @access private
 /// @requires {variable} spacers
+/// @requires {variable} SEPARATOR_VALUE
 @mixin spacing($suffix: null) {
   @each $key, $value in $spacers {
     @if type-of($value) == 'number' or $value == 'auto' {
-      .u-m-#{$key}#{$suffix} {
+      .u-m#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
         margin: var(--spacer-#{$key});
       }
 
-      .u-mt-#{$key}#{$suffix} {
+      .u-mt#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
         margin-top: var(--spacer-#{$key});
       }
 
-      .u-mr-#{$key}#{$suffix} {
+      .u-mr#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
         margin-right: var(--spacer-#{$key});
       }
 
-      .u-mb-#{$key}#{$suffix} {
+      .u-mb#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
         margin-bottom: var(--spacer-#{$key});
       }
 
-      .u-ml-#{$key}#{$suffix} {
+      .u-ml#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
         margin-left: var(--spacer-#{$key});
       }
 
       @if type-of($value) == 'number' {
-        .u-p-#{$key}#{$suffix} {
+        .u-p#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
           padding: var(--spacer-#{$key});
         }
 
-        .u-pt-#{$key}#{$suffix} {
+        .u-pt#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
           padding-top: var(--spacer-#{$key});
         }
 
-        .u-pr-#{$key}#{$suffix} {
+        .u-pr#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
           padding-right: var(--spacer-#{$key});
         }
 
-        .u-pb-#{$key}#{$suffix} {
+        .u-pb#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
           padding-bottom: var(--spacer-#{$key});
         }
 
-        .u-pl-#{$key}#{$suffix} {
+        .u-pl#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
           padding-left: var(--spacer-#{$key});
         }
       }
@@ -475,10 +685,11 @@ $MEDIA_RULE_SEPARATOR: '\\@';
 /// @requires {mixin} breakpoint-core
 /// @requires {mixin} spacing
 /// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-spacing {
   @each $key, $value in $breakpoints {
     @include breakpoint-core($key) {
-      @include spacing(#{$MEDIA_RULE_SEPARATOR}#{$key});
+      @include spacing(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
 }
