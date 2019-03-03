@@ -1,14 +1,26 @@
 /* ==========================================================================
-   #FONT-FAMILIES
+   #TEXT
    ========================================================================== */
 
 /* Declarative rules
    ========================================================================== */
 
+// Text alignment utilities builder.
+@include text-alignment;
+
+// Font weight utilities builder.
+@include font-weights;
+
+// Font size utilities builder.
+@include font-sizes;
+
 // Font family utilities builder.
 @include font-families;
 
-// Responsive font family utilities builder.
-@if $enable-responsive-font-families {
+// Responsive text utilities builder.
+@if $enable-responsive-text {
+  @include responsive-text-alignment;
+  @include responsive-font-weights;
+  @include responsive-font-sizes;
   @include responsive-font-families;
 }
