@@ -1,0 +1,14 @@
+/* ==========================================================================
+   #CLEAR
+   ========================================================================== */
+
+/* Declarative rules
+   ========================================================================== */
+
+// Clear utilities builder.
+@include clear;
+
+// Responsive clear utilities builder.
+@if $enable-responsive-clear {
+  @include responsive-clear;
+}
