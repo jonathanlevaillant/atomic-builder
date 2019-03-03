@@ -1,14 +1,14 @@
 /* ==========================================================================
-   #FONT-SIZES
+   #FLOAT
    ========================================================================== */
 
 /* Declarative rules
    ========================================================================== */
 
-// Font size utilities builder.
-@include font-sizes;
+// Float utilities builder.
+@include float;
 
-// Responsive font size utilities builder.
-@if $enable-responsive-font-sizes {
-  @include responsive-font-sizes;
+// Responsive float utilities builder.
+@if $enable-responsive-float {
+  @include responsive-float;
 }
