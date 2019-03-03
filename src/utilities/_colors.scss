@@ -8,7 +8,11 @@
 // Color utilities builder.
 @include colors;
 
+// Background color utilities builder.
+@include background-colors;
+
 // Responsive color utilities builder.
 @if $enable-responsive-colors {
   @include responsive-colors;
+  @include responsive-background-colors;
 }
