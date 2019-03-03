@@ -72,7 +72,7 @@ $BREAKPOINT_DEFAULT_LABEL: 'default';
       $new-breakpoints: map-merge($new-breakpoints, ($key: $value));
       $new-breakpoints: map-merge($new-breakpoints, (#{$key}#{$BREAKPOINT_UPPER_LABEL}: $value + 0.0625));
       $new-breakpoints: map-merge($new-breakpoints, (#{$key}#{$BREAKPOINT_LOWER_LABEL}: $value));
-    } @else {
+    } @else if $value {
       @warn 'Make sure that `#{$value}` is a number in `$breakpoints: #{$breakpoints}` map.';
     }
   }
@@ -86,14 +86,12 @@ $BREAKPOINT_DEFAULT_LABEL: 'default';
 /// @access private
 /// @requires {variable} BREAKPOINT_LOWER_LABEL
 /// @param {Map} $breakpoints - Breakpoints from global settings
-/// @throws Make sure that `$breakpoints` is not an empty map.
 /// @return {Map}
 @function breakpoint-clean($breakpoints) {
   @if length($breakpoints) > 1 {
     @return map-remove($breakpoints, #{nth(nth($breakpoints, 1), 1)}#{$BREAKPOINT_LOWER_LABEL});
   }
 
-  @warn 'Make sure that `$breakpoints` is not an empty map.';
   @return $breakpoints;
 }
 

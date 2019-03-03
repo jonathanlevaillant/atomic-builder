@@ -58,7 +58,7 @@ $MEDIA_RULE_SEPARATOR: '\\@';
   @each $key, $value in $colors {
     @if type-of($value) == 'color' {
       --color-#{$key}: #{$value};
-    } @else {
+    } @else if $value {
       @warn 'Make sure that `#{$value}` is a color in `$colors: #{$colors}` map.';
     }
   }
@@ -72,7 +72,7 @@ $MEDIA_RULE_SEPARATOR: '\\@';
   @each $key, $value in $font-weights {
     @if type-of($value) == 'number' {
       --font-weight-#{$key}: #{$value};
-    } @else {
+    } @else if $value {
       @warn 'Make sure that `#{$value}` is a number in `$font-weights: #{$font-weights}` map.';
     }
   }
@@ -94,19 +94,19 @@ $MEDIA_RULE_SEPARATOR: '\\@';
 
       @if type-of($font-size-value) == 'number' {
         --font-size-#{$key}: #{$font-size-value};
-      } @else {
+      } @else if $font-size-value {
         @warn 'Make sure that `#{$font-size-value}` is a number in `$font-sizes: #{$font-sizes}` map.';
       }
 
       @if type-of($line-height-value) == 'number' {
         --line-height-#{$key}: #{$line-height-value};
-      } @else {
+      } @else if $line-height-value {
         @warn 'Make sure that `#{$line-height-value}` is a number in `$font-sizes: #{$font-sizes}` map.';
       }
     } @else {
       --font-size-#{$key}: #{$value};
     }
-  } @else {
+  } @else if $value {
     @warn 'Make sure that `#{$value}` is a number or a list in `$font-sizes: #{$font-sizes}` map.';
   }
 }
@@ -129,7 +129,7 @@ $MEDIA_RULE_SEPARATOR: '\\@';
       } @else {
         @include var-rhythm($key, $value);
       }
-    } @else {
+    } @else if $value {
       @warn 'Make sure that `#{$value}` is a number, a list or a map in `$font-sizes: #{$font-sizes}` map.';
     }
   }
@@ -143,7 +143,7 @@ $MEDIA_RULE_SEPARATOR: '\\@';
   @each $key, $value in $font-families {
     @if type-of($value) == 'string' {
       --font-family-#{$key}: #{$value};
-    } @else {
+    } @else if $value {
       @warn 'Make sure that `#{$value}` is a string in `$font-families: #{$font-families}` map.';
     }
   }
@@ -157,7 +157,7 @@ $MEDIA_RULE_SEPARATOR: '\\@';
   @each $key, $value in $sizes {
     @if type-of($value) == 'number' {
       --size-#{$key}: #{$value};
-    } @else {
+    } @else if $value {
       @warn 'Make sure that `#{$value}` is a number in `$sizes: #{$sizes}` map.';
     }
   }
@@ -171,7 +171,7 @@ $MEDIA_RULE_SEPARATOR: '\\@';
   @each $key, $value in $spacers {
     @if type-of($value) == 'number' or $value == 'auto' {
       --spacer-#{$key}: #{$value};
-    } @else {
+    } @else if $value {
       @warn 'Make sure that `#{$value}` is a number or equals `auto` in `$spacers: #{$spacers}` map.';
     }
   }
@@ -200,7 +200,7 @@ $MEDIA_RULE_SEPARATOR: '\\@';
       @include breakpoint-core($key) {
         --container-side-margin: #{$value};
       }
-    } @else {
+    } @else if $value {
       @warn 'Make sure that `#{$value}` is a number in `$container-side-margin: #{$container-side-margin}` map.';
     }
   }
@@ -217,7 +217,7 @@ $MEDIA_RULE_SEPARATOR: '\\@';
       @include breakpoint-core($key) {
         --column-gap: #{$value};
       }
-    } @else {
+    } @else if $value {
       @warn 'Make sure that `#{$value}` is a number in `$grid-column-gap: #{$grid-column-gap}` map.';
     }
   }
@@ -234,7 +234,7 @@ $MEDIA_RULE_SEPARATOR: '\\@';
       @include breakpoint-core($key) {
         --row-gap: #{$value};
       }
-    } @else {
+    } @else if $value {
       @warn 'Make sure that `#{$value}` is a number in `$grid-row-gap: #{$grid-row-gap}` map.';
     }
   }
