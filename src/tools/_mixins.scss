@@ -931,6 +931,57 @@ $SEPARATOR_VALUE: '\\:';
   }
 }
 
+/// Mixin to output alignment utilities.
+/// @access private
+/// @requires {variable} SEPARATOR_VALUE
+@mixin alignment($suffix: null) {
+  .u-va#{$SEPARATOR_VALUE}baseline#{$suffix} {
+    vertical-align: baseline;
+  }
+
+  .u-va#{$SEPARATOR_VALUE}top#{$suffix} {
+    vertical-align: top;
+  }
+
+  .u-va#{$SEPARATOR_VALUE}bottom#{$suffix} {
+    vertical-align: bottom;
+  }
+
+  .u-va#{$SEPARATOR_VALUE}middle#{$suffix} {
+    vertical-align: middle;
+  }
+
+  .u-va#{$SEPARATOR_VALUE}text-top#{$suffix} {
+    vertical-align: text-top;
+  }
+
+  .u-va#{$SEPARATOR_VALUE}text-bottom#{$suffix} {
+    vertical-align: text-bottom;
+  }
+
+  .u-va#{$SEPARATOR_VALUE}sub#{$suffix} {
+    vertical-align: sub;
+  }
+
+  .u-va#{$SEPARATOR_VALUE}super#{$suffix} {
+    vertical-align: super;
+  }
+}
+
+/// Mixin to output responsive alignment utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} alignment
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-alignment {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include alignment(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
 //*  Public mixins
 //   ======================================================================== */
 
