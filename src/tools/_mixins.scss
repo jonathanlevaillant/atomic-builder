@@ -993,6 +993,19 @@ $SEPARATOR_VALUE: '\\:';
   .u-v#{$SEPARATOR_VALUE}hidden#{$suffix} {
     visibility: hidden;
   }
+
+  .u-v#{$SEPARATOR_VALUE}a11y#{$suffix} {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+  }
 }
 
 /// Mixin to output responsive visibility utilities.
