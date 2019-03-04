@@ -982,6 +982,33 @@ $SEPARATOR_VALUE: '\\:';
   }
 }
 
+/// Mixin to output visibility utilities.
+/// @access private
+/// @requires {variable} SEPARATOR_VALUE
+@mixin visibility($suffix: null) {
+  .u-v#{$SEPARATOR_VALUE}visible#{$suffix} {
+    visibility: visible;
+  }
+
+  .u-v#{$SEPARATOR_VALUE}hidden#{$suffix} {
+    visibility: hidden;
+  }
+}
+
+/// Mixin to output responsive visibility utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} visibility
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-visibility {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include visibility(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
 //*  Public mixins
 //   ======================================================================== */
 
