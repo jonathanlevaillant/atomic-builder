@@ -467,6 +467,45 @@ $SEPARATOR_VALUE: '\\:';
   }
 }
 
+/// Mixin to output position utilities.
+/// @access private
+/// @requires {variable} SEPARATOR_VALUE
+@mixin position($suffix: null) {
+  .u-pos#{$SEPARATOR_VALUE}static#{$suffix} {
+    position: static;
+  }
+
+  .u-pos#{$SEPARATOR_VALUE}relative#{$suffix} {
+    position: relative;
+  }
+
+  .u-pos#{$SEPARATOR_VALUE}absolute#{$suffix} {
+    position: absolute;
+  }
+
+  .u-pos#{$SEPARATOR_VALUE}fixed#{$suffix} {
+    position: fixed;
+  }
+
+  .u-pos#{$SEPARATOR_VALUE}sticky#{$suffix} {
+    position: sticky;
+  }
+}
+
+/// Mixin to output responsive position utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} position
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-position {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include position(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
 /// Mixin to output display utilities.
 /// @access private
 /// @requires {variable} SEPARATOR_VALUE
