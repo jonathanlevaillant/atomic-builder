@@ -896,6 +896,41 @@ $SEPARATOR_VALUE: '\\:';
   }
 }
 
+/// Mixin to output overflow utilities.
+/// @access private
+/// @requires {variable} SEPARATOR_VALUE
+@mixin overflow($suffix: null) {
+  .u-ov#{$SEPARATOR_VALUE}visible#{$suffix} {
+    overflow: visible;
+  }
+
+  .u-ov#{$SEPARATOR_VALUE}hidden#{$suffix} {
+    overflow: hidden;
+  }
+
+  .u-ov#{$SEPARATOR_VALUE}scroll#{$suffix} {
+    overflow: scroll;
+  }
+
+  .u-ov#{$SEPARATOR_VALUE}auto#{$suffix} {
+    overflow: auto;
+  }
+}
+
+/// Mixin to output responsive overflow utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} overflow
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-overflow {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include overflow(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
 //*  Public mixins
 //   ======================================================================== */
 
