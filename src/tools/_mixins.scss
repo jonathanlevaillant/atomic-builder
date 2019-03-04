@@ -1057,6 +1057,45 @@ $SEPARATOR_VALUE: '\\:';
   }
 }
 
+/// Mixin to output unstyled utilities.
+/// @access private
+/// @requires {variable} SEPARATOR_VALUE
+@mixin unstyled($suffix: null) {
+  .u-us#{$SEPARATOR_VALUE}link#{$suffix} {
+    color: inherit;
+    text-decoration: none;
+    cursor: auto;
+  }
+
+  .u-us#{$SEPARATOR_VALUE}list#{$suffix} {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .u-us#{$SEPARATOR_VALUE}button#{$suffix} {
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    background: none;
+    border: 0;
+    cursor: auto;
+  }
+}
+
+/// Mixin to output responsive unstyled utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} unstyled
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-unstyled {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include unstyled(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
 //*  Public mixins
 //   ======================================================================== */
 
