@@ -75,6 +75,7 @@ $breakpoints: map-merge((
 $enable-responsive-grid:          true !default;
 $enable-responsive-colors:        false !default;
 $enable-responsive-text:          false !default;
+$enable-responsive-position:      false !default;
 $enable-responsive-display:       false !default;
 $enable-responsive-flex:          false !default;
 $enable-responsive-float:         false !default;
