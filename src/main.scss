@@ -33,8 +33,6 @@
 @import 'objects/container';
 
 // Utilities : Helper classes with ability to override all previous styles.
-@import 'utilities/colors';
-@import 'utilities/text';
 @import 'utilities/position';
 @import 'utilities/display';
 @import 'utilities/flex';
@@ -43,5 +41,7 @@
 @import 'utilities/sizing';
 @import 'utilities/spacing';
 @import 'utilities/overflow';
+@import 'utilities/colors';
+@import 'utilities/text';
 @import 'utilities/alignment';
 @import 'utilities/visibility';

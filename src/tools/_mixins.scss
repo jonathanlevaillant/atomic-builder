@@ -291,217 +291,6 @@ $SEPARATOR_VALUE: '\\:';
 //   Naming convention based on Atomic CSS : https://acss.io/reference
 //   ======================================================================== */
 
-/// Mixin to output color utilities.
-/// @access private
-/// @requires {variable} colors
-/// @requires {variable} SEPARATOR_VALUE
-@mixin colors($suffix: null) {
-  @each $key, $value in $colors {
-    @if type-of($value) == 'color' {
-      .u-c#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
-        color: var(--color-#{$key});
-      }
-    }
-  }
-}
-
-/// Mixin to output responsive color utilities.
-/// @access private
-/// @requires {mixin} breakpoint-core
-/// @requires {mixin} colors
-/// @requires {variable} breakpoints
-/// @requires {variable} SEPARATOR_MEDIA
-@mixin responsive-colors {
-  @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
-      @include colors(#{$SEPARATOR_MEDIA}#{$key});
-    }
-  }
-}
-
-/// Mixin to output background color utilities.
-/// @access private
-/// @requires {variable} colors
-/// @requires {variable} SEPARATOR_VALUE
-@mixin background-colors($suffix: null) {
-  @each $key, $value in $colors {
-    @if type-of($value) == 'color' {
-      .u-bgc#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
-        background-color: var(--color-#{$key});
-      }
-    }
-  }
-}
-
-/// Mixin to output responsive background color utilities.
-/// @access private
-/// @requires {mixin} breakpoint-core
-/// @requires {mixin} background-colors
-/// @requires {variable} breakpoints
-/// @requires {variable} SEPARATOR_MEDIA
-@mixin responsive-background-colors {
-  @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
-      @include background-colors(#{$SEPARATOR_MEDIA}#{$key});
-    }
-  }
-}
-
-/// Mixin to output text alignment utilities.
-/// @access private
-/// @requires {variable} SEPARATOR_VALUE
-@mixin text-alignment($suffix: null) {
-  .u-ta#{$SEPARATOR_VALUE}left#{$suffix} {
-    text-align: left;
-  }
-
-  .u-ta#{$SEPARATOR_VALUE}right#{$suffix} {
-    text-align: right;
-  }
-
-  .u-ta#{$SEPARATOR_VALUE}center#{$suffix} {
-    text-align: center;
-  }
-
-  .u-ta#{$SEPARATOR_VALUE}justify#{$suffix} {
-    text-align: justify;
-  }
-}
-
-/// Mixin to output responsive text alignment utilities.
-/// @access private
-/// @requires {mixin} breakpoint-core
-/// @requires {mixin} text-alignment
-/// @requires {variable} breakpoints
-/// @requires {variable} SEPARATOR_MEDIA
-@mixin responsive-text-alignment {
-  @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
-      @include text-alignment(#{$SEPARATOR_MEDIA}#{$key});
-    }
-  }
-}
-
-/// Mixin to output text transform utilities.
-/// @access private
-/// @requires {variable} SEPARATOR_VALUE
-@mixin text-transform($suffix: null) {
-  .u-tt#{$SEPARATOR_VALUE}lowercase#{$suffix} {
-    text-transform: lowercase;
-  }
-
-  .u-tt#{$SEPARATOR_VALUE}uppercase#{$suffix} {
-    text-transform: uppercase;
-  }
-
-  .u-tt#{$SEPARATOR_VALUE}capitalize#{$suffix} {
-    text-transform: capitalize;
-  }
-
-  .u-tt#{$SEPARATOR_VALUE}none#{$suffix} {
-    text-transform: none;
-  }
-}
-
-/// Mixin to output responsive text transform utilities.
-/// @access private
-/// @requires {mixin} breakpoint-core
-/// @requires {mixin} text-transform
-/// @requires {variable} breakpoints
-/// @requires {variable} SEPARATOR_MEDIA
-@mixin responsive-text-transform {
-  @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
-      @include text-transform(#{$SEPARATOR_MEDIA}#{$key});
-    }
-  }
-}
-
-/// Mixin to output font weight utilities.
-/// @access private
-/// @requires {variable} font-weights
-/// @requires {variable} SEPARATOR_VALUE
-@mixin font-weights($suffix: null) {
-  @each $key, $value in $font-weights {
-    @if type-of($value) == 'number' {
-      .u-fw#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
-        font-weight: var(--font-weight-#{$key});
-      }
-    }
-  }
-}
-
-/// Mixin to output responsive font weight utilities.
-/// @access private
-/// @requires {mixin} breakpoint-core
-/// @requires {mixin} font-weights
-/// @requires {variable} breakpoints
-/// @requires {variable} SEPARATOR_MEDIA
-@mixin responsive-font-weights {
-  @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
-      @include font-weights(#{$SEPARATOR_MEDIA}#{$key});
-    }
-  }
-}
-
-/// Mixin to output font size utilities.
-/// @access private
-/// @requires {variable} font-sizes
-/// @requires {variable} SEPARATOR_VALUE
-@mixin font-sizes($suffix: null) {
-  @each $key, $value in $font-sizes {
-    @if type-of($value) == 'number' or type-of($value) == 'list' or type-of($value) == 'map' {
-      .u-fz#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
-        font-size: var(--font-size-#{$key});
-        line-height: var(--line-height-#{$key});
-      }
-    }
-  }
-}
-
-/// Mixin to output responsive font size utilities.
-/// @access private
-/// @requires {mixin} breakpoint-core
-/// @requires {mixin} font-sizes
-/// @requires {variable} breakpoints
-/// @requires {variable} SEPARATOR_MEDIA
-@mixin responsive-font-sizes {
-  @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
-      @include font-sizes(#{$SEPARATOR_MEDIA}#{$key});
-    }
-  }
-}
-
-/// Mixin to output font family utilities.
-/// @access private
-/// @requires {variable} font-families
-/// @requires {variable} SEPARATOR_VALUE
-@mixin font-families($suffix: null) {
-  @each $key, $value in $font-families {
-    @if type-of($value) == 'string' {
-      .u-ff#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
-        font-family: var(--font-family-#{$key});
-      }
-    }
-  }
-}
-
-/// Mixin to output responsive font family utilities.
-/// @access private
-/// @requires {mixin} breakpoint-core
-/// @requires {mixin} font-families
-/// @requires {variable} breakpoints
-/// @requires {variable} SEPARATOR_MEDIA
-@mixin responsive-font-families {
-  @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
-      @include font-families(#{$SEPARATOR_MEDIA}#{$key});
-    }
-  }
-}
-
 /// Mixin to output position utilities.
 /// @access private
 /// @requires {variable} SEPARATOR_VALUE
@@ -962,6 +751,217 @@ $SEPARATOR_VALUE: '\\:';
   @each $key, $value in $breakpoints {
     @include breakpoint-core($key) {
       @include overflow(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
+/// Mixin to output color utilities.
+/// @access private
+/// @requires {variable} colors
+/// @requires {variable} SEPARATOR_VALUE
+@mixin colors($suffix: null) {
+  @each $key, $value in $colors {
+    @if type-of($value) == 'color' {
+      .u-c#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+        color: var(--color-#{$key});
+      }
+    }
+  }
+}
+
+/// Mixin to output responsive color utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} colors
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-colors {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include colors(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
+/// Mixin to output background color utilities.
+/// @access private
+/// @requires {variable} colors
+/// @requires {variable} SEPARATOR_VALUE
+@mixin background-colors($suffix: null) {
+  @each $key, $value in $colors {
+    @if type-of($value) == 'color' {
+      .u-bgc#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+        background-color: var(--color-#{$key});
+      }
+    }
+  }
+}
+
+/// Mixin to output responsive background color utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} background-colors
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-background-colors {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include background-colors(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
+/// Mixin to output font weight utilities.
+/// @access private
+/// @requires {variable} font-weights
+/// @requires {variable} SEPARATOR_VALUE
+@mixin font-weights($suffix: null) {
+  @each $key, $value in $font-weights {
+    @if type-of($value) == 'number' {
+      .u-fw#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+        font-weight: var(--font-weight-#{$key});
+      }
+    }
+  }
+}
+
+/// Mixin to output responsive font weight utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} font-weights
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-font-weights {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include font-weights(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
+/// Mixin to output font size utilities.
+/// @access private
+/// @requires {variable} font-sizes
+/// @requires {variable} SEPARATOR_VALUE
+@mixin font-sizes($suffix: null) {
+  @each $key, $value in $font-sizes {
+    @if type-of($value) == 'number' or type-of($value) == 'list' or type-of($value) == 'map' {
+      .u-fz#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+        font-size: var(--font-size-#{$key});
+        line-height: var(--line-height-#{$key});
+      }
+    }
+  }
+}
+
+/// Mixin to output responsive font size utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} font-sizes
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-font-sizes {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include font-sizes(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
+/// Mixin to output font family utilities.
+/// @access private
+/// @requires {variable} font-families
+/// @requires {variable} SEPARATOR_VALUE
+@mixin font-families($suffix: null) {
+  @each $key, $value in $font-families {
+    @if type-of($value) == 'string' {
+      .u-ff#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+        font-family: var(--font-family-#{$key});
+      }
+    }
+  }
+}
+
+/// Mixin to output responsive font family utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} font-families
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-font-families {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include font-families(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
+/// Mixin to output text alignment utilities.
+/// @access private
+/// @requires {variable} SEPARATOR_VALUE
+@mixin text-alignment($suffix: null) {
+  .u-ta#{$SEPARATOR_VALUE}left#{$suffix} {
+    text-align: left;
+  }
+
+  .u-ta#{$SEPARATOR_VALUE}right#{$suffix} {
+    text-align: right;
+  }
+
+  .u-ta#{$SEPARATOR_VALUE}center#{$suffix} {
+    text-align: center;
+  }
+
+  .u-ta#{$SEPARATOR_VALUE}justify#{$suffix} {
+    text-align: justify;
+  }
+}
+
+/// Mixin to output responsive text alignment utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} text-alignment
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-text-alignment {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include text-alignment(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
+/// Mixin to output text transform utilities.
+/// @access private
+/// @requires {variable} SEPARATOR_VALUE
+@mixin text-transform($suffix: null) {
+  .u-tt#{$SEPARATOR_VALUE}lowercase#{$suffix} {
+    text-transform: lowercase;
+  }
+
+  .u-tt#{$SEPARATOR_VALUE}uppercase#{$suffix} {
+    text-transform: uppercase;
+  }
+
+  .u-tt#{$SEPARATOR_VALUE}capitalize#{$suffix} {
+    text-transform: capitalize;
+  }
+
+  .u-tt#{$SEPARATOR_VALUE}none#{$suffix} {
+    text-transform: none;
+  }
+}
+
+/// Mixin to output responsive text transform utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} text-transform
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-text-transform {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include text-transform(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
 }

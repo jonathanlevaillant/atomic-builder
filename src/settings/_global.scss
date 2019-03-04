@@ -73,8 +73,6 @@ $breakpoints: map-merge((
 
 // Parameters to enable or disable the responsive utility classes builders.
 $enable-responsive-grid:          true !default;
-$enable-responsive-colors:        false !default;
-$enable-responsive-text:          false !default;
 $enable-responsive-position:      false !default;
 $enable-responsive-display:       false !default;
 $enable-responsive-flex:          false !default;
@@ -83,5 +81,7 @@ $enable-responsive-clear:         false !default;
 $enable-responsive-sizing:        false !default;
 $enable-responsive-spacing:       false !default;
 $enable-responsive-overflow:      false !default;
+$enable-responsive-colors:        false !default;
+$enable-responsive-text:          false !default;
 $enable-responsive-alignment:     false !default;
 $enable-responsive-visibility:    false !default;
