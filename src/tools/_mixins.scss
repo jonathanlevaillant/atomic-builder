@@ -351,16 +351,16 @@ $SEPARATOR_VALUE: '\\:';
 /// @access private
 /// @requires {variable} SEPARATOR_VALUE
 @mixin text-alignment($suffix: null) {
-  .u-ta#{$SEPARATOR_VALUE}center#{$suffix} {
-    text-align: center;
-  }
-
   .u-ta#{$SEPARATOR_VALUE}left#{$suffix} {
     text-align: left;
   }
 
   .u-ta#{$SEPARATOR_VALUE}right#{$suffix} {
     text-align: right;
+  }
+
+  .u-ta#{$SEPARATOR_VALUE}center#{$suffix} {
+    text-align: center;
   }
 
   .u-ta#{$SEPARATOR_VALUE}justify#{$suffix} {
@@ -471,12 +471,12 @@ $SEPARATOR_VALUE: '\\:';
 /// @access private
 /// @requires {variable} SEPARATOR_VALUE
 @mixin display($suffix: null) {
-  .u-d#{$SEPARATOR_VALUE}block#{$suffix} {
-    display: block;
-  }
-
   .u-d#{$SEPARATOR_VALUE}inline#{$suffix} {
     display: inline;
+  }
+
+  .u-d#{$SEPARATOR_VALUE}block#{$suffix} {
+    display: block;
   }
 
   .u-d#{$SEPARATOR_VALUE}inline-block#{$suffix} {
@@ -495,16 +495,16 @@ $SEPARATOR_VALUE: '\\:';
     display: table;
   }
 
+  .u-d#{$SEPARATOR_VALUE}inline-table#{$suffix} {
+    display: inline-table;
+  }
+
   .u-d#{$SEPARATOR_VALUE}table-row#{$suffix} {
     display: table-row;
   }
 
   .u-d#{$SEPARATOR_VALUE}table-cell#{$suffix} {
     display: table-cell;
-  }
-
-  .u-d#{$SEPARATOR_VALUE}inline-table#{$suffix} {
-    display: inline-table;
   }
 
   .u-d#{$SEPARATOR_VALUE}none#{$suffix} {
@@ -522,6 +522,169 @@ $SEPARATOR_VALUE: '\\:';
   @each $key, $value in $breakpoints {
     @include breakpoint-core($key) {
       @include display(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
+/// Mixin to output flex utilities.
+/// @access private
+/// @requires {variable} SEPARATOR_VALUE
+@mixin flex($suffix: null) {
+  .u-fxd#{$SEPARATOR_VALUE}row#{$suffix} {
+    flex-direction: row;
+  }
+
+  .u-fxd#{$SEPARATOR_VALUE}row-reverse#{$suffix} {
+    flex-direction: row-reverse;
+  }
+
+  .u-fxd#{$SEPARATOR_VALUE}column#{$suffix} {
+    flex-direction: column;
+  }
+
+  .u-fxd#{$SEPARATOR_VALUE}column-reverse#{$suffix} {
+    flex-direction: column-reverse;
+  }
+
+  .u-fxw#{$SEPARATOR_VALUE}nowrap#{$suffix} {
+    flex-wrap: nowrap;
+  }
+
+  .u-fxw#{$SEPARATOR_VALUE}wrap#{$suffix} {
+    flex-wrap: wrap;
+  }
+
+  .u-fxw#{$SEPARATOR_VALUE}wrap-reverse#{$suffix} {
+    flex-wrap: wrap-reverse;
+  }
+
+  .u-jc#{$SEPARATOR_VALUE}flex-start#{$suffix} {
+    justify-content: flex-start;
+  }
+
+  .u-jc#{$SEPARATOR_VALUE}flex-end#{$suffix} {
+    justify-content: flex-end;
+  }
+
+  .u-jc#{$SEPARATOR_VALUE}center#{$suffix} {
+    justify-content: center;
+  }
+
+  .u-jc#{$SEPARATOR_VALUE}space-between#{$suffix} {
+    justify-content: space-between;
+  }
+
+  .u-jc#{$SEPARATOR_VALUE}space-around#{$suffix} {
+    justify-content: space-around;
+  }
+
+  .u-jc#{$SEPARATOR_VALUE}space-evenly#{$suffix} {
+    justify-content: space-evenly;
+  }
+
+  .u-ac#{$SEPARATOR_VALUE}flex-start#{$suffix} {
+    align-content: flex-start;
+  }
+
+  .u-ac#{$SEPARATOR_VALUE}flex-end#{$suffix} {
+    align-content: flex-end;
+  }
+
+  .u-ac#{$SEPARATOR_VALUE}center#{$suffix} {
+    align-content: center;
+  }
+
+  .u-ac#{$SEPARATOR_VALUE}space-between#{$suffix} {
+    align-content: space-between;
+  }
+
+  .u-ac#{$SEPARATOR_VALUE}space-around#{$suffix} {
+    align-content: space-around;
+  }
+
+  .u-ac#{$SEPARATOR_VALUE}stretch#{$suffix} {
+    align-content: stretch;
+  }
+
+  .u-ai#{$SEPARATOR_VALUE}flex-start#{$suffix} {
+    align-items: flex-start;
+  }
+
+  .u-ai#{$SEPARATOR_VALUE}flex-end#{$suffix} {
+    align-items: flex-end;
+  }
+
+  .u-ai#{$SEPARATOR_VALUE}center#{$suffix} {
+    align-items: center;
+  }
+
+  .u-ai#{$SEPARATOR_VALUE}baseline#{$suffix} {
+    align-items: baseline;
+  }
+
+  .u-ai#{$SEPARATOR_VALUE}stretch#{$suffix} {
+    align-items: stretch;
+  }
+
+  .u-as#{$SEPARATOR_VALUE}flex-start#{$suffix} {
+    align-self: flex-start;
+  }
+
+  .u-as#{$SEPARATOR_VALUE}flex-end#{$suffix} {
+    align-self: flex-end;
+  }
+
+  .u-as#{$SEPARATOR_VALUE}center#{$suffix} {
+    align-self: center;
+  }
+
+  .u-as#{$SEPARATOR_VALUE}baseline#{$suffix} {
+    align-self: baseline;
+  }
+
+  .u-as#{$SEPARATOR_VALUE}stretch#{$suffix} {
+    align-self: stretch;
+  }
+
+  .u-fx#{$SEPARATOR_VALUE}initial#{$suffix} {
+    flex: initial;
+  }
+
+  .u-fx#{$SEPARATOR_VALUE}auto#{$suffix} {
+    flex: auto;
+  }
+
+  .u-fx#{$SEPARATOR_VALUE}1#{$suffix} {
+    flex: 1;
+  }
+
+  .u-fx#{$SEPARATOR_VALUE}none#{$suffix} {
+    flex: none;
+  }
+
+  .u-or#{$SEPARATOR_VALUE}-1#{$suffix} {
+    order: -1;
+  }
+
+  .u-or#{$SEPARATOR_VALUE}0#{$suffix} {
+    order: 0;
+  }
+
+  .u-or#{$SEPARATOR_VALUE}1#{$suffix} {
+    order: 1;
+  }
+}
+
+/// Mixin to output responsive flex utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} flex
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-flex {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include flex(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
 }
