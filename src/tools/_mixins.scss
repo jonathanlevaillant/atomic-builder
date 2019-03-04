@@ -382,6 +382,41 @@ $SEPARATOR_VALUE: '\\:';
   }
 }
 
+/// Mixin to output text transform utilities.
+/// @access private
+/// @requires {variable} SEPARATOR_VALUE
+@mixin text-transform($suffix: null) {
+  .u-tt#{$SEPARATOR_VALUE}lowercase#{$suffix} {
+    text-transform: lowercase;
+  }
+
+  .u-tt#{$SEPARATOR_VALUE}uppercase#{$suffix} {
+    text-transform: uppercase;
+  }
+
+  .u-tt#{$SEPARATOR_VALUE}capitalize#{$suffix} {
+    text-transform: capitalize;
+  }
+
+  .u-tt#{$SEPARATOR_VALUE}none#{$suffix} {
+    text-transform: none;
+  }
+}
+
+/// Mixin to output responsive text transform utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} text-transform
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-text-transform {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include text-transform(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
 /// Mixin to output font weight utilities.
 /// @access private
 /// @requires {variable} font-weights

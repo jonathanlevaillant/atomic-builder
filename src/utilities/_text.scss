@@ -8,6 +8,9 @@
 // Text alignment utilities builder.
 @include text-alignment;
 
+// Text transform utilities builder.
+@include text-transform;
+
 // Font weight utilities builder.
 @include font-weights;
 
@@ -20,6 +23,7 @@
 // Responsive text utilities builder.
 @if $enable-responsive-text {
   @include responsive-text-alignment;
+  @include responsive-text-transform;
   @include responsive-font-weights;
   @include responsive-font-sizes;
   @include responsive-font-families;
