@@ -3,7 +3,8 @@
 //   ======================================================================== */
 
 $SEPARATOR_MEDIA: '\\@';
-$SEPARATOR_VALUE: '\\:';
+$SEPARATOR_VALUE_START: '\\(';
+$SEPARATOR_VALUE_END: '\\)';
 
 //*  Private mixins
 //   ======================================================================== */
@@ -293,25 +294,26 @@ $SEPARATOR_VALUE: '\\:';
 
 /// Mixin to output position utilities.
 /// @access private
-/// @requires {variable} SEPARATOR_VALUE
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
 @mixin position($suffix: null) {
-  .u-pos#{$SEPARATOR_VALUE}static#{$suffix} {
+  .u-pos#{$SEPARATOR_VALUE_START}static#{$SEPARATOR_VALUE_END}#{$suffix} {
     position: static;
   }
 
-  .u-pos#{$SEPARATOR_VALUE}relative#{$suffix} {
+  .u-pos#{$SEPARATOR_VALUE_START}relative#{$SEPARATOR_VALUE_END}#{$suffix} {
     position: relative;
   }
 
-  .u-pos#{$SEPARATOR_VALUE}absolute#{$suffix} {
+  .u-pos#{$SEPARATOR_VALUE_START}absolute#{$SEPARATOR_VALUE_END}#{$suffix} {
     position: absolute;
   }
 
-  .u-pos#{$SEPARATOR_VALUE}fixed#{$suffix} {
+  .u-pos#{$SEPARATOR_VALUE_START}fixed#{$SEPARATOR_VALUE_END}#{$suffix} {
     position: fixed;
   }
 
-  .u-pos#{$SEPARATOR_VALUE}sticky#{$suffix} {
+  .u-pos#{$SEPARATOR_VALUE_START}sticky#{$SEPARATOR_VALUE_END}#{$suffix} {
     position: sticky;
   }
 }
@@ -332,45 +334,46 @@ $SEPARATOR_VALUE: '\\:';
 
 /// Mixin to output display utilities.
 /// @access private
-/// @requires {variable} SEPARATOR_VALUE
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
 @mixin display($suffix: null) {
-  .u-d#{$SEPARATOR_VALUE}inline#{$suffix} {
+  .u-d#{$SEPARATOR_VALUE_START}inline#{$SEPARATOR_VALUE_END}#{$suffix} {
     display: inline;
   }
 
-  .u-d#{$SEPARATOR_VALUE}block#{$suffix} {
+  .u-d#{$SEPARATOR_VALUE_START}block#{$SEPARATOR_VALUE_END}#{$suffix} {
     display: block;
   }
 
-  .u-d#{$SEPARATOR_VALUE}inline-block#{$suffix} {
+  .u-d#{$SEPARATOR_VALUE_START}inline-block#{$SEPARATOR_VALUE_END}#{$suffix} {
     display: inline-block;
   }
 
-  .u-d#{$SEPARATOR_VALUE}flex#{$suffix} {
+  .u-d#{$SEPARATOR_VALUE_START}flex#{$SEPARATOR_VALUE_END}#{$suffix} {
     display: flex;
   }
 
-  .u-d#{$SEPARATOR_VALUE}inline-flex#{$suffix} {
+  .u-d#{$SEPARATOR_VALUE_START}inline-flex#{$SEPARATOR_VALUE_END}#{$suffix} {
     display: inline-flex;
   }
 
-  .u-d#{$SEPARATOR_VALUE}table#{$suffix} {
+  .u-d#{$SEPARATOR_VALUE_START}table#{$SEPARATOR_VALUE_END}#{$suffix} {
     display: table;
   }
 
-  .u-d#{$SEPARATOR_VALUE}inline-table#{$suffix} {
+  .u-d#{$SEPARATOR_VALUE_START}inline-table#{$SEPARATOR_VALUE_END}#{$suffix} {
     display: inline-table;
   }
 
-  .u-d#{$SEPARATOR_VALUE}table-row#{$suffix} {
+  .u-d#{$SEPARATOR_VALUE_START}table-row#{$SEPARATOR_VALUE_END}#{$suffix} {
     display: table-row;
   }
 
-  .u-d#{$SEPARATOR_VALUE}table-cell#{$suffix} {
+  .u-d#{$SEPARATOR_VALUE_START}table-cell#{$SEPARATOR_VALUE_END}#{$suffix} {
     display: table-cell;
   }
 
-  .u-d#{$SEPARATOR_VALUE}none#{$suffix} {
+  .u-d#{$SEPARATOR_VALUE_START}none#{$SEPARATOR_VALUE_END}#{$suffix} {
     display: none;
   }
 }
@@ -391,149 +394,150 @@ $SEPARATOR_VALUE: '\\:';
 
 /// Mixin to output flex utilities.
 /// @access private
-/// @requires {variable} SEPARATOR_VALUE
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
 @mixin flex($suffix: null) {
-  .u-fxd#{$SEPARATOR_VALUE}row#{$suffix} {
+  .u-fxd#{$SEPARATOR_VALUE_START}row#{$SEPARATOR_VALUE_END}#{$suffix} {
     flex-direction: row;
   }
 
-  .u-fxd#{$SEPARATOR_VALUE}row-reverse#{$suffix} {
+  .u-fxd#{$SEPARATOR_VALUE_START}row-reverse#{$SEPARATOR_VALUE_END}#{$suffix} {
     flex-direction: row-reverse;
   }
 
-  .u-fxd#{$SEPARATOR_VALUE}column#{$suffix} {
+  .u-fxd#{$SEPARATOR_VALUE_START}column#{$SEPARATOR_VALUE_END}#{$suffix} {
     flex-direction: column;
   }
 
-  .u-fxd#{$SEPARATOR_VALUE}column-reverse#{$suffix} {
+  .u-fxd#{$SEPARATOR_VALUE_START}column-reverse#{$SEPARATOR_VALUE_END}#{$suffix} {
     flex-direction: column-reverse;
   }
 
-  .u-fxw#{$SEPARATOR_VALUE}nowrap#{$suffix} {
+  .u-fxw#{$SEPARATOR_VALUE_START}nowrap#{$SEPARATOR_VALUE_END}#{$suffix} {
     flex-wrap: nowrap;
   }
 
-  .u-fxw#{$SEPARATOR_VALUE}wrap#{$suffix} {
+  .u-fxw#{$SEPARATOR_VALUE_START}wrap#{$SEPARATOR_VALUE_END}#{$suffix} {
     flex-wrap: wrap;
   }
 
-  .u-fxw#{$SEPARATOR_VALUE}wrap-reverse#{$suffix} {
+  .u-fxw#{$SEPARATOR_VALUE_START}wrap-reverse#{$SEPARATOR_VALUE_END}#{$suffix} {
     flex-wrap: wrap-reverse;
   }
 
-  .u-jc#{$SEPARATOR_VALUE}flex-start#{$suffix} {
+  .u-jc#{$SEPARATOR_VALUE_START}flex-start#{$SEPARATOR_VALUE_END}#{$suffix} {
     justify-content: flex-start;
   }
 
-  .u-jc#{$SEPARATOR_VALUE}flex-end#{$suffix} {
+  .u-jc#{$SEPARATOR_VALUE_START}flex-end#{$SEPARATOR_VALUE_END}#{$suffix} {
     justify-content: flex-end;
   }
 
-  .u-jc#{$SEPARATOR_VALUE}center#{$suffix} {
+  .u-jc#{$SEPARATOR_VALUE_START}center#{$SEPARATOR_VALUE_END}#{$suffix} {
     justify-content: center;
   }
 
-  .u-jc#{$SEPARATOR_VALUE}space-between#{$suffix} {
+  .u-jc#{$SEPARATOR_VALUE_START}space-between#{$SEPARATOR_VALUE_END}#{$suffix} {
     justify-content: space-between;
   }
 
-  .u-jc#{$SEPARATOR_VALUE}space-around#{$suffix} {
+  .u-jc#{$SEPARATOR_VALUE_START}space-around#{$SEPARATOR_VALUE_END}#{$suffix} {
     justify-content: space-around;
   }
 
-  .u-jc#{$SEPARATOR_VALUE}space-evenly#{$suffix} {
+  .u-jc#{$SEPARATOR_VALUE_START}space-evenly#{$SEPARATOR_VALUE_END}#{$suffix} {
     justify-content: space-evenly;
   }
 
-  .u-ac#{$SEPARATOR_VALUE}flex-start#{$suffix} {
+  .u-ac#{$SEPARATOR_VALUE_START}flex-start#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-content: flex-start;
   }
 
-  .u-ac#{$SEPARATOR_VALUE}flex-end#{$suffix} {
+  .u-ac#{$SEPARATOR_VALUE_START}flex-end#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-content: flex-end;
   }
 
-  .u-ac#{$SEPARATOR_VALUE}center#{$suffix} {
+  .u-ac#{$SEPARATOR_VALUE_START}center#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-content: center;
   }
 
-  .u-ac#{$SEPARATOR_VALUE}space-between#{$suffix} {
+  .u-ac#{$SEPARATOR_VALUE_START}space-between#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-content: space-between;
   }
 
-  .u-ac#{$SEPARATOR_VALUE}space-around#{$suffix} {
+  .u-ac#{$SEPARATOR_VALUE_START}space-around#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-content: space-around;
   }
 
-  .u-ac#{$SEPARATOR_VALUE}stretch#{$suffix} {
+  .u-ac#{$SEPARATOR_VALUE_START}stretch#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-content: stretch;
   }
 
-  .u-ai#{$SEPARATOR_VALUE}flex-start#{$suffix} {
+  .u-ai#{$SEPARATOR_VALUE_START}flex-start#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-items: flex-start;
   }
 
-  .u-ai#{$SEPARATOR_VALUE}flex-end#{$suffix} {
+  .u-ai#{$SEPARATOR_VALUE_START}flex-end#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-items: flex-end;
   }
 
-  .u-ai#{$SEPARATOR_VALUE}center#{$suffix} {
+  .u-ai#{$SEPARATOR_VALUE_START}center#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-items: center;
   }
 
-  .u-ai#{$SEPARATOR_VALUE}baseline#{$suffix} {
+  .u-ai#{$SEPARATOR_VALUE_START}baseline#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-items: baseline;
   }
 
-  .u-ai#{$SEPARATOR_VALUE}stretch#{$suffix} {
+  .u-ai#{$SEPARATOR_VALUE_START}stretch#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-items: stretch;
   }
 
-  .u-as#{$SEPARATOR_VALUE}flex-start#{$suffix} {
+  .u-as#{$SEPARATOR_VALUE_START}flex-start#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-self: flex-start;
   }
 
-  .u-as#{$SEPARATOR_VALUE}flex-end#{$suffix} {
+  .u-as#{$SEPARATOR_VALUE_START}flex-end#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-self: flex-end;
   }
 
-  .u-as#{$SEPARATOR_VALUE}center#{$suffix} {
+  .u-as#{$SEPARATOR_VALUE_START}center#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-self: center;
   }
 
-  .u-as#{$SEPARATOR_VALUE}baseline#{$suffix} {
+  .u-as#{$SEPARATOR_VALUE_START}baseline#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-self: baseline;
   }
 
-  .u-as#{$SEPARATOR_VALUE}stretch#{$suffix} {
+  .u-as#{$SEPARATOR_VALUE_START}stretch#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-self: stretch;
   }
 
-  .u-fx#{$SEPARATOR_VALUE}initial#{$suffix} {
+  .u-fx#{$SEPARATOR_VALUE_START}initial#{$SEPARATOR_VALUE_END}#{$suffix} {
     flex: initial;
   }
 
-  .u-fx#{$SEPARATOR_VALUE}auto#{$suffix} {
+  .u-fx#{$SEPARATOR_VALUE_START}auto#{$SEPARATOR_VALUE_END}#{$suffix} {
     flex: auto;
   }
 
-  .u-fx#{$SEPARATOR_VALUE}1#{$suffix} {
+  .u-fx#{$SEPARATOR_VALUE_START}1#{$SEPARATOR_VALUE_END}#{$suffix} {
     flex: 1;
   }
 
-  .u-fx#{$SEPARATOR_VALUE}none#{$suffix} {
+  .u-fx#{$SEPARATOR_VALUE_START}none#{$SEPARATOR_VALUE_END}#{$suffix} {
     flex: none;
   }
 
-  .u-or#{$SEPARATOR_VALUE}-1#{$suffix} {
+  .u-or#{$SEPARATOR_VALUE_START}-1#{$SEPARATOR_VALUE_END}#{$suffix} {
     order: -1;
   }
 
-  .u-or#{$SEPARATOR_VALUE}0#{$suffix} {
+  .u-or#{$SEPARATOR_VALUE_START}0#{$SEPARATOR_VALUE_END}#{$suffix} {
     order: 0;
   }
 
-  .u-or#{$SEPARATOR_VALUE}1#{$suffix} {
+  .u-or#{$SEPARATOR_VALUE_START}1#{$SEPARATOR_VALUE_END}#{$suffix} {
     order: 1;
   }
 }
@@ -554,17 +558,18 @@ $SEPARATOR_VALUE: '\\:';
 
 /// Mixin to output float utilities.
 /// @access private
-/// @requires {variable} SEPARATOR_VALUE
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
 @mixin float($suffix: null) {
-  .u-fl#{$SEPARATOR_VALUE}left#{$suffix} {
+  .u-fl#{$SEPARATOR_VALUE_START}left#{$SEPARATOR_VALUE_END}#{$suffix} {
     float: left;
   }
 
-  .u-fl#{$SEPARATOR_VALUE}right#{$suffix} {
+  .u-fl#{$SEPARATOR_VALUE_START}right#{$SEPARATOR_VALUE_END}#{$suffix} {
     float: right;
   }
 
-  .u-fl#{$SEPARATOR_VALUE}none#{$suffix} {
+  .u-fl#{$SEPARATOR_VALUE_START}none#{$SEPARATOR_VALUE_END}#{$suffix} {
     float: none;
   }
 }
@@ -585,30 +590,23 @@ $SEPARATOR_VALUE: '\\:';
 
 /// Mixin to output clear utilities.
 /// @access private
-/// @requires {variable} SEPARATOR_VALUE
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
 @mixin clear($suffix: null) {
-  .u-cl#{$SEPARATOR_VALUE}left#{$suffix} {
+  .u-cl#{$SEPARATOR_VALUE_START}left#{$SEPARATOR_VALUE_END}#{$suffix} {
     clear: left;
   }
 
-  .u-cl#{$SEPARATOR_VALUE}right#{$suffix} {
+  .u-cl#{$SEPARATOR_VALUE_START}right#{$SEPARATOR_VALUE_END}#{$suffix} {
     clear: right;
   }
 
-  .u-cl#{$SEPARATOR_VALUE}both#{$suffix} {
+  .u-cl#{$SEPARATOR_VALUE_START}both#{$SEPARATOR_VALUE_END}#{$suffix} {
     clear: both;
   }
 
-  .u-cl#{$SEPARATOR_VALUE}none#{$suffix} {
+  .u-cl#{$SEPARATOR_VALUE_START}none#{$SEPARATOR_VALUE_END}#{$suffix} {
     clear: none;
-  }
-
-  .u-cl#{$SEPARATOR_VALUE}fix#{$suffix} {
-    &::after {
-      content: '';
-      display: table;
-      clear: both;
-    }
   }
 }
 
@@ -629,11 +627,12 @@ $SEPARATOR_VALUE: '\\:';
 /// Mixin to output sizing utilities.
 /// @access private
 /// @requires {variable} sizes
-/// @requires {variable} SEPARATOR_VALUE
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
 @mixin sizing($suffix: null) {
   @each $key, $value in $sizes {
     @if type-of($value) == 'number' or $value == 'auto' {
-      .u-w#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+      .u-w#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         width: var(--size-#{$key});
       }
     }
@@ -657,48 +656,49 @@ $SEPARATOR_VALUE: '\\:';
 /// Mixin to output spacing utilities.
 /// @access private
 /// @requires {variable} spacers
-/// @requires {variable} SEPARATOR_VALUE
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
 @mixin spacing($suffix: null) {
   @each $key, $value in $spacers {
     @if type-of($value) == 'number' or $value == 'auto' {
-      .u-m#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+      .u-m#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         margin: var(--spacer-#{$key});
       }
 
-      .u-mt#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+      .u-mt#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         margin-top: var(--spacer-#{$key});
       }
 
-      .u-mr#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+      .u-mr#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         margin-right: var(--spacer-#{$key});
       }
 
-      .u-mb#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+      .u-mb#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         margin-bottom: var(--spacer-#{$key});
       }
 
-      .u-ml#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+      .u-ml#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         margin-left: var(--spacer-#{$key});
       }
 
       @if type-of($value) == 'number' {
-        .u-p#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+        .u-p#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
           padding: var(--spacer-#{$key});
         }
 
-        .u-pt#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+        .u-pt#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
           padding-top: var(--spacer-#{$key});
         }
 
-        .u-pr#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+        .u-pr#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
           padding-right: var(--spacer-#{$key});
         }
 
-        .u-pb#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+        .u-pb#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
           padding-bottom: var(--spacer-#{$key});
         }
 
-        .u-pl#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+        .u-pl#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
           padding-left: var(--spacer-#{$key});
         }
       }
@@ -722,21 +722,22 @@ $SEPARATOR_VALUE: '\\:';
 
 /// Mixin to output overflow utilities.
 /// @access private
-/// @requires {variable} SEPARATOR_VALUE
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
 @mixin overflow($suffix: null) {
-  .u-ov#{$SEPARATOR_VALUE}visible#{$suffix} {
+  .u-ov#{$SEPARATOR_VALUE_START}visible#{$SEPARATOR_VALUE_END}#{$suffix} {
     overflow: visible;
   }
 
-  .u-ov#{$SEPARATOR_VALUE}hidden#{$suffix} {
+  .u-ov#{$SEPARATOR_VALUE_START}hidden#{$SEPARATOR_VALUE_END}#{$suffix} {
     overflow: hidden;
   }
 
-  .u-ov#{$SEPARATOR_VALUE}scroll#{$suffix} {
+  .u-ov#{$SEPARATOR_VALUE_START}scroll#{$SEPARATOR_VALUE_END}#{$suffix} {
     overflow: scroll;
   }
 
-  .u-ov#{$SEPARATOR_VALUE}auto#{$suffix} {
+  .u-ov#{$SEPARATOR_VALUE_START}auto#{$SEPARATOR_VALUE_END}#{$suffix} {
     overflow: auto;
   }
 }
@@ -758,11 +759,12 @@ $SEPARATOR_VALUE: '\\:';
 /// Mixin to output color utilities.
 /// @access private
 /// @requires {variable} colors
-/// @requires {variable} SEPARATOR_VALUE
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
 @mixin colors($suffix: null) {
   @each $key, $value in $colors {
     @if type-of($value) == 'color' {
-      .u-c#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+      .u-c#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         color: var(--color-#{$key});
       }
     }
@@ -786,11 +788,12 @@ $SEPARATOR_VALUE: '\\:';
 /// Mixin to output background color utilities.
 /// @access private
 /// @requires {variable} colors
-/// @requires {variable} SEPARATOR_VALUE
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
 @mixin background-colors($suffix: null) {
   @each $key, $value in $colors {
     @if type-of($value) == 'color' {
-      .u-bgc#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+      .u-bgc#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         background-color: var(--color-#{$key});
       }
     }
@@ -814,11 +817,12 @@ $SEPARATOR_VALUE: '\\:';
 /// Mixin to output font weight utilities.
 /// @access private
 /// @requires {variable} font-weights
-/// @requires {variable} SEPARATOR_VALUE
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
 @mixin font-weights($suffix: null) {
   @each $key, $value in $font-weights {
     @if type-of($value) == 'number' {
-      .u-fw#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+      .u-fw#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         font-weight: var(--font-weight-#{$key});
       }
     }
@@ -842,11 +846,12 @@ $SEPARATOR_VALUE: '\\:';
 /// Mixin to output font size utilities.
 /// @access private
 /// @requires {variable} font-sizes
-/// @requires {variable} SEPARATOR_VALUE
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
 @mixin font-sizes($suffix: null) {
   @each $key, $value in $font-sizes {
     @if type-of($value) == 'number' or type-of($value) == 'list' or type-of($value) == 'map' {
-      .u-fz#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+      .u-fz#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         font-size: var(--font-size-#{$key});
         line-height: var(--line-height-#{$key});
       }
@@ -871,11 +876,12 @@ $SEPARATOR_VALUE: '\\:';
 /// Mixin to output font family utilities.
 /// @access private
 /// @requires {variable} font-families
-/// @requires {variable} SEPARATOR_VALUE
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
 @mixin font-families($suffix: null) {
   @each $key, $value in $font-families {
     @if type-of($value) == 'string' {
-      .u-ff#{$SEPARATOR_VALUE}#{$key}#{$suffix} {
+      .u-ff#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         font-family: var(--font-family-#{$key});
       }
     }
@@ -898,21 +904,22 @@ $SEPARATOR_VALUE: '\\:';
 
 /// Mixin to output text alignment utilities.
 /// @access private
-/// @requires {variable} SEPARATOR_VALUE
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
 @mixin text-alignment($suffix: null) {
-  .u-ta#{$SEPARATOR_VALUE}left#{$suffix} {
+  .u-ta#{$SEPARATOR_VALUE_START}left#{$SEPARATOR_VALUE_END}#{$suffix} {
     text-align: left;
   }
 
-  .u-ta#{$SEPARATOR_VALUE}right#{$suffix} {
+  .u-ta#{$SEPARATOR_VALUE_START}right#{$SEPARATOR_VALUE_END}#{$suffix} {
     text-align: right;
   }
 
-  .u-ta#{$SEPARATOR_VALUE}center#{$suffix} {
+  .u-ta#{$SEPARATOR_VALUE_START}center#{$SEPARATOR_VALUE_END}#{$suffix} {
     text-align: center;
   }
 
-  .u-ta#{$SEPARATOR_VALUE}justify#{$suffix} {
+  .u-ta#{$SEPARATOR_VALUE_START}justify#{$SEPARATOR_VALUE_END}#{$suffix} {
     text-align: justify;
   }
 }
@@ -933,21 +940,22 @@ $SEPARATOR_VALUE: '\\:';
 
 /// Mixin to output text transform utilities.
 /// @access private
-/// @requires {variable} SEPARATOR_VALUE
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
 @mixin text-transform($suffix: null) {
-  .u-tt#{$SEPARATOR_VALUE}lowercase#{$suffix} {
+  .u-tt#{$SEPARATOR_VALUE_START}lowercase#{$SEPARATOR_VALUE_END}#{$suffix} {
     text-transform: lowercase;
   }
 
-  .u-tt#{$SEPARATOR_VALUE}uppercase#{$suffix} {
+  .u-tt#{$SEPARATOR_VALUE_START}uppercase#{$SEPARATOR_VALUE_END}#{$suffix} {
     text-transform: uppercase;
   }
 
-  .u-tt#{$SEPARATOR_VALUE}capitalize#{$suffix} {
+  .u-tt#{$SEPARATOR_VALUE_START}capitalize#{$SEPARATOR_VALUE_END}#{$suffix} {
     text-transform: capitalize;
   }
 
-  .u-tt#{$SEPARATOR_VALUE}none#{$suffix} {
+  .u-tt#{$SEPARATOR_VALUE_START}none#{$SEPARATOR_VALUE_END}#{$suffix} {
     text-transform: none;
   }
 }
@@ -968,37 +976,38 @@ $SEPARATOR_VALUE: '\\:';
 
 /// Mixin to output alignment utilities.
 /// @access private
-/// @requires {variable} SEPARATOR_VALUE
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
 @mixin alignment($suffix: null) {
-  .u-va#{$SEPARATOR_VALUE}baseline#{$suffix} {
+  .u-va#{$SEPARATOR_VALUE_START}baseline#{$SEPARATOR_VALUE_END}#{$suffix} {
     vertical-align: baseline;
   }
 
-  .u-va#{$SEPARATOR_VALUE}top#{$suffix} {
+  .u-va#{$SEPARATOR_VALUE_START}top#{$SEPARATOR_VALUE_END}#{$suffix} {
     vertical-align: top;
   }
 
-  .u-va#{$SEPARATOR_VALUE}bottom#{$suffix} {
+  .u-va#{$SEPARATOR_VALUE_START}bottom#{$SEPARATOR_VALUE_END}#{$suffix} {
     vertical-align: bottom;
   }
 
-  .u-va#{$SEPARATOR_VALUE}middle#{$suffix} {
+  .u-va#{$SEPARATOR_VALUE_START}middle#{$SEPARATOR_VALUE_END}#{$suffix} {
     vertical-align: middle;
   }
 
-  .u-va#{$SEPARATOR_VALUE}text-top#{$suffix} {
+  .u-va#{$SEPARATOR_VALUE_START}text-top#{$SEPARATOR_VALUE_END}#{$suffix} {
     vertical-align: text-top;
   }
 
-  .u-va#{$SEPARATOR_VALUE}text-bottom#{$suffix} {
+  .u-va#{$SEPARATOR_VALUE_START}text-bottom#{$SEPARATOR_VALUE_END}#{$suffix} {
     vertical-align: text-bottom;
   }
 
-  .u-va#{$SEPARATOR_VALUE}sub#{$suffix} {
+  .u-va#{$SEPARATOR_VALUE_START}sub#{$SEPARATOR_VALUE_END}#{$suffix} {
     vertical-align: sub;
   }
 
-  .u-va#{$SEPARATOR_VALUE}super#{$suffix} {
+  .u-va#{$SEPARATOR_VALUE_START}super#{$SEPARATOR_VALUE_END}#{$suffix} {
     vertical-align: super;
   }
 }
@@ -1019,27 +1028,15 @@ $SEPARATOR_VALUE: '\\:';
 
 /// Mixin to output visibility utilities.
 /// @access private
-/// @requires {variable} SEPARATOR_VALUE
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
 @mixin visibility($suffix: null) {
-  .u-v#{$SEPARATOR_VALUE}visible#{$suffix} {
+  .u-v#{$SEPARATOR_VALUE_START}visible#{$SEPARATOR_VALUE_END}#{$suffix} {
     visibility: visible;
   }
 
-  .u-v#{$SEPARATOR_VALUE}hidden#{$suffix} {
+  .u-v#{$SEPARATOR_VALUE_START}hidden#{$SEPARATOR_VALUE_END}#{$suffix} {
     visibility: hidden;
-  }
-
-  .u-v#{$SEPARATOR_VALUE}a11y#{$suffix} {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    border: 0;
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
   }
 }
 
@@ -1057,41 +1054,87 @@ $SEPARATOR_VALUE: '\\:';
   }
 }
 
-/// Mixin to output unstyled utilities.
+/// Mixin to output resetting utilities.
 /// @access private
-/// @requires {variable} SEPARATOR_VALUE
-@mixin unstyled($suffix: null) {
-  .u-us#{$SEPARATOR_VALUE}link#{$suffix} {
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
+@mixin resetting($suffix: null) {
+  .u-res#{$SEPARATOR_VALUE_START}link#{$SEPARATOR_VALUE_END}#{$suffix} {
     color: inherit;
     text-decoration: none;
     cursor: auto;
   }
 
-  .u-us#{$SEPARATOR_VALUE}list#{$suffix} {
+  .u-res#{$SEPARATOR_VALUE_START}list#{$SEPARATOR_VALUE_END}#{$suffix} {
     padding-left: 0;
     list-style: none;
   }
 
-  .u-us#{$SEPARATOR_VALUE}button#{$suffix} {
+  .u-res#{$SEPARATOR_VALUE_START}button#{$SEPARATOR_VALUE_END}#{$suffix} {
     padding: 0;
     color: inherit;
     font: inherit;
-    background: none;
+    background-color: transparent;
     border: 0;
     cursor: auto;
   }
 }
 
-/// Mixin to output responsive unstyled utilities.
+/// Mixin to output responsive resetting utilities.
 /// @access private
 /// @requires {mixin} breakpoint-core
-/// @requires {mixin} unstyled
+/// @requires {mixin} resetting
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
-@mixin responsive-unstyled {
+@mixin responsive-resetting {
   @each $key, $value in $breakpoints {
     @include breakpoint-core($key) {
-      @include unstyled(#{$SEPARATOR_MEDIA}#{$key});
+      @include resetting(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
+/// Mixin to output helper utilities.
+/// @access private
+@mixin helper($suffix: null) {
+  .u-cf#{$suffix} {
+    &::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+
+  .u-ell#{$suffix} {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .u-hidden#{$suffix} {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+  }
+}
+
+/// Mixin to output responsive helper utilities.
+/// @access private
+/// @requires {mixin} breakpoint-core
+/// @requires {mixin} helper
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-helper {
+  @each $key, $value in $breakpoints {
+    @include breakpoint-core($key) {
+      @include helper(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
 }
