@@ -1,14 +1,14 @@
 /* ==========================================================================
-   #UNSTYLED
+   #RESETTING
    ========================================================================== */
 
 /* Declarative rules
    ========================================================================== */
 
-// Unstyled utilities builder.
-@include unstyled;
+// Resetting utilities builder.
+@include resetting;
 
-// Responsive unstyled utilities builder.
-@if $enable-responsive-unstyled {
-  @include responsive-unstyled;
+// Responsive resetting utilities builder.
+@if $enable-responsive-resetting {
+  @include responsive-resetting;
 }
