@@ -15,17 +15,17 @@ h3,
 h4,
 h5,
 h6,
+hr,
 p,
 blockquote,
 pre,
 address,
-ul,
 ol,
+ul,
 dl,
-hr,
-figure,
 fieldset,
-table {
+table,
+figure {
   margin-top: var(--spacer-base);
 
   &:first-child {
@@ -37,8 +37,55 @@ table {
  * Consistent indentation for lists.
  */
 
-ul,
 ol,
+ul,
 dd {
   padding-left: var(--spacer-base);
+}
+
+/**
+ * Fluid media elements for responsive purposes.
+ */
+
+iframe,
+object,
+embed,
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+audio {
+  max-width: 100%;
+}
+
+/**
+ * Change the alignment on media elements.
+ */
+
+iframe,
+canvas,
+img,
+svg,
+video,
+audio {
+  vertical-align: middle;
+}
+
+/**
+ * Change the cursor with CSS for better user experience.
+ */
+
+[aria-busy='true'] {
+  cursor: progress;
+}
+
+[aria-controls] {
+  cursor: pointer;
+}
+
+[aria-disabled='true'],
+[disabled] {
+  cursor: not-allowed;
 }
