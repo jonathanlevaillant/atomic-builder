@@ -154,13 +154,13 @@ $SEPARATOR_VALUE_END: '\\)';
 /// Mixin to output sizing variables.
 /// @access private
 /// @requires {variable} sizes
-/// @throws Make sure that `#{$value}` is a number in `$sizes: #{$sizes}` map.
+/// @throws Make sure that `#{$value}` is a number or equals `auto` in `$sizes: #{$sizes}` map.
 @mixin var-sizing {
   @each $key, $value in $sizes {
-    @if type-of($value) == 'number' {
+    @if type-of($value) == 'number' or $value == 'auto' {
       --size-#{$key}: #{$value};
     } @else if $value {
-      @warn 'Make sure that `#{$value}` is a number in `$sizes: #{$sizes}` map.';
+      @warn 'Make sure that `#{$value}` is a number or equals `auto` in `$sizes: #{$sizes}` map.';
     }
   }
 }
