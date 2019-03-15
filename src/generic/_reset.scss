@@ -6,7 +6,37 @@
    ========================================================================== */
 
 /**
- * A very simple reset that sits on top of Normalize.css.
+ * Remove default margins.
+ */
+
+html,
+body,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+pre,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+fieldset,
+legend,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Reset heading styles.
  */
 
 h1,
@@ -14,19 +44,9 @@ h2,
 h3,
 h4,
 h5,
-h6,
-p,
-blockquote,
-pre,
-ul,
-ol,
-dl,
-dd,
-hr,
-figure,
-fieldset {
-  margin: 0;
-  padding: 0;
+h6 {
+  font-weight: normal;
+  font-size: 100%;
 }
 
 /**
@@ -39,10 +59,52 @@ table {
 }
 
 /**
+ * Remove default spacing between table cells.
+ */
+
+td,
+th {
+  padding: 0;
+}
+
+/**
  * Reset Chrome and Firefox behaviour which sets a `min-width: min-content;` on fieldsets.
  */
 
 fieldset {
   min-width: 0;
   border: 0;
+}
+
+/**
+ * Correct the text style of placeholders.
+ */
+
+::placeholder {
+  color: inherit;
+  opacity: 1;
+}
+
+/**
+ * Remove default iframe border.
+ */
+
+iframe {
+  border: 0;
+}
+
+/**
+ * Remove the tapping delay on clickable elements.
+ */
+
+a,
+area,
+button,
+input,
+label,
+select,
+summary,
+textarea,
+[tabindex] {
+  touch-action: manipulation;
 }
