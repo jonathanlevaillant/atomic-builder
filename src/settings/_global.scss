@@ -32,6 +32,7 @@ $font-families: map-merge((
 $sizes: () !default;
 $sizes: map-merge((
   '100':                       100%,
+  'auto':                      auto,
 ), $sizes);
 
 // Map of spacing values.
