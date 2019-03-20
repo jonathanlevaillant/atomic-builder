@@ -306,6 +306,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @access private
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin position($suffix: null) {
   .u-pos#{$SEPARATOR_VALUE_START}static#{$SEPARATOR_VALUE_END}#{$suffix} {
     position: static;
@@ -346,6 +347,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @access private
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin display($suffix: null) {
   .u-d#{$SEPARATOR_VALUE_START}inline#{$SEPARATOR_VALUE_END}#{$suffix} {
     display: inline;
@@ -406,6 +408,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @access private
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin flex($suffix: null) {
   .u-fxd#{$SEPARATOR_VALUE_START}row#{$SEPARATOR_VALUE_END}#{$suffix} {
     flex-direction: row;
@@ -586,6 +589,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @access private
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin float($suffix: null) {
   .u-fl#{$SEPARATOR_VALUE_START}left#{$SEPARATOR_VALUE_END}#{$suffix} {
     float: left;
@@ -618,6 +622,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @access private
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin clear($suffix: null) {
   .u-cl#{$SEPARATOR_VALUE_START}left#{$SEPARATOR_VALUE_END}#{$suffix} {
     clear: left;
@@ -655,6 +660,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @requires {variable} sizes
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin sizing($suffix: null) {
   @each $key, $value in $sizes {
     @if type-of($value) == 'number' or $value == 'auto' {
@@ -684,6 +690,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @requires {variable} spacers
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin spacing($suffix: null) {
   @each $key, $value in $spacers {
     @if type-of($value) == 'number' or $value == 'auto' {
@@ -750,6 +757,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @access private
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin overflow($suffix: null) {
   .u-ov#{$SEPARATOR_VALUE_START}visible#{$SEPARATOR_VALUE_END}#{$suffix} {
     overflow: visible;
@@ -787,6 +795,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @requires {variable} colors
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin colors($suffix: null) {
   @each $key, $value in $colors {
     @if type-of($value) == 'color' {
@@ -816,6 +825,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @requires {variable} colors
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin background-colors($suffix: null) {
   @each $key, $value in $colors {
     @if type-of($value) == 'color' {
@@ -845,6 +855,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @requires {variable} font-weights
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin font-weights($suffix: null) {
   @each $key, $value in $font-weights {
     @if type-of($value) == 'number' {
@@ -874,6 +885,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @requires {variable} font-sizes
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin font-sizes($suffix: null) {
   @each $key, $value in $font-sizes {
     @if type-of($value) == 'number' or type-of($value) == 'list' or type-of($value) == 'map' {
@@ -904,6 +916,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @requires {variable} font-families
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin font-families($suffix: null) {
   @each $key, $value in $font-families {
     @if type-of($value) == 'string' {
@@ -932,6 +945,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @access private
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin text-alignment($suffix: null) {
   .u-ta#{$SEPARATOR_VALUE_START}left#{$SEPARATOR_VALUE_END}#{$suffix} {
     text-align: left;
@@ -968,6 +982,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @access private
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin text-transform($suffix: null) {
   .u-tt#{$SEPARATOR_VALUE_START}lowercase#{$SEPARATOR_VALUE_END}#{$suffix} {
     text-transform: lowercase;
@@ -1004,6 +1019,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @access private
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin alignment($suffix: null) {
   .u-va#{$SEPARATOR_VALUE_START}baseline#{$SEPARATOR_VALUE_END}#{$suffix} {
     vertical-align: baseline;
@@ -1056,6 +1072,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @access private
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin visibility($suffix: null) {
   .u-v#{$SEPARATOR_VALUE_START}visible#{$SEPARATOR_VALUE_END}#{$suffix} {
     visibility: visible;
@@ -1084,6 +1101,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @access private
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin reset($suffix: null) {
   .u-res#{$SEPARATOR_VALUE_START}link#{$SEPARATOR_VALUE_END}#{$suffix} {
     color: inherit;
@@ -1122,6 +1140,7 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output helper utilities.
 /// @access private
+/// @param {String} $suffix [null] - Responsive suffix
 @mixin helper($suffix: null) {
   .u-cf#{$suffix} {
     &::after {
@@ -1171,17 +1190,11 @@ $SEPARATOR_VALUE_END: '\\)';
 /// Mixin to output media queries.
 /// @access public
 /// @requires {mixin} breakpoint-core
-/// @param {String | Map} $key - Breakpoint(s)
-@mixin breakpoint($key) {
-  @if type-of($key) == 'string' {
-    @include breakpoint-core($key) {
+/// @param {ArgList} $keys - Breakpoint(s)
+@mixin breakpoint($keys...) {
+  @each $value in $keys {
+    @include breakpoint-core($value) {
       @content;
-    }
-  } @else {
-    @each $value in $key {
-      @include breakpoint-core($value) {
-        @content;
-      }
     }
   }
 }
