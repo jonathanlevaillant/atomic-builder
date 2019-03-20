@@ -6,6 +6,7 @@
    ========================================================================== */
 
 .o-grid {
+  --grid-column-count: var(--column-count);
   --grid-column-width: auto;
   --grid-column-gap: var(--column-gap);
   --grid-row-gap: 0;
