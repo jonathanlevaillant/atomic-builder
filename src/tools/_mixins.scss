@@ -539,6 +539,22 @@ $SEPARATOR_VALUE_END: '\\)';
     flex: none;
   }
 
+  .u-fxg#{$SEPARATOR_VALUE_START}1#{$SEPARATOR_VALUE_END}#{$suffix} {
+    flex-grow: 1;
+  }
+
+  .u-fxg#{$SEPARATOR_VALUE_START}0#{$SEPARATOR_VALUE_END}#{$suffix} {
+    flex-grow: 0;
+  }
+
+  .u-fxs#{$SEPARATOR_VALUE_START}1#{$SEPARATOR_VALUE_END}#{$suffix} {
+    flex-shrink: 1;
+  }
+
+  .u-fxs#{$SEPARATOR_VALUE_START}0#{$SEPARATOR_VALUE_END}#{$suffix} {
+    flex-shrink: 0;
+  }
+
   .u-or#{$SEPARATOR_VALUE_START}-1#{$SEPARATOR_VALUE_END}#{$suffix} {
     order: -1;
   }
