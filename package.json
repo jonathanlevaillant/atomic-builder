@@ -24,15 +24,23 @@
     "vertical rhythm",
     "responsive"
   ],
+  "files": [
+    "dist",
+    "scss"
+  ],
   "scripts": {
     "clean": "rimraf dist",
-    "scss": "node-sass --output-style expanded --source-map true --source-map-contents true src/main.scss dist/main.css",
-    "lint": "stylelint 'src/**/*.scss'",
-    "prefix": "postcss -u autoprefixer -r dist/main.css",
-    "minify": "cleancss --source-map --source-map-inline-sources -o dist/main.min.css dist/main.css",
-    "compile": "npm-run-all lint scss prefix",
-    "dev": "onchange 'src/**/*.scss' -- npm run compile --silent",
-    "build": "npm-run-all clean compile minify",
+    "scss:main": "node-sass --output-style expanded --source-map true --source-map-contents true scss/atomic-builder.scss dist/css/atomic-builder.css",
+    "scss:demo": "node-sass --output-style expanded --source-map true --source-map-contents true demo/scss/main.scss demo/dist/css/main.css",
+    "lint:main": "stylelint 'scss/**/*.scss'",
+    "lint:demo": "stylelint 'demo/scss/**/*.scss'",
+    "prefix:main": "postcss -u autoprefixer -r dist/css/atomic-builder.css",
+    "prefix:demo": "postcss -u autoprefixer -r demo/dist/css/main.css",
+    "compile:main": "npm-run-all lint:main scss:main prefix:main",
+    "compile:demo": "npm-run-all lint:demo scss:demo prefix:demo",
+    "minify": "cleancss --source-map --source-map-inline-sources -o dist/css/atomic-builder.min.css dist/css/atomic-builder.css",
+    "dev": "onchange 'scss/**/*.scss' 'demo/scss/**/*.scss' -- npm-run-all --parallel compile:main compile:demo --silent",
+    "build": "npm-run-all clean compile:main minify",
     "prepare": "npm run build"
   },
   "devDependencies": {
