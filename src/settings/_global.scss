@@ -52,17 +52,17 @@ $container-side-margin: map-merge((
 ), $container-side-margin);
 
 // Global settings of the grid (number of columns, column gap and row gap).
-$grid-columns:                 12 !default;
+$column-count:                 12 !default;
 
-$grid-column-gap: () !default;
-$grid-column-gap: map-merge((
+$column-gap: () !default;
+$column-gap: map-merge((
   'default':                   2.4rem,
-), $grid-column-gap);
+), $column-gap);
 
-$grid-row-gap: () !default;
-$grid-row-gap: map-merge((
+$row-gap: () !default;
+$row-gap: map-merge((
   'default':                   2.4rem,
-), $grid-row-gap);
+), $row-gap);
 
 // Map of breakpoint values.
 // It is recommended to keep `em` units.
