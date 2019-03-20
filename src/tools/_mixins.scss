@@ -208,19 +208,31 @@ $SEPARATOR_VALUE_END: '\\)';
   }
 }
 
+/// Mixin to output column count variable.
+/// @access private
+/// @requires {variable} column-count
+/// @throws Make sure that `#{$column-count}` is a number in `$column-count: #{$column-count}` variable.
+@mixin var-column-count {
+  @if type-of($column-count) == 'number' and unitless($column-count) {
+    --column-count: #{$column-count};
+  } @else {
+    @warn 'Make sure that `#{$column-count}` is a number in `$column-count: #{$column-count}` variable.';
+  }
+}
+
 /// Mixin to output column gap variables.
 /// @access private
 /// @requires {mixin} breakpoint-core
-/// @requires {variable} grid-column-gap
-/// @throws Make sure that `#{$value}` is a number in `$grid-column-gap: #{$grid-column-gap}` map.
-@mixin var-grid-column-gap {
-  @each $key, $value in $grid-column-gap {
+/// @requires {variable} column-gap
+/// @throws Make sure that `#{$value}` is a number in `$column-gap: #{$column-gap}` map.
+@mixin var-column-gap {
+  @each $key, $value in $column-gap {
     @if type-of($value) == 'number' {
       @include breakpoint-core($key) {
         --column-gap: #{$value};
       }
     } @else if $value {
-      @warn 'Make sure that `#{$value}` is a number in `$grid-column-gap: #{$grid-column-gap}` map.';
+      @warn 'Make sure that `#{$value}` is a number in `$column-gap: #{$column-gap}` map.';
     }
   }
 }
@@ -228,16 +240,16 @@ $SEPARATOR_VALUE_END: '\\)';
 /// Mixin to output row gap variables.
 /// @access private
 /// @requires {mixin} breakpoint-core
-/// @requires {variable} grid-row-gap
-/// @throws Make sure that `#{$value}` is a number in `$grid-row-gap: #{$grid-row-gap}` map.
-@mixin var-grid-row-gap {
-  @each $key, $value in $grid-row-gap {
+/// @requires {variable} row-gap
+/// @throws Make sure that `#{$value}` is a number in `$row-gap: #{$row-gap}` map.
+@mixin var-row-gap {
+  @each $key, $value in $row-gap {
     @if type-of($value) == 'number' {
       @include breakpoint-core($key) {
         --row-gap: #{$value};
       }
     } @else if $value {
-      @warn 'Make sure that `#{$value}` is a number in `$grid-row-gap: #{$grid-row-gap}` map.';
+      @warn 'Make sure that `#{$value}` is a number in `$row-gap: #{$row-gap}` map.';
     }
   }
 }
@@ -247,30 +259,28 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output grid columns.
 /// @access private
-/// @requires {variable} grid-columns
+/// @requires {variable} column-count
 /// @param {String} $suffix [null] - Responsive suffix
-/// @throws Make sure that `#{$grid-columns}` is an unitless number in `$grid-columns: #{$grid-columns}` variable.
 @mixin grid-columns($suffix: null) {
-  @if type-of($grid-columns) == 'number' and unitless($grid-columns) {
-    @for $i from 1 through $grid-columns {
+  @if type-of($column-count) == 'number' and unitless($column-count) {
+    @for $i from 1 through $column-count {
       .o-grid--#{$i}#{$suffix} {
-        --grid-column-width: calc(100% / #{$i});
+        --grid-column-count: #{$i};
+        --grid-column-width: calc(100% / var(--grid-column-count));
       }
 
       .o-grid__col--#{$i}#{$suffix} {
-        --grid-column-width: calc(100% * #{$i} / #{$grid-columns});
+        --grid-column-width: calc(100% * #{$i} / var(--grid-column-count));
       }
 
       .o-grid__col--push-#{$i}#{$suffix} {
-        --grid-column-offset-width: calc(100% * #{$i} / #{$grid-columns});
+        --grid-column-offset-width: calc(100% * #{$i} / var(--grid-column-count));
       }
 
       .o-grid__col--pull-#{$i}#{$suffix} {
-        --grid-column-offset-width: calc(-100% * #{$i} / #{$grid-columns});
+        --grid-column-offset-width: calc(-100% * #{$i} / var(--grid-column-count));
       }
     }
-  } @else if not $suffix {
-    @warn 'Make sure that `#{$grid-columns}` is an unitless number in `$grid-columns: #{$grid-columns}` variable.';
   }
 }
 
