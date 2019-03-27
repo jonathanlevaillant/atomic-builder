@@ -1037,12 +1037,12 @@ $SEPARATOR_VALUE_END: '\\)';
   }
 }
 
-/// Mixin to output alignment utilities.
+/// Mixin to output vertical alignment utilities.
 /// @access private
 /// @requires {variable} SEPARATOR_VALUE_START
 /// @requires {variable} SEPARATOR_VALUE_END
 /// @param {String} $suffix [null] - Responsive suffix
-@mixin alignment($suffix: null) {
+@mixin vertical-alignment($suffix: null) {
   .u-va#{$SEPARATOR_VALUE_START}baseline#{$SEPARATOR_VALUE_END}#{$suffix} {
     vertical-align: baseline;
   }
@@ -1076,16 +1076,16 @@ $SEPARATOR_VALUE_END: '\\)';
   }
 }
 
-/// Mixin to output responsive alignment utilities.
+/// Mixin to output responsive vertical alignment utilities.
 /// @access private
 /// @requires {mixin} breakpoint
-/// @requires {mixin} alignment
+/// @requires {mixin} vertical-alignment
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
-@mixin responsive-alignment {
+@mixin responsive-vertical-alignment {
   @each $key, $value in $breakpoints {
     @include breakpoint($key) {
-      @include alignment(#{$SEPARATOR_MEDIA}#{$key});
+      @include vertical-alignment(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
 }
