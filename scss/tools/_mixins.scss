@@ -17,7 +17,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @requires {function} breakpoint-get-down
 /// @requires {variable} BREAKPOINT_DEFAULT_LABEL
 /// @param {String} $key - Breakpoint key
-@mixin breakpoint-core($key) {
+@mixin breakpoint($key) {
   @if $key == $BREAKPOINT_DEFAULT_LABEL {
     @content;
   } @else {
@@ -115,7 +115,7 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output font size variables (and line height, if it exists).
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} var-rhythm
 /// @requires {variable} font-sizes
 /// @throws Make sure that `#{$value}` is a number, a list or a map in `$font-sizes: #{$font-sizes}` map.
@@ -124,7 +124,7 @@ $SEPARATOR_VALUE_END: '\\)';
     @if type-of($value) == 'number' or type-of($value) == 'list' or type-of($value) == 'map' {
       @if type-of($value) == 'map' {
         @each $map-key, $map-value in $value {
-          @include breakpoint-core($map-key) {
+          @include breakpoint($map-key) {
             @include var-rhythm($key, $map-value);
           }
         }
@@ -193,13 +193,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output container side margin variables.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {variable} container-side-margin
 /// @throws Make sure that `#{$value}` is a number in `$container-side-margin: #{$container-side-margin}` map.
 @mixin var-container-side-margin {
   @each $key, $value in $container-side-margin {
     @if type-of($value) == 'number' {
-      @include breakpoint-core($key) {
+      @include breakpoint($key) {
         --container-side-margin: #{$value};
       }
     } @else if $value {
@@ -222,13 +222,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output column gap variables.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {variable} column-gap
 /// @throws Make sure that `#{$value}` is a number in `$column-gap: #{$column-gap}` map.
 @mixin var-column-gap {
   @each $key, $value in $column-gap {
     @if type-of($value) == 'number' {
-      @include breakpoint-core($key) {
+      @include breakpoint($key) {
         --column-gap: #{$value};
       }
     } @else if $value {
@@ -239,13 +239,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output row gap variables.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {variable} row-gap
 /// @throws Make sure that `#{$value}` is a number in `$row-gap: #{$row-gap}` map.
 @mixin var-row-gap {
   @each $key, $value in $row-gap {
     @if type-of($value) == 'number' {
-      @include breakpoint-core($key) {
+      @include breakpoint($key) {
         --row-gap: #{$value};
       }
     } @else if $value {
@@ -286,13 +286,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive grid columns.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} grid-columns
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-grid-columns {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include grid-columns(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -331,13 +331,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive position utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} position
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-position {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include position(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -392,13 +392,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive display utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} display
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-display {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include display(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -573,13 +573,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive flex utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} flex
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-flex {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include flex(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -606,13 +606,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive float utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} float
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-float {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include float(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -643,13 +643,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive clear utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} clear
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-clear {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include clear(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -673,13 +673,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive sizing utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} sizing
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-sizing {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include sizing(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -741,13 +741,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive spacing utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} spacing
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-spacing {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include spacing(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -778,13 +778,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive overflow utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} overflow
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-overflow {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include overflow(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -808,13 +808,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive color utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} colors
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-colors {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include colors(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -838,13 +838,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive background color utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} background-colors
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-background-colors {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include background-colors(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -868,13 +868,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive font weight utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} font-weights
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-font-weights {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include font-weights(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -899,13 +899,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive font size utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} font-sizes
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-font-sizes {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include font-sizes(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -929,13 +929,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive font family utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} font-families
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-font-families {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include font-families(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -966,13 +966,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive text alignment utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} text-alignment
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-text-alignment {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include text-alignment(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -1003,13 +1003,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive text transform utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} text-transform
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-text-transform {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include text-transform(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -1056,13 +1056,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive alignment utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} alignment
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-alignment {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include alignment(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -1085,13 +1085,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive visibility utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} visibility
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-visibility {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include visibility(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -1126,13 +1126,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive reset utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} reset
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-reset {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include reset(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -1172,13 +1172,13 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output responsive helper utilities.
 /// @access private
-/// @requires {mixin} breakpoint-core
+/// @requires {mixin} breakpoint
 /// @requires {mixin} helper
 /// @requires {variable} breakpoints
 /// @requires {variable} SEPARATOR_MEDIA
 @mixin responsive-helper {
   @each $key, $value in $breakpoints {
-    @include breakpoint-core($key) {
+    @include breakpoint($key) {
       @include helper(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
@@ -1189,11 +1189,11 @@ $SEPARATOR_VALUE_END: '\\)';
 
 /// Mixin to output media queries.
 /// @access public
-/// @requires {mixin} breakpoint-core
-/// @param {ArgList} $keys - Breakpoint(s)
-@mixin breakpoint($keys...) {
+/// @requires {mixin} breakpoint
+/// @param {ArgList} $keys - Breakpoint key(s)
+@mixin media($keys...) {
   @each $value in $keys {
-    @include breakpoint-core($value) {
+    @include breakpoint($value) {
       @content;
     }
   }
