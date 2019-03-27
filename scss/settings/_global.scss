@@ -68,8 +68,8 @@ $row-gap: map-merge((
 // It is recommended to keep `em` units.
 $breakpoints: () !default;
 $breakpoints: map-merge((
-  'sm':                         47.9375em, // 767px
-  'md':                         64em,      // 1024px
+  'phone':                      47.9375em, // 767px
+  'tablet':                     64em,      // 1024px
 ), $breakpoints);
 
 // Parameters to enable or disable the responsive utility classes builders.
