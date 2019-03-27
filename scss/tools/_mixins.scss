@@ -468,44 +468,12 @@ $SEPARATOR_VALUE_END: '\\)';
     justify-content: flex-end;
   }
 
-  .u-jc#{$SEPARATOR_VALUE_START}center#{$SEPARATOR_VALUE_END}#{$suffix} {
-    justify-content: center;
-  }
-
-  .u-jc#{$SEPARATOR_VALUE_START}space-between#{$SEPARATOR_VALUE_END}#{$suffix} {
-    justify-content: space-between;
-  }
-
-  .u-jc#{$SEPARATOR_VALUE_START}space-around#{$SEPARATOR_VALUE_END}#{$suffix} {
-    justify-content: space-around;
-  }
-
-  .u-jc#{$SEPARATOR_VALUE_START}space-evenly#{$SEPARATOR_VALUE_END}#{$suffix} {
-    justify-content: space-evenly;
-  }
-
   .u-ac#{$SEPARATOR_VALUE_START}flex-start#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-content: flex-start;
   }
 
   .u-ac#{$SEPARATOR_VALUE_START}flex-end#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-content: flex-end;
-  }
-
-  .u-ac#{$SEPARATOR_VALUE_START}center#{$SEPARATOR_VALUE_END}#{$suffix} {
-    align-content: center;
-  }
-
-  .u-ac#{$SEPARATOR_VALUE_START}space-between#{$SEPARATOR_VALUE_END}#{$suffix} {
-    align-content: space-between;
-  }
-
-  .u-ac#{$SEPARATOR_VALUE_START}space-around#{$SEPARATOR_VALUE_END}#{$suffix} {
-    align-content: space-around;
-  }
-
-  .u-ac#{$SEPARATOR_VALUE_START}stretch#{$SEPARATOR_VALUE_END}#{$suffix} {
-    align-content: stretch;
   }
 
   .u-ai#{$SEPARATOR_VALUE_START}flex-start#{$SEPARATOR_VALUE_END}#{$suffix} {
@@ -516,36 +484,12 @@ $SEPARATOR_VALUE_END: '\\)';
     align-items: flex-end;
   }
 
-  .u-ai#{$SEPARATOR_VALUE_START}center#{$SEPARATOR_VALUE_END}#{$suffix} {
-    align-items: center;
-  }
-
-  .u-ai#{$SEPARATOR_VALUE_START}baseline#{$SEPARATOR_VALUE_END}#{$suffix} {
-    align-items: baseline;
-  }
-
-  .u-ai#{$SEPARATOR_VALUE_START}stretch#{$SEPARATOR_VALUE_END}#{$suffix} {
-    align-items: stretch;
-  }
-
   .u-as#{$SEPARATOR_VALUE_START}flex-start#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-self: flex-start;
   }
 
   .u-as#{$SEPARATOR_VALUE_START}flex-end#{$SEPARATOR_VALUE_END}#{$suffix} {
     align-self: flex-end;
-  }
-
-  .u-as#{$SEPARATOR_VALUE_START}center#{$SEPARATOR_VALUE_END}#{$suffix} {
-    align-self: center;
-  }
-
-  .u-as#{$SEPARATOR_VALUE_START}baseline#{$SEPARATOR_VALUE_END}#{$suffix} {
-    align-self: baseline;
-  }
-
-  .u-as#{$SEPARATOR_VALUE_START}stretch#{$SEPARATOR_VALUE_END}#{$suffix} {
-    align-self: stretch;
   }
 
   .u-fx#{$SEPARATOR_VALUE_START}initial#{$SEPARATOR_VALUE_END}#{$suffix} {
@@ -603,6 +547,167 @@ $SEPARATOR_VALUE_END: '\\)';
   @each $key, $value in $breakpoints {
     @include breakpoint($key) {
       @include flex(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
+/// Mixin to output alignment utilities.
+/// @access private
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
+@mixin alignment($suffix: null) {
+  .u-jc#{$SEPARATOR_VALUE_START}start#{$SEPARATOR_VALUE_END}#{$suffix} {
+    justify-content: start;
+  }
+
+  .u-jc#{$SEPARATOR_VALUE_START}end#{$SEPARATOR_VALUE_END}#{$suffix} {
+    justify-content: end;
+  }
+
+  .u-jc#{$SEPARATOR_VALUE_START}center#{$SEPARATOR_VALUE_END}#{$suffix} {
+    justify-content: center;
+  }
+
+  .u-jc#{$SEPARATOR_VALUE_START}space-between#{$SEPARATOR_VALUE_END}#{$suffix} {
+    justify-content: space-between;
+  }
+
+  .u-jc#{$SEPARATOR_VALUE_START}space-around#{$SEPARATOR_VALUE_END}#{$suffix} {
+    justify-content: space-around;
+  }
+
+  .u-jc#{$SEPARATOR_VALUE_START}space-evenly#{$SEPARATOR_VALUE_END}#{$suffix} {
+    justify-content: space-evenly;
+  }
+
+  .u-jc#{$SEPARATOR_VALUE_START}stretch#{$SEPARATOR_VALUE_END}#{$suffix} {
+    justify-content: stretch;
+  }
+
+  .u-ac#{$SEPARATOR_VALUE_START}start#{$SEPARATOR_VALUE_END}#{$suffix} {
+    align-content: start;
+  }
+
+  .u-ac#{$SEPARATOR_VALUE_START}end#{$SEPARATOR_VALUE_END}#{$suffix} {
+    align-content: end;
+  }
+
+  .u-ac#{$SEPARATOR_VALUE_START}center#{$SEPARATOR_VALUE_END}#{$suffix} {
+    align-content: center;
+  }
+
+  .u-ac#{$SEPARATOR_VALUE_START}baseline#{$SEPARATOR_VALUE_END}#{$suffix} {
+    align-content: baseline;
+  }
+
+  .u-ac#{$SEPARATOR_VALUE_START}space-between#{$SEPARATOR_VALUE_END}#{$suffix} {
+    align-content: space-between;
+  }
+
+  .u-ac#{$SEPARATOR_VALUE_START}space-around#{$SEPARATOR_VALUE_END}#{$suffix} {
+    align-content: space-around;
+  }
+
+  .u-ac#{$SEPARATOR_VALUE_START}space-evenly#{$SEPARATOR_VALUE_END}#{$suffix} {
+    align-content: space-evenly;
+  }
+
+  .u-ac#{$SEPARATOR_VALUE_START}stretch#{$SEPARATOR_VALUE_END}#{$suffix} {
+    align-content: stretch;
+  }
+
+  .u-ji#{$SEPARATOR_VALUE_START}start#{$SEPARATOR_VALUE_END}#{$suffix} {
+    justify-items: start;
+  }
+
+  .u-ji#{$SEPARATOR_VALUE_START}end#{$SEPARATOR_VALUE_END}#{$suffix} {
+    justify-items: end;
+  }
+
+  .u-ji#{$SEPARATOR_VALUE_START}center#{$SEPARATOR_VALUE_END}#{$suffix} {
+    justify-items: center;
+  }
+
+  .u-ji#{$SEPARATOR_VALUE_START}baseline#{$SEPARATOR_VALUE_END}#{$suffix} {
+    justify-items: baseline;
+  }
+
+  .u-ji#{$SEPARATOR_VALUE_START}stretch#{$SEPARATOR_VALUE_END}#{$suffix} {
+    justify-items: stretch;
+  }
+
+  .u-ai#{$SEPARATOR_VALUE_START}start#{$SEPARATOR_VALUE_END}#{$suffix} {
+    align-items: start;
+  }
+
+  .u-ai#{$SEPARATOR_VALUE_START}end#{$SEPARATOR_VALUE_END}#{$suffix} {
+    align-items: end;
+  }
+
+  .u-ai#{$SEPARATOR_VALUE_START}center#{$SEPARATOR_VALUE_END}#{$suffix} {
+    align-items: center;
+  }
+
+  .u-ai#{$SEPARATOR_VALUE_START}baseline#{$SEPARATOR_VALUE_END}#{$suffix} {
+    align-items: baseline;
+  }
+
+  .u-ai#{$SEPARATOR_VALUE_START}stretch#{$SEPARATOR_VALUE_END}#{$suffix} {
+    align-items: stretch;
+  }
+
+  .u-js#{$SEPARATOR_VALUE_START}start#{$SEPARATOR_VALUE_END}#{$suffix} {
+    justify-self: start;
+  }
+
+  .u-js#{$SEPARATOR_VALUE_START}end#{$SEPARATOR_VALUE_END}#{$suffix} {
+    justify-self: end;
+  }
+
+  .u-js#{$SEPARATOR_VALUE_START}center#{$SEPARATOR_VALUE_END}#{$suffix} {
+    justify-self: center;
+  }
+
+  .u-js#{$SEPARATOR_VALUE_START}baseline#{$SEPARATOR_VALUE_END}#{$suffix} {
+    justify-self: baseline;
+  }
+
+  .u-js#{$SEPARATOR_VALUE_START}stretch#{$SEPARATOR_VALUE_END}#{$suffix} {
+    justify-self: stretch;
+  }
+
+  .u-as#{$SEPARATOR_VALUE_START}start#{$SEPARATOR_VALUE_END}#{$suffix} {
+    align-self: start;
+  }
+
+  .u-as#{$SEPARATOR_VALUE_START}end#{$SEPARATOR_VALUE_END}#{$suffix} {
+    align-self: end;
+  }
+
+  .u-as#{$SEPARATOR_VALUE_START}center#{$SEPARATOR_VALUE_END}#{$suffix} {
+    align-self: center;
+  }
+
+  .u-as#{$SEPARATOR_VALUE_START}baseline#{$SEPARATOR_VALUE_END}#{$suffix} {
+    align-self: baseline;
+  }
+
+  .u-as#{$SEPARATOR_VALUE_START}stretch#{$SEPARATOR_VALUE_END}#{$suffix} {
+    align-self: stretch;
+  }
+}
+
+/// Mixin to output responsive alignment utilities.
+/// @access private
+/// @requires {mixin} breakpoint
+/// @requires {mixin} alignment
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-alignment {
+  @each $key, $value in $breakpoints {
+    @include breakpoint($key) {
+      @include alignment(#{$SEPARATOR_MEDIA}#{$key});
     }
   }
 }
