@@ -72,6 +72,10 @@ $breakpoints: map-merge((
   'tablet':                     64em,      // 1024px
 ), $breakpoints);
 
+// Parameter to set margins in a single-direction (top or bottom direction).
+// https://csswizardry.com/2012/06/single-direction-margin-declarations/
+$vertical-margin-direction:     'top' !default;
+
 // Parameters to enable or disable the responsive utility classes builders.
 $enable-responsive-grid:        true !default;
 $enable-responsive-position:    false !default;
