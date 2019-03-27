@@ -49,6 +49,28 @@ $SEPARATOR_VALUE_END: '\\)';
   }
 }
 
+/// Mixin to output margins in the same direction.
+/// @access private
+/// @requires {variable} vertical-margin-direction
+/// @throws Make sure that `#{$vertical-margin-direction}` equals `top` or `bottom` in `$vertical-margin-direction: #{$vertical-margin-direction}` variable.
+@mixin vertical-margins {
+  @if $vertical-margin-direction == 'top' {
+    margin-top: var(--spacer-base);
+
+    &:first-child {
+      margin-top: 0;
+    }
+  } @else if $vertical-margin-direction == 'bottom' {
+    margin-bottom: var(--spacer-base);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  } @else if $vertical-margin-direction {
+    @warn 'Make sure that `#{$vertical-margin-direction}` equals `top` or `bottom` in `$vertical-margin-direction: #{$vertical-margin-direction}` variable.';
+  }
+}
+
 //*  Private mixins to output CSS variables (Custom Properties)
 //   ======================================================================== */
 
