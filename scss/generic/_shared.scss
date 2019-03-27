@@ -26,11 +26,7 @@ dl,
 fieldset,
 table,
 figure {
-  margin-top: var(--spacer-base);
-
-  &:first-child {
-    margin-top: 0;
-  }
+  @include vertical-margins;
 }
 
 /**
