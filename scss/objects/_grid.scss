@@ -11,13 +11,6 @@
 
   --grid-column-gap: var(--column-gap);
   --grid-row-gap: var(--row-gap);
-
-  --grid-column-gap-local: var(--grid-column-gap);
-  --grid-row-gap-local: 0;
-}
-
-.o-grid--multiple-rows {
-  --grid-row-gap-local: var(--grid-row-gap);
 }
 
 // Grid columns builder.
@@ -34,14 +27,14 @@
 .o-grid {
   display: flex;
   flex-flow: row wrap;
-  margin-bottom: calc(var(--grid-row-gap-local) * -1);
-  margin-left: calc(var(--grid-column-gap-local) * -1);
+  margin-bottom: calc(var(--grid-row-gap) * -1);
+  margin-left: calc(var(--grid-column-gap) * -1);
 }
 
 .o-grid__col {
   flex: 0 1 var(--grid-column-width);
   box-sizing: border-box;
   margin-left: var(--grid-column-offset-width);
-  padding-bottom: var(--grid-row-gap-local);
-  padding-left: var(--grid-column-gap-local);
+  padding-bottom: var(--grid-row-gap);
+  padding-left: var(--grid-column-gap);
 }
