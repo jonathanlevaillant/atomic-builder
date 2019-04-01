@@ -465,6 +465,7 @@ $SEPARATOR_VALUE_END: '\\)';
   }
 
   .u-fxw#{$SEPARATOR_VALUE_START}nowrap#{$SEPARATOR_VALUE_END}#{$suffix} {
+    --grid-row-gap: 0;
     flex-wrap: nowrap;
   }
 
