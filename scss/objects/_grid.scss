@@ -34,6 +34,7 @@
 .o-grid__col {
   flex: 0 1 var(--grid-column-width);
   box-sizing: border-box;
+  min-width: 0;
   margin-left: var(--grid-column-offset-width);
   padding-bottom: var(--grid-row-gap);
   padding-left: var(--grid-column-gap);
