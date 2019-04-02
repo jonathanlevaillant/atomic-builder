@@ -2,21 +2,16 @@
    DEMO
    ========================================================================== */
 
+// Your variable overrides.
+@import 'settings/colors';
+@import 'settings/global';
+
 // Import Atomic Builder and its default variables.
 @import '../../scss/atomic-builder';
 
 // Import helper classes from Atomic Builder.
-@import '../../scss/utilities/position';
 @import '../../scss/utilities/display';
 @import '../../scss/utilities/flex';
-@import '../../scss/utilities/float';
-@import '../../scss/utilities/clear';
-@import '../../scss/utilities/sizing';
 @import '../../scss/utilities/spacing';
-@import '../../scss/utilities/overflow';
 @import '../../scss/utilities/colors';
 @import '../../scss/utilities/text';
-@import '../../scss/utilities/alignment';
-@import '../../scss/utilities/visibility';
-@import '../../scss/utilities/reset';
-@import '../../scss/utilities/helper';
