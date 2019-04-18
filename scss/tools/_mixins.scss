@@ -1344,9 +1344,9 @@ $SEPARATOR_VALUE_END: '\\)';
 @mixin helper($suffix: null) {
   .u-cf#{$suffix} {
     &::after {
-      content: '';
       display: table;
       clear: both;
+      content: '';
     }
   }
 
