@@ -80,7 +80,6 @@ $BREAKPOINT_DEFAULT_LABEL: 'default';
           $key: $value,
         )
       );
-
       $new-breakpoints: map-merge($new-breakpoints, (#{$key}#{$BREAKPOINT_UPPER_LABEL}: $value + 0.0625));
       $new-breakpoints: map-merge($new-breakpoints, (#{$key}#{$BREAKPOINT_LOWER_LABEL}: $value));
     } @else if $value {
