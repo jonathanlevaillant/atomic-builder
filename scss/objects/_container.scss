@@ -2,14 +2,25 @@
    #CONTAINER
    ========================================================================== */
 
+/* Variables & Custom properties
+   ========================================================================== */
+
+/**
+ * Prevents overwriting the global configuration.
+ */
+
+.o-container {
+  --container-side-margin-global: var(--container-side-margin);
+}
+
 /* Declarative rules
    ========================================================================== */
 
 .o-container {
   width: 100%;
-  max-width: calc(var(--container-max-width) + var(--container-side-margin) * 2);
+  max-width: calc(var(--container-max-width) + var(--container-side-margin-global) * 2);
   margin-right: auto;
   margin-left: auto;
-  padding-right: var(--container-side-margin);
-  padding-left: var(--container-side-margin);
+  padding-right: var(--container-side-margin-global);
+  padding-left: var(--container-side-margin-global);
 }
