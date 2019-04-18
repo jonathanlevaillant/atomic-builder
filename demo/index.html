@@ -9,7 +9,32 @@
   <body>
     <article class="o-container">
       <h1 class="u-c(primary) u-fw(bolder) u-fz(h3) u-ta(center)">Atomic Builder Styleguide</h1>
-      <section class="u-mt(lg)">
+      <nav class="u-pos(sticky) u-mt(lg) u-p(sm) u-bgc(white)" aria-label="Main Menu" style="top: 0; z-index: 10;">
+        <ul class="o-grid u-jc(center) u-res(list)" role="menubar">
+          <li class="o-grid__col" role="menuitem">
+            <a href="#colors" class="u-c(primary)">Colors</a>
+          </li>
+          <li class="o-grid__col" role="menuitem">
+            <a href="#headings" class="u-c(primary)">Headings</a>
+          </li>
+          <li class="o-grid__col" role="menuitem">
+            <a href="#font-stacks" class="u-c(primary)">Font Stacks</a>
+          </li>
+          <li class="o-grid__col" role="menuitem">
+            <a href="#text-elements" class="u-c(primary)">Text elements</a>
+          </li>
+          <li class="o-grid__col" role="menuitem">
+            <a href="#paragraph" class="u-c(primary)">Paragraph</a>
+          </li>
+          <li class="o-grid__col" role="menuitem">
+            <a href="#lists" class="u-c(primary)">Lists</a>
+          </li>
+          <li class="o-grid__col" role="menuitem">
+            <a href="#grid" class="u-c(primary)">Grid</a>
+          </li>
+        </ul>
+      </nav>
+      <section id="colors" class="u-pt(lg)">
         <h2 class="u-fw(bolder) u-fz(h5)">Colors</h2>
         <hr class="u-mt(none)" />
         <div class="o-grid o-grid--6 o-grid--3@tablet o-grid--2@phone u-mt(base)">
@@ -51,7 +76,7 @@
           </div>
         </div>
       </section>
-      <section class="u-mt(lg)">
+      <section id="headings" class="u-pt(lg)">
         <h2 class="u-fw(bolder) u-fz(h5)">Headings</h2>
         <hr class="u-mt(none)" />
         <h1>Heading Level One</h1>
@@ -61,19 +86,15 @@
         <h5>Heading Level Five</h5>
         <h6>Heading Level Six</h6>
       </section>
-      <section class="u-mt(lg)">
+      <section id="font-stacks" class="u-pt(lg)">
         <h2 class="u-fw(bolder) u-fz(h5)">Font Stacks</h2>
         <hr class="u-mt(none)" />
-        <h3 class="u-c(primary) u-fw(bolder) u-fz(h6)">Base 400</h3>
-        <p class="u-mt(none) u-fz(h4)">Trebuchet MS</p>
-        <h3 class="u-c(primary) u-fw(bolder) u-fz(h6)">Base 700</h3>
-        <p class="u-mt(none) u-fz(h4)"><b>Trebuchet MS</b></p>
-        <h3 class="u-c(primary) u-fw(bolder) u-fz(h6)">Base Italic</h3>
-        <p class="u-mt(none) u-fz(h4)"><i>Trebuchet MS</i></p>
-        <h3 class="u-c(primary) u-fw(bolder) u-fz(h6)">Base 700 Italic</h3>
-        <p class="u-mt(none) u-fz(h4)"><b><i>Trebuchet MS</i></b></p>
+        <p class="u-fz(h4)">Trebuchet MS 400</p>
+        <p class="u-fz(h4)"><strong>Trebuchet MS 700</strong></p>
+        <p class="u-fz(h4)"><em>Trebuchet MS 400 Italic</em></p>
+        <p class="u-fz(h4)"><strong><em>Trebuchet MS 700 Italic</em></strong></p>
       </section>
-      <section class="u-mt(lg)">
+      <section id="text-elements" class="u-pt(lg)">
         <h2 class="u-fw(bolder) u-fz(h5)">Text elements</h2>
         <hr class="u-mt(none)" />
         <p>This text snippet will be <strong>bold</strong></p>
@@ -87,7 +108,7 @@
         <p>This text snippet will be <mark>highlighted</mark></p>
         <p>This text snippet will be an <code>inline code sample</code></p>
       </section>
-      <section class="u-mt(lg)">
+      <section id="paragraph" class="u-pt(lg)">
         <h2 class="u-fw(bolder) u-fz(h5)">Paragraph</h2>
         <hr class="u-mt(none)" />
         <p>
@@ -97,7 +118,7 @@
           used to organize longer prose.
         </p>
       </section>
-      <section class="u-mt(lg)">
+      <section id="lists" class="u-pt(lg)">
         <h2 class="u-fw(bolder) u-fz(h5)">Lists</h2>
         <hr class="u-mt(none)" />
         <h3 class="u-c(primary) u-fw(bolder) u-fz(h6)">Unordered list</h3>
@@ -135,7 +156,7 @@
           <dd>Definition description</dd>
         </dl>
       </section>
-      <section class="u-mt(lg)">
+      <section id="grid" class="u-pt(lg)">
         <h2 class="u-fw(bolder) u-fz(h5)">Grid</h2>
         <hr class="u-mt(none)" />
         <h3 class="u-c(primary) u-fw(bolder) u-fz(h6)">Regular column widths</h3>
