@@ -4,7 +4,10 @@
 
 // Map of colors.
 $colors: () !default;
-$colors: map-merge((
-  'white':                      #fff,
-  'black':                      #000,
-), $colors);
+$colors: map-merge(
+  (
+    'white': #fff,
+    'black': #000,
+  ),
+  $colors
+);
