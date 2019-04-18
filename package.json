@@ -53,7 +53,7 @@
       "stylelint --fix",
       "git add"
     ],
-    "*.{css,md,html}": [
+    "*.{md,html}": [
       "prettier --write",
       "git add"
     ]
