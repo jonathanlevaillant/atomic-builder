@@ -41,7 +41,12 @@ $BREAKPOINT_DEFAULT_LABEL: 'default';
 
     $key: nth($smallest-pair, 1);
     $value: nth($smallest-pair, 2);
-    $sorted-map: map-merge($sorted-map, ($key: $value));
+    $sorted-map: map-merge(
+      $sorted-map,
+      (
+        $key: $value,
+      )
+    );
     $smallest-pair-index: index($list, $smallest-pair);
     $new-list: ();
 
@@ -69,7 +74,13 @@ $BREAKPOINT_DEFAULT_LABEL: 'default';
 
   @each $key, $value in $breakpoints {
     @if type-of($value) == 'number' {
-      $new-breakpoints: map-merge($new-breakpoints, ($key: $value));
+      $new-breakpoints: map-merge(
+        $new-breakpoints,
+        (
+          $key: $value,
+        )
+      );
+
       $new-breakpoints: map-merge($new-breakpoints, (#{$key}#{$BREAKPOINT_UPPER_LABEL}: $value + 0.0625));
       $new-breakpoints: map-merge($new-breakpoints, (#{$key}#{$BREAKPOINT_LOWER_LABEL}: $value));
     } @else if $value {
