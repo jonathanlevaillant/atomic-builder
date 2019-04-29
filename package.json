@@ -22,6 +22,8 @@
     "responsive",
     "custom properties"
   ],
+  "style": "dist/css/atomic-builder.css",
+  "unpkg": "dist/css/atomic-builder.min.css",
   "files": [
     "dist",
     "scss"
