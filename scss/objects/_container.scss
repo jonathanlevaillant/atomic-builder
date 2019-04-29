@@ -10,7 +10,7 @@
  */
 
 .o-container {
-  --container-side-margin-global: var(--container-side-margin);
+  --container-side-margin-default: var(--container-side-margin);
 }
 
 /* Declarative rules
@@ -18,9 +18,9 @@
 
 .o-container {
   width: 100%;
-  max-width: calc(var(--container-max-width) + var(--container-side-margin-global) * 2);
+  max-width: calc(var(--container-max-width) + var(--container-side-margin-default) * 2);
   margin-right: auto;
   margin-left: auto;
-  padding-right: var(--container-side-margin-global);
-  padding-left: var(--container-side-margin-global);
+  padding-right: var(--container-side-margin-default);
+  padding-left: var(--container-side-margin-default);
 }
