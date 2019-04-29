@@ -20,6 +20,24 @@ npm install atomic-builder
 yarn add atomic-builder
 ```
 
+### Basic Usage
+
+The included source files are written in Sass using SCSS syntax. After installing with npm, you can add your project's
+node_modules directory to your Sass files, then import it like this:
+
+```scss
+@import '../node_modules/atomic-builder/scss/atomic-builder';
+```
+
+You can import individual Atomic Builder modules directly from the `atomic-builder/scss` package:
+
+```scss
+@import '../node_modules/atomic-builder/scss/settings/colors';
+@import '../node_modules/atomic-builder/scss/settings/global';
+```
+
+## Deployment
+
 ### Development build
 
 ```
