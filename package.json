@@ -39,7 +39,8 @@
     "compile:main": "npm-run-all lint:main scss:main prefix:main",
     "compile:demo": "npm-run-all lint:demo scss:demo prefix:demo",
     "minify": "cleancss --source-map --source-map-inline-sources -o dist/css/atomic-builder.min.css dist/css/atomic-builder.css",
-    "dev": "onchange 'scss/**/*.scss' 'demo/scss/**/*.scss' -- npm-run-all --parallel lint:main compile:demo --silent",
+    "watch": "onchange 'scss/**/*.scss' 'demo/scss/**/*.scss' -- npm-run-all --parallel lint:main compile:demo --silent",
+    "dev": "npm-run-all compile:demo watch",
     "build": "npm-run-all clean compile:main minify",
     "prepare": "npm run build"
   },
