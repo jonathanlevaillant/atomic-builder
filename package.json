@@ -30,18 +30,15 @@
   ],
   "scripts": {
     "clean": "rimraf dist",
-    "scss:main": "node-sass --output-style expanded --source-map true scss/atomic-builder.scss dist/css/atomic-builder.css",
-    "scss:demo": "node-sass --output-style expanded --source-map true demo/scss/main.scss demo/dist/css/main.css",
-    "lint:main": "stylelint 'scss/**/*.scss'",
-    "lint:demo": "stylelint 'demo/scss/**/*.scss'",
-    "prefix:main": "postcss -m -u autoprefixer -r dist/css/atomic-builder.css",
-    "prefix:demo": "postcss -m -u autoprefixer -r demo/dist/css/main.css",
-    "compile:main": "npm-run-all lint:main scss:main prefix:main",
-    "compile:demo": "npm-run-all lint:demo scss:demo prefix:demo",
+    "scss": "node-sass --output-style expanded --source-map true scss/atomic-builder.scss dist/css/atomic-builder.css",
+    "lint": "stylelint '{scss,demo}/**/*.scss'",
+    "prefix": "postcss -m -u autoprefixer -r dist/css/atomic-builder.css",
+    "compile": "npm-run-all lint scss prefix",
     "minify": "cleancss --source-map --source-map-inline-sources -o dist/css/atomic-builder.min.css dist/css/atomic-builder.css",
-    "watch": "onchange 'scss/**/*.scss' 'demo/scss/**/*.scss' -- npm-run-all --parallel lint:main compile:demo --silent",
-    "dev": "npm-run-all compile:demo watch",
-    "build": "npm-run-all clean compile:main minify",
+    "watch": "onchange '{scss,demo}/**/*.scss' -- npm run lint --silent",
+    "serve": "parcel demo/index.html -d demo/dist --open",
+    "dev": "npm-run-all --parallel watch serve",
+    "build": "npm-run-all clean compile minify",
     "prepare": "npm run build"
   },
   "husky": {
@@ -51,10 +48,10 @@
   },
   "lint-staged": {
     "*.scss": [
-      "stylelint --fix",
+      "stylelint --fix --max-warnings 0",
       "git add"
     ],
-    "*.{md,html}": [
+    "*.{md,html,js}": [
       "prettier --write",
       "git add"
     ]
@@ -62,11 +59,12 @@
   "devDependencies": {
     "autoprefixer": "^9.5.1",
     "clean-css-cli": "^4.3.0",
-    "husky": "^2.1.0",
-    "lint-staged": "^8.1.5",
+    "husky": "^2.2.0",
+    "lint-staged": "^8.1.6",
     "node-sass": "^4.12.0",
     "npm-run-all": "^4.1.5",
     "onchange": "^5.2.0",
+    "parcel-bundler": "^1.12.3",
     "postcss-cli": "^6.1.2",
     "prettier": "^1.17.0",
     "rimraf": "^2.6.3",
