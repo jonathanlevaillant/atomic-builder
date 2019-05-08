@@ -1,8 +1,0 @@
-/* sizes
-   ========================================================================== */
-
-@include sizes;
-
-@if $enable-responsive-sizes {
-  @include responsive("sizes");
-}

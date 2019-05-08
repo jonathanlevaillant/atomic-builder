@@ -1,27 +1,9 @@
 {
   "name": "atomic-builder",
-  "description": "An atomic front-end BEMIT framework",
-  "version": "7.4.2",
-  "keywords": [
-    "framework",
-    "sass",
-    "css",
-    "atomic design",
-    "oocss",
-    "bem",
-    "bemit",
-    "itcss",
-    "vertical rhythm",
-    "responsive"
-  ],
+  "version": "8.0.0",
+  "description": "Lightweight and flexible CSS front-end framework based on custom properties and built with Sass",
   "author": "Jonathan Levaillant <jonathan.levaillant@outlook.com> (http://jonathanlevaillant.fr)",
-  "scripts": {
-    "start": "yarn",
-    "dev": "gulp && gulp demo && gulp watch",
-    "build": "rm -rf ./dist && gulp",
-    "prepare": "yarn run build"
-  },
-  "main": "src/main.scss",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/jonathanlevaillant/atomic-builder.git"
@@ -30,21 +12,69 @@
     "url": "https://github.com/jonathanlevaillant/atomic-builder/issues",
     "email": "jonathan.levaillant@outlook.com"
   },
-  "license": "MIT",
+  "keywords": [
+    "framework",
+    "css",
+    "sass",
+    "bem",
+    "itcss",
+    "bemit",
+    "responsive",
+    "custom properties"
+  ],
+  "style": "dist/css/atomic-builder.css",
+  "unpkg": "dist/css/atomic-builder.min.css",
+  "files": [
+    "dist",
+    "scss"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "scss": "node-sass --output-style expanded --source-map true scss/atomic-builder.scss dist/css/atomic-builder.css",
+    "lint": "stylelint '{scss,demo}/**/*.scss'",
+    "prefix": "postcss -m -u autoprefixer -r dist/css/atomic-builder.css",
+    "compile": "npm-run-all lint scss prefix",
+    "minify": "cleancss --source-map --source-map-inline-sources -o dist/css/atomic-builder.min.css dist/css/atomic-builder.css",
+    "watch": "onchange -i --await-write-finish 600 '{scss,demo}/**/*.scss' -- npm run lint --silent",
+    "serve": "parcel demo/index.html -d demo/dist --open",
+    "dev": "npm-run-all --parallel watch serve",
+    "build": "npm-run-all clean compile minify",
+    "prepare": "npm run build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.scss": [
+      "stylelint --fix --max-warnings 0",
+      "git add"
+    ],
+    "*.{md,html,js}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.1.0",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-stylelint": "^6.0.0",
-    "node-sass-tilde-importer": "^1.0.1",
-    "stylelint": "^8.4.0",
-    "stylelint-config-rational-order": "^0.0.2",
-    "stylelint-config-sass-guidelines": "^4.1.0",
-    "stylelint-order": "^0.8.0",
-    "stylelint-scss": "^2.3.0"
+    "autoprefixer": "^9.5.1",
+    "clean-css-cli": "^4.3.0",
+    "husky": "^2.2.0",
+    "lint-staged": "^8.1.6",
+    "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^5.2.0",
+    "parcel-bundler": "^1.12.3",
+    "postcss-cli": "^6.1.2",
+    "prettier": "^1.17.0",
+    "rimraf": "^2.6.3",
+    "stylelint": "^10.0.1",
+    "stylelint-config-prettier": "^5.1.0",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-sass-guidelines": "^6.0.0",
+    "stylelint-prettier": "^1.0.7"
   },
   "dependencies": {
-    "normalize.css": "^8.0.0"
+    "normalize.css": "^8.0.1"
   }
 }

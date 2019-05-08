@@ -1,8 +1,0 @@
-/* colors
-   ========================================================================== */
-
-@include colors;
-
-@if $enable-responsive-colors {
-  @include responsive("colors");
-}

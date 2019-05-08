@@ -1,0 +1,124 @@
+///* ========================================================================
+//   #GLOBAL
+//   ======================================================================== */
+
+// Map of font weights.
+$font-weights: () !default;
+$font-weights: map-merge(
+  (
+    'base': 400,
+  ),
+  $font-weights
+);
+
+// Map of font sizes.
+$font-sizes: () !default;
+$font-sizes: map-merge(
+  (
+    'base': (
+      1.6rem,
+      1.5,
+    ),
+    'h1': 6.8rem,
+    'h2': 5.1rem,
+    'h3': 3.8rem,
+    'h4': 2.8rem,
+    'h5': 2.1rem,
+    'h6': 1.6rem,
+  ),
+  $font-sizes
+);
+
+// Map of font families.
+// To include a list of font families, it is recommended to follow this syntax :
+// "'Times New Roman', Times, serif"
+$font-families: () !default;
+$font-families: map-merge(
+  (
+    'base': sans-serif,
+  ),
+  $font-families
+);
+
+// Map of sizing values.
+$sizes: () !default;
+$sizes: map-merge(
+  (
+    '100': 100%,
+    'auto': auto,
+  ),
+  $sizes
+);
+
+// Map of spacing values.
+$spacers: () !default;
+$spacers: map-merge(
+  (
+    'base': 2.4rem,
+    'auto': auto,
+    'none': 0,
+  ),
+  $spacers
+);
+
+// Global settings of the container (max width and side margins).
+$container-max-width: 126rem !default;
+
+$container-side-margin: () !default;
+$container-side-margin: map-merge(
+  (
+    'default': 2.4rem,
+  ),
+  $container-side-margin
+);
+
+// Global settings of the grid (number of columns, column gap and row gap).
+$column-count: 12 !default;
+
+$column-gap: () !default;
+$column-gap: map-merge(
+  (
+    'default': 2.4rem,
+  ),
+  $column-gap
+);
+
+$row-gap: () !default;
+$row-gap: map-merge(
+  (
+    'default': 2.4rem,
+  ),
+  $row-gap
+);
+
+// Map of breakpoint values.
+// It is recommended to keep `em` units.
+$breakpoints: () !default;
+$breakpoints: map-merge(
+  (
+    'phone': 47.9375em,
+    'tablet': 64em,
+  ),
+  $breakpoints
+);
+
+// Parameter to set margins in a single-direction (top or bottom direction).
+// https://csswizardry.com/2012/06/single-direction-margin-declarations/
+$vertical-margin-direction: 'top' !default;
+
+// Parameters to enable or disable the responsive utility classes builders.
+$enable-responsive-grid: true !default;
+$enable-responsive-position: false !default;
+$enable-responsive-display: false !default;
+$enable-responsive-flex: false !default;
+$enable-responsive-alignment: false !default;
+$enable-responsive-float: false !default;
+$enable-responsive-clear: false !default;
+$enable-responsive-sizing: false !default;
+$enable-responsive-spacing: false !default;
+$enable-responsive-overflow: false !default;
+$enable-responsive-colors: false !default;
+$enable-responsive-text: false !default;
+$enable-responsive-visibility: false !default;
+$enable-responsive-reset: false !default;
+$enable-responsive-helper: false !default;

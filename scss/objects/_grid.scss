@@ -1,0 +1,41 @@
+/* ==========================================================================
+   #GRID
+   ========================================================================== */
+
+/* Variables & Custom properties
+   ========================================================================== */
+
+.o-grid {
+  --grid-column-count: var(--column-count);
+  --grid-column-width: auto;
+
+  --grid-column-gap: var(--column-gap);
+  --grid-row-gap: var(--row-gap);
+}
+
+// Grid columns builder.
+@include grid-columns;
+
+// Responsive grid columns builder.
+@if $enable-responsive-grid {
+  @include responsive-grid-columns;
+}
+
+/* Declarative rules
+   ========================================================================== */
+
+.o-grid {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: calc(var(--grid-row-gap) * -1);
+  margin-left: calc(var(--grid-column-gap) * -1);
+}
+
+.o-grid__col {
+  flex: 0 1 var(--grid-column-width);
+  box-sizing: border-box;
+  min-width: 0;
+  margin-left: var(--grid-column-offset-width);
+  padding-bottom: var(--grid-row-gap);
+  padding-left: var(--grid-column-gap);
+}

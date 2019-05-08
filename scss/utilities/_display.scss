@@ -1,0 +1,14 @@
+/* ==========================================================================
+   #DISPLAY
+   ========================================================================== */
+
+/* Declarative rules
+   ========================================================================== */
+
+// Display utilities builder.
+@include display;
+
+// Responsive display utilities builder.
+@if $enable-responsive-display {
+  @include responsive-display;
+}

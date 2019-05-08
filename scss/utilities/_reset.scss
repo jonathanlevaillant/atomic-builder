@@ -1,0 +1,14 @@
+/* ==========================================================================
+   #RESET
+   ========================================================================== */
+
+/* Declarative rules
+   ========================================================================== */
+
+// Reset utilities builder.
+@include reset;
+
+// Responsive reset utilities builder.
+@if $enable-responsive-reset {
+  @include responsive-reset;
+}

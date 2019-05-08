@@ -1,0 +1,14 @@
+/* ==========================================================================
+   #FLEX
+   ========================================================================== */
+
+/* Declarative rules
+   ========================================================================== */
+
+// Flex utilities builder.
+@include flex;
+
+// Responsive flex utilities builder.
+@if $enable-responsive-flex {
+  @include responsive-flex;
+}

@@ -1,0 +1,34 @@
+/* ==========================================================================
+   #PAGE
+   ========================================================================== */
+
+/* Declarative rules
+   ========================================================================== */
+
+/**
+ * 1. Force scrollbars to always be visible to prevent awkward 'jumps' when
+ *    navigating between pages that do/do not have enough content to produce
+ *    scrollbars naturally.
+ * 2. Set the html font-size to "10px", which is adapted to rem unit.
+ * 3. IE and Chrome math fixing.
+ * 4. Breaks words to prevent overflow in all browsers.
+ * 5. Enable font smoothing.
+ * 6. Ensure the page always fills at least the entire height of the viewport.
+ */
+
+html {
+  overflow-y: scroll; /* 1 */
+  font-size: 62.5%; /* 2 */
+  font-size: calc(1em * 0.625); /* 3 */
+  word-break: break-word; /* 4 */
+  -webkit-font-smoothing: antialiased; /* 5 */
+  -moz-osx-font-smoothing: grayscale; /* 5 */
+}
+
+body {
+  min-height: 100vh; /* 6 */
+  font-weight: var(--font-weight-base);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-base);
+}

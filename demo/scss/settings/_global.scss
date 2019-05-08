@@ -1,0 +1,58 @@
+///* ========================================================================
+//   #GLOBAL
+//   ======================================================================== */
+
+// Map of font weights.
+$font-weights: (
+  'bolder': 700,
+);
+
+// Map of font sizes.
+$font-sizes: (
+  'h1': (
+    'tablet-up': (
+      6.8rem,
+      1.3,
+    ),
+    'tablet': (
+      6.2rem,
+      1.4,
+    ),
+    'phone': 5.8rem,
+  ),
+  'h2': (
+    'default': 5.1rem,
+    'phone': 4.8rem,
+  ),
+  'h3': (
+    'default': 3.8rem,
+    'phone': 3.6rem,
+  ),
+  'sm': 1.4rem,
+);
+
+// Map of font families.
+$font-families: (
+  'base': "'Trebuchet MS', sans-serif",
+);
+
+// Map of spacing values.
+$spacers: (
+  'sm': 1.2rem,
+  'lg': 4.8rem,
+);
+
+// Global settings of the container (max width and side margins).
+$container-side-margin: (
+  'default': 4.8rem,
+  'tablet': 2.4rem,
+  'phone': 1.2rem,
+);
+
+// Global settings of the grid (number of columns, column gap and row gap).
+$column-gap: (
+  'phone': 1.2rem,
+);
+
+// Parameters to enable or disable the responsive utility classes builders.
+$enable-responsive-display: true;

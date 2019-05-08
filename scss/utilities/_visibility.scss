@@ -1,0 +1,14 @@
+/* ==========================================================================
+   #VISIBILITY
+   ========================================================================== */
+
+/* Declarative rules
+   ========================================================================== */
+
+// Visibility utilities builder.
+@include visibility;
+
+// Responsive visibility utilities builder.
+@if $enable-responsive-visibility {
+  @include responsive-visibility;
+}

@@ -1,0 +1,167 @@
+///* ========================================================================
+//   #FUNCTIONS
+//   ======================================================================== */
+
+$BREAKPOINT_UPPER_LABEL: '-up';
+$BREAKPOINT_LOWER_LABEL: '-down';
+$BREAKPOINT_DEFAULT_LABEL: 'default';
+
+//*  Private functions
+//   ======================================================================== */
+
+/// Function to sort map by values.
+/// @author Andrew Luca
+/// @link https://gist.github.com/iamandrewluca
+/// @access private
+/// @param {Map} $map - Map to sort
+/// @return {Map}
+@function map-sort-by-values($map) {
+  $keys: ();
+  $values: ();
+  $sorted-map: ();
+
+  @each $key, $value in $map {
+    $keys: append($keys, $key);
+    $values: append($values, $value);
+  }
+
+  $list: zip($keys, $values);
+
+  @while length($list) > 0 {
+    $smallest-pair: nth($list, 1);
+
+    @each $pair in $list {
+      $value: nth($pair, 2);
+      $smallest-value: nth($smallest-pair, 2);
+
+      @if $value < $smallest-value {
+        $smallest-pair: $pair;
+      }
+    }
+
+    $key: nth($smallest-pair, 1);
+    $value: nth($smallest-pair, 2);
+    $sorted-map: map-merge(
+      $sorted-map,
+      (
+        $key: $value,
+      )
+    );
+    $smallest-pair-index: index($list, $smallest-pair);
+    $new-list: ();
+
+    @for $i from 1 through length($list) {
+      @if $i != $smallest-pair-index {
+        $new-list: append($new-list, nth($list, $i), 'space');
+      }
+    }
+
+    $list: $new-list;
+  }
+
+  @return $sorted-map;
+}
+
+/// Function to create new breakpoints by merging them with their upper and lower values.
+/// @access private
+/// @requires {variable} BREAKPOINT_UPPER_LABEL
+/// @requires {variable} BREAKPOINT_LOWER_LABEL
+/// @param {Map} $breakpoints - Breakpoints from global settings
+/// @throws Make sure that `#{$value}` is a number in `$breakpoints: #{$breakpoints}` map.
+/// @return {Map}
+@function breakpoint-merge($breakpoints) {
+  $new-breakpoints: ();
+
+  @each $key, $value in $breakpoints {
+    @if type-of($value) == 'number' {
+      $new-breakpoints: map-merge(
+        $new-breakpoints,
+        (
+          $key: $value,
+        )
+      );
+      $new-breakpoints: map-merge($new-breakpoints, (#{$key}#{$BREAKPOINT_UPPER_LABEL}: $value + 0.0625));
+      $new-breakpoints: map-merge($new-breakpoints, (#{$key}#{$BREAKPOINT_LOWER_LABEL}: $value));
+    } @else if $value {
+      @warn 'Make sure that `#{$value}` is a number in `$breakpoints: #{$breakpoints}` map.';
+    }
+  }
+
+  @return $new-breakpoints;
+}
+
+/// Function to remove the smallest breakpoint value which is duplicate.
+/// If found, removes it, else return `$breakpoints`.
+/// Be careful, breakpoints should be sorted with their upper and lower values.
+/// @access private
+/// @requires {variable} BREAKPOINT_LOWER_LABEL
+/// @param {Map} $breakpoints - Breakpoints from global settings
+/// @return {Map}
+@function breakpoint-clean($breakpoints) {
+  @if length($breakpoints) > 1 {
+    @return map-remove($breakpoints, #{nth(nth($breakpoints, 1), 1)}#{$BREAKPOINT_LOWER_LABEL});
+  }
+
+  @return $breakpoints;
+}
+
+$breakpoints: breakpoint-clean(map-sort-by-values(breakpoint-merge($breakpoints)));
+
+/// Function to fetch the breakpoint value in `$breakpoints` map.
+/// If found, returns it, else return `null`.
+/// @access private
+/// @requires {variable} breakpoints
+/// @param {String} $key - Breakpoint key
+/// @throws `#{$key}` is not a valid key in `$breakpoints` map.
+/// @return {Number | Null}
+@function breakpoint-get($key) {
+  @if map-has-key($breakpoints, $key) {
+    @return map-get($breakpoints, $key);
+  }
+
+  @warn '`#{$key}` is not a valid key in `$breakpoints: #{$breakpoints}` map.';
+  @return null;
+}
+
+/// Function to fetch the lower breakpoint value in `$breakpoints` map.
+/// If found, returns it, else return `null`.
+/// @access private
+/// @requires {function} breakpoint-get
+/// @requires {variable} breakpoints
+/// @param {String} $key - Breakpoint key
+/// @return {Number | Null}
+@function breakpoint-get-down($key) {
+  $current-index: index($breakpoints, ($key breakpoint-get($key)));
+
+  @if $current-index and $current-index > 1 {
+    @return nth(nth($breakpoints, $current-index - 1), 2);
+  }
+
+  @return null;
+}
+
+/// Function to return whether the breakpoint value in `$breakpoints` map is up.
+/// @access private
+/// @requires {variable} BREAKPOINT_UPPER_LABEL
+/// @param {String} $key - Breakpoint key
+/// @return {Bool}
+@function breakpoint-is-up($key) {
+  @if str-index($key, $BREAKPOINT_UPPER_LABEL) {
+    @return true;
+  }
+
+  @return false;
+}
+
+/// Function to return whether the breakpoint value in `$breakpoints` map is down.
+/// @access private
+/// @requires {variable} BREAKPOINT_LOWER_LABEL
+/// @param {String} $key - Breakpoint key
+/// @return {Bool}
+@function breakpoint-is-down($key) {
+  @if str-index($key, $BREAKPOINT_LOWER_LABEL) {
+    @return true;
+  }
+
+  @return false;
+}

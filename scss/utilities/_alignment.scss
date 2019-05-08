@@ -1,0 +1,14 @@
+/* ==========================================================================
+   #ALIGNMENT
+   ========================================================================== */
+
+/* Declarative rules
+   ========================================================================== */
+
+// Alignment utilities builder.
+@include alignment;
+
+// Responsive alignment utilities builder.
+@if $enable-responsive-alignment {
+  @include responsive-alignment;
+}

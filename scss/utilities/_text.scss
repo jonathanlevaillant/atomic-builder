@@ -1,0 +1,34 @@
+/* ==========================================================================
+   #TEXT
+   ========================================================================== */
+
+/* Declarative rules
+   ========================================================================== */
+
+// Font weight utilities builder.
+@include font-weights;
+
+// Font size utilities builder.
+@include font-sizes;
+
+// Font family utilities builder.
+@include font-families;
+
+// Text alignment utilities builder.
+@include text-alignment;
+
+// Text transform utilities builder.
+@include text-transform;
+
+// Vertical alignment utilities builder.
+@include vertical-alignment;
+
+// Responsive text utilities builder.
+@if $enable-responsive-text {
+  @include responsive-font-weights;
+  @include responsive-font-sizes;
+  @include responsive-font-families;
+  @include responsive-text-alignment;
+  @include responsive-text-transform;
+  @include responsive-vertical-alignment;
+}

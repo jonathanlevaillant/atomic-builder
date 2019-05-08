@@ -1,0 +1,14 @@
+/* ==========================================================================
+   #POSITION
+   ========================================================================== */
+
+/* Declarative rules
+   ========================================================================== */
+
+// Position utilities builder.
+@include position;
+
+// Responsive position utilities builder.
+@if $enable-responsive-position {
+  @include responsive-position;
+}

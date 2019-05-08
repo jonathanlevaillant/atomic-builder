@@ -1,8 +1,0 @@
-/* font weights
-   ========================================================================== */
-
-@include font-weights;
-
-@if $enable-responsive-font-weights {
-  @include responsive("font-weights");
-}

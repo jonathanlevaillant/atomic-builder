@@ -1,0 +1,44 @@
+/* ==========================================================================
+   #ROOT
+   ========================================================================== */
+
+/* Variables & Custom properties
+   ========================================================================== */
+
+:root {
+  /**
+   * Custom properties for colors.
+   */
+
+  @include var-colors;
+
+  /**
+   * Custom properties for typography.
+   */
+
+  @include var-font-weights;
+  @include var-font-sizes;
+  @include var-font-families;
+
+  /**
+   * Custom properties for sizing values.
+   */
+
+  @include var-sizing;
+
+  /**
+   * Custom properties for spacing values.
+   */
+
+  @include var-spacing;
+
+  /**
+   * Custom properties for layout.
+   */
+
+  @include var-container-max-width;
+  @include var-container-side-margin;
+  @include var-column-count;
+  @include var-column-gap;
+  @include var-row-gap;
+}
