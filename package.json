@@ -1,6 +1,6 @@
 {
   "name": "atomic-builder",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "Lightweight and flexible CSS front-end framework based on custom properties and built with Sass",
   "author": "Jonathan Levaillant <jonathan.levaillant@outlook.com> (http://jonathanlevaillant.fr)",
   "license": "MIT",
@@ -54,6 +54,9 @@
     "*.{md,html,js}": [
       "prettier --write",
       "git add"
+    ],
+    "ignore": [
+      "scss/generic/_normalize.scss"
     ]
   },
   "devDependencies": {
@@ -74,7 +77,5 @@
     "stylelint-config-sass-guidelines": "^6.0.0",
     "stylelint-prettier": "^1.0.7"
   },
-  "dependencies": {
-    "normalize.css": "^8.0.1"
-  }
+  "dependencies": {}
 }
