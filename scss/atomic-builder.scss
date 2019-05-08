@@ -17,7 +17,7 @@
 @import 'tools/mixins';
 
 // Generic : Reset and/or normalize styles, box-sizing definition, etc.
-@import '../node_modules/normalize.css/normalize';
+@import 'generic/normalize';
 @import 'generic/box-sizing';
 @import 'generic/reset';
 @import 'generic/shared';
