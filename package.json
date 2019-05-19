@@ -1,6 +1,6 @@
 {
   "name": "atomic-builder",
-  "version": "8.0.3",
+  "version": "8.0.4",
   "description": "Lightweight and flexible CSS front-end framework based on custom properties and built with Sass",
   "author": "Jonathan Levaillant <jonathan.levaillant@outlook.com> (http://jonathanlevaillant.fr)",
   "license": "MIT",
@@ -31,11 +31,11 @@
   "scripts": {
     "clean": "rimraf dist",
     "scss": "node-sass --output-style expanded --source-map true scss/atomic-builder.scss dist/css/atomic-builder.css",
-    "lint": "stylelint '{scss,demo}/**/*.scss'",
+    "lint": "stylelint \"{scss,demo}/**/*.scss\"",
     "prefix": "postcss -m -u autoprefixer -r dist/css/atomic-builder.css",
     "compile": "npm-run-all lint scss prefix",
     "minify": "cleancss --source-map --source-map-inline-sources -o dist/css/atomic-builder.min.css dist/css/atomic-builder.css",
-    "watch": "onchange -i --await-write-finish 600 '{scss,demo}/**/*.scss' -- npm run lint --silent",
+    "watch": "onchange -i --await-write-finish 600 \"{scss,demo}/**/*.scss\" -- npm run lint --silent",
     "serve": "parcel demo/index.html -d demo/dist --open",
     "dev": "npm-run-all --parallel watch serve",
     "build": "npm-run-all clean compile minify",
