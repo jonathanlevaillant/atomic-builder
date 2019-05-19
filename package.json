@@ -47,14 +47,16 @@
     }
   },
   "lint-staged": {
-    "*.scss": [
-      "stylelint --fix --max-warnings 0",
-      "git add"
-    ],
-    "*.{md,html,js}": [
-      "prettier --write",
-      "git add"
-    ],
+    "linters": {
+      "*.scss": [
+        "stylelint --fix --max-warnings 0",
+        "git add"
+      ],
+      "*.{md,html,js}": [
+        "prettier --write",
+        "git add"
+      ]
+    },
     "ignore": [
       "scss/generic/_normalize.scss"
     ]
