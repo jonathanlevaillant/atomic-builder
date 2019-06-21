@@ -867,6 +867,10 @@ $SEPARATOR_VALUE_END: '\\)';
       .u-w#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         width: var(--size-#{$key});
       }
+
+      .u-h#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
+        height: var(--size-#{$key});
+      }
     }
   }
 }
