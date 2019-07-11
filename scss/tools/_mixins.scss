@@ -57,13 +57,13 @@ $SEPARATOR_VALUE_END: '\\)';
   @if $vertical-margin-direction == 'top' {
     margin-top: var(--spacer-base);
 
-    &:first-child {
+    @at-root :first-child {
       margin-top: 0;
     }
   } @else if $vertical-margin-direction == 'bottom' {
     margin-bottom: var(--spacer-base);
 
-    &:last-child {
+    @at-root :last-child {
       margin-bottom: 0;
     }
   } @else if $vertical-margin-direction {
@@ -1310,7 +1310,6 @@ $SEPARATOR_VALUE_END: '\\)';
   .u-res#{$SEPARATOR_VALUE_START}link#{$SEPARATOR_VALUE_END}#{$suffix} {
     color: inherit;
     text-decoration: none;
-    cursor: auto;
   }
 
   .u-res#{$SEPARATOR_VALUE_START}list#{$SEPARATOR_VALUE_END}#{$suffix} {
@@ -1324,7 +1323,6 @@ $SEPARATOR_VALUE_END: '\\)';
     font: inherit;
     background-color: transparent;
     border: 0;
-    cursor: auto;
   }
 }
 
