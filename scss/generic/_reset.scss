@@ -68,11 +68,10 @@ th {
 }
 
 /**
- * Reset Chrome and Firefox behaviour which sets a `min-width: min-content;` on fieldsets.
+ * Remove default border on fieldsets.
  */
 
 fieldset {
-  min-width: 0;
   border: 0;
 }
 
@@ -91,6 +90,14 @@ fieldset {
 
 iframe {
   border: 0;
+}
+
+/**
+ * Remove the text style of addresses.
+ */
+
+address {
+  font-style: normal;
 }
 
 /**
