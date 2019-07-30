@@ -902,6 +902,16 @@ $SEPARATOR_VALUE_END: '\\)';
         margin: var(--spacer-#{$key});
       }
 
+      .u-mx#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
+        margin-right: var(--spacer-#{$key});
+        margin-left: var(--spacer-#{$key});
+      }
+
+      .u-my#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
+        margin-top: var(--spacer-#{$key});
+        margin-bottom: var(--spacer-#{$key});
+      }
+
       .u-mt#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         margin-top: var(--spacer-#{$key});
       }
@@ -921,6 +931,16 @@ $SEPARATOR_VALUE_END: '\\)';
       @if type-of($value) == 'number' {
         .u-p#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
           padding: var(--spacer-#{$key});
+        }
+
+        .u-px#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
+          padding-right: var(--spacer-#{$key});
+          padding-left: var(--spacer-#{$key});
+        }
+
+        .u-py#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
+          padding-top: var(--spacer-#{$key});
+          padding-bottom: var(--spacer-#{$key});
         }
 
         .u-pt#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
