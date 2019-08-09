@@ -415,6 +415,10 @@ $SEPARATOR_VALUE_END: '\\)';
     display: table-cell;
   }
 
+  .u-d#{$SEPARATOR_VALUE_START}contents#{$SEPARATOR_VALUE_END}#{$suffix} {
+    display: contents;
+  }
+  
   .u-d#{$SEPARATOR_VALUE_START}none#{$SEPARATOR_VALUE_END}#{$suffix} {
     display: none;
   }
