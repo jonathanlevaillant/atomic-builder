@@ -16,15 +16,15 @@ All modern browsers are supported (except Internet Explorer).
 
 ## Installation
 
-You can use Atomic Builder in your project by installing it using a package manager (recommended):
+**You can use Atomic Builder in your project by installing it using a package manager (recommended):**
 
-**npm:**
+[npm](https://www.npmjs.com/):
 
 ```
 $ npm install atomic-builder
 ```
 
-**yarn:**
+[yarn](https://yarnpkg.com/):
 
 ```
 $ yarn add atomic-builder
@@ -57,7 +57,7 @@ directory:
 Atomic Builder is written using [BEM](https://en.bem.info/methodology/) (Block, Element, Modifier) methodology for
 building component-based user interfaces.
 
-It also provides some classes with specific namespace:
+**It also provides some classes with specific namespace:**
 
 - `.o-`: Signify that something is an Object, and that it may be used in any number of unrelated contexts to the one you
   can currently see it in.
@@ -75,50 +75,51 @@ follow this convention in your own code as well to keep a consistent naming conv
 As much as possible, avoid modifying Atomic Builder’s core files. The best way to do this is to import Atomic Builder’s
 source Sass files in your own project.
 
-You have two options : include all of Atomic Builder, or pick the parts you need. We encourage the latter, though be
-aware that `settings/` and `tools/` folders are required.
+**You have two options** : include all of Atomic Builder, or pick the parts you need.
+
+We encourage the latter, though be aware that `settings/` and `tools/` folders are required.
 
 ```
 // Settings (required)
-@import ‘node_modules/atomic-builder/scss/settings/colors’;
-@import ‘node_modules/atomic-builder/scss/settings/global’;
+@import 'node_modules/atomic-builder/scss/settings/colors';
+@import 'node_modules/atomic-builder/scss/settings/global';
 
 // Tools (required)
-@import ‘node_modules/atomic-builder/scss/tools/functions’;
-@import ‘node_modules/atomic-builder/scss/tools/mixins’;
+@import 'node_modules/atomic-builder/scss/tools/functions';
+@import 'node_modules/atomic-builder/scss/tools/mixins';
 
 // Generic (optional)
-@import ‘node_modules/atomic-builder/scss/generic/normalize’;
-@import ‘node_modules/atomic-builder/scss/generic/box-sizing’;
-@import ‘node_modules/atomic-builder/scss/generic/reset’;
-@import ‘node_modules/atomic-builder/scss/generic/shared’;
+@import 'node_modules/atomic-builder/scss/generic/normalize';
+@import 'node_modules/atomic-builder/scss/generic/box-sizing';
+@import 'node_modules/atomic-builder/scss/generic/reset';
+@import 'node_modules/atomic-builder/scss/generic/shared';
 
 // Elements (optional)
-@import ‘node_modules/atomic-builder/scss/elements/root’;
-@import ‘node_modules/atomic-builder/scss/elements/page’;
-@import ‘node_modules/atomic-builder/scss/elements/heading’;
-@import ‘node_modules/atomic-builder/scss/elements/forms’;
-@import ‘node_modules/atomic-builder/scss/elements/tables’;
+@import 'node_modules/atomic-builder/scss/elements/root';
+@import 'node_modules/atomic-builder/scss/elements/page';
+@import 'node_modules/atomic-builder/scss/elements/heading';
+@import 'node_modules/atomic-builder/scss/elements/forms';
+@import 'node_modules/atomic-builder/scss/elements/tables';
 
 // Objects (optional)
-@import ‘node_modules/atomic-builder/scss/objects/grid’;
-@import ‘node_modules/atomic-builder/scss/objects/container’;
+@import 'node_modules/atomic-builder/scss/objects/grid';
+@import 'node_modules/atomic-builder/scss/objects/container';
 
 // Utilities (optional)
-@import ‘node_modules/atomic-builder/scss/utilities/position’;
-@import ‘node_modules/atomic-builder/scss/utilities/display’;
-@import ‘node_modules/atomic-builder/scss/utilities/flex’;
-@import ‘node_modules/atomic-builder/scss/utilities/alignment’;
-@import ‘node_modules/atomic-builder/scss/utilities/float’;
-@import ‘node_modules/atomic-builder/scss/utilities/clear’;
-@import ‘node_modules/atomic-builder/scss/utilities/sizing’;
-@import ‘node_modules/atomic-builder/scss/utilities/spacing’;
-@import ‘node_modules/atomic-builder/scss/utilities/overflow’;
-@import ‘node_modules/atomic-builder/scss/utilities/colors’;
-@import ‘node_modules/atomic-builder/scss/utilities/text’;
-@import ‘node_modules/atomic-builder/scss/utilities/visibility’;
-@import ‘node_modules/atomic-builder/scss/utilities/reset’;
-@import ‘node_modules/atomic-builder/scss/utilities/helper’;
+@import 'node_modules/atomic-builder/scss/utilities/position';
+@import 'node_modules/atomic-builder/scss/utilities/display';
+@import 'node_modules/atomic-builder/scss/utilities/flex';
+@import 'node_modules/atomic-builder/scss/utilities/alignment';
+@import 'node_modules/atomic-builder/scss/utilities/float';
+@import 'node_modules/atomic-builder/scss/utilities/clear';
+@import 'node_modules/atomic-builder/scss/utilities/sizing';
+@import 'node_modules/atomic-builder/scss/utilities/spacing';
+@import 'node_modules/atomic-builder/scss/utilities/overflow';
+@import 'node_modules/atomic-builder/scss/utilities/colors';
+@import 'node_modules/atomic-builder/scss/utilities/text';
+@import 'node_modules/atomic-builder/scss/utilities/visibility';
+@import 'node_modules/atomic-builder/scss/utilities/reset';
+@import 'node_modules/atomic-builder/scss/utilities/helper';
 ```
 
 ### Theming
@@ -146,7 +147,7 @@ To modify an existing key in our `$spacers` map, add the following to your custo
 
 ```
 $spacers: (
-  ‘base’: 2rem,
+  'base': 2rem,
 );
 ```
 
@@ -154,7 +155,7 @@ To add a new key and value to `$spacers` map, add the following to your custom S
 
 ```
 $spacers: (
-  ‘custom-spacer’: 1rem,
+  'custom-spacer': 1rem,
 );
 ```
 
@@ -162,7 +163,7 @@ To remove an existing key from `$spacers` map, add the following to your custom 
 
 ```
 $spacers: (
-  ‘base’: null,
+  'base': null,
 );
 ```
 
@@ -170,33 +171,33 @@ $spacers: (
 
 Atomic builder also provides some features and tools that should be of great help to you.
 
-### Custom properties
+### CSS Custom properties
 
 CSS custom properties allow you to store and retrieve values from properties you define yourself.
 
-They follow the same rules as other CSS properties, so you’re able to define and use them at multiple levels, following
+They follow the same rules as other CSS properties, so you are able to define and use them at multiple levels, following
 standard CSS cascading and specificity rules.
 
 Atomic Builder includes CSS custom properties in it’s compiled CSS. These CSS custom properties are based on Atomic
 Builder’s variables in
 [`scss/settings/_colors.scss`](https://github.com/jonathanlevaillant/atomic-builder/blob/master/scss/settings/_colors.scss)
 and
-[`scss/settings/_global.scss`]((https://github.com/jonathanlevaillant/atomic-builder/blob/master/scss/settings/_global.scss)
+[`scss/settings/_global.scss`](https://github.com/jonathanlevaillant/atomic-builder/blob/master/scss/settings/_global.scss)
 and are generated in our
 [`scss/elements/_root.scss`](https://github.com/jonathanlevaillant/atomic-builder/blob/master/scss/elements/_root.scss)
 file.
 
-**Example:**
+For example, this Sass map:
 
 ```
 $spacers: (
-  ‘lg’: 4.8rem,
-  ‘base’: 2.4rem,
-  ‘sm’: 1.2rem,
+  'lg': 4.8rem,
+  'base': 2.4rem,
+  'sm': 1.2rem,
 );
 ```
 
-This Sass map will generate in the root element:
+will automatically add these custom properties in the root element:
 
 ```
 :root {
@@ -221,8 +222,8 @@ You may have noticed that Atomic Builder provides a default map of breakpoint va
 
 ```
 $breakpoints: (
-  ‘phone’: 47.9375em,
-  ‘tablet’: 64em,
+  'phone': 47.9375em,
+  'tablet': 64em,
 );
 ```
 
@@ -231,9 +232,9 @@ responsive breakpoint keys:
 
 ```
 $breakpoints: (
-  ‘phone’: null,
-  ‘tablet’: null,
-  ‘sm’: 47.9375em,
+  'phone': null,
+  'tablet': null,
+  'sm': 47.9375em,
 );
 ```
 
@@ -243,21 +244,22 @@ It is even possible to delete all responsive breakpoint keys if your website doe
 $breakpoints: ();
 ```
 
-These responsive breakpoints are available via Sass mixin `@media(key)` by adding optional suffixes : `-up` or `-down`.
+These responsive breakpoints are available via Sass mixin `@mixin media($keys...)` by adding optional suffixes: `-up` or
+`-down`.
 
 **It is important to note that the suffix `-up` is exclusive while the suffix `-down` is inclusive.**
 
-**Example 1 `(key)`:**
+This Sass mixin with `($key)` name:
 
 ```
-@include media(‘tablet’) {
+@include media('tablet') {
   .c-custom-component {
     margin: var(--spacer-base);
   }
 }
 ```
 
-This Sass mixin will generate:
+will generate these responsive breakpoints:
 
 ```
 @media (max-width: 64em) and (min-width: 48em) {
@@ -267,17 +269,17 @@ This Sass mixin will generate:
 }
 ```
 
-**Example 2 `(key-up)`:**
+This Sass mixin with `($key-up)` name:
 
 ```
-@include media(‘tablet-up’) {
+@include media('tablet-up') {
   .c-custom-component {
     margin: var(--spacer-base);
   }
 }
 ```
 
-This Sass mixin will generate:
+will generate this responsive breakpoint:
 
 ```
 @media (min-width: 64.0625em) {
@@ -287,17 +289,17 @@ This Sass mixin will generate:
 }
 ```
 
-**Example 3 `(key-down)`:**
+This Sass mixin with `($key-down)` name:
 
 ```
-@include media(‘tablet-down’) {
+@include media('tablet-down') {
   .c-custom-component {
     margin: var(--spacer-base);
   }
 }
 ```
 
-This Sass mixin will generate:
+will generate this responsive breakpoint:
 
 ```
 @media (max-width: 64em) {
@@ -308,17 +310,17 @@ This Sass mixin will generate:
 
 ```
 
-**Example 4 (multiple keys):**
+This Sass mixin with multiple `($key1, $key2)` names:
 
 ```
-@include media(‘phone’, ‘tablet-up’) {
+@include media('phone', 'tablet-up') {
   .c-custom-component {
     margin: var(--spacer-base);
   }
 }
 ```
 
-This Sass mixin will generate:
+will generate these responsive breakpoints:
 
 ```
 @media (max-width: 47.9375em) {
@@ -338,11 +340,11 @@ This Sass mixin will generate:
 
 | Key           | Phone | Tablet | Desktop |
 | ------------- | ----- | ------ | ------- |
-| `phone`       | Yes   | No     | No      |
-| `tablet-down` | Yes   | Yes    | No      |
-| `tablet`      | No    | Yes    | No      |
-| `phone-up`    | No    | Yes    | Yes     |
-| `tablet-up`   | No    | No     | Yes     |
+| `phone`       | ✓     | ✗      | ✗       |
+| `tablet-down` | ✓     | ✓      | ✗       |
+| `tablet`      | ✗     | ✓      | ✗       |
+| `phone-up`    | ✗     | ✓      | ✓       |
+| `tablet-up`   | ✗     | ✗      | ✓       |
 
 ### Grid system
 
@@ -355,9 +357,9 @@ This grid system uses custom properties based on Atomic Builder’s variables in
 To declare a grid, the syntax is really easy:
 
 ```
-<div class=”o-grid”>
-  <div class=”o-grid__col”>Column one (auto)</div>
-  <div class=”o-grid__col”>Column two (auto)</div>
+<div class="o-grid">
+  <div class="o-grid__col">Column one (auto)</div>
+  <div class="o-grid__col">Column two (auto)</div>
 </div>
 ```
 
@@ -365,18 +367,18 @@ By default, the columns are based on the width of their content, but it’s also
 column widths:
 
 ```
-<div class=”o-grid”>
-  <div class=”o-grid__col o-grid__col--6”>1/2</div>
-  <div class=”o-grid__col o-grid__col--6”>1/2</div>
+<div class="o-grid">
+  <div class="o-grid__col o-grid__col--6">1/2</div>
+  <div class="o-grid__col o-grid__col--6">1/2</div>
 </div>
 ```
 
 ...or even with irregular column widths:
 
 ```
-<div class=”o-grid”>
-  <div class=”o-grid__col o-grid__col--4”>1/3</div>
-  <div class=”o-grid__col o-grid__col--8”>2/3</div>
+<div class="o-grid">
+  <div class="o-grid__col o-grid__col--4">1/3</div>
+  <div class="o-grid__col o-grid__col--8">2/3</div>
 </div>
 ```
 
@@ -384,17 +386,15 @@ Finally, to declare a responsive grid, just add a suffix based on breakpoint key
 class name:
 
 ```
-<div class=”o-grid”>
-  <div class=”o-grid__col o-grid__col--6 o-grid__col--4@phone-up”>
+<div class="o-grid">
+  <div class="o-grid__col o-grid__col--6 o-grid__col--4@phone-up">
     1/1 and 1/3 for tablets and desktops
   </div>
-  <div class=”o-grid__col o-grid__col--6 o-grid__col--8@phone-up”>
+  <div class="o-grid__col o-grid__col--6 o-grid__col--8@phone-up">
     1/1 and 2/3 for tablets and desktops
   </div>
 </div>
 ```
-
-### Helper classes
 
 ## Contributing
 
@@ -420,8 +420,6 @@ This project is licensed under the MIT License - see the
 
 ## Acknowledgement
 
-<p>
-    <a href="https://jolicode.com/"><img src="https://jolicode.com/images/logo.svg" width=200 height=46 alt="JoliCode" /></a>
-</p>
+<a href="https://jolicode.com/"><img src="https://jolicode.com/images/logo.svg" width=200 height=46 alt="JoliCode" /></a>
 
 Open Source time sponsored by JoliCode
