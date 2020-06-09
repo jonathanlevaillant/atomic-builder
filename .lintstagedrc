@@ -1,0 +1,4 @@
+{
+  "!(_normalize).scss": "stylelint --fix --max-warnings 0",
+  "*.{md,html,js}": "prettier --write"
+}
