@@ -97,7 +97,7 @@ We encourage the latter, though be aware that `settings/` and `tools/` folders a
 // Elements (optional)
 @import 'node_modules/atomic-builder/scss/elements/root';
 @import 'node_modules/atomic-builder/scss/elements/page';
-@import 'node_modules/atomic-builder/scss/elements/heading';
+@import 'node_modules/atomic-builder/scss/elements/headings';
 @import 'node_modules/atomic-builder/scss/elements/forms';
 @import 'node_modules/atomic-builder/scss/elements/tables';
 
