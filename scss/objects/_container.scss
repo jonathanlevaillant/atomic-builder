@@ -10,7 +10,7 @@
  */
 
 .o-container {
-  --container-side-margin-default: var(--container-side-margin);
+  --container-side-margin-default: var(--container-side-margin, calc(0 * 1rem));
 }
 
 /* Declarative rules
