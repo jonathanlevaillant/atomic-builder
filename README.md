@@ -79,7 +79,7 @@ source Sass files in your own project.
 
 We encourage the latter, though be aware that `settings/` and `tools/` folders are required.
 
-```
+```scss
 // Settings (required)
 @import 'node_modules/atomic-builder/scss/settings/colors';
 @import 'node_modules/atomic-builder/scss/settings/global';
@@ -137,7 +137,7 @@ and
 
 To modify an existing variable `$container-max-width`, add the following to your custom Sass file:
 
-```
+```scss
 $container-max-width: 96rem;
 ```
 
@@ -145,7 +145,7 @@ $container-max-width: 96rem;
 
 To modify an existing key in our `$spacers` map, add the following to your custom Sass file:
 
-```
+```scss
 $spacers: (
   'base': 2rem,
 );
@@ -153,7 +153,7 @@ $spacers: (
 
 To add a new key and value to `$spacers` map, add the following to your custom Sass file:
 
-```
+```scss
 $spacers: (
   'custom-spacer': 1rem,
 );
@@ -161,7 +161,7 @@ $spacers: (
 
 To remove an existing key from `$spacers` map, add the following to your custom Sass file:
 
-```
+```scss
 $spacers: (
   'base': null,
 );
@@ -189,7 +189,7 @@ file.
 
 For example, this Sass map:
 
-```
+```scss
 $spacers: (
   'lg': 4.8rem,
   'base': 2.4rem,
@@ -199,7 +199,7 @@ $spacers: (
 
 will automatically add these custom properties in the root element:
 
-```
+```scss
 :root {
   --spacer-lg: 4.8rem;
   --spacer-base: 2.4rem;
@@ -209,7 +209,7 @@ will automatically add these custom properties in the root element:
 
 You can now retrieve these custom properties like this:
 
-```
+```scss
 .c-custom-component {
   margin: var(--spacer-base);
   padding: var(--spacer-sm);
@@ -220,7 +220,7 @@ You can now retrieve these custom properties like this:
 
 You may have noticed that Atomic Builder provides a default map of breakpoint values:
 
-```
+```scss
 $breakpoints: (
   'phone': 47.9375em,
   'tablet': 64em,
@@ -230,7 +230,7 @@ $breakpoints: (
 Like any other Atomic Builder’s variables, it is possible to override this Sass map to modify, add or remove some
 responsive breakpoint keys:
 
-```
+```scss
 $breakpoints: (
   'phone': null,
   'tablet': null,
@@ -240,7 +240,7 @@ $breakpoints: (
 
 It is even possible to delete all responsive breakpoint keys if your website doesn’t require to be responsive:
 
-```
+```scss
 $breakpoints: ();
 ```
 
@@ -251,7 +251,7 @@ These responsive breakpoints are available via Sass mixin `@mixin media($keys...
 
 This Sass mixin with `($key)` name:
 
-```
+```scss
 @include media('tablet') {
   .c-custom-component {
     margin: var(--spacer-base);
@@ -261,7 +261,7 @@ This Sass mixin with `($key)` name:
 
 will generate these responsive breakpoints:
 
-```
+```scss
 @media (max-width: 64em) and (min-width: 48em) {
   .c-custom-component {
     margin: var(--spacer-base);
@@ -271,7 +271,7 @@ will generate these responsive breakpoints:
 
 This Sass mixin with `($key-up)` name:
 
-```
+```scss
 @include media('tablet-up') {
   .c-custom-component {
     margin: var(--spacer-base);
@@ -281,7 +281,7 @@ This Sass mixin with `($key-up)` name:
 
 will generate this responsive breakpoint:
 
-```
+```scss
 @media (min-width: 64.0625em) {
   .c-custom-component {
     margin: var(--spacer-base);
@@ -291,7 +291,7 @@ will generate this responsive breakpoint:
 
 This Sass mixin with `($key-down)` name:
 
-```
+```scss
 @include media('tablet-down') {
   .c-custom-component {
     margin: var(--spacer-base);
@@ -301,7 +301,7 @@ This Sass mixin with `($key-down)` name:
 
 will generate this responsive breakpoint:
 
-```
+```scss
 @media (max-width: 64em) {
   .c-custom-component {
     margin: var(--spacer-base);
@@ -312,7 +312,7 @@ will generate this responsive breakpoint:
 
 This Sass mixin with multiple `($key1, $key2)` names:
 
-```
+```scss
 @include media('phone', 'tablet-up') {
   .c-custom-component {
     margin: var(--spacer-base);
@@ -322,7 +322,7 @@ This Sass mixin with multiple `($key1, $key2)` names:
 
 will generate these responsive breakpoints:
 
-```
+```scss
 @media (max-width: 47.9375em) {
   .c-custom-component {
     margin: var(--spacer-base);
@@ -356,7 +356,7 @@ This grid system uses custom properties based on Atomic Builder’s variables in
 
 To declare a grid, the syntax is really easy:
 
-```
+```html
 <div class="o-grid">
   <div class="o-grid__col">Column one (auto)</div>
   <div class="o-grid__col">Column two (auto)</div>
@@ -366,7 +366,7 @@ To declare a grid, the syntax is really easy:
 By default, the columns are based on the width of their content, but it’s also possible to define a grid with regular
 column widths:
 
-```
+```html
 <div class="o-grid">
   <div class="o-grid__col o-grid__col--6">1/2</div>
   <div class="o-grid__col o-grid__col--6">1/2</div>
@@ -375,7 +375,7 @@ column widths:
 
 ...or even with irregular column widths:
 
-```
+```html
 <div class="o-grid">
   <div class="o-grid__col o-grid__col--4">1/3</div>
   <div class="o-grid__col o-grid__col--8">2/3</div>
@@ -385,7 +385,7 @@ column widths:
 Finally, to declare a responsive grid, just add a suffix based on breakpoint key name, as noted above, in the column
 class name:
 
-```
+```html
 <div class="o-grid">
   <div class="o-grid__col o-grid__col--6 o-grid__col--4@phone-up">
     1/1 and 1/3 for tablets and desktops
