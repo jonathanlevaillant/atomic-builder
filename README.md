@@ -118,6 +118,7 @@ We encourage the latter, though be aware that `settings/` and `tools/` folders a
 @import 'node_modules/atomic-builder/scss/utilities/colors';
 @import 'node_modules/atomic-builder/scss/utilities/text';
 @import 'node_modules/atomic-builder/scss/utilities/visibility';
+@import 'node_modules/atomic-builder/scss/utilities/cursors';
 @import 'node_modules/atomic-builder/scss/utilities/reset';
 @import 'node_modules/atomic-builder/scss/utilities/helper';
 ```
@@ -307,7 +308,6 @@ will generate this responsive breakpoint:
     margin: var(--spacer-base);
   }
 }
-
 ```
 
 This Sass mixin with multiple `($key1, $key2)` names:
@@ -387,12 +387,8 @@ class name:
 
 ```html
 <div class="o-grid">
-  <div class="o-grid__col o-grid__col--6 o-grid__col--4@phone-up">
-    1/1 and 1/3 for tablets and desktops
-  </div>
-  <div class="o-grid__col o-grid__col--6 o-grid__col--8@phone-up">
-    1/1 and 2/3 for tablets and desktops
-  </div>
+  <div class="o-grid__col o-grid__col--6 o-grid__col--4@phone-up">1/1 and 1/3 for tablets and desktops</div>
+  <div class="o-grid__col o-grid__col--6 o-grid__col--8@phone-up">1/1 and 2/3 for tablets and desktops</div>
 </div>
 ```
 
