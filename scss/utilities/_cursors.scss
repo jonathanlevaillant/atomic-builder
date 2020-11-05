@@ -1,0 +1,14 @@
+/* ==========================================================================
+   #CURSORS
+   ========================================================================== */
+
+/* Declarative rules
+   ========================================================================== */
+
+// Cursor utilities builder.
+@include cursors;
+
+// Responsive cursor utilities builder.
+@if $enable-responsive-cursors {
+  @include responsive-cursors;
+}
