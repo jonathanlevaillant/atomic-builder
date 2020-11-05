@@ -77,13 +77,13 @@ $SEPARATOR_VALUE_END: '\\)';
 /// Mixin to output color variables.
 /// @access private
 /// @requires {variable} colors
-/// @throws Make sure that `#{$value}` is a color in `$colors: #{$colors}` map.
+/// @throws Make sure that `#{$value}` is a color or a CSS variable in `$colors: #{$colors}` map.
 @mixin var-colors {
   @each $key, $value in $colors {
-    @if type-of($value) == 'color' {
+    @if type-of($value) == 'color' or str-index($value, 'var(--') {
       --color-#{$key}: #{$value};
     } @else if $value {
-      @warn 'Make sure that `#{$value}` is a color in `$colors: #{$colors}` map.';
+      @warn 'Make sure that `#{$value}` is a color or a CSS variable in `$colors: #{$colors}` map.';
     }
   }
 }
@@ -91,13 +91,13 @@ $SEPARATOR_VALUE_END: '\\)';
 /// Mixin to output font weight variables.
 /// @access private
 /// @requires {variable} font-weights
-/// @throws Make sure that `#{$value}` is a number in `$font-weights: #{$font-weights}` map.
+/// @throws Make sure that `#{$value}` is a number or a CSS variable in `$font-weights: #{$font-weights}` map.
 @mixin var-font-weights {
   @each $key, $value in $font-weights {
-    @if type-of($value) == 'number' {
+    @if type-of($value) == 'number' or str-index($value, 'var(--') {
       --font-weight-#{$key}: #{$value};
     } @else if $value {
-      @warn 'Make sure that `#{$value}` is a number in `$font-weights: #{$font-weights}` map.';
+      @warn 'Make sure that `#{$value}` is a number or a CSS variable in `$font-weights: #{$font-weights}` map.';
     }
   }
 }
@@ -107,31 +107,36 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @requires {variable} font-sizes
 /// @param {String} $key          - Font size key
 /// @param {List | Number} $value - Font size value
-/// @throws Make sure that `#{$value}` is a number or a list in `$font-sizes: #{$font-sizes}` map.
-/// @throws Make sure that `#{$font-size-value}` is a number in `$font-sizes: #{$font-sizes}` map.
-/// @throws Make sure that `#{$line-height-value}` is a number in `$font-sizes: #{$font-sizes}` map.
+/// @throws Make sure that `#{$value}` is a number, a CSS variable or a list in `$font-sizes: #{$font-sizes}` map.
+/// @throws Make sure that `#{$font-size-value}` is a number or a CSS variable in `$font-sizes: #{$font-sizes}` map.
+/// @throws Make sure that `#{$line-height-value}` is a number or a CSS variable in `$font-sizes: #{$font-sizes}` map.
 @mixin var-rhythm($key, $value) {
-  @if type-of($value) == 'number' or type-of($value) == 'list' {
+  @if type-of($value) ==
+    'number' or
+    (type-of($value) == 'string' and str-index($value, 'var(--')) or
+    type-of($value) ==
+    'list'
+  {
     @if type-of($value) == 'list' {
       $font-size-value: nth($value, 1);
       $line-height-value: nth($value, 2);
 
-      @if type-of($font-size-value) == 'number' {
+      @if type-of($font-size-value) == 'number' or str-index($font-size-value, 'var(--') {
         --font-size-#{$key}: #{$font-size-value};
       } @else if $font-size-value {
-        @warn 'Make sure that `#{$font-size-value}` is a number in `$font-sizes: #{$font-sizes}` map.';
+        @warn 'Make sure that `#{$font-size-value}` is a number or a CSS variable in `$font-sizes: #{$font-sizes}` map.';
       }
 
-      @if type-of($line-height-value) == 'number' {
+      @if type-of($line-height-value) == 'number' or str-index($line-height-value, 'var(--') {
         --line-height-#{$key}: #{$line-height-value};
       } @else if $line-height-value {
-        @warn 'Make sure that `#{$line-height-value}` is a number in `$font-sizes: #{$font-sizes}` map.';
+        @warn 'Make sure that `#{$line-height-value}` is a number or a CSS variable in `$font-sizes: #{$font-sizes}` map.';
       }
     } @else {
       --font-size-#{$key}: #{$value};
     }
   } @else if $value {
-    @warn 'Make sure that `#{$value}` is a number or a list in `$font-sizes: #{$font-sizes}` map.';
+    @warn 'Make sure that `#{$value}` is a number, a CSS variable or a list in `$font-sizes: #{$font-sizes}` map.';
   }
 }
 
@@ -140,10 +145,17 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @requires {mixin} breakpoint
 /// @requires {mixin} var-rhythm
 /// @requires {variable} font-sizes
-/// @throws Make sure that `#{$value}` is a number, a list or a map in `$font-sizes: #{$font-sizes}` map.
+/// @throws Make sure that `#{$value}` is a number, a CSS variable, a list or a map in `$font-sizes: #{$font-sizes}` map.
 @mixin var-font-sizes {
   @each $key, $value in $font-sizes {
-    @if type-of($value) == 'number' or type-of($value) == 'list' or type-of($value) == 'map' {
+    @if type-of($value) ==
+      'number' or
+      (type-of($value) == 'string' and str-index($value, 'var(--')) or
+      type-of($value) ==
+      'list' or
+      type-of($value) ==
+      'map'
+    {
       @if type-of($value) == 'map' {
         @each $map-key, $map-value in $value {
           @include breakpoint($map-key) {
@@ -154,7 +166,7 @@ $SEPARATOR_VALUE_END: '\\)';
         @include var-rhythm($key, $value);
       }
     } @else if $value {
-      @warn 'Make sure that `#{$value}` is a number, a list or a map in `$font-sizes: #{$font-sizes}` map.';
+      @warn 'Make sure that `#{$value}` is a number, a CSS variable, a list or a map in `$font-sizes: #{$font-sizes}` map.';
     }
   }
 }
@@ -162,13 +174,13 @@ $SEPARATOR_VALUE_END: '\\)';
 /// Mixin to output font family variables.
 /// @access private
 /// @requires {variable} font-families
-/// @throws Make sure that `#{$value}` is a string in `$font-families: #{$font-families}` map.
+/// @throws Make sure that `#{$value}` is a string or a CSS variable in `$font-families: #{$font-families}` map.
 @mixin var-font-families {
   @each $key, $value in $font-families {
     @if type-of($value) == 'string' {
       --font-family-#{$key}: #{$value};
     } @else if $value {
-      @warn 'Make sure that `#{$value}` is a string in `$font-families: #{$font-families}` map.';
+      @warn 'Make sure that `#{$value}` is a string or a CSS variable in `$font-families: #{$font-families}` map.';
     }
   }
 }
@@ -176,13 +188,13 @@ $SEPARATOR_VALUE_END: '\\)';
 /// Mixin to output sizing variables.
 /// @access private
 /// @requires {variable} sizes
-/// @throws Make sure that `#{$value}` is a number or equals `auto` in `$sizes: #{$sizes}` map.
+/// @throws Make sure that `#{$value}` is a number, a CSS variable or equals `auto` in `$sizes: #{$sizes}` map.
 @mixin var-sizing {
   @each $key, $value in $sizes {
-    @if type-of($value) == 'number' or $value == 'auto' {
+    @if type-of($value) == 'number' or $value == 'auto' or str-index($value, 'var(--') {
       --size-#{$key}: #{$value};
     } @else if $value {
-      @warn 'Make sure that `#{$value}` is a number or equals `auto` in `$sizes: #{$sizes}` map.';
+      @warn 'Make sure that `#{$value}` is a number, a CSS variable or equals `auto` in `$sizes: #{$sizes}` map.';
     }
   }
 }
@@ -190,13 +202,13 @@ $SEPARATOR_VALUE_END: '\\)';
 /// Mixin to output spacing variables.
 /// @access private
 /// @requires {variable} spacers
-/// @throws Make sure that `#{$value}` is a number or equals `auto` in `$spacers: #{$spacers}` map.
+/// @throws Make sure that `#{$value}` is a number, a CSS variable or equals `auto` in `$spacers: #{$spacers}` map.
 @mixin var-spacing {
   @each $key, $value in $spacers {
-    @if type-of($value) == 'number' or $value == 'auto' {
+    @if type-of($value) == 'number' or $value == 'auto' or str-index($value, 'var(--') {
       --spacer-#{$key}: #{$value};
     } @else if $value {
-      @warn 'Make sure that `#{$value}` is a number or equals `auto` in `$spacers: #{$spacers}` map.';
+      @warn 'Make sure that `#{$value}` is a number, a CSS variable or equals `auto` in `$spacers: #{$spacers}` map.';
     }
   }
 }
@@ -204,12 +216,12 @@ $SEPARATOR_VALUE_END: '\\)';
 /// Mixin to output container max width variable.
 /// @access private
 /// @requires {variable} container-max-width
-/// @throws Make sure that `#{$container-max-width}` is a number in `$container-max-width: #{$container-max-width}` variable.
+/// @throws Make sure that `#{$container-max-width}` is a number or a CSS variable in `$container-max-width: #{$container-max-width}` variable.
 @mixin var-container-max-width {
-  @if type-of($container-max-width) == 'number' {
+  @if type-of($container-max-width) == 'number' or str-index($container-max-width, 'var(--') {
     --container-max-width: #{$container-max-width};
   } @else {
-    @warn 'Make sure that `#{$container-max-width}` is a number in `$container-max-width: #{$container-max-width}` variable.';
+    @warn 'Make sure that `#{$container-max-width}` is a number or a CSS variable in `$container-max-width: #{$container-max-width}` variable.';
   }
 }
 
@@ -217,15 +229,15 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @access private
 /// @requires {mixin} breakpoint
 /// @requires {variable} container-side-margin
-/// @throws Make sure that `#{$value}` is a number in `$container-side-margin: #{$container-side-margin}` map.
+/// @throws Make sure that `#{$value}` is a number or a CSS variable in `$container-side-margin: #{$container-side-margin}` map.
 @mixin var-container-side-margin {
   @each $key, $value in $container-side-margin {
-    @if type-of($value) == 'number' {
+    @if type-of($value) == 'number' or str-index($value, 'var(--') {
       @include breakpoint($key) {
         --container-side-margin: #{$value};
       }
     } @else if $value {
-      @warn 'Make sure that `#{$value}` is a number in `$container-side-margin: #{$container-side-margin}` map.';
+      @warn 'Make sure that `#{$value}` is a number or a CSS variable in `$container-side-margin: #{$container-side-margin}` map.';
     }
   }
 }
@@ -246,15 +258,15 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @access private
 /// @requires {mixin} breakpoint
 /// @requires {variable} column-gap
-/// @throws Make sure that `#{$value}` is a number in `$column-gap: #{$column-gap}` map.
+/// @throws Make sure that `#{$value}` is a number or a CSS variable in `$column-gap: #{$column-gap}` map.
 @mixin var-column-gap {
   @each $key, $value in $column-gap {
-    @if type-of($value) == 'number' {
+    @if type-of($value) == 'number' or str-index($value, 'var(--') {
       @include breakpoint($key) {
         --column-gap: #{$value};
       }
     } @else if $value {
-      @warn 'Make sure that `#{$value}` is a number in `$column-gap: #{$column-gap}` map.';
+      @warn 'Make sure that `#{$value}` is a number or a CSS variable in `$column-gap: #{$column-gap}` map.';
     }
   }
 }
@@ -263,15 +275,15 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @access private
 /// @requires {mixin} breakpoint
 /// @requires {variable} row-gap
-/// @throws Make sure that `#{$value}` is a number in `$row-gap: #{$row-gap}` map.
+/// @throws Make sure that `#{$value}` is a number or a CSS variable in `$row-gap: #{$row-gap}` map.
 @mixin var-row-gap {
   @each $key, $value in $row-gap {
-    @if type-of($value) == 'number' {
+    @if type-of($value) == 'number' or str-index($value, 'var(--') {
       @include breakpoint($key) {
         --row-gap: #{$value};
       }
     } @else if $value {
-      @warn 'Make sure that `#{$value}` is a number in `$row-gap: #{$row-gap}` map.';
+      @warn 'Make sure that `#{$value}` is a number or a CSS variable in `$row-gap: #{$row-gap}` map.';
     }
   }
 }
@@ -863,7 +875,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @param {String} $suffix [null] - Responsive suffix
 @mixin sizing($suffix: null) {
   @each $key, $value in $sizes {
-    @if type-of($value) == 'number' or $value == 'auto' {
+    @if type-of($value) == 'number' or $value == 'auto' or str-index($value, 'var(--') {
       .u-w#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         width: var(--size-#{$key});
       }
@@ -897,7 +909,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @param {String} $suffix [null] - Responsive suffix
 @mixin spacing($suffix: null) {
   @each $key, $value in $spacers {
-    @if type-of($value) == 'number' or $value == 'auto' {
+    @if type-of($value) == 'number' or $value == 'auto' or str-index($value, 'var(--') {
       .u-m#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         margin: var(--spacer-#{$key});
       }
@@ -928,7 +940,7 @@ $SEPARATOR_VALUE_END: '\\)';
         margin-left: var(--spacer-#{$key});
       }
 
-      @if type-of($value) == 'number' {
+      @if type-of($value) == 'number' or str-index($value, 'var(--') {
         .u-p#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
           padding: var(--spacer-#{$key});
         }
@@ -1022,7 +1034,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @param {String} $suffix [null] - Responsive suffix
 @mixin colors($suffix: null) {
   @each $key, $value in $colors {
-    @if type-of($value) == 'color' {
+    @if type-of($value) == 'color' or str-index($value, 'var(--') {
       .u-c#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         color: var(--color-#{$key});
       }
@@ -1052,7 +1064,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @param {String} $suffix [null] - Responsive suffix
 @mixin background-colors($suffix: null) {
   @each $key, $value in $colors {
-    @if type-of($value) == 'color' {
+    @if type-of($value) == 'color' or str-index($value, 'var(--') {
       .u-bgc#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         background-color: var(--color-#{$key});
       }
@@ -1082,7 +1094,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @param {String} $suffix [null] - Responsive suffix
 @mixin font-weights($suffix: null) {
   @each $key, $value in $font-weights {
-    @if type-of($value) == 'number' {
+    @if type-of($value) == 'number' or str-index($value, 'var(--') {
       .u-fw#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         font-weight: var(--font-weight-#{$key});
       }
@@ -1112,7 +1124,14 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @param {String} $suffix [null] - Responsive suffix
 @mixin font-sizes($suffix: null) {
   @each $key, $value in $font-sizes {
-    @if type-of($value) == 'number' or type-of($value) == 'list' or type-of($value) == 'map' {
+    @if type-of($value) ==
+      'number' or
+      (type-of($value) == 'string' and str-index($value, 'var(--')) or
+      type-of($value) ==
+      'list' or
+      type-of($value) ==
+      'map'
+    {
       .u-fz#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         font-size: var(--font-size-#{$key});
         line-height: var(--line-height-#{$key});
@@ -1321,6 +1340,35 @@ $SEPARATOR_VALUE_END: '\\)';
   }
 }
 
+/// Mixin to output cursor utilities.
+/// @access private
+/// @requires {variable} SEPARATOR_VALUE_START
+/// @requires {variable} SEPARATOR_VALUE_END
+/// @param {String} $suffix [null] - Responsive suffix
+@mixin cursors($suffix: null) {
+  .u-cur#{$SEPARATOR_VALUE_START}auto#{$SEPARATOR_VALUE_END}#{$suffix} {
+    cursor: auto;
+  }
+
+  .u-cur#{$SEPARATOR_VALUE_START}pointer#{$SEPARATOR_VALUE_END}#{$suffix} {
+    cursor: pointer;
+  }
+}
+
+/// Mixin to output responsive cursor utilities.
+/// @access private
+/// @requires {mixin} breakpoint
+/// @requires {mixin} cursors
+/// @requires {variable} breakpoints
+/// @requires {variable} SEPARATOR_MEDIA
+@mixin responsive-cursors {
+  @each $key, $value in $breakpoints {
+    @include breakpoint($key) {
+      @include cursors(#{$SEPARATOR_MEDIA}#{$key});
+    }
+  }
+}
+
 /// Mixin to output reset utilities.
 /// @access private
 /// @requires {variable} SEPARATOR_VALUE_START
@@ -1341,6 +1389,8 @@ $SEPARATOR_VALUE_END: '\\)';
     padding: 0;
     color: inherit;
     font: inherit;
+    letter-spacing: inherit;
+    text-align: inherit;
     background-color: transparent;
     border: 0;
   }
