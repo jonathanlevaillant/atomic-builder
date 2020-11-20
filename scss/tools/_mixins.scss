@@ -1453,6 +1453,36 @@ $SEPARATOR_VALUE_END: '\\)';
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
   }
+
+  .u-h1#{$suffix} {
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-h1);
+  }
+
+  .u-h2#{$suffix} {
+    font-size: var(--font-size-h2);
+    line-height: var(--line-height-h2);
+  }
+
+  .u-h3#{$suffix} {
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-h3);
+  }
+
+  .u-h4#{$suffix} {
+    font-size: var(--font-size-h4);
+    line-height: var(--line-height-h4);
+  }
+
+  .u-h5#{$suffix} {
+    font-size: var(--font-size-h5);
+    line-height: var(--line-height-h5);
+  }
+
+  .u-h6#{$suffix} {
+    font-size: var(--font-size-h6);
+    line-height: var(--line-height-h6);
+  }
 }
 
 /// Mixin to output responsive helper utilities.
