@@ -80,7 +80,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @throws Make sure that `#{$value}` is a color or a CSS variable in `$colors: #{$colors}` map.
 @mixin var-colors {
   @each $key, $value in $colors {
-    @if type-of($value) == 'color' or str-index($value, 'var(--') {
+    @if type-of($value) == 'color' or (type-of($value) == 'string' and str-index($value, 'var(--')) {
       --color-#{$key}: #{$value};
     } @else if $value {
       @warn 'Make sure that `#{$value}` is a color or a CSS variable in `$colors: #{$colors}` map.';
@@ -94,7 +94,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @throws Make sure that `#{$value}` is a number or a CSS variable in `$font-weights: #{$font-weights}` map.
 @mixin var-font-weights {
   @each $key, $value in $font-weights {
-    @if type-of($value) == 'number' or str-index($value, 'var(--') {
+    @if type-of($value) == 'number' or (type-of($value) == 'string' and str-index($value, 'var(--')) {
       --font-weight-#{$key}: #{$value};
     } @else if $value {
       @warn 'Make sure that `#{$value}` is a number or a CSS variable in `$font-weights: #{$font-weights}` map.';
@@ -121,13 +121,19 @@ $SEPARATOR_VALUE_END: '\\)';
       $font-size-value: nth($value, 1);
       $line-height-value: nth($value, 2);
 
-      @if type-of($font-size-value) == 'number' or str-index($font-size-value, 'var(--') {
+      @if type-of($font-size-value) ==
+        'number' or
+        (type-of($font-size-value) == 'string' and str-index($font-size-value, 'var(--'))
+      {
         --font-size-#{$key}: #{$font-size-value};
       } @else if $font-size-value {
         @warn 'Make sure that `#{$font-size-value}` is a number or a CSS variable in `$font-sizes: #{$font-sizes}` map.';
       }
 
-      @if type-of($line-height-value) == 'number' or str-index($line-height-value, 'var(--') {
+      @if type-of($line-height-value) ==
+        'number' or
+        (type-of($line-height-value) == 'string' and str-index($line-height-value, 'var(--'))
+      {
         --line-height-#{$key}: #{$line-height-value};
       } @else if $line-height-value {
         @warn 'Make sure that `#{$line-height-value}` is a number or a CSS variable in `$font-sizes: #{$font-sizes}` map.';
@@ -191,7 +197,8 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @throws Make sure that `#{$value}` is a number, a CSS variable or equals `auto` in `$sizes: #{$sizes}` map.
 @mixin var-sizing {
   @each $key, $value in $sizes {
-    @if type-of($value) == 'number' or $value == 'auto' or str-index($value, 'var(--') {
+    @if type-of($value) == 'number' or $value == 'auto' or (type-of($value) == 'string' and str-index($value, 'var(--'))
+    {
       --size-#{$key}: #{$value};
     } @else if $value {
       @warn 'Make sure that `#{$value}` is a number, a CSS variable or equals `auto` in `$sizes: #{$sizes}` map.';
@@ -205,7 +212,8 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @throws Make sure that `#{$value}` is a number, a CSS variable or equals `auto` in `$spacers: #{$spacers}` map.
 @mixin var-spacing {
   @each $key, $value in $spacers {
-    @if type-of($value) == 'number' or $value == 'auto' or str-index($value, 'var(--') {
+    @if type-of($value) == 'number' or $value == 'auto' or (type-of($value) == 'string' and str-index($value, 'var(--'))
+    {
       --spacer-#{$key}: #{$value};
     } @else if $value {
       @warn 'Make sure that `#{$value}` is a number, a CSS variable or equals `auto` in `$spacers: #{$spacers}` map.';
@@ -218,7 +226,10 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @requires {variable} container-max-width
 /// @throws Make sure that `#{$container-max-width}` is a number or a CSS variable in `$container-max-width: #{$container-max-width}` variable.
 @mixin var-container-max-width {
-  @if type-of($container-max-width) == 'number' or str-index($container-max-width, 'var(--') {
+  @if type-of($container-max-width) ==
+    'number' or
+    (type-of($container-max-width) == 'string' and str-index($container-max-width, 'var(--'))
+  {
     --container-max-width: #{$container-max-width};
   } @else {
     @warn 'Make sure that `#{$container-max-width}` is a number or a CSS variable in `$container-max-width: #{$container-max-width}` variable.';
@@ -232,7 +243,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @throws Make sure that `#{$value}` is a number or a CSS variable in `$container-side-margin: #{$container-side-margin}` map.
 @mixin var-container-side-margin {
   @each $key, $value in $container-side-margin {
-    @if type-of($value) == 'number' or str-index($value, 'var(--') {
+    @if type-of($value) == 'number' or (type-of($value) == 'string' and str-index($value, 'var(--')) {
       @include breakpoint($key) {
         --container-side-margin: #{$value};
       }
@@ -261,7 +272,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @throws Make sure that `#{$value}` is a number or a CSS variable in `$column-gap: #{$column-gap}` map.
 @mixin var-column-gap {
   @each $key, $value in $column-gap {
-    @if type-of($value) == 'number' or str-index($value, 'var(--') {
+    @if type-of($value) == 'number' or (type-of($value) == 'string' and str-index($value, 'var(--')) {
       @include breakpoint($key) {
         --column-gap: #{$value};
       }
@@ -278,7 +289,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @throws Make sure that `#{$value}` is a number or a CSS variable in `$row-gap: #{$row-gap}` map.
 @mixin var-row-gap {
   @each $key, $value in $row-gap {
-    @if type-of($value) == 'number' or str-index($value, 'var(--') {
+    @if type-of($value) == 'number' or (type-of($value) == 'string' and str-index($value, 'var(--')) {
       @include breakpoint($key) {
         --row-gap: #{$value};
       }
@@ -875,7 +886,8 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @param {String} $suffix [null] - Responsive suffix
 @mixin sizing($suffix: null) {
   @each $key, $value in $sizes {
-    @if type-of($value) == 'number' or $value == 'auto' or str-index($value, 'var(--') {
+    @if type-of($value) == 'number' or $value == 'auto' or (type-of($value) == 'string' and str-index($value, 'var(--'))
+    {
       .u-w#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         width: var(--size-#{$key});
       }
@@ -909,7 +921,8 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @param {String} $suffix [null] - Responsive suffix
 @mixin spacing($suffix: null) {
   @each $key, $value in $spacers {
-    @if type-of($value) == 'number' or $value == 'auto' or str-index($value, 'var(--') {
+    @if type-of($value) == 'number' or $value == 'auto' or (type-of($value) == 'string' and str-index($value, 'var(--'))
+    {
       .u-m#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         margin: var(--spacer-#{$key});
       }
@@ -940,7 +953,7 @@ $SEPARATOR_VALUE_END: '\\)';
         margin-left: var(--spacer-#{$key});
       }
 
-      @if type-of($value) == 'number' or str-index($value, 'var(--') {
+      @if type-of($value) == 'number' or (type-of($value) == 'string' and str-index($value, 'var(--')) {
         .u-p#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
           padding: var(--spacer-#{$key});
         }
@@ -1034,7 +1047,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @param {String} $suffix [null] - Responsive suffix
 @mixin colors($suffix: null) {
   @each $key, $value in $colors {
-    @if type-of($value) == 'color' or str-index($value, 'var(--') {
+    @if type-of($value) == 'color' or (type-of($value) == 'string' and str-index($value, 'var(--')) {
       .u-c#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         color: var(--color-#{$key});
       }
@@ -1064,7 +1077,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @param {String} $suffix [null] - Responsive suffix
 @mixin background-colors($suffix: null) {
   @each $key, $value in $colors {
-    @if type-of($value) == 'color' or str-index($value, 'var(--') {
+    @if type-of($value) == 'color' or (type-of($value) == 'string' and str-index($value, 'var(--')) {
       .u-bgc#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         background-color: var(--color-#{$key});
       }
@@ -1094,7 +1107,7 @@ $SEPARATOR_VALUE_END: '\\)';
 /// @param {String} $suffix [null] - Responsive suffix
 @mixin font-weights($suffix: null) {
   @each $key, $value in $font-weights {
-    @if type-of($value) == 'number' or str-index($value, 'var(--') {
+    @if type-of($value) == 'number' or (type-of($value) == 'string' and str-index($value, 'var(--')) {
       .u-fw#{$SEPARATOR_VALUE_START}#{$key}#{$SEPARATOR_VALUE_END}#{$suffix} {
         font-weight: var(--font-weight-#{$key});
       }
