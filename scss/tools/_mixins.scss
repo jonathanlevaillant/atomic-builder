@@ -315,15 +315,18 @@ $SEPARATOR_VALUE_END: '\\)';
       }
 
       .o-grid__col--#{$i}#{$suffix} {
-        --grid-column-width: calc(100% * #{$i} / var(--grid-column-count));
+        --grid-columns: #{$i};
+        --grid-column-width: calc(100% * var(--grid-columns) / var(--grid-column-count));
       }
 
       .o-grid__col--push-#{$i}#{$suffix} {
-        --grid-column-offset-width: calc(100% * #{$i} / var(--grid-column-count));
+        --grid-columns: #{$i};
+        --grid-column-offset-width: calc(100% * var(--grid-columns) / var(--grid-column-count));
       }
 
       .o-grid__col--pull-#{$i}#{$suffix} {
-        --grid-column-offset-width: calc(-100% * #{$i} / var(--grid-column-count));
+        --grid-columns: #{$i};
+        --grid-column-offset-width: calc(-100% * var(--grid-columns) / var(--grid-column-count));
       }
     }
   }
