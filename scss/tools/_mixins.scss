@@ -621,6 +621,10 @@ $SEPARATOR_VALUE_END: '\\)';
     flex-shrink: 0;
   }
 
+  .u-fxb#{$SEPARATOR_VALUE_START}0#{$SEPARATOR_VALUE_END}#{$suffix} {
+    flex-basis: 0;
+  }
+
   .u-or#{$SEPARATOR_VALUE_START}-1#{$SEPARATOR_VALUE_END}#{$suffix} {
     order: -1;
   }
