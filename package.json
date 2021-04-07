@@ -1,11 +1,11 @@
 {
   "name": "atomic-builder",
-  "version": "8.3.0",
+  "version": "8.3.1",
   "description": "Atomic Builder is a lightweight and flexible CSS front-end framework based on ITCSS architecture and built with Sass",
   "author": "Jonathan Levaillant <jlevaillant@protonmail.com> (http://jonathanlevaillant.fr)",
   "license": "MIT",
   "engines": {
-    "node": "10.x"
+    "node": ">=10.0.0"
   },
   "repository": {
     "type": "git",
