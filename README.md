@@ -387,8 +387,8 @@ class name:
 
 ```html
 <div class="o-grid">
-  <div class="o-grid__col o-grid__col--6 o-grid__col--4@phone-up">1/1 and 1/3 for tablets and desktops</div>
-  <div class="o-grid__col o-grid__col--6 o-grid__col--8@phone-up">1/1 and 2/3 for tablets and desktops</div>
+  <div class="o-grid__col o-grid__col--6 o-grid__col--4@phone-up">1/2 and 1/3 for tablets and desktops</div>
+  <div class="o-grid__col o-grid__col--6 o-grid__col--8@phone-up">1/2 and 2/3 for tablets and desktops</div>
 </div>
 ```
 
