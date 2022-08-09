@@ -32,17 +32,19 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.1.0",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-stylelint": "^6.0.0",
-    "node-sass-tilde-importer": "^1.0.1",
-    "stylelint": "^8.4.0",
-    "stylelint-config-rational-order": "^0.0.2",
-    "stylelint-config-sass-guidelines": "^4.1.0",
-    "stylelint-order": "^0.8.0",
-    "stylelint-scss": "^2.3.0"
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-stylelint": "^13.0.0",
+    "node-sass": "^7.0.1",
+    "node-sass-tilde-importer": "^1.0.2",
+    "postcss": "8",
+    "stylelint": "^14.9.1",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-sass-guidelines": "^9.0.1",
+    "stylelint-order": "^5.0.0",
+    "stylelint-scss": "^4.3.0"
   },
   "dependencies": {
     "normalize.css": "^8.0.0"

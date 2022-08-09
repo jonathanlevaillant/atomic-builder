@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('node-sass'));
 const autoprefixer = require('gulp-autoprefixer');
 const stylelint = require('gulp-stylelint');
 const sourcemaps = require('gulp-sourcemaps');
@@ -40,7 +40,7 @@ gulp.task('stylelint', () =>
  ========================================================================== */
 
 // task 'demo'
-gulp.task('demo', ['stylelint'], () =>
+gulp.task('demo', gulp.series('stylelint', () =>
   gulp.src(`${demoPaths.entry}${demoPaths.styles}`)
     .pipe(sourcemaps.init())
     .pipe(sass({
@@ -52,13 +52,13 @@ gulp.task('demo', ['stylelint'], () =>
     }))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(demoPaths.output))
-);
+));
 
 /* build (css)
  ========================================================================== */
 
 // task 'css'
-gulp.task('css', ['stylelint'], () =>
+gulp.task('css', gulp.series('stylelint', () =>
   gulp.src(`${paths.entry}${paths.styles}`)
     .pipe(sourcemaps.init())
     .pipe(sass({
@@ -70,20 +70,20 @@ gulp.task('css', ['stylelint'], () =>
     }))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(paths.output))
-);
+));
 
 // task 'build'
-gulp.task('build', ['css']);
+gulp.task('build', gulp.series('css'));
 
 /* watch (css, demo)
  ========================================================================== */
 
 gulp.task('watch', () => {
-  gulp.watch(`${paths.entry}${paths.styles}`, ['css', 'demo']);
-  gulp.watch(`${demoPaths.entry}${demoPaths.styles}`, ['demo']);
+  gulp.watch(`${paths.entry}${paths.styles}`, gulp.series('css', 'demo'));
+  gulp.watch(`${demoPaths.entry}${demoPaths.styles}`, gulp.series('demo'));
 });
 
 /* default (build)
  ========================================================================== */
 
-gulp.task('default', ['build']);
+gulp.task('default', gulp.series('build'));
